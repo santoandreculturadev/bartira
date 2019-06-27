@@ -1,0 +1,99 @@
+Início (sessões zeradas)
+
+Evento 
+	Início / evento.php
+		['entidade'] = evento
+	Inserir / evento.php
+		['entidade'] = evento
+	Editar / evento.php
+		['entidade'] = evento
+		['id'] = idEvento
+		
+Ocorrencia
+	listar / ocorrencia.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Inserir / ocorrencia.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Editar / ocorrencia.php
+		['entidade'] = evento
+		['id'] = idEvento
+
+Arquivos
+	listar / arquivo.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Inserir / arquivo.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Editar / arquivo.php
+		['entidade'] = evento
+		['id'] = idEvento
+
+Contratos
+	listar / contratos.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Inserir / contratos.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Editar / contratos.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Busca / contratos.php
+		['entidade'] = evento
+		['id'] = idEvento
+	Inserir Arquivo / arquivo.php
+		['entidade'] = evento
+		['id'] = idEvento
+		['contrato'] = idPedidoContratacao
+	Editar Arquivo / arquivo.php
+		['entidade'] = evento
+		['id'] = idEvento
+		['contrato'] = idPedidoContratacao
+				
+Pessoa
+
+	listar Pessoa / contratos.php
+	['entidade'] = evento
+	
+			
+Atividade
+
+		'titulo' => $res['nomeEvento'],
+		'programa' => $programa['tipo'],
+		'projeto' => $projeto['tipo'],
+		'linguagem' => $linguagem['tipo'],
+		'responsavel' => '',
+		'autor' => $res['autor'],
+		'grupo' => $res['nomeGrupo'],
+		'ficha_tecnica' => $res['fichaTecnica'],
+		'sinopse' => $res['sinopse'],
+		'release' => $res['releaseCom'],
+		'status' => '',
+		'usuario' => '',
+		'sub' => '',
+		'envio' => '',
+		'periodo' => '',
+		'local' => '',
+		'faixa_etaria' => '',
+		'valor_entrada' => '',
+		'imagem' => '',
+		'planejamento' => $res['planejamento'],
+		'objeto' => $tipo_evento['tipo']." - ".$res['nomeEvento'],
+		'tipo' => $tipo_evento['tipo']
+		
+				Nome do Evento
+		Programa
+		Projeto
+		Linguagem
+		Tipo de Evento
+		Responsável
+		Autor
+		Classificação
+		Sinopse
+		
+				'tipo' => $tipo,
+		'data' =>  $data,
+		'local' => $local['tipo']

@@ -1,0 +1,51 @@
+body{font-family:Arial;
+  background:url(images/fundo_pdf.png) no-repeat center top fixed;
+   
+}
+fieldset{
+ width: 750px;
+ margin: 10px auto;
+ color: #444;
+ border: 5px solid #ccc;
+ font-family: Helvetica;
+ padding: 15px;
+}
+tr{
+	min-height:100px;
+}
+
+h1{
+ text-align: center;
+}
+
+p.sub-titulo{
+ font-size: 20px;
+}
+
+.direita{
+ text-align: right;
+}
+
+.center{
+ text-align: center;
+}
+
+.folha{
+	padding-top: 100px;
+}
+
+.campo{
+	font-size: 12;
+}
+
+.dado{
+	font-size: 18;
+	text-align: top center;
+	
+}
+
+.tabela{
+border: 1px;	
+width: 100%;
+
+}
