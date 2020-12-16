@@ -276,7 +276,7 @@ $_SESSION['entidade'] = 'atividade';
 										<div class="form-group">
 											<div class="col-md-offset-2">
 												<label>Ano Base *</label>
-												<input type="text" name="ano" class="form-control" id="inputSubject" value="2019"/>
+												<input type="text" name="ano" class="form-control" id="inputSubject" value="2020"/>
 											</div> 
 										</div>
 

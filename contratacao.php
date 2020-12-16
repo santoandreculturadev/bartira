@@ -107,10 +107,10 @@ if(isset($_POST['inserir_pf'])){
 		$pessoa = 1;
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$numero','1','2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$numero','1','2020','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$numero','1','2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$numero','1','2020','30 dias após a execução do serviço.')";
 			
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
@@ -131,10 +131,10 @@ if(isset($_POST['insere_pedido_pf'])){
 		$id_pessoa = $_POST['insere_pedido_pf'];
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$id_pessoa', '1','2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$id_pessoa', '1','2020','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$id_pessoa', '1', '2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$id_pessoa', '1', '2020','30 dias após a execução do serviço.')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
@@ -153,10 +153,10 @@ if(isset($_POST['insere_pedido_pj'])){
 		$id_pessoa = $_POST['insere_pedido_pj'];
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$id_pessoa', '1', '2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$id_pessoa', '1', '2020','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$id_pessoa', '1', '2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$id_pessoa', '1', '2020','30 dias após a execução do serviço.')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
@@ -176,10 +176,10 @@ if(isset($_POST['insere_pedido_outros'])){
 		$id_pessoa = $_POST['insere_pedido_outros'];
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-			VALUES ('$evento', '3', '8', '1','2019')";
+			VALUES ('$evento', '3', '8', '1','2020')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-			VALUES ('$evento', '3', '8', '1', '2019')";
+			VALUES ('$evento', '3', '8', '1', '2020')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
@@ -248,10 +248,10 @@ if(isset($_POST['inserir_pj'])){
 		$pessoa = 1;
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$numero_pj','1', '2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$numero_pj','1', '2020','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$numero_pj','1', '2019','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$numero_pj','1', '2020','30 dias após a execução do serviço.')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id){
@@ -1505,7 +1505,7 @@ if(count($res) > 0){
  							<label>Dotação *</label>
  							<select class="form-control" name="dotacao" id="inputSubject" >
  								<option>Escolha uma opção</option>
- 								<?php echo geraOpcaoDotacao('2019',$pedido['dotacao']); ?>
+ 								<?php echo geraOpcaoDotacao('2020',$pedido['dotacao']); ?>
  							</select>			
  						</div>
  					</div>
@@ -1588,22 +1588,23 @@ if(count($res) > 0){
  					
  					<div class="row">
  						<div class="col-12">
- 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=563&id=<?php echo $id_pedido?>" target="_blank">Folha de Abertura de Processo FIP (não se esqueça de editar com seus dados)</a>
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=563&id=<?php echo $id_pedido?>" target="_blank">Folha de Abertura de Processo Aniversário 2020
+        <!--FIP (não se esqueça de editar com seus dados)--></a>
  						</div>
  					</div>
  					<div class="row">
  						<div class="col-12">
- 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=549&id=<?php echo $id_pedido?>" target="_blank">Criar Folha de OS FIP</a>
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=549&id=<?php echo $id_pedido?>" target="_blank">Criar Folha de OS Aniversário 2020</a>
  						</div>
  					</div>
  					<div class="row">
  						<div class="col-12">
- 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=561&id=<?php echo $id_pedido?>" target="_blank">CAPUT FIP</a><br />
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=561&id=<?php echo $id_pedido?>" target="_blank">CAPUT Aniversário 2020</a><br />
  						</div>
  					</div>					
  					<div class="row">
  						<div class="col-12">
- 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=101&id=<?php echo $id_pedido?>" target="_blank">Justificativa FIP</a><br />
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=101&id=<?php echo $id_pedido?>" target="_blank">Justificativa Aniversário 2020</a><br />
  						</div>
  					</div>	
 					

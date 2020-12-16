@@ -56,11 +56,24 @@
 
 
       <ul class="nav nav-pills flex-column">
+
         <li class="nav-item">
           <a class="nav-link" href="evento.php">Listar Meus Eventos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="evento.php?p=inserir">Inserir Novo Evento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="documentos_artista.doc">Documentos do Artista</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="documentos_pj.doc">Documentos da Empresa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="documentos_pf.doc">Documentos Pessoa Física</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="montar_os.doc">Como montar uma OS</a>
         </li>
       </ul>
 

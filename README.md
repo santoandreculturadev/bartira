@@ -1,4 +1,4 @@
-# SCPSA - Secretária de Cultura da Prefeitura de Santo Andre
+# scpsa
 
 Modelagem "Atividade" (não é evento);
 

@@ -194,7 +194,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	
 	case 101: //Justificativa FIP
 
-	$file_name='justificativa_fip.doc';
+	$file_name='justificativa_aniver_20.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -252,20 +252,66 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	
 		<br />
 
-		<p><justify>Trata-se de contratação da empresa <?php echo $pedido['nome'] ?> representando o(a) <font color="#FF0000"> (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> em artes <font color="#FF0000">(inserir o nome artístico)</font> para apresentação artística no dia <?php echo $pedido['periodo'] ?>, no <?php echo $pedido['local'] ?> inserida na programação do  XIX Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
-		<p>Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos, proporcionando ao público o contato com diversos estilos culturais.</p>
-		<p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política governamental de difusão e fomento às diferentes manifestações culturais.</p>
-		<p>A Prefeitura pretende proporcionar à população o contato com os mais variados movimentos e correntes artísticas, não se limitando a determinada manifestação cultural ou artística.</p>
-		<p>Desta forma, pretende estimular a fruição e diversidade, a fim de que a população possa usufruir de estilos variados de cultura, lazer e entretenimento, o que proporciona o desenvolvimento humano pleno no que diz respeito à dignidade e à consciência humana e, ao mesmo tempo, aproxima o público das manifestações e linguagens.</p>
+        <p><justify>
+            Trata-se de contratação de <?php echo $pedido['nome_razaosocial']  ?>, inscrita no
+            CNPJ <?php echo $pedido['cpf_cnpj']  ?>, representando  <?php echo $pedido['titulo'] ?>,<font color="#FF0000">
+            em artes (artista/cia/banda/grupo/dupla)</font><?php echo $pedido['autor']  ?>, para apresentação artística no(s)
+            dia(s)<?php echo $pedido['periodo'] ?> no(a) <?php echo $pedido['local'] ?>, inserida na programação do Aniversário da Cidade 2020.
+        </p>
+        <p>
+            O Aniversário da Cidade se consagrou ao longo dos últimos anos como uma data extremamente importante no município;
+            do micro universo - como as salas de aulas nas EMEIS, ao macro - como as melhorias nas infraestruturas, todo o
+            governo municipal é mobilizado à programações diferenciadas. A Secretaria de Cultura, especialmente, dedica
+            grande parte de seus esforços à construção de uma grade de programação tão diversa quanto descentralizada possível,
+            partindo inclusive do princípio da participação de representações de indivíduos da sociedade civil nessa construção.
+        </p>
+        <p>A presente contratação conta com o(s) seguintes(s) integrante(s): <?php echo $pedido['ficha_tecnica'] ?>. </p>
+        <p>Breve release: <?php echo $pedido['release'] ?></p>
+        <p>
+            Ressaltamos que a referida contratação se justifica por tratar de trabalho artístico – cultural de qualidade
+            e por atender às necessidades públicas de acesso à política governamental de difusão e fomento às diferentes
+            manifestações culturais. Através da realização do Aniversário da Cidade, a Prefeitura pretende oferecer opções
+            artísticas, de lazer e entretenimento e promover a interação entre as propostas, os locais e os públicos.
+        </p>
+        <p>
+            Assim, tal contratação atende às expectativas da Secretaria e o interesse público implícito neste panorama,
+            pois atende às necessidades públicas de acesso à cultura e à política governamental de difusão e fomento às
+            diferentes manifestações culturais. A proposta é consagrada pela crítica especializada e pela opinião pública.
+        </p>
+        <p>
+            Não existem parâmetros nem tabelas que comprovem o valor solicitado pelo(a) artista/grupo, estando avaliado
+            em consonância com a economicidade.  Atesto ainda que é inviável a competição, pela singularidade do trabalho artístico.
+        </p>
+        </justify>
 
-		<p>Quando for Grupo/Banda/Cia:</p>
-		<p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
-		<p>Breve release: <?php echo $pedido['release'] ?></p>
-		
-		<p>
-			<font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.
-		Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify></p>
 
+  <!--      <p><justify>Trata-se de contratação da empresa <?php //echo $pedido['nome'] ?> representando o(a) <font color="#FF0000">
+                    (artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?> em artes <font color="#FF0000">
+                    (inserir o nome artístico)</font> para apresentação artística no dia <?php //echo $pedido['periodo'] ?>,
+                no <?php //echo $pedido['local'] ?> inserida na programação do  XIX Festival de Inverno de Paranapiacaba em
+                Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por
+                ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos
+                artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
+        <p>Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font>
+            que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos,
+            proporcionando ao público o contato com diversos estilos culturais.</p>
+        <p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política
+            governamental de difusão e fomento às diferentes manifestações culturais.</p>
+        <p>A Prefeitura pretende proporcionar à população o contato com os mais variados movimentos e correntes artísticas,
+            não se limitando a determinada manifestação cultural ou artística.</p>
+        <p>Desta forma, pretende estimular a fruição e diversidade, a fim de que a população possa usufruir de estilos variados
+            de cultura, lazer e entretenimento, o que proporciona o desenvolvimento humano pleno no que diz respeito à dignidade
+            e à consciência humana e, ao mesmo tempo, aproxima o público das manifestações e linguagens.</p>
+
+        <p>Quando for Grupo/Banda/Cia:</p>
+        <p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?>
+        será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
+        <p>Breve release: <?php// echo $pedido['release'] ?></p>
+
+        <p>
+            <font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.
+            Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify></p>
+-->
 		</center></p>
 		
 		<br /><br />
@@ -293,7 +339,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 		break;	
 	case 563: // Folha de Rosto	FIP
 	
-	$file_name='folha_abertura_processo_FIP.doc';
+	$file_name='folha_abertura_processo_aniver_20.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -337,12 +383,14 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	<p class="paragrafo">Solicitamos a abertura de processo administrativo com os seguintes dados:</p>
 
 	<br /><br />
-	<p>Interessado: <font color="#FF0000">(Nome do Setor Gerencia ou Encarregatura) -  CR (do setor)</font></p>
+	<p>Interessado: (Nome do Setor Gerencia ou Encarregatura) -  CR <?php echo $pedido['cr']; ?></p>
 
 		<br />
 		<br />
 		<br />
-		<p>Assunto: Inexigibilidade - contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?> </b> para representar o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> para programação do XIX Festival de Inverno de Paranapiacaba. 
+		<p>Assunto: Inexigibilidade - contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?> </b> para
+            representar o(a) <?php echo $pedido['titulo'] ?> <!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font>-->
+            para programação do Aniversário da Cidade 2020.
 			<br />
 			<br />
 			<br />
@@ -553,7 +601,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 		</tr>
 		<tr>
-			<td colspan="3"><center><b>Nome da área requisitante: Secretaria de Cultura - <?php echo $pedido['area']; ?></b></center></td>
+			<td colspan="3"><center><b>Nome da área requisitante: Secretaria de Cultura - <?php echo $pedido['periodo'] ?></b></center></td>
 			<tr/>	
 		</table>
 		<table border="1">
@@ -681,7 +729,7 @@ case 549: // OS para FIP
 	</tr>	
 	<tr>
 		<td><center>Data da Emissão<br /><b><?php echo date("d/m/Y")?></b></center></td>
-		<td><center>CR Requisitante<br /><b>70500</b></center></td>
+		<td><center>CR Requisitante<br /><b><?php echo $pedido['cr']; ?></b></center></td>
 
 	</tr>
 	<tr>
@@ -707,7 +755,7 @@ case 549: // OS para FIP
 			<td>Fonte de Recursos: <br /><center>  <?php echo $pedido['fonte']; ?></center></td>
 		</tr>
 		<tr>
-			<td colspan="3">Nome do Contato <br />Marco Moretto Neto</td>
+			<td colspan="3">Nome do Contato <br />Rodrigo Fernando da Silva</td>
 			<td>Telefone Contato<br />(11) 4433-0711</td>
 		</tr>
 		<tr><td colspan="4">Conta corrente (cód.Reduzido)/DB<br /><center>252</center></td></tr>	
@@ -718,15 +766,23 @@ case 549: // OS para FIP
 			<td colspan="4">Local de aplicação do serviço ou evento:<br /><?php echo $pedido['local']; ?></td>
 		</tr>
 		<tr>
-			<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> para  realização de apresentação artística, inserida na programação do XIX Festival de Inverno de Paranapiacaba em Santo André.</p>
+			<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
+			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
+                    realização de apresentação artística, inserida na programação do aniversário da Cidade de <!-- XIX Festival de Inverno de Paranapiacaba
+                    em -->Santo André 2020.</p>
 				<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 					CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 					Endereço: <?php echo $pedido['end']  ?>
 					Telefone: <?php echo $pedido['telefone']; ?> Email: <?php echo $pedido['email'];?>   <br />
 					<p><strong>Valor total:</strong> R$<?php echo $pedido['valor'];?> (<?php echo $pedido['valor_extenso']; ?>)</p>
 					
-					<p><b>Forma de pagamento:</b> 30 dias após a entrega do serviço, depositado em conta corrente da empresa, conforme segue:</p>
-					<p><?php echo $pedido['banco'];?> </p>		
+					<p>
+                        <b>Forma de pagamento:</b>
+                        Forma de Pagamento: O pagamento será feito pela Prefeitura Municipal de Santo André, em parcela única,
+                        desembolsada 30 dias após a execução do serviço, obedecendo o cronograma de pagamentos da Secretaria de
+                        Finanças.
+                    </p>
+                <p><?php echo $pedido['banco'];?> </p>
 
 				</td>
 			</tr>
@@ -869,7 +925,7 @@ case 549: // OS para FIP
 	break;	
 	case 561: //CAPUT FIP
 
-	$file_name='caput_fip.doc';
+	$file_name='caput_aniver_20.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -908,7 +964,7 @@ case 549: // OS para FIP
 		}
 	</style>
 	<br /><br /><br /> 
-	<p class="direita">Número do Processo:<?php echo $pedido['nProcesso'] ?></p>
+	<!--<p class="direita">Número do Processo:<?php //echo $pedido['nProcesso'] ?></p>-->
 	<p class="paragrafo">À <br />
 		Gerência de Compras e Licitações I <br />
 	Senhor(a) Gerente</p>
@@ -1001,9 +1057,11 @@ case 549: // OS para FIP
 	<br />
 
 	
-	<p>Referente à contratação da empresa <?php echo $pedido['nome'] ?> representando <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?>.</p>
+	<p>Referente à contratação da empresa <?php echo $pedido['nome_razaosocial']?> incrita no CNPJ <?php echo $pedido['cpf_cnpj']?>
+        representando <!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font>--> <?php echo $pedido['titulo'] ?>.</p>
 		<br />
-		<p><strong>Dotação: <?php echo resumoDotacao($pedido['cod_dotacao'])?> - Projeto: <?php echo $pedido['projeto']?> - Ficha: <?php echo $pedido['ficha']?> </strong></p>
+		<p><strong>Dotação: <?php echo resumoDotacao($pedido['cod_dotacao'])?> - Projeto: <?php echo $pedido['projeto']?>
+                - Ficha: <?php echo $pedido['ficha']?> </strong></p>
 		<br /><br />
 		<p>Valor: R$ <?php echo $pedido['valor'] ?> ( <?php echo $pedido['valor_extenso'] ?>)		
 			
@@ -1086,7 +1144,8 @@ case 549: // OS para FIP
 		<br />
 
 		
-		<p>Referente à contratação da empresa <?php echo $pedido['nome'] ?> representando <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?>. </p>
+		<p>Referente à contratação da empresa <?php echo $pedido['nome_razaosocial']?> inscrita no CNPJ <?php echo $pedido['cpf_cnpj']?>
+            representando <!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font>--> <?php echo $pedido['titulo'] ?>. </p>
 
 			<br />
 			<p><strong>Dotação: <?php echo resumoDotacao($pedido['cod_dotacao'])?> - Projeto: <?php echo $pedido['projeto']?> - Ficha: <?php echo $pedido['ficha']?> </strong></p>

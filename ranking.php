@@ -23,7 +23,8 @@ ini_set(“display_errors”, 1 );
 		<h1>Inscrições</h1>
 
 
-		<p>Para ter acesso aos detalhes dos projetos, é necessário que esteja logado no CulturAZ e que faça parte da equipe de pareceristas. <a href="http://culturaz.santoandre.sp.gov.br/autenticacao/" target="_blanck">Clique para logar</a></p>
+		<p>Para ter acesso aos detalhes dos projetos, é necessário que esteja logado no CulturAZ e que faça parte da equipe
+            de pareceristas. <a href="http://culturaz.santoandre.sp.gov.br/autenticacao/" target="_blanck">Clique para logar</a></p>
 	
 	<div class="table-responsive">
 		<table class="table table-striped">
@@ -87,7 +88,7 @@ ini_set(“display_errors”, 1 );
 						<td><a href="http://culturaz.santoandre.sp.gov.br/inscricao/<?php echo substr($json['inscricao'],3); ?>" target="_blank" ><?php echo $json['inscricao']; ?> </a></td>
 
 						<td><?php echo $res_json['Agente responsável pela inscrição - Nome completo ou Razão Social']; ?></td>
-						<td><?php echo $res_json['5. Título do Projeto']; ?></td>
+						<td><?php echo $res_json['2.1 Título do Projeto']; ?></td>
 						<td><?php if(isset($nota['pareceristas'][0]['nota'])){ echo $nota['pareceristas'][0]['nota']; } ?></td>
 						<td><?php if(isset($nota['pareceristas'][0]['usuario'])){ echo $avaliador1['display_name']; } ?></td>
 						<td><?php if(isset($anotacao['pareceristas'][0]['anotacao'])){ echo $anotacao['pareceristas'][0]['anotacao']; } ?></td>

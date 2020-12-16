@@ -90,6 +90,8 @@ if(count($ocor) > 0){
 					<th>Nº Membros - EMIA </th>
 					<th>Nº de Postagens - Museu de Santo André</th>
 					<th>Nº Membros - Museu de Santo André</th>
+					<th>Nº de Postagens - CEU Ana Maria</th>
+					<th>Nº Membros - CEU Ana Maria</th>
 					<th>Nº de Postagens - CEU Marek</th>
 					<th>Nº Membros - CEU Marek</th>					
 					<th>Nº de Postagens - REBISA</th>
@@ -126,6 +128,8 @@ if(count($ocor) > 0){
 						<td><?php echo $ocor[$i]['membros_emiaaf'] ?></td>
 						<td><?php echo $ocor[$i]['posts_museu'] ?></td>
 						<td><?php echo $ocor[$i]['membros_museu'] ?></td>
+						<td><?php echo $ocor[$i]['posts_ceuana'] ?></td>
+						<td><?php echo $ocor[$i]['membros_ceuana'] ?></td>
 						<td><?php echo $ocor[$i]['posts_ceumarek'] ?></td>
 						<td><?php echo $ocor[$i]['membros_ceumarek'] ?></td>
 						<td><?php echo $ocor[$i]['posts_rebisa'] ?></td>

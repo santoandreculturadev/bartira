@@ -118,7 +118,8 @@ require "inc/function.php";
 			
 			
 			
-			$sql_busca = "SELECT sc_evento.idEvento,nomeEvento,data,hora,mapas,dataEnvio,idLocal,status FROM sc_agenda, sc_evento WHERE sc_evento.idEvento = sc_agenda.idEvento AND dataEnvio IS NOT NULL $aniversario $linguagem $local $projeto $sql_status" ;
+			$sql_busca = "SELECT sc_evento.idEvento,nomeEvento,data,hora,mapas,dataEnvio,idLocal,status FROM sc_agenda, sc_evento 
+                    WHERE sc_evento.idEvento = sc_agenda.idEvento AND dataEnvio IS NOT NULL $aniversario $linguagem $local $projeto $sql_status" ;
 			$res = $wpdb->get_results($sql_busca,ARRAY_A);
 			for($i = 0; $i < count($res); $i++){
 				$local = tipo($res[$i]['idLocal']);

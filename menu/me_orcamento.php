@@ -19,7 +19,7 @@
        <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=visaogeral">Visão Geral</a>
       </li>
-      <?php $autorizados = array(1,5,62);
+      <?php $autorizados = array(1,5,62,146,171);
       if(in_array($user->ID,$autorizados)){ ?>		
        <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=mov_inserir">Inserir Movimentação</a>
@@ -40,8 +40,11 @@
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=planejamento2019">Planejamento 2019</a>
-      </li>      
+      </li>
       <li class="nav-item">
+          <a class="nav-link" href="orcamento.php?p=planejamento2020">Planejamento 2020</a>
+      </li>
+          <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=listaprojeto">Projetos</a>
       </li> 
       <li class="nav-item">

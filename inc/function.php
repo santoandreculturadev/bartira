@@ -2010,15 +2010,36 @@ function retornaNota($inscricao,$criterio,$usuario){
 function somaNotas($inscricao,$usuario,$edital){
 	global $wpdb;
 	$sql_soma = "SELECT nota FROM `ava_nota` WHERE inscricao = '$inscricao' AND usuario ='$usuario' AND edital = '$edital' ";
+    $peso = "SELECT peso FROM `ava_criterios` WHERE edital ='$edital'";
+
 	$res = $wpdb->get_results($sql_soma,ARRAY_A);
+	$res2 = $wpdb->get_results($peso,ARRAY_A);
+
 	$total = 0;
 	if(count($res) > 0){
 		for($i = 0; $i < count($res); $i++){
-			$total = $total + $res[$i]['nota'];			
+			$total = $total + ($res[$i]['nota']* $res2[$i]['peso']);
 		} 
 	}
 	return $total;
 }
+
+function somaNotas2($inscricao,$usuario,$edital){
+    global $wpdb;
+    $sql_soma = "SELECT nota FROM `ava_nota` WHERE inscricao = '$inscricao' AND usuario ='$usuario' AND edital = '$edital' ";
+    $peso = "SELECT peso FROM `ava_criterios` WHERE edital = '$edital' ";
+
+    $res = $wpdb->get_results($sql_soma,ARRAY_A);
+    $total = 0;
+    if(count($res) > 0){
+        for($i = 0; $i < count($res); $i++){
+            $total = $total + $res[$i]['nota'];
+        }
+    }
+    return $total;
+}
+
+
 
 function retornaAnotacao($inscricao,$usuario,$edital = NULL){
 	global $wpdb;
@@ -2288,23 +2309,23 @@ function retornaInscricao($inscricao){
 /* Planejamento */
 
 function retornaPlanejamento($idPlan){
-	global $wpdb;
-	$x = array();
-	$x['bool'] = FALSE;
-	$x['dotacao'] = 0;
-	$x['valor'] = 0;
-	$x['obs'] = "";	
-	$sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '2018'";
-	//echo $sql_ver;
-	$res_ver = $wpdb->get_results($sql_ver,ARRAY_A);
-	if(count($res_ver) > 0){
-		$x['bool'] = TRUE;
-		$x['dotacao'] = $res_ver[0]['idPai'];
-		$x['valor'] = $res_ver[0]['valor'];
-		$x['obs'] = $res_ver[0]['obs'];
-	}
-	
-	return $x;
+    global $wpdb;
+    $x = array();
+    $x['bool'] = FALSE;
+    $x['dotacao'] = 0;
+    $x['valor'] = 0;
+    $x['obs'] = "";
+    $sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '2018'";
+    //echo $sql_ver;
+    $res_ver = $wpdb->get_results($sql_ver,ARRAY_A);
+    if(count($res_ver) > 0){
+        $x['bool'] = TRUE;
+        $x['dotacao'] = $res_ver[0]['idPai'];
+        $x['valor'] = $res_ver[0]['valor'];
+        $x['obs'] = $res_ver[0]['obs'];
+    }
+
+    return $x;
 
 }
 
@@ -2328,6 +2349,26 @@ function retornaPlanejamento2019($idPlan){
 	}
 	
 	return $x;
+
+}
+function retornaPlanejamento2020($idPlan){
+    global $wpdb;
+    $x = array();
+    $x['bool'] = FALSE;
+    $x['dotacao'] = 0;
+    $x['valor'] = 0;
+    $x['obs'] = "";
+    $sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '2020'";
+    //echo $sql_ver;
+    $res_ver = $wpdb->get_results($sql_ver,ARRAY_A);
+    if(count($res_ver) > 0){
+        $x['bool'] = TRUE;
+        $x['dotacao'] = $res_ver[0]['idPai'];
+        $x['valor'] = $res_ver[0]['valor'];
+        $x['obs'] = $res_ver[0]['obs'];
+    }
+
+    return $x;
 
 }
 

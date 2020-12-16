@@ -32,9 +32,6 @@
             <a class="nav-link" href="producao.php?p=infra">Infraestrutura</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="producao.php?p=comunicacao">Comunicação</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="producao.php?p=apoio">Apoio Institucional</a>
           </li>
           <li class="nav-item">

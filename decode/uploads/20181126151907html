@@ -1,0 +1,804 @@
+<!-- BaseV1/layouts/parts/header.php # BEGIN --><!DOCTYPE html>
+<html lang="pt_BR" dir="ltr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CulturAZ Santo André - CONVOCATÓRIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo André - Processo Seletivo 2018/2019 Núcleo de Formação de Atores e Atrizes  - Turma 23 - CulturAZ Santo André</title>
+        <link rel="profile" href="http://gmpg.org/xfn/11" />
+        <link rel="shortcut icon" href="http://culturaz.santoandre.sp.gov.br/assets/img/favicon.ico" />
+        
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+ <meta name="description" content="Abertas as inscri&ccedil;&otilde;es para candidatos(as) interessados(as) no processo seletivo para composi&ccedil;&atilde;o do quadro de aprendizes da ELT de 2019 do N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes. Poder&atilde;o candidatar-se &agrave;s vagas apenas pessoas interessadas que j&aacute; tiverem completado 18 anos at&eacute; o dia 30 de novembro de 2018. OS INTERESSADOS DEVER&Atilde;O LER ATENTAMENTE A CONVOCAT&Oacute;RIA AQUI PRESENTE NOS DOWNLOADS." />
+ <meta name="keywords" content="CulturAZ Santo Andr&eacute;" />
+ <meta name="author" content="CulturAZ Santo Andr&eacute;" />
+ <meta name="copyright" content="CulturAZ Santo Andr&eacute;" />
+ <meta name="application-name" content="CulturAZ Santo Andr&eacute;" />
+ <meta itemprop="author" content="CONVOCAT&Oacute;RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr&eacute; - Processo Seletivo 2018/2019 N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes  - Turma 23 - CulturAZ Santo Andr&eacute;" />
+ <meta itemprop="description" content="Abertas as inscri&ccedil;&otilde;es para candidatos(as) interessados(as) no processo seletivo para composi&ccedil;&atilde;o do quadro de aprendizes da ELT de 2019 do N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes. Poder&atilde;o candidatar-se &agrave;s vagas apenas pessoas interessadas que j&aacute; tiverem completado 18 anos at&eacute; o dia 30 de novembro de 2018. OS INTERESSADOS DEVER&Atilde;O LER ATENTAMENTE A CONVOCAT&Oacute;RIA AQUI PRESENTE NOS DOWNLOADS." />
+ <meta itemprop="image" content="http://culturaz.santoandre.sp.gov.br/files/project/424/file/98099/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg" />
+ <meta name="twitter:card" content="CulturAZ Santo Andr&eacute;" />
+ <meta name="twitter:title" content="CONVOCAT&Oacute;RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr&eacute; - Processo Seletivo 2018/2019 N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes  - Turma 23 - CulturAZ Santo Andr&eacute;" />
+ <meta name="twitter:description" content="Abertas as inscri&ccedil;&otilde;es para candidatos(as) interessados(as) no processo seletivo para composi&ccedil;&atilde;o do quadro de aprendizes da ELT de 2019 do N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes. Poder&atilde;o candidatar-se &agrave;s vagas apenas pessoas interessadas que j&aacute; tiverem completado 18 anos at&eacute; o dia 30 de novembro de 2018. OS INTERESSADOS DEVER&Atilde;O LER ATENTAMENTE A CONVOCAT&Oacute;RIA AQUI PRESENTE NOS DOWNLOADS." />
+ <meta name="twitter:image" content="http://culturaz.santoandre.sp.gov.br/files/project/424/file/98099/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg" />
+ <meta property="og:title" content="CONVOCAT&Oacute;RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr&eacute; - Processo Seletivo 2018/2019 N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes  - Turma 23 - CulturAZ Santo Andr&eacute;" />
+ <meta property="og:type" content="article" />
+ <meta property="og:image" content="http://culturaz.santoandre.sp.gov.br/files/project/424/file/98099/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg" />
+ <meta property="og:image:url" content="http://culturaz.santoandre.sp.gov.br/files/project/424/file/98099/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg" />
+ <meta property="og:description" content="Abertas as inscri&ccedil;&otilde;es para candidatos(as) interessados(as) no processo seletivo para composi&ccedil;&atilde;o do quadro de aprendizes da ELT de 2019 do N&uacute;cleo de Forma&ccedil;&atilde;o de Atores e Atrizes. Poder&atilde;o candidatar-se &agrave;s vagas apenas pessoas interessadas que j&aacute; tiverem completado 18 anos at&eacute; o dia 30 de novembro de 2018. OS INTERESSADOS DEVER&Atilde;O LER ATENTAMENTE A CONVOCAT&Oacute;RIA AQUI PRESENTE NOS DOWNLOADS." />
+ <meta property="og:site_name" content="CulturAZ Santo Andr&eacute;" />
+ <meta property="og:url" content="http://culturaz.santoandre.sp.gov.br/projeto/424/" />
+ <meta property="og:published_time" content="2018-10-25" />
+ <link href='http://culturaz.santoandre.sp.gov.br/assets/css/vendor-a16d3ccf2809703a8a4a251121589743.css' media='all' rel='stylesheet' type='text/css' />
+ <link href='http://culturaz.santoandre.sp.gov.br/assets/css/app-94b770975758666a74e300efdfa75082.css' media='all' rel='stylesheet' type='text/css' />
+<script type="text/javascript">
+ var MapasCulturais = {"baseURL":"http:\/\/culturaz.santoandre.sp.gov.br\/","assetURL":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/","maxUploadSize":15360,"maxUploadSizeFormatted":"15 MB","notificationsInterval":60,"searchQueryFields":"id,singleUrl,name,subTitle,type,shortDescription,terms,project.name,project.singleUrl","EntitiesDescription":{"agent":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"_type":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"","@select":"type"},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"publicLocation":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"boolean","length":null,"label":""},"location":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"point","length":null,"label":""},"shortDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Curta"},"longDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Longa"},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"userId":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":""},"updateTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":"Data de Atualiza\u00e7\u00e3o"},"parent":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"_children":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":false,"label":""},"user":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"User","isOwningSide":true,"label":""},"_spaces":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Space","isOwningSide":false,"label":""},"_projects":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Project","isOwningSide":false,"label":""},"_events":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Event","isOwningSide":false,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"AgentMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"AgentFile","isOwningSide":false,"label":""},"__agentRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"AgentAgentRelation","isOwningSide":false,"label":""},"__termRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"AgentTermRelation","isOwningSide":false,"label":""},"__sealRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"AgentSealRelation","isOwningSide":false,"label":""},"__permissionsCache":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"AgentPermissionCache","isOwningSide":false,"label":""},"subsite":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Subsite","isOwningSide":true,"label":""},"nomeCompleto":{"required":false,"type":"string","length":null,"private":true,"label":"Nome completo ou Raz\u00e3o Social","isMetadata":true,"isEntityRelation":false},"documento":{"required":false,"type":"string","length":null,"private":true,"label":"CPF ou CNPJ","isMetadata":true,"isEntityRelation":false},"raca":{"required":false,"type":"select","length":null,"private":true,"options":{"":"N\u00e3o Informar","Branca":"Branca","Preta":"Preta","Amarela":"Amarela","Parda":"Parda","Ind\u00edgena":"Ind\u00edgena"},"optionsOrder":["","Branca","Preta","Amarela","Parda","Ind\u00edgena"],"label":"Ra\u00e7a\/cor","isMetadata":true,"isEntityRelation":false},"dataDeNascimento":{"required":false,"type":"date","length":null,"private":true,"label":"Data de Nascimento\/Funda\u00e7\u00e3o","isMetadata":true,"isEntityRelation":false},"localizacao":{"required":false,"type":"select","length":null,"private":false,"options":{"":"N\u00e3o Informar","P\u00fablica":"P\u00fablica","Privada":"Privada"},"optionsOrder":["","P\u00fablica","Privada"],"label":"Localiza\u00e7\u00e3o","isMetadata":true,"isEntityRelation":false},"genero":{"required":false,"type":"select","length":null,"private":true,"options":{"":"N\u00e3o Informar","Mulher Transexual":"Mulher Transexual","Mulher":"Mulher","Homem Transexual":"Homem Transexual","Homem":"Homem","N\u00e3o Bin\u00e1rio":"N\u00e3o Bin\u00e1rio","Travesti":"Travesti","Outras":"Outras"},"optionsOrder":["","Mulher Transexual","Mulher","Homem Transexual","Homem","N\u00e3o Bin\u00e1rio","Travesti","Outras"],"label":"G\u00eanero","isMetadata":true,"isEntityRelation":false},"orientacaoSexual":{"required":false,"type":"select","length":null,"private":true,"options":{"":"N\u00e3o Informar","Heterossexual":"Heterossexual","L\u00e9sbica":"L\u00e9sbica","Gay":"Gay","Bissexual":"Bissexual","Assexual":"Assexual","Outras":"Outras"},"optionsOrder":["","Heterossexual","L\u00e9sbica","Gay","Bissexual","Assexual","Outras"],"label":"Orienta\u00e7\u00e3o Sexual","isMetadata":true,"isEntityRelation":false},"emailPublico":{"required":false,"type":"string","length":null,"private":false,"label":"Email P\u00fablico","isMetadata":true,"isEntityRelation":false},"emailPrivado":{"required":false,"type":"string","length":null,"private":true,"label":"Email Privado","isMetadata":true,"isEntityRelation":false},"telefonePublico":{"required":false,"type":"string","length":null,"private":false,"label":"Telefone P\u00fablico","isMetadata":true,"isEntityRelation":false},"telefone1":{"required":false,"type":"string","length":null,"private":true,"label":"Telefone 1","isMetadata":true,"isEntityRelation":false},"telefone2":{"required":false,"type":"string","length":null,"private":true,"label":"Telefone 2","isMetadata":true,"isEntityRelation":false},"endereco":{"required":false,"type":"text","length":null,"private":{},"label":"Endere\u00e7o","isMetadata":true,"isEntityRelation":false},"En_CEP":{"required":false,"type":"string","length":null,"private":{},"label":"CEP","isMetadata":true,"isEntityRelation":false},"En_Nome_Logradouro":{"required":false,"type":"string","length":null,"private":{},"label":"Logradouro","isMetadata":true,"isEntityRelation":false},"En_Num":{"required":false,"type":"string","length":null,"private":{},"label":"N\u00famero","isMetadata":true,"isEntityRelation":false},"En_Complemento":{"required":false,"type":"string","length":null,"private":{},"label":"Complemento","isMetadata":true,"isEntityRelation":false},"En_Bairro":{"required":false,"type":"string","length":null,"private":{},"label":"Bairro","isMetadata":true,"isEntityRelation":false},"En_Municipio":{"required":false,"type":"string","length":null,"private":{},"label":"Munic\u00edpio","isMetadata":true,"isEntityRelation":false},"En_Estado":{"required":false,"type":"select","length":null,"private":{},"options":{"AC":"Acre","AL":"Alagoas","AP":"Amap\u00e1","AM":"Amazonas","BA":"Bahia","CE":"Cear\u00e1","DF":"Distrito Federal","ES":"Esp\u00edrito Santo","GO":"Goi\u00e1s","MA":"Maranh\u00e3o","MT":"Mato Grosso","MS":"Mato Grosso do Sul","MG":"Minas Gerais","PA":"Par\u00e1","PB":"Para\u00edba","PR":"Paran\u00e1","PE":"Pernambuco","PI":"Piau\u00ed","RJ":"Rio de Janeiro","RN":"Rio Grande do Norte","RS":"Rio Grande do Sul","RO":"Rond\u00f4nia","RR":"Roraima","SC":"Santa Catarina","SP":"S\u00e3o Paulo","SE":"Sergipe","TO":"Tocantins"},"optionsOrder":["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"],"label":"Estado","isMetadata":true,"isEntityRelation":false},"site":{"required":false,"type":"string","length":null,"private":false,"label":"Site","isMetadata":true,"isEntityRelation":false},"facebook":{"required":false,"type":"string","length":null,"private":false,"label":"Facebook","isMetadata":true,"isEntityRelation":false},"twitter":{"required":false,"type":"string","length":null,"private":false,"label":"Twitter","isMetadata":true,"isEntityRelation":false},"googleplus":{"required":false,"type":"string","length":null,"private":false,"label":"Google+","isMetadata":true,"isEntityRelation":false},"geoBairro":{"required":false,"type":"string","length":null,"private":false,"label":"Bairro","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false},"sentNotification":{"required":false,"type":"boolean","length":null,"private":false,"label":"sent notification","isMetadata":true,"isEntityRelation":false}},"event":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"_type":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"","@select":"type"},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"shortDescription":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Curta"},"longDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Longa"},"rules":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":""},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"updateTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":"Data de Atualiza\u00e7\u00e3o"},"occurrences":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventOccurrence","isOwningSide":false,"label":""},"owner":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"project":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Project","isOwningSide":true,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventFile","isOwningSide":false,"label":""},"__agentRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventAgentRelation","isOwningSide":false,"label":""},"__termRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventTermRelation","isOwningSide":false,"label":""},"__sealRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventSealRelation","isOwningSide":false,"label":""},"__permissionsCache":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventPermissionCache","isOwningSide":false,"label":""},"subsite":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Subsite","isOwningSide":true,"label":""},"subTitle":{"required":false,"type":"text","length":null,"private":false,"label":"Sub-T\u00edtulo","isMetadata":true,"isEntityRelation":false},"registrationInfo":{"required":false,"type":"text","length":null,"private":false,"label":"Inscri\u00e7\u00f5es","isMetadata":true,"isEntityRelation":false},"classificacaoEtaria":{"required":true,"type":"select","length":null,"private":false,"options":{"Livre":"Livre","18 anos":"18 anos","16 anos":"16 anos","14 anos":"14 anos","12 anos":"12 anos","10 anos":"10 anos"},"optionsOrder":["Livre","18 anos","16 anos","14 anos","12 anos","10 anos"],"label":"Classifica\u00e7\u00e3o Et\u00e1ria","isMetadata":true,"isEntityRelation":false},"telefonePublico":{"required":false,"type":"string","length":null,"private":false,"label":"Mais Informa\u00e7\u00f5es","isMetadata":true,"isEntityRelation":false},"preco":{"required":false,"type":"string","length":null,"private":false,"label":"Pre\u00e7o","isMetadata":true,"isEntityRelation":false},"traducaoLibras":{"required":false,"type":"select","length":null,"private":false,"options":{"":"N\u00e3o Informado","Sim":"Sim","N\u00e3o":"N\u00e3o"},"optionsOrder":["","Sim","N\u00e3o"],"label":"Tradu\u00e7\u00e3o para LIBRAS","isMetadata":true,"isEntityRelation":false},"descricaoSonora":{"required":false,"type":"select","length":null,"private":false,"options":{"":"N\u00e3o Informado","Sim":"Sim","N\u00e3o":"N\u00e3o"},"optionsOrder":["","Sim","N\u00e3o"],"label":"\u00c1udio descri\u00e7\u00e3o","isMetadata":true,"isEntityRelation":false},"site":{"required":false,"type":"string","length":null,"private":false,"label":"Site","isMetadata":true,"isEntityRelation":false},"facebook":{"required":false,"type":"string","length":null,"private":false,"label":"Facebook","isMetadata":true,"isEntityRelation":false},"twitter":{"required":false,"type":"string","length":null,"private":false,"label":"Twitter","isMetadata":true,"isEntityRelation":false},"googleplus":{"required":false,"type":"string","length":null,"private":false,"label":"Google+","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false}},"space":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"location":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"point","length":null,"label":""},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"public":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"boolean","length":null,"label":""},"shortDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Curta"},"longDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Longa"},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"_type":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"","@select":"type"},"updateTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":"Data de Atualiza\u00e7\u00e3o"},"eventOccurrences":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"EventOccurrence","isOwningSide":false,"label":""},"parent":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Space","isOwningSide":true,"label":""},"_children":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Space","isOwningSide":false,"label":""},"owner":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SpaceMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SpaceFile","isOwningSide":false,"label":""},"__agentRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SpaceAgentRelation","isOwningSide":false,"label":""},"__termRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SpaceTermRelation","isOwningSide":false,"label":""},"__sealRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SpaceSealRelation","isOwningSide":false,"label":""},"__permissionsCache":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SpacePermissionCache","isOwningSide":false,"label":""},"subsite":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Subsite","isOwningSide":true,"label":""},"emailPublico":{"required":false,"type":"string","length":null,"private":false,"label":"Email P\u00fablico","isMetadata":true,"isEntityRelation":false},"emailPrivado":{"required":false,"type":"string","length":null,"private":true,"label":"Email Privado","isMetadata":true,"isEntityRelation":false},"telefonePublico":{"required":false,"type":"string","length":null,"private":false,"label":"Telefone P\u00fablico","isMetadata":true,"isEntityRelation":false},"telefone1":{"required":false,"type":"string","length":null,"private":true,"label":"Telefone 1","isMetadata":true,"isEntityRelation":false},"telefone2":{"required":false,"type":"string","length":null,"private":true,"label":"Telefone 2","isMetadata":true,"isEntityRelation":false},"acessibilidade":{"required":false,"type":"select","length":null,"private":false,"options":{"":"N\u00e3o Informado","Sim":"Sim","N\u00e3o":"N\u00e3o"},"optionsOrder":["","Sim","N\u00e3o"],"label":"Acessibilidade","isMetadata":true,"isEntityRelation":false},"acessibilidade_fisica":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"Banheiros adaptados":"Banheiros adaptados","Rampa de acesso":"Rampa de acesso","Elevador":"Elevador","Sinaliza\u00e7\u00e3o t\u00e1til":"Sinaliza\u00e7\u00e3o t\u00e1til","Bebedouro adaptado":"Bebedouro adaptado","Cadeira de rodas para uso do visitante":"Cadeira de rodas para uso do visitante","Circuito de visita\u00e7\u00e3o adaptado":"Circuito de visita\u00e7\u00e3o adaptado","Corrim\u00e3o nas escadas e rampas":"Corrim\u00e3o nas escadas e rampas","Elevador adaptado":"Elevador adaptado","Sanit\u00e1rio adaptado":"Sanit\u00e1rio adaptado","Telefone p\u00fablico adaptado":"Telefone p\u00fablico adaptado","Vaga de estacionamento exclusiva para deficientes":"Vaga de estacionamento exclusiva para deficientes","Vaga de estacionamento exclusiva para idosos":"Vaga de estacionamento exclusiva para idosos"},"optionsOrder":["Banheiros adaptados","Rampa de acesso","Elevador","Sinaliza\u00e7\u00e3o t\u00e1til","Bebedouro adaptado","Cadeira de rodas para uso do visitante","Circuito de visita\u00e7\u00e3o adaptado","Corrim\u00e3o nas escadas e rampas","Elevador adaptado","Sanit\u00e1rio adaptado","Telefone p\u00fablico adaptado","Vaga de estacionamento exclusiva para deficientes","Vaga de estacionamento exclusiva para idosos"],"label":"Acessibilidade f\u00edsica","allowOther":true,"allowOtherText":"Outros","isMetadata":true,"isEntityRelation":false},"capacidade":{"required":false,"type":"string","length":null,"private":false,"label":"Capacidade","isMetadata":true,"isEntityRelation":false},"endereco":{"required":false,"type":"text","length":null,"private":false,"label":"Endere\u00e7o","isMetadata":true,"isEntityRelation":false},"En_CEP":{"required":false,"type":"string","length":null,"private":false,"label":"CEP","isMetadata":true,"isEntityRelation":false},"En_Nome_Logradouro":{"required":false,"type":"string","length":null,"private":false,"label":"Logradouro","isMetadata":true,"isEntityRelation":false},"En_Num":{"required":false,"type":"string","length":null,"private":false,"label":"N\u00famero","isMetadata":true,"isEntityRelation":false},"En_Complemento":{"required":false,"type":"string","length":null,"private":false,"label":"Complemento","isMetadata":true,"isEntityRelation":false},"En_Bairro":{"required":false,"type":"string","length":null,"private":false,"label":"Bairro","isMetadata":true,"isEntityRelation":false},"En_Municipio":{"required":false,"type":"string","length":null,"private":false,"label":"Munic\u00edpio","isMetadata":true,"isEntityRelation":false},"En_Estado":{"required":false,"type":"select","length":null,"private":false,"options":{"AC":"Acre","AL":"Alagoas","AP":"Amap\u00e1","AM":"Amazonas","BA":"Bahia","CE":"Cear\u00e1","DF":"Distrito Federal","ES":"Esp\u00edrito Santo","GO":"Goi\u00e1s","MA":"Maranh\u00e3o","MT":"Mato Grosso","MS":"Mato Grosso do Sul","MG":"Minas Gerais","PA":"Par\u00e1","PB":"Para\u00edba","PR":"Paran\u00e1","PE":"Pernambuco","PI":"Piau\u00ed","RJ":"Rio de Janeiro","RN":"Rio Grande do Norte","RS":"Rio Grande do Sul","RO":"Rond\u00f4nia","RR":"Roraima","SC":"Santa Catarina","SP":"S\u00e3o Paulo","SE":"Sergipe","TO":"Tocantins"},"optionsOrder":["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"],"label":"Estado","isMetadata":true,"isEntityRelation":false},"horario":{"required":false,"type":"text","length":null,"private":false,"label":"Hor\u00e1rio de funcionamento","isMetadata":true,"isEntityRelation":false},"criterios":{"required":false,"type":"text","length":null,"private":false,"label":"Crit\u00e9rios de uso do espa\u00e7o","isMetadata":true,"isEntityRelation":false},"site":{"required":false,"type":"string","length":null,"private":false,"label":"Site","isMetadata":true,"isEntityRelation":false},"facebook":{"required":false,"type":"string","length":null,"private":false,"label":"Facebook","isMetadata":true,"isEntityRelation":false},"twitter":{"required":false,"type":"string","length":null,"private":false,"label":"Twitter","isMetadata":true,"isEntityRelation":false},"googleplus":{"required":false,"type":"string","length":null,"private":false,"label":"Google+","isMetadata":true,"isEntityRelation":false},"geoBairro":{"required":false,"type":"string","length":null,"private":false,"label":"Bairro","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false},"sentNotification":{"required":false,"type":"boolean","length":null,"private":false,"label":"sent notification","isMetadata":true,"isEntityRelation":false}},"project":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"_type":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"","@select":"type"},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"shortDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Curta"},"longDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Longa"},"updateTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":"Data de Atualiza\u00e7\u00e3o"},"registrationFrom":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":""},"registrationTo":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":""},"useRegistrations":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"boolean","length":null,"label":""},"publishedRegistrations":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"boolean","length":null,"label":""},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"registrationCategories":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"json_array","length":null,"label":""},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"parent":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Project","isOwningSide":true,"label":""},"_children":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Project","isOwningSide":false,"label":""},"owner":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"_events":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Event","isOwningSide":false,"label":""},"registrationFileConfigurations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"RegistrationFileConfiguration","isOwningSide":false,"label":""},"registrationFieldConfigurations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"RegistrationFieldConfiguration","isOwningSide":false,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectFile","isOwningSide":false,"label":""},"__agentRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectAgentRelation","isOwningSide":false,"label":""},"__termRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectTermRelation","isOwningSide":false,"label":""},"__sealRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectSealRelation","isOwningSide":false,"label":""},"__permissionsCache":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectPermissionCache","isOwningSide":false,"label":""},"subsite":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Subsite","isOwningSide":true,"label":""},"introInscricoes":{"required":false,"type":"text","length":null,"private":false,"label":"Texto introdut\u00f3rio das inscri\u00e7\u00f5es","isMetadata":true,"isEntityRelation":false},"registrationCategTitle":{"required":false,"type":"string","length":null,"private":false,"label":"T\u00edtulo das op\u00e7\u00f5es (ex: Categorias)","isMetadata":true,"isEntityRelation":false},"registrationCategDescription":{"required":false,"type":"string","length":null,"private":false,"label":"Descri\u00e7\u00e3o das op\u00e7\u00f5es (ex: Selecione uma categoria)","isMetadata":true,"isEntityRelation":false},"registrationLimitPerOwner":{"required":false,"type":"string","length":null,"private":false,"label":"N\u00famero m\u00e1ximo de inscri\u00e7\u00f5es por agente respons\u00e1vel","isMetadata":true,"isEntityRelation":false},"registrationLimit":{"required":false,"type":"string","length":null,"private":false,"label":"N\u00famero m\u00e1ximo de inscri\u00e7\u00f5es no projeto","isMetadata":true,"isEntityRelation":false},"site":{"required":false,"type":"string","length":null,"private":false,"label":"Site","isMetadata":true,"isEntityRelation":false},"facebook":{"required":false,"type":"string","length":null,"private":false,"label":"Facebook","isMetadata":true,"isEntityRelation":false},"twitter":{"required":false,"type":"string","length":null,"private":false,"label":"Twitter","isMetadata":true,"isEntityRelation":false},"googleplus":{"required":false,"type":"string","length":null,"private":false,"label":"Google+","isMetadata":true,"isEntityRelation":false},"registrationSeals":{"required":false,"type":"string","length":null,"private":false,"label":"Selos","isMetadata":true,"isEntityRelation":false},"useAgentRelationInstituicao":{"required":false,"type":"select","length":null,"private":false,"options":{"dontUse":"N\u00e3o utilizar","required":"Obrigat\u00f3rio","optional":"Opcional"},"optionsOrder":["dontUse","required","optional"],"label":"Institui\u00e7\u00e3o respons\u00e1vel","isMetadata":true,"isEntityRelation":false},"useAgentRelationColetivo":{"required":false,"type":"select","length":null,"private":false,"options":{"dontUse":"N\u00e3o utilizar","required":"Obrigat\u00f3rio","optional":"Opcional"},"optionsOrder":["dontUse","required","optional"],"label":"Coletivo","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false}},"subsite":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"url":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":""},"aliasUrl":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"string","length":255,"label":""},"verifiedSeals":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"json_array","length":null,"label":""},"namespace":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":50,"label":""},"owner":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"_roles":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Role","isOwningSide":false,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SubsiteMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SubsiteFile","isOwningSide":false,"label":""},"URL":{"required":false,"type":"text","length":null,"private":false,"label":"URL","isMetadata":true,"isEntityRelation":false},"entidades_habilitadas":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"Agentes":"Agentes","Espa\u00e7os":"Espa\u00e7os","Projetos":"Projetos","Eventos":"Eventos"},"optionsOrder":["Agentes","Espa\u00e7os","Projetos","Eventos"],"label":"Entidades Habilitadas","isMetadata":true,"isEntityRelation":false},"cor_agentes":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"cor_espacos":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"cor_projetos":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"cor_eventos":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"cor_selos":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"cor_intro":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"cor_dev":{"required":false,"type":"string","length":null,"private":false,"label":"Cor da entidade","isMetadata":true,"isEntityRelation":false},"filtro_space_meta_En_Estado":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"AC":"Acre","AL":"Alagoas","AP":"Amap\u00e1","AM":"Amazonas","BA":"Bahia","CE":"Cear\u00e1","DF":"Distrito Federal","ES":"Esp\u00edrito Santo","GO":"Goi\u00e1s","MA":"Maranh\u00e3o","MT":"Mato Grosso","MS":"Mato Grosso do Sul","MG":"Minas Gerais","PA":"Par\u00e1","PB":"Para\u00edba","PR":"Paran\u00e1","PE":"Pernambuco","PI":"Piau\u00ed","RJ":"Rio de Janeiro","RN":"Rio Grande do Norte","RS":"Rio Grande do Sul","RO":"Rond\u00f4nia","RR":"Roraima","SC":"Santa Catarina","SP":"S\u00e3o Paulo","SE":"Sergipe","TO":"Tocantins"},"optionsOrder":["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"],"label":"Estado","isMetadata":true,"isEntityRelation":false},"filtro_space_meta_En_Municipio":{"required":false,"type":"tag","length":null,"private":false,"label":"Munic\u00edpio","isMetadata":true,"isEntityRelation":false},"filtro_space_meta_En_Bairro":{"required":false,"type":"tag","length":null,"private":false,"label":"Bairro","isMetadata":true,"isEntityRelation":false},"filtro_agent_meta_En_Estado":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"AC":"Acre","AL":"Alagoas","AP":"Amap\u00e1","AM":"Amazonas","BA":"Bahia","CE":"Cear\u00e1","DF":"Distrito Federal","ES":"Esp\u00edrito Santo","GO":"Goi\u00e1s","MA":"Maranh\u00e3o","MT":"Mato Grosso","MS":"Mato Grosso do Sul","MG":"Minas Gerais","PA":"Par\u00e1","PB":"Para\u00edba","PR":"Paran\u00e1","PE":"Pernambuco","PI":"Piau\u00ed","RJ":"Rio de Janeiro","RN":"Rio Grande do Norte","RS":"Rio Grande do Sul","RO":"Rond\u00f4nia","RR":"Roraima","SC":"Santa Catarina","SP":"S\u00e3o Paulo","SE":"Sergipe","TO":"Tocantins"},"optionsOrder":["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"],"label":"Estado","isMetadata":true,"isEntityRelation":false},"filtro_agent_meta_En_Municipio":{"required":false,"type":"tag","length":null,"private":false,"label":"Munic\u00edpio","isMetadata":true,"isEntityRelation":false},"filtro_agent_meta_En_Bairro":{"required":false,"type":"tag","length":null,"private":false,"label":"Bairro","isMetadata":true,"isEntityRelation":false},"filtro_space_meta_type":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"105":"Antiqu\u00e1rio","51":"Arquivo Privado","50":"Arquivo P\u00fablico","106":"Ateli\u00ea","112":"Banca de jornal","200":"Bens culturais de natureza material","2":"Biblioteca Comunit\u00e1ria (inclu\u00ed\u00addos os pontos de leitura)","23":"Biblioteca Escolar","25":"Biblioteca Universit\u00e1ria","26":"Biblioteca Especializada","24":"Biblioteca Nacional","21":"Biblioteca Privada","20":"Biblioteca P\u00fablica","108":"Casa de espet\u00e1culo","117":"Casa do Patrim\u00f4nio","116":"Centro Comunit\u00e1rio","41":"Centro Cultural Privado","40":"Centro Cultural P\u00fablico","85":"Centro Esp\u00edrita","71":"Centro de Documenta\u00e7\u00e3o Privado","70":"Centro de Documenta\u00e7\u00e3o P\u00fablico","107":"Centro de artesanato","10":"Cine itinerante","11":"Cineclube","91":"Circo Fixo","90":"Circo Itinerante","94":"Circo Moderno","93":"Circo Tradicional","111":"Concha ac\u00fastica","114":"Creative Bureau","109":"Danceteria","12":"Drive-in","120":"Espa\u00e7o Mais Cultura","13":"Espa\u00e7o P\u00fablico Para Proje\u00e7\u00e3o de Filmes","113":"Espa\u00e7o para Eventos","123":"Espa\u00e7o para apresenta\u00e7\u00e3o de dan\u00e7a","110":"Est\u00fadio","122":"Gafieira","100":"Galeria de arte","84":"Igreja","104":"Lan-house","101":"Livraria","82":"Mesquitas","61":"Museu Privado","60":"Museu P\u00fablico","501":"Palco de Rua","115":"Ponto de Leitura Afro","119":"Pra\u00e7a dos esportes e da cultura","124":"R\u00e1dio Comunit\u00e1ria","14":"Sala de cinema","121":"Sala de dan\u00e7a","102":"Sebo","83":"Sinagoga","31":"Teatro Privado","30":"Teatro P\u00fablico","80":"Templo","81":"Terreiro","92":"Terreno para Circo","118":"Usina Cultural","103":"Videolocadora"},"optionsOrder":[105,51,50,106,112,200,2,23,25,26,24,21,20,108,117,116,41,40,85,71,70,107,10,11,91,90,94,93,111,114,109,12,120,13,113,123,110,122,100,84,104,101,82,61,60,501,115,119,124,14,121,102,83,31,30,80,81,92,118,103],"label":"Tipo de espa\u00e7o","isMetadata":true,"isEntityRelation":false},"filtro_space_term_area":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"Antropologia":"Antropologia","Arqueologia":"Arqueologia","Arquitetura*Urbanismo":"Arquitetura*Urbanismo","Arquivo":"Arquivo","Arte Digital":"Arte Digital","Arte de Rua":"Arte de Rua","Artes Visuais":"Artes Visuais","Artesanato":"Artesanato","Audiovisual":"Audiovisual","Cinema":"Cinema","Circo":"Circo","Comunica\u00e7\u00e3o":"Comunica\u00e7\u00e3o","Cultura Cigana":"Cultura Cigana","Cultura Digital":"Cultura Digital","Cultura Estrangeira (imigrantes)":"Cultura Estrangeira (imigrantes)","Cultura Ind\u00edgena":"Cultura Ind\u00edgena","Cultura LGBT":"Cultura LGBT","Cultura Negra":"Cultura Negra","Cultura Popular":"Cultura Popular","Dan\u00e7a":"Dan\u00e7a","Design":"Design","Direito Autoral":"Direito Autoral","Economia Criativa":"Economia Criativa","Educa\u00e7\u00e3o":"Educa\u00e7\u00e3o","Esporte":"Esporte","Filosofia":"Filosofia","Fotografia":"Fotografia","Gastronomia":"Gastronomia","Gest\u00e3o Cultural":"Gest\u00e3o Cultural","Hist\u00f3ria":"Hist\u00f3ria","Jogos Eletr\u00f4nicos":"Jogos Eletr\u00f4nicos","Jornalismo":"Jornalismo","Leitura":"Leitura","Literatura":"Literatura","Livro":"Livro","Meio Ambiente":"Meio Ambiente","Moda":"Moda","Museu":"Museu","M\u00eddias Sociais":"M\u00eddias Sociais","M\u00fasica":"M\u00fasica","Novas M\u00eddias":"Novas M\u00eddias","Outros":"Outros","Patrim\u00f4nio Imaterial":"Patrim\u00f4nio Imaterial","Patrim\u00f4nio Material":"Patrim\u00f4nio Material","Pesquisa":"Pesquisa","Produ\u00e7\u00e3o Cultural":"Produ\u00e7\u00e3o Cultural","R\u00e1dio":"R\u00e1dio","Sa\u00fade":"Sa\u00fade","Sociologia":"Sociologia","Teatro":"Teatro","Televis\u00e3o":"Televis\u00e3o","Turismo":"Turismo"},"optionsOrder":["Antropologia","Arqueologia","Arquitetura*Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Cinema","Circo","Comunica\u00e7\u00e3o","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Ind\u00edgena","Cultura LGBT","Cultura Negra","Cultura Popular","Dan\u00e7a","Design","Direito Autoral","Economia Criativa","Educa\u00e7\u00e3o","Esporte","Filosofia","Fotografia","Gastronomia","Gest\u00e3o Cultural","Hist\u00f3ria","Jogos Eletr\u00f4nicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","M\u00eddias Sociais","M\u00fasica","Novas M\u00eddias","Outros","Patrim\u00f4nio Imaterial","Patrim\u00f4nio Material","Pesquisa","Produ\u00e7\u00e3o Cultural","R\u00e1dio","Sa\u00fade","Sociologia","Teatro","Televis\u00e3o","Turismo"],"label":"\u00c1rea de atua\u00e7\u00e3o","isMetadata":true,"isEntityRelation":false},"filtro_agent_term_area":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"Antropologia":"Antropologia","Arqueologia":"Arqueologia","Arquitetura*Urbanismo":"Arquitetura*Urbanismo","Arquivo":"Arquivo","Arte Digital":"Arte Digital","Arte de Rua":"Arte de Rua","Artes Visuais":"Artes Visuais","Artesanato":"Artesanato","Audiovisual":"Audiovisual","Cinema":"Cinema","Circo":"Circo","Comunica\u00e7\u00e3o":"Comunica\u00e7\u00e3o","Cultura Cigana":"Cultura Cigana","Cultura Digital":"Cultura Digital","Cultura Estrangeira (imigrantes)":"Cultura Estrangeira (imigrantes)","Cultura Ind\u00edgena":"Cultura Ind\u00edgena","Cultura LGBT":"Cultura LGBT","Cultura Negra":"Cultura Negra","Cultura Popular":"Cultura Popular","Dan\u00e7a":"Dan\u00e7a","Design":"Design","Direito Autoral":"Direito Autoral","Economia Criativa":"Economia Criativa","Educa\u00e7\u00e3o":"Educa\u00e7\u00e3o","Esporte":"Esporte","Filosofia":"Filosofia","Fotografia":"Fotografia","Gastronomia":"Gastronomia","Gest\u00e3o Cultural":"Gest\u00e3o Cultural","Hist\u00f3ria":"Hist\u00f3ria","Jogos Eletr\u00f4nicos":"Jogos Eletr\u00f4nicos","Jornalismo":"Jornalismo","Leitura":"Leitura","Literatura":"Literatura","Livro":"Livro","Meio Ambiente":"Meio Ambiente","Moda":"Moda","Museu":"Museu","M\u00eddias Sociais":"M\u00eddias Sociais","M\u00fasica":"M\u00fasica","Novas M\u00eddias":"Novas M\u00eddias","Outros":"Outros","Patrim\u00f4nio Imaterial":"Patrim\u00f4nio Imaterial","Patrim\u00f4nio Material":"Patrim\u00f4nio Material","Pesquisa":"Pesquisa","Produ\u00e7\u00e3o Cultural":"Produ\u00e7\u00e3o Cultural","R\u00e1dio":"R\u00e1dio","Sa\u00fade":"Sa\u00fade","Sociologia":"Sociologia","Teatro":"Teatro","Televis\u00e3o":"Televis\u00e3o","Turismo":"Turismo"},"optionsOrder":["Antropologia","Arqueologia","Arquitetura*Urbanismo","Arquivo","Arte Digital","Arte de Rua","Artes Visuais","Artesanato","Audiovisual","Cinema","Circo","Comunica\u00e7\u00e3o","Cultura Cigana","Cultura Digital","Cultura Estrangeira (imigrantes)","Cultura Ind\u00edgena","Cultura LGBT","Cultura Negra","Cultura Popular","Dan\u00e7a","Design","Direito Autoral","Economia Criativa","Educa\u00e7\u00e3o","Esporte","Filosofia","Fotografia","Gastronomia","Gest\u00e3o Cultural","Hist\u00f3ria","Jogos Eletr\u00f4nicos","Jornalismo","Leitura","Literatura","Livro","Meio Ambiente","Moda","Museu","M\u00eddias Sociais","M\u00fasica","Novas M\u00eddias","Outros","Patrim\u00f4nio Imaterial","Patrim\u00f4nio Material","Pesquisa","Produ\u00e7\u00e3o Cultural","R\u00e1dio","Sa\u00fade","Sociologia","Teatro","Televis\u00e3o","Turismo"],"label":"\u00c1rea de atua\u00e7\u00e3o","isMetadata":true,"isEntityRelation":false},"filtro_event_term_linguagem":{"required":false,"type":"multiselect","length":null,"private":false,"options":{"Artes Circenses":"Artes Circenses","Artes Integradas":"Artes Integradas","Artes Visuais":"Artes Visuais","Audiovisual":"Audiovisual","Cinema":"Cinema","Cultura Digital":"Cultura Digital","Cultura Ind\u00edgena":"Cultura Ind\u00edgena","Cultura Tradicional":"Cultura Tradicional","Curso ou Oficina":"Curso ou Oficina","Dan\u00e7a":"Dan\u00e7a","Exposi\u00e7\u00e3o":"Exposi\u00e7\u00e3o","Hip Hop":"Hip Hop","Livro e Literatura":"Livro e Literatura","M\u00fasica Popular":"M\u00fasica Popular","M\u00fasica Erudita":"M\u00fasica Erudita","Palestra, Debate ou Encontro":"Palestra, Debate ou Encontro","R\u00e1dio":"R\u00e1dio","Teatro":"Teatro","Outros":"Outros"},"optionsOrder":["Artes Circenses","Artes Integradas","Artes Visuais","Audiovisual","Cinema","Cultura Digital","Cultura Ind\u00edgena","Cultura Tradicional","Curso ou Oficina","Dan\u00e7a","Exposi\u00e7\u00e3o","Hip Hop","Livro e Literatura","M\u00fasica Popular","M\u00fasica Erudita","Palestra, Debate ou Encontro","R\u00e1dio","Teatro","Outros"],"label":"Linguagem","isMetadata":true,"isEntityRelation":false},"texto_boasvindas":{"required":false,"type":"text","length":null,"private":false,"label":"Texto boas vindas","isMetadata":true,"isEntityRelation":false},"texto_sobre":{"required":false,"type":"text","length":null,"private":false,"label":"Texto sobre","isMetadata":true,"isEntityRelation":false},"zoom_default":{"required":false,"type":"string","length":null,"private":false,"label":"Zoom Padr\u00e3o","isMetadata":true,"isEntityRelation":false},"zoom_approximate":{"required":false,"type":"string","length":null,"private":false,"label":"Zoom Aproximado","isMetadata":true,"isEntityRelation":false},"zoom_precise":{"required":false,"type":"string","length":null,"private":false,"label":"Zoom Preciso","isMetadata":true,"isEntityRelation":false},"zoom_min":{"required":false,"type":"string","length":null,"private":false,"label":"Zoom M\u00ednimo","isMetadata":true,"isEntityRelation":false},"zoom_max":{"required":false,"type":"string","length":null,"private":false,"label":"Zoom M\u00e1ximo","isMetadata":true,"isEntityRelation":false},"latitude":{"required":false,"type":"string","length":null,"private":false,"label":"Latitude","isMetadata":true,"isEntityRelation":false},"longitude":{"required":false,"type":"string","length":null,"private":false,"label":"Longitude","isMetadata":true,"isEntityRelation":false},"filtro":{"required":false,"type":"text","length":null,"private":false,"label":"Filtros","isMetadata":true,"isEntityRelation":false},"dict":{"required":false,"type":"array","length":null,"private":false,"label":"Textos configurados","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false}},"seal":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"shortDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Curta"},"longDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Longa"},"certificateText":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Conte\u00fado da Impress\u00e3o do Certificado"},"validPeriod":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Per\u00edodo de Validade"},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"updateTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":"Data de Atualiza\u00e7\u00e3o"},"owner":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SealMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SealFile","isOwningSide":false,"label":""},"__agentRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SealAgentRelation","isOwningSide":false,"label":""},"__permissionsCache":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"SealPermissionCache","isOwningSide":false,"label":""},"subsite":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Subsite","isOwningSide":true,"label":""},"site":{"required":false,"type":"string","length":null,"private":false,"label":"Site","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false}}},"gettext":{"agendaSingles":{"none":"Nenhum"},"tim":{"previous":"Anterior","next":"Pr\u00f3xima","counter":"%curr% de %total%"},"mapas":{"agente":"agente","espa\u00e7o":"espa\u00e7o","evento":"evento","projeto":"projeto","selo":"selo","Enviar":"Enviar","Cancelar":"Cancelar"},"moduleNotifications":{"error":"There was an error"},"entityApp":{"requestSent":"Sua requisi\u00e7\u00e3o para enviar um contato pelo Mapas Culturais foi enviada com sucesso."},"changeOwner":{"ownerChanged":"O propriet\u00e1rio da entidade foi modificado","cannotChangeOwner":"O propriet\u00e1rio da entidade n\u00e3o pode ser modificado","requestMessage":"Sua requisi\u00e7\u00e3o para mudan\u00e7a de propriedade deste {{type}} para o agente {{recipient}} foi enviada."},"moduleProject":{"selectFieldType":"Selecione o tipo de campo","fieldCreated":"Campo criado.","fieldRemoved":"Campo removido.","changesSaved":"Altera\u00e7\u00f5es Salvas.","attachmentCreated":"Anexo criado.","attachmentRemoved":"Anexo removido.","confirmAttachmentRemoved":"Deseja remover este anexo?","confirmRemoveModel":"Deseja remover este modelo?","modelRemoved":"Modelo removido.","statusPublished":"publicado","statusDraft":"rascunho","publishing...":"Publicando...","eventsPublished":"Eventos publicados.","savingAsDraft":"Tornando rascunho...","savedAsDraft":"Eventos transformados em rascunho.","confirmRemoveAttachment":"Deseja remover este anexo?","registrationOwnerDefault":"Agente respons\u00e1vel pela inscri\u00e7\u00e3o","allStatus":"Todas","pending":"Pendente","invalid":"Inv\u00e1lida","notSelected":"N\u00e3o selecionada","suplente":"Suplente","selected":"Selecionada","Draft":"Rascunho","requiredLabel":"Obrigat\u00f3rio","optionalLabel":"Opcional","confirmReopen":"Voc\u00ea tem certeza que deseja reabrir este formul\u00e1rio para edi\u00e7\u00e3o? Ao fazer isso, ele sair\u00e1 dessa lista.","defineVacancies":"Voc\u00ea n\u00e3o definiu um n\u00famero de vagas. Para selecionar essa inscri\u00e7\u00e3o, configure um n\u00famero de vagas na aba Inscri\u00e7\u00f5es, em Agentes.","reachedMax":"Voc\u00ea atingiu o limite m\u00e1ximo de 1 inscri\u00e7\u00e3o aprovada","reachedMaxPlural":"Voc\u00ea atingiu o limite m\u00e1ximo de {{num}} inscri\u00e7\u00f5es aprovadas","limitReached":"O limite de inscri\u00e7\u00f5es para o agente informado se esgotou.","VacanciesOver":"O n\u00famero de vagas da inscri\u00e7\u00e3o no projeto se esgotou.","needResponsible":"Para se inscrever neste projeto voc\u00ea deve selecionar um agente respons\u00e1vel.","correctErrors":"Corrija os erros indicados abaixo.","registrationSent":"Inscri\u00e7\u00e3o enviada. Aguarde tela de sum\u00e1rio.","Todas op\u00e7\u00f5es":"Todas op\u00e7\u00f5es"},"relatedAgents":{"requestSent":"Sua requisi\u00e7\u00e3o para relacionar o agente {{agent}} foi enviada.","confirmDeleteGroup":"Tem certeza que deseja remover o grupo %s? A rela\u00e7\u00e3o com todos os agentes dentro deste grupo ser\u00e1 removida."}},"assets":{"fundo":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/fundo.png","instituto-tim":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/instituto-tim-white.png","verifiedIcon":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/verified-icon.png","avatarAgent":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/avatar--agent.png","avatarSeal":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/avatar--seal.png","avatarSpace":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/avatar--space.png","avatarEvent":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/avatar--event.png","avatarProject":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/avatar--project.png","verifiedSeal":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/verified-seal.png","unverifiedSeal":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/unverified-seal.png"},"templateUrl":{"editBox":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/edit-box.html","findEntity":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/find-entity.html","MCSelect":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/mc-select.html","multiselect":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/multiselect.html","singleselect":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/singleselect.html","editableMultiselect":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/editableMultiselect.html","editableSingleselect":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/html\/editableSingleselect.html"},"spinnerUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/assets\/img\/spinner.gif","isEditable":false,"isSearch":false,"angularAppDependencies":["entity.module.relatedAgents","entity.module.subsiteAdmins","entity.module.relatedSeals","entity.module.subsite","entity.module.changeOwner","entity.directive.editableMultiselect","entity.directive.editableSingleselect","mc.directive.singleselect","mc.directive.multiselect","mc.directive.editBox","mc.directive.mcSelect","mc.module.notifications","mc.module.findEntity","ngSanitize","entity.module.project","ui.sortable"],"mapsDefaults":{"zoomMax":18,"zoomMin":5,"zoomDefault":12,"zoomPrecise":16,"zoomApproximate":14,"includeGoogleLayers":true,"latitude":-23.666380211047,"longitude":-46.529159545898},"mapMaxClusterRadius":40,"mapSpiderfyDistanceMultiplier":1.3,"mapMaxClusterElements":6,"mapGeometryFieldQuery":"ST_SimplifyPreserveTopology(geom, 0.001)","labels":{"agent":{"id":"Id","type":"","name":"Nome","publicLocation":"","location":"","shortDescription":"Descri\u00e7\u00e3o Curta","longDescription":"Descri\u00e7\u00e3o Longa","createTimestamp":"Data de Cria\u00e7\u00e3o","status":"Status","userId":"","updateTimestamp":"Data de Atualiza\u00e7\u00e3o","parent":"","_children":"","user":"","_spaces":"","_projects":"","_events":"","__metadata":"","__files":"","__agentRelations":"","__termRelations":"","__sealRelations":"","__permissionsCache":"","subsite":"","nomeCompleto":"Nome completo ou Raz\u00e3o Social","documento":"CPF ou CNPJ","raca":"Ra\u00e7a\/cor","dataDeNascimento":"Data de Nascimento\/Funda\u00e7\u00e3o","localizacao":"Localiza\u00e7\u00e3o","genero":"G\u00eanero","orientacaoSexual":"Orienta\u00e7\u00e3o Sexual","emailPublico":"Email P\u00fablico","emailPrivado":"Email Privado","telefonePublico":"Telefone P\u00fablico","telefone1":"Telefone 1","telefone2":"Telefone 2","endereco":"Endere\u00e7o","En_CEP":"CEP","En_Nome_Logradouro":"Logradouro","En_Num":"N\u00famero","En_Complemento":"Complemento","En_Bairro":"Bairro","En_Municipio":"Munic\u00edpio","En_Estado":"Estado","site":"Site","facebook":"Facebook","twitter":"Twitter","googleplus":"Google+","geoBairro":"Bairro","origin_site":"Origin Site","sentNotification":"sent notification"},"project":{"id":"Id","type":"","name":"Nome","shortDescription":"Descri\u00e7\u00e3o Curta","longDescription":"Descri\u00e7\u00e3o Longa","updateTimestamp":"Data de Atualiza\u00e7\u00e3o","registrationFrom":"","registrationTo":"","useRegistrations":"","publishedRegistrations":"","createTimestamp":"Data de Cria\u00e7\u00e3o","registrationCategories":"","status":"Status","parent":"","_children":"","owner":"","_events":"","registrationFileConfigurations":"","registrationFieldConfigurations":"","__metadata":"","__files":"","__agentRelations":"","__termRelations":"","__sealRelations":"","__permissionsCache":"","subsite":"","introInscricoes":"Texto introdut\u00f3rio das inscri\u00e7\u00f5es","registrationCategTitle":"T\u00edtulo das op\u00e7\u00f5es (ex: Categorias)","registrationCategDescription":"Descri\u00e7\u00e3o das op\u00e7\u00f5es (ex: Selecione uma categoria)","registrationLimitPerOwner":"N\u00famero m\u00e1ximo de inscri\u00e7\u00f5es por agente respons\u00e1vel","registrationLimit":"N\u00famero m\u00e1ximo de inscri\u00e7\u00f5es no projeto","site":"Site","facebook":"Facebook","twitter":"Twitter","googleplus":"Google+","registrationSeals":"Selos","useAgentRelationInstituicao":"Institui\u00e7\u00e3o respons\u00e1vel","useAgentRelationColetivo":"Coletivo","origin_site":"Origin Site"},"event":{"id":"Id","type":"","name":"Nome","shortDescription":"Descri\u00e7\u00e3o Curta","longDescription":"Descri\u00e7\u00e3o Longa","rules":"","createTimestamp":"Data de Cria\u00e7\u00e3o","status":"Status","updateTimestamp":"Data de Atualiza\u00e7\u00e3o","occurrences":"","owner":"","project":"","__metadata":"","__files":"","__agentRelations":"","__termRelations":"","__sealRelations":"","__permissionsCache":"","subsite":"","subTitle":"Sub-T\u00edtulo","registrationInfo":"Inscri\u00e7\u00f5es","classificacaoEtaria":"Classifica\u00e7\u00e3o Et\u00e1ria","telefonePublico":"Mais Informa\u00e7\u00f5es","preco":"Pre\u00e7o","traducaoLibras":"Tradu\u00e7\u00e3o para LIBRAS","descricaoSonora":"\u00c1udio descri\u00e7\u00e3o","site":"Site","facebook":"Facebook","twitter":"Twitter","googleplus":"Google+","origin_site":"Origin Site"},"space":{"id":"Id","location":"","name":"Nome","public":"","shortDescription":"Descri\u00e7\u00e3o Curta","longDescription":"Descri\u00e7\u00e3o Longa","createTimestamp":"Data de Cria\u00e7\u00e3o","status":"Status","type":"","updateTimestamp":"Data de Atualiza\u00e7\u00e3o","eventOccurrences":"","parent":"","_children":"","owner":"","__metadata":"","__files":"","__agentRelations":"","__termRelations":"","__sealRelations":"","__permissionsCache":"","subsite":"","emailPublico":"Email P\u00fablico","emailPrivado":"Email Privado","telefonePublico":"Telefone P\u00fablico","telefone1":"Telefone 1","telefone2":"Telefone 2","acessibilidade":"Acessibilidade","acessibilidade_fisica":"Acessibilidade f\u00edsica","capacidade":"Capacidade","endereco":"Endere\u00e7o","En_CEP":"CEP","En_Nome_Logradouro":"Logradouro","En_Num":"N\u00famero","En_Complemento":"Complemento","En_Bairro":"Bairro","En_Municipio":"Munic\u00edpio","En_Estado":"Estado","horario":"Hor\u00e1rio de funcionamento","criterios":"Crit\u00e9rios de uso do espa\u00e7o","site":"Site","facebook":"Facebook","twitter":"Twitter","googleplus":"Google+","geoBairro":"Bairro","origin_site":"Origin Site","sentNotification":"sent notification"},"subsite":{"id":"Id","name":"Nome","createTimestamp":"Data de Cria\u00e7\u00e3o","status":"Status","url":"","aliasUrl":"","verifiedSeals":"","namespace":"","owner":"","_roles":"","__metadata":"","__files":"","URL":"URL","entidades_habilitadas":"Entidades Habilitadas","cor_agentes":"Cor da entidade","cor_espacos":"Cor da entidade","cor_projetos":"Cor da entidade","cor_eventos":"Cor da entidade","cor_selos":"Cor da entidade","cor_intro":"Cor da entidade","cor_dev":"Cor da entidade","filtro_space_meta_En_Estado":"Estado","filtro_space_meta_En_Municipio":"Munic\u00edpio","filtro_space_meta_En_Bairro":"Bairro","filtro_agent_meta_En_Estado":"Estado","filtro_agent_meta_En_Municipio":"Munic\u00edpio","filtro_agent_meta_En_Bairro":"Bairro","filtro_space_meta_type":"Tipo de espa\u00e7o","filtro_space_term_area":"\u00c1rea de atua\u00e7\u00e3o","filtro_agent_term_area":"\u00c1rea de atua\u00e7\u00e3o","filtro_event_term_linguagem":"Linguagem","texto_boasvindas":"Texto boas vindas","texto_sobre":"Texto sobre","zoom_default":"Zoom Padr\u00e3o","zoom_approximate":"Zoom Aproximado","zoom_precise":"Zoom Preciso","zoom_min":"Zoom M\u00ednimo","zoom_max":"Zoom M\u00e1ximo","latitude":"Latitude","longitude":"Longitude","filtro":"Filtros","dict":"Textos configurados","origin_site":"Origin Site"},"registration":{"id":"Id","category":"","createTimestamp":"Data de Cria\u00e7\u00e3o","sentTimestamp":"","agentsData":"","status":"Status","project":"","owner":"","__metadata":"","__files":"","__permissionsCache":"","__agentRelations":"","subsite":"","origin_site":"Origin Site"},"seal":{"id":"Id","name":"Nome","shortDescription":"Descri\u00e7\u00e3o Curta","longDescription":"Descri\u00e7\u00e3o Longa","certificateText":"Conte\u00fado da Impress\u00e3o do Certificado","validPeriod":"Per\u00edodo de Validade","createTimestamp":"Data de Cria\u00e7\u00e3o","status":"Status","updateTimestamp":"Data de Atualiza\u00e7\u00e3o","owner":"","__metadata":"","__files":"","__agentRelations":"","__permissionsCache":"","subsite":"","site":"Site","origin_site":"Origin Site"}},"routes":{"default_controller_id":"site","default_action_name":"index","shortcuts":{"james-bond":["agent","single",{"id":7}],"historico":["entityRevision","history"],"evento":["event","single"],"usuario":["user","single"],"agente":["agent","single"],"espaco":["space","single"],"projeto":["project","single"],"instalacao":["subsite","single"],"selo":["seal","single"],"sair":["auth","logout"],"busca":["site","search"],"sobre":["site","page",["sobre"]],"como-usar":["site","page",["como-usar"]],"aprovar-notificacao":["notification","approve"],"rejeitar-notificacao":["notification","reject"],"inscricao":["registration","view"],"certificado":["relatedSeal","single"]},"controllers":{"painel":"panel","autenticacao":"auth","site":"site","eventos":"event","agentes":"agent","espacos":"space","arquivos":"file","projetos":"project","selos":"seal","inscricoes":"registration","instalacoes":"subsite","anexos":"registrationfileconfiguration","revisoes":"entityRevision","historico":"entityRevision"},"actions":{"lista":"list","apaga":"delete","edita":"edit","espacos":"spaces","agentes":"agents","eventos":"events","projetos":"projects","subsite":"subsite","selos":"seals","inscricoes":"registrations","agente":"agent","evento":"event"},"readableNames":{"panel":"Painel","auth":"Autentica\u00e7\u00e3o","site":"Site","event":"Evento","events":"Eventos","agent":"Agente","agents":"Agentes","space":"Espa\u00e7o","spaces":"Espa\u00e7os","project":"Projeto","projects":"Projetos","registration":"Inscri\u00e7\u00e3o","registrations":"Inscri\u00e7\u00f5es","file":"Arquivo","files":"Arquivos","seal":"Selo","seals":"Selos","entityRevision":"Hist\u00f3rico","revisions":"Revis\u00f5es","sealrelation":"Certificado","subsite":"Subsite","list":"Listando","index":"\u00cdndice","delete":"Apagando","edit":"Editando","create":"Criando novo","search":"Busca"}},"userId":1264,"vectorLayersURL":"http:\/\/culturaz.santoandre.sp.gov.br\/geojson","request":{"controller":"project","action":"single","id":424},"notifications":[{"id":37426,"status":1,"createTimestamp":{"date":"2018-09-24 17:09:57.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"message":"<a href=\"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/51\/\">Vania Cristina  Ribeiro<\/a> quer adicionar o evento <a href=\"http:\/\/culturaz.santoandre.sp.gov.br\/evento\/2340\/\">1\u00ba Circuito Escolas Livres nos Bairros - Turma Forma\u00e7\u00e3o 20 da Escola Livre de Teatro<\/a> que ocorre <em>Dia 16 de outubro de 2018 \u00e0s 20:00<\/em> no espa\u00e7o <a href=\"http:\/\/culturaz.santoandre.sp.gov.br\/espaco\/218\/\">Cesa Jardim Irene (Sala Multiuso)<\/a>.","request":{"id":5408,"requesterUser":30,"permissionTo":{"approve":true,"reject":true}},"approveUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/aprovar-notificacao\/37426\/","isRequest":null}],"allowedFields":false,"notification_type":{"type":{"key":"type","default_value":null,"label":"Tipo","type":"select","is_unique":false,"is_unique_error_message":"","is_required":false,"is_required_error_message":"","private":false,"config":{"label":"Tipo","type":"select","options":{"Den\u00fancia":"Den\u00fancia","Contato":"Contato"}},"serialize":null,"unserialize":null},"compliant_type":{"key":"compliant_type","default_value":null,"label":"Tipo","type":"select","is_unique":false,"is_unique_error_message":"","is_required":false,"is_required_error_message":"","private":false,"config":{"label":"Tipo","type":"select","options":{"Conte\u00fado ofensivo ou inadequado":"Conte\u00fado ofensivo ou inadequado","Conte\u00fado incorreto ou calunioso":"Conte\u00fado incorreto ou calunioso","Conte\u00fado que viola direitos":"Conte\u00fado que viola direitos","Outros":"Outros"}},"serialize":null,"unserialize":null},"suggestion_type":{"key":"suggestion_type","default_value":null,"label":"Tipo","type":"select","is_unique":false,"is_unique_error_message":"","is_required":false,"is_required_error_message":"","private":false,"config":{"label":"Tipo","type":"select","options":{"Sugest\u00e3o":"Sugest\u00e3o","Cr\u00edtica":"Cr\u00edtica","Coment\u00e1rios":"Coment\u00e1rios","Reclama\u00e7\u00f5es":"Reclama\u00e7\u00f5es","Outros":"Outros"}},"serialize":null,"unserialize":null}},"entity":{"id":424,"ownerId":26,"ownerUserId":397,"definition":{"id":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"integer","length":null,"label":"Id"},"_type":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"","@select":"type"},"name":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"string","length":255,"label":"Nome"},"shortDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Curta"},"longDescription":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"text","length":null,"label":"Descri\u00e7\u00e3o Longa"},"updateTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":"Data de Atualiza\u00e7\u00e3o"},"registrationFrom":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":""},"registrationTo":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"datetime","length":null,"label":""},"useRegistrations":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"boolean","length":null,"label":""},"publishedRegistrations":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"boolean","length":null,"label":""},"createTimestamp":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"datetime","length":null,"label":"Data de Cria\u00e7\u00e3o"},"registrationCategories":{"isMetadata":false,"isEntityRelation":false,"required":false,"type":"json_array","length":null,"label":""},"status":{"isMetadata":false,"isEntityRelation":false,"required":true,"type":"smallint","length":null,"label":"Status"},"parent":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Project","isOwningSide":true,"label":""},"_children":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Project","isOwningSide":false,"label":""},"owner":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Agent","isOwningSide":true,"label":""},"_events":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Event","isOwningSide":false,"label":""},"registrationFileConfigurations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"RegistrationFileConfiguration","isOwningSide":false,"label":""},"registrationFieldConfigurations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"RegistrationFieldConfiguration","isOwningSide":false,"label":""},"__metadata":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectMeta","isOwningSide":false,"label":""},"__files":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectFile","isOwningSide":false,"label":""},"__agentRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectAgentRelation","isOwningSide":false,"label":""},"__termRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectTermRelation","isOwningSide":false,"label":""},"__sealRelations":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectSealRelation","isOwningSide":false,"label":""},"__permissionsCache":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"ProjectPermissionCache","isOwningSide":false,"label":""},"subsite":{"isMetadata":false,"isEntityRelation":true,"targetEntity":"Subsite","isOwningSide":true,"label":""},"introInscricoes":{"required":false,"type":"text","length":null,"private":false,"label":"Texto introdut\u00f3rio das inscri\u00e7\u00f5es","isMetadata":true,"isEntityRelation":false},"registrationCategTitle":{"required":false,"type":"string","length":null,"private":false,"label":"T\u00edtulo das op\u00e7\u00f5es (ex: Categorias)","isMetadata":true,"isEntityRelation":false},"registrationCategDescription":{"required":false,"type":"string","length":null,"private":false,"label":"Descri\u00e7\u00e3o das op\u00e7\u00f5es (ex: Selecione uma categoria)","isMetadata":true,"isEntityRelation":false},"registrationLimitPerOwner":{"required":false,"type":"string","length":null,"private":false,"label":"N\u00famero m\u00e1ximo de inscri\u00e7\u00f5es por agente respons\u00e1vel","isMetadata":true,"isEntityRelation":false},"registrationLimit":{"required":false,"type":"string","length":null,"private":false,"label":"N\u00famero m\u00e1ximo de inscri\u00e7\u00f5es no projeto","isMetadata":true,"isEntityRelation":false},"site":{"required":false,"type":"string","length":null,"private":false,"label":"Site","isMetadata":true,"isEntityRelation":false},"facebook":{"required":false,"type":"string","length":null,"private":false,"label":"Facebook","isMetadata":true,"isEntityRelation":false},"twitter":{"required":false,"type":"string","length":null,"private":false,"label":"Twitter","isMetadata":true,"isEntityRelation":false},"googleplus":{"required":false,"type":"string","length":null,"private":false,"label":"Google+","isMetadata":true,"isEntityRelation":false},"registrationSeals":{"required":false,"type":"string","length":null,"private":false,"label":"Selos","isMetadata":true,"isEntityRelation":false},"useAgentRelationInstituicao":{"required":false,"type":"select","length":null,"private":false,"options":{"dontUse":"N\u00e3o utilizar","required":"Obrigat\u00f3rio","optional":"Opcional"},"optionsOrder":["dontUse","required","optional"],"label":"Institui\u00e7\u00e3o respons\u00e1vel","isMetadata":true,"isEntityRelation":false},"useAgentRelationColetivo":{"required":false,"type":"select","length":null,"private":false,"options":{"dontUse":"N\u00e3o utilizar","required":"Obrigat\u00f3rio","optional":"Opcional"},"optionsOrder":["dontUse","required","optional"],"label":"Coletivo","isMetadata":true,"isEntityRelation":false},"origin_site":{"required":false,"type":"string","length":null,"private":false,"label":"Origin Site","isMetadata":true,"isEntityRelation":false},"namespace":{"type":"select","options":{"Subsite":"Tema Personaliz\u00e1vel","MapasCulturais\\Themes\\BaseV1":"MapasCulturais\\Themes\\BaseV1","mapasculturaisThemeSantoAndre":"mapasculturaisThemeSantoAndre"},"optionsOrder":["Subsite","MapasCulturais\\Themes\\BaseV1","mapasculturaisThemeSantoAndre"],"isMetadata":true},"dict:site:+name":{"type":"text","isMetadata":"true"},"dict:site:+description":{"type":"text","isMetadata":"true"},"dict:site:+owner":{"type":"text","isMetadata":"true"},"dict:site:+by+the+site+owner":{"type":"text","isMetadata":"true"},"dict:site:+in+the+region":{"type":"text","isMetadata":"true"},"dict:site:+of+the+region":{"type":"text","isMetadata":"true"},"dict:site:+panel":{"type":"text","isMetadata":"true"},"dict:site:+howto":{"type":"text","isMetadata":"true"},"dict:home:+title":{"type":"text","isMetadata":"true"},"dict:home:+welcome":{"type":"text","isMetadata":"true"},"dict:home:+abbreviation":{"type":"text","isMetadata":"true"},"dict:home:+logo+institute+url":{"type":"text","isMetadata":"true"},"dict:home:+colabore":{"type":"text","isMetadata":"true"},"dict:home:+events":{"type":"text","isMetadata":"true"},"dict:home:+agents":{"type":"text","isMetadata":"true"},"dict:home:+spaces":{"type":"text","isMetadata":"true"},"dict:home:+projects":{"type":"text","isMetadata":"true"},"dict:home:+home_devs":{"type":"text","isMetadata":"true"},"dict:search:+verified+results":{"type":"text","isMetadata":"true"},"dict:search:+display+only+verified+results":{"type":"text","isMetadata":"true"},"dict:search:+verified":{"type":"text","isMetadata":"true"},"dict:entities:+Space":{"type":"text","isMetadata":"true"},"dict:entities:+Spaces":{"type":"text","isMetadata":"true"},"dict:entities:+space":{"type":"text","isMetadata":"true"},"dict:entities:+spaces":{"type":"text","isMetadata":"true"},"dict:entities:+My+Spaces":{"type":"text","isMetadata":"true"},"dict:entities:+My+spaces":{"type":"text","isMetadata":"true"},"dict:entities:+Space+Description":{"type":"text","isMetadata":"true"},"dict:entities:+parent+space":{"type":"text","isMetadata":"true"},"dict:entities:+a+space":{"type":"text","isMetadata":"true"},"dict:entities:+the+space":{"type":"text","isMetadata":"true"},"dict:entities:+of+the+space":{"type":"text","isMetadata":"true"},"dict:entities:+Description+of+the+space":{"type":"text","isMetadata":"true"},"dict:entities:+Usage+criteria+of+the+space":{"type":"text","isMetadata":"true"},"dict:entities:+In+this+space":{"type":"text","isMetadata":"true"},"dict:entities:+in+this+space":{"type":"text","isMetadata":"true"},"dict:entities:+registered+spaces":{"type":"text","isMetadata":"true"},"dict:entities:+no+registered+spaces":{"type":"text","isMetadata":"true"},"dict:entities:+no+spaces":{"type":"text","isMetadata":"true"},"dict:entities:+new+space":{"type":"text","isMetadata":"true"},"dict:entities:+Children+spaces":{"type":"text","isMetadata":"true"},"dict:entities:+Add+child+space":{"type":"text","isMetadata":"true"},"dict:entities:+space+found":{"type":"text","isMetadata":"true"},"dict:entities:+spaces+found":{"type":"text","isMetadata":"true"},"dict:entities:+Spaces+of+the+agent":{"type":"text","isMetadata":"true"},"dict:entities:+Agents":{"type":"text","isMetadata":"true"},"dict:entities:+agent+found":{"type":"text","isMetadata":"true"},"dict:entities:+agents+found":{"type":"text","isMetadata":"true"},"dict:entities:+My+Agents":{"type":"text","isMetadata":"true"},"dict:entities:+My+agents":{"type":"text","isMetadata":"true"},"dict:entities:+Agent+children":{"type":"text","isMetadata":"true"},"dict:entities:+Projects":{"type":"text","isMetadata":"true"},"dict:entities:+My+Projects":{"type":"text","isMetadata":"true"},"dict:entities:+My+projects":{"type":"text","isMetadata":"true"},"dict:entities:+project+found":{"type":"text","isMetadata":"true"},"dict:entities:+projects+found":{"type":"text","isMetadata":"true"},"dict:entities:+Projects+of+the+agent":{"type":"text","isMetadata":"true"},"dict:entities:+Events":{"type":"text","isMetadata":"true"},"dict:entities:+My+Events":{"type":"text","isMetadata":"true"},"dict:entities:+My+events":{"type":"text","isMetadata":"true"},"dict:entities:+event+found":{"type":"text","isMetadata":"true"},"dict:entities:+events+found":{"type":"text","isMetadata":"true"},"dict:entities:+Subsite+Description":{"type":"text","isMetadata":"true"},"dict:entities:+My+Subsites":{"type":"text","isMetadata":"true"},"dict:entities:+My+subsites":{"type":"text","isMetadata":"true"},"dict:entities:+Subsite":{"type":"text","isMetadata":"true"},"dict:entities:+no+registered+subsite":{"type":"text","isMetadata":"true"},"dict:entities:+no+subsite":{"type":"text","isMetadata":"true"},"dict:entities:+registered+subsite":{"type":"text","isMetadata":"true"},"dict:entities:+add+new+subsite":{"type":"text","isMetadata":"true"},"dict:entities:+Seals":{"type":"text","isMetadata":"true"},"dict:entities:+My+Seals":{"type":"text","isMetadata":"true"},"dict:entities:+My+seals":{"type":"text","isMetadata":"true"},"dict:entities:+Users+and+roles":{"type":"text","isMetadata":"true"},"dict:taxonomies:area:+name":{"type":"text","isMetadata":"true"},"dict:taxonomies:area:+select+at+least+one":{"type":"text","isMetadata":"true"},"dict:taxonomies:area:+select":{"type":"text","isMetadata":"true"},"dict:taxonomies:linguagem:+name":{"type":"text","isMetadata":"true"},"dict:taxonomies:linguagem:+select+at+least+one":{"type":"text","isMetadata":"true"},"dict:taxonomies:linguagem:+select":{"type":"text","isMetadata":"true"},"dict:error:403:+title":{"type":"text","isMetadata":"true"},"dict:error:403:+message":{"type":"text","isMetadata":"true"},"dict:error:404:+title":{"type":"text","isMetadata":"true"},"dict:error:404:+message":{"type":"text","isMetadata":"true"},"dict:error:500:+title":{"type":"text","isMetadata":"true"},"dict:error:500:+message":{"type":"text","isMetadata":"true"},"dict:roles:+Super+Administrator":{"type":"text","isMetadata":"true"},"dict:roles:+Super+Administrators":{"type":"text","isMetadata":"true"},"dict:roles:+Administrator":{"type":"text","isMetadata":"true"},"dict:roles:+Administrators":{"type":"text","isMetadata":"true"},"dict:roles:+Subsite+Super+Administrator":{"type":"text","isMetadata":"true"},"dict:roles:+Subsite+Super+Administrators":{"type":"text","isMetadata":"true"},"dict:roles:+Subsite+Administrator":{"type":"text","isMetadata":"true"},"dict:roles:+Subsite+Administrators":{"type":"text","isMetadata":"true"}},"userHasControl":false,"canUserChangeOwner":false,"canUserCreateRelatedAgentsWithControl":false,"status":1,"object":{"id":424,"name":"CONVOCAT\u00d3RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr\u00e9 - Processo Seletivo 2018\/2019 N\u00facleo de Forma\u00e7\u00e3o de Atores e Atrizes  - Turma 23","shortDescription":"Abertas as inscri\u00e7\u00f5es para candidatos(as) interessados(as) no processo seletivo para composi\u00e7\u00e3o do quadro de aprendizes da ELT de 2019 do N\u00facleo de Forma\u00e7\u00e3o de Atores e Atrizes. Poder\u00e3o candidatar-se \u00e0s vagas apenas pessoas interessadas que j\u00e1 tiverem completado 18 anos at\u00e9 o dia 30 de novembro de 2018. OS INTERESSADOS DEVER\u00c3O LER ATENTAMENTE A CONVOCAT\u00d3RIA AQUI PRESENTE NOS DOWNLOADS.","longDescription":"A simples inscri\u00e7\u00e3o digital na Convocat\u00f3ria atrav\u00e9s da Plataforma CulturAZ N\u00c3O implica na garantia da vaga; o(a) candidato(a) interessado(a) dever\u00e1 se submeter ao Processo Seletivo presencial at\u00e9 o fim. OS INTERESSADOS DEVER\u00c3O LER ATENTAMENTE A CONVOCAT\u00d3RIA AQUI PRESENTE NOS DOWNLOADS.","updateTimestamp":null,"registrationFrom":{"date":"2018-10-29 00:00:00.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"registrationTo":{"date":"2018-11-29 23:59:00.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"useRegistrations":true,"publishedRegistrations":false,"createTimestamp":{"date":"2018-10-25 14:39:19.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"registrationCategories":"","status":1,"parent":null,"owner":{"id":26,"name":"ELT - Escola Livre de Teatro","publicLocation":true,"location":{"latitude":"-23.6354896","longitude":"-46.5325208"},"shortDescription":"A Escola Livre de Teatro de Santo Andr\u00e9 \u00e9 um centro de forma\u00e7\u00e3o, pesquisa e \texperimenta\u00e7\u00e3o das linguagens teatrais de acesso p\u00fablico e gratuito. H\u00e1 25 anos mantida pela Secretaria de Cultura e Turismo da Prefeitura da cidade de Santo \tAndr\u00e9, a ELT \u00e9 um espa\u00e7o que proporciona atividades nas diversas \u00e1reas do fazer teatral.","longDescription":"O nome Escola Livre de Teatro j\u00e1 estava escolhido antes mesmo que o projeto estivesse estruturado no papel. Constava do programa pol\u00edtico do ent\u00e3o candidato a prefeito Celso Daniel e provinha de uma id\u00e9ia do diretor de cultura, Celso Frateschi, segundo a qual a meta deveria ser \u201co embasamento, algo que permitisse passar para a comunidade os instrumentos necess\u00e1rios para se fazer teatro\u201d. Neste sentido, a palavra \u201clivre\u201d parecia o elo essencial que uniria dois conceitos t\u00e3o complexos e muitas vezes de dif\u00edcil conjun\u00e7\u00e3o: o de escola (a pr\u00e1xis do ensino) e teatro (uma pr\u00e1xis da arte).\n\nA op\u00e7\u00e3o por uma escola de teatro atendia a uma reivindica\u00e7\u00e3o dos n\u00facleos de artistas da regi\u00e3o. Ao mesmo tempo ia ao encontro da forte tradi\u00e7\u00e3o que a cidade possui na \u00e1rea desde fins da d\u00e9cada de sessenta. Em Santo Andr\u00e9 surgiram grandes nomes do teatro nacional, entre eles atores, diretores, dramaturgos e um grupo, de solidez e renome, que marcou \u00e9poca na d\u00e9cada de setenta, o GTC (Grupo de Teatro da Cidade).\n\nA id\u00e9ia de uma escola ganhava concretude na medida em que isso representava n\u00e3o um produto art\u00edstico acabado, mas o potencial para a realiza\u00e7\u00e3o de uma produ\u00e7\u00e3o cultural independente. Um ponto de acordo com a velha senten\u00e7a: \u201cn\u00e3o d\u00ea o peixe, ensine a pescar.\u201d\n\nNa primeira semana de maio de 1990 os jornais da cidade anunciavam: \u201cSanto Andr\u00e9 cria escola de teatro.\u201d A not\u00edcia havia sido dada durante a apresenta\u00e7\u00e3o da pe\u00e7a Quase primeiro de abril, em cujo processo de cria\u00e7\u00e3o se reuniram mais de duzentas pessoas discutindo teatro por tr\u00eas meses.\n\nA sorte estava lan\u00e7ada. Para estruturar e dirigir o empreendimento foi convidada a pesquisadora e diretora de teatro Maria Thais Lima Santos, que em pouco tempo, e intensa atividade, formulou a proposta da Escola Livre de Teatro.","createTimestamp":{"date":"2015-10-21 12:15:42.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"parent":{"id":439,"name":"Ger\u00eancia de Incentivo \u00e0 Cria\u00e7\u00e3o Art\u00edstica","publicLocation":true,"location":{"latitude":"0","longitude":"0"},"shortDescription":"Ger\u00eancia respons\u00e1vel, desde 2017, pela constru\u00e7\u00e3o de uma pol\u00edtica de incentivo \u00e0 cria\u00e7\u00e3o art\u00edstica da Secretaria de Cultura de Santo Andr\u00e9. A essa ger\u00eancia est\u00e3o vinculados os equipamentos e projetos voltados para a \u00e1rea de forma\u00e7\u00e3o cultural: Escola Livre de Dan\u00e7a, Escola Livre de Teatro, Escola Livre de Cinema e V\u00eddeo, Escola Municipal de Inicia\u00e7\u00e3o Art\u00edstica, e o Projeto Territ\u00f3rios de Cultura","longDescription":"","createTimestamp":{"date":"2016-05-06 14:33:15.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"parent":null,"userId":397,"updateTimestamp":{"date":"2016-07-04 09:25:50.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"subsite":null,"terms":null,"localizacao":null,"emailPublico":null,"telefonePublico":"(11) 4433-0765","endereco":null,"En_CEP":null,"En_Nome_Logradouro":"Pra\u00e7a IV Centen\u00e1rio","En_Num":"s\/n","En_Complemento":"Pr\u00e9dio da Biblioteca","En_Bairro":"Centro","En_Municipio":"Santo Andr\u00e9","En_Estado":"SP","site":null,"facebook":null,"twitter":null,"googleplus":null,"geoBairro":null,"origin_site":null,"sentNotification":null,"controllerId":"agent","deleteUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/apaga\/439\/","editUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/edita\/439\/","singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/439\/"},"userId":397,"updateTimestamp":{"date":"2015-12-01 18:39:15.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"subsite":null,"terms":null,"localizacao":null,"emailPublico":"escolalivredeteatro@santoandre.sp.gov.br","telefonePublico":"(11) 4990-4474","endereco":"Pra\u00e7a Rui Barbosa, 12 - Santa Terezinha - Santo Andr\u00e9","En_CEP":null,"En_Nome_Logradouro":null,"En_Num":null,"En_Complemento":null,"En_Bairro":null,"En_Municipio":null,"En_Estado":null,"site":"http:\/\/www2.santoandre.sp.gov.br\/","facebook":null,"twitter":null,"googleplus":null,"geoBairro":null,"origin_site":null,"sentNotification":null,"controllerId":"agent","deleteUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/apaga\/26\/","editUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/edita\/26\/","singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/26\/"},"subsite":null,"introInscricoes":null,"registrationCategTitle":"Categoria","registrationCategDescription":"Selecione uma categoria","registrationLimitPerOwner":"0","registrationLimit":"0","site":null,"facebook":null,"twitter":null,"googleplus":null,"registrationSeals":null,"useAgentRelationInstituicao":"dontUse","useAgentRelationColetivo":"dontUse","origin_site":"culturaz.santoandre.sp.gov.br","controllerId":"project","deleteUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projetos\/apaga\/424\/","editUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projetos\/edita\/424\/","singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projeto\/424\/"},"childrenIds":[],"useRegistrations":true,"registrationFileConfigurations":[],"registrationFieldConfigurations":[],"registrationCategories":"","published":false,"registrations":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"registrationRulesFile":null,"canUserModifyRegistrationFields":false,"sealRelations":[{"owner":{"className":"MapasCulturais\\Entities\\Project","id":424,"name":"CONVOCAT\u00d3RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr\u00e9 - Processo Seletivo 2018\/2019 N\u00facleo de Forma\u00e7\u00e3o de Atores e Atrizes  - Turma 23","avatar":{"avatarBig":{"id":98102,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg"},"avatarMedium":{"id":98101,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-15a47f0ba1b6c638c05b55560581c727.jpg"},"avatarSmall":{"id":98100,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-96d8e67c96f7a97f7f9444cf5536763d.jpg"},"galleryFull":{"id":98251,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-917c3e3832e37432d51d9a89ea3b53bb.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projeto\/424\/"},"id":2046,"objectId":424,"createTimestamp":{"date":"2018-10-25 14:41:22.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"seal":{"id":1,"name":"Prefeitura de Santo Andr\u00e9 - Secretaria de Cultura","avatar":{"avatarBig":{"id":28269,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/seal\/1\/file\/28266\/sant_andr-68e2680b77fd1cc4f7f9cee0abf301a9.png"},"avatarMedium":{"id":28268,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/seal\/1\/file\/28266\/sant_andr-2df2ff88cf184aef5859507551255aa9.png"},"avatarSmall":{"id":28267,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/seal\/1\/file\/28266\/sant_andr-cb6541f383d328c6d820084a9b1936c8.png"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/selo\/1\/","validateDate":null},"agent":{"id":51,"name":"Vania Cristina  Ribeiro","publicLocation":true,"location":{"latitude":"-23.656079","longitude":"-46.5342643"},"shortDescription":"Assistente Cultural na Secretaria de Cultura de Santo Andr\u00e9, Gerente de Incentivo a Cria\u00e7\u00e3o Art\u00edstica desde 2017. Formada em Comunica\u00e7\u00e3o Social pela Universidade Metodista de S\u00e3o Paulo, com especializa\u00e7\u00e3o em Gest\u00e3o Cultural pela Universidade de Girona, em parceria com o Instituto Ita\u00fa Cultural. Completou o curso SESC de Gest\u00e3o Cultural pelo Centro de Pesquisa e Forma\u00e7\u00e3o","longDescription":"","createTimestamp":{"date":"2015-11-11 12:10:40.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"parent":null,"userId":30,"updateTimestamp":{"date":"2017-05-26 09:09:40.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"subsite":null,"localizacao":null,"emailPublico":"vaniacr@uol.com.br","telefonePublico":null,"endereco":"Pra\u00e7a IV Centen\u00e1rio, 2, Pr\u00e9dio da Biblioteca, Centro, 09015-080, Santo Andr\u00e9, SP","En_CEP":"09015-080","En_Nome_Logradouro":"Pra\u00e7a IV Centen\u00e1rio","En_Num":"2","En_Complemento":"Pr\u00e9dio da Biblioteca","En_Bairro":"Centro","En_Municipio":"Santo Andr\u00e9","En_Estado":"SP","site":null,"facebook":null,"twitter":null,"googleplus":null,"geoBairro":null,"origin_site":null,"sentNotification":null,"controllerId":"agent","deleteUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/apaga\/51\/","editUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/edita\/51\/","singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/51\/"},"owner_relation":{"id":51,"name":"Vania Cristina  Ribeiro","publicLocation":true,"location":{"latitude":"-23.656079","longitude":"-46.5342643"},"shortDescription":"Assistente Cultural na Secretaria de Cultura de Santo Andr\u00e9, Gerente de Incentivo a Cria\u00e7\u00e3o Art\u00edstica desde 2017. Formada em Comunica\u00e7\u00e3o Social pela Universidade Metodista de S\u00e3o Paulo, com especializa\u00e7\u00e3o em Gest\u00e3o Cultural pela Universidade de Girona, em parceria com o Instituto Ita\u00fa Cultural. Completou o curso SESC de Gest\u00e3o Cultural pelo Centro de Pesquisa e Forma\u00e7\u00e3o","longDescription":"","createTimestamp":{"date":"2015-11-11 12:10:40.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"parent":null,"userId":30,"updateTimestamp":{"date":"2017-05-26 09:09:40.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"subsite":null,"localizacao":null,"emailPublico":"vaniacr@uol.com.br","telefonePublico":null,"endereco":"Pra\u00e7a IV Centen\u00e1rio, 2, Pr\u00e9dio da Biblioteca, Centro, 09015-080, Santo Andr\u00e9, SP","En_CEP":"09015-080","En_Nome_Logradouro":"Pra\u00e7a IV Centen\u00e1rio","En_Num":"2","En_Complemento":"Pr\u00e9dio da Biblioteca","En_Bairro":"Centro","En_Municipio":"Santo Andr\u00e9","En_Estado":"SP","site":null,"facebook":null,"twitter":null,"googleplus":null,"geoBairro":null,"origin_site":null,"sentNotification":null,"controllerId":"agent","deleteUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/apaga\/51\/","editUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agentes\/edita\/51\/","singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/51\/"},"validateDate":"25\/10\/2018","renovation_request":false,"requestSealRelationUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projetos\/requestsealrelation\/2046\/","renewSealRelationUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projetos\/renewsealrelation\/2046\/","ownerSealUserId":7,"toExpire":2}],"agentRelations":{"group-admin":[{"owner":{"className":"MapasCulturais\\Entities\\Project","id":424,"name":"CONVOCAT\u00d3RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr\u00e9 - Processo Seletivo 2018\/2019 N\u00facleo de Forma\u00e7\u00e3o de Atores e Atrizes  - Turma 23","terms":{"tag":["teatro","edital","convocat\u00f3ria","escola livre","forma\u00e7\u00e3o teatral","ensino de arte"]},"avatar":{"avatarBig":{"id":98102,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg"},"avatarMedium":{"id":98101,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-15a47f0ba1b6c638c05b55560581c727.jpg"},"avatarSmall":{"id":98100,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-96d8e67c96f7a97f7f9444cf5536763d.jpg"},"galleryFull":{"id":98251,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-917c3e3832e37432d51d9a89ea3b53bb.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projeto\/424\/"},"id":6523,"objectId":424,"group":"group-admin","hasControl":true,"createTimestamp":{"date":"2018-10-25 14:40:06.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"agent":{"id":51,"name":"Vania Cristina  Ribeiro","type":{"id":1,"name":"Individual"},"terms":{"tag":["pol\u00edtica cultural"],"area":["Gest\u00e3o Cultural"]},"avatar":{"avatarBig":{"id":989,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/51\/file\/987\/eu-04175d22631615c30473ee2b2ea98adc.jpg"},"avatarMedium":{"id":990,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/51\/file\/987\/eu-7ce798fe60d21234236052b470d41e6d.jpg"},"avatarSmall":{"id":988,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/51\/file\/987\/eu-e6af0f1257311bc9b0a1def594a69301.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/51\/"}},{"owner":{"className":"MapasCulturais\\Entities\\Project","id":424,"name":"CONVOCAT\u00d3RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr\u00e9 - Processo Seletivo 2018\/2019 N\u00facleo de Forma\u00e7\u00e3o de Atores e Atrizes  - Turma 23","terms":{"tag":["teatro","edital","convocat\u00f3ria","escola livre","forma\u00e7\u00e3o teatral","ensino de arte"]},"avatar":{"avatarBig":{"id":98102,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg"},"avatarMedium":{"id":98101,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-15a47f0ba1b6c638c05b55560581c727.jpg"},"avatarSmall":{"id":98100,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-96d8e67c96f7a97f7f9444cf5536763d.jpg"},"galleryFull":{"id":98251,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-917c3e3832e37432d51d9a89ea3b53bb.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projeto\/424\/"},"id":6524,"objectId":424,"group":"group-admin","hasControl":true,"createTimestamp":{"date":"2018-10-25 14:40:18.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"agent":{"id":822,"name":"gabriela simioni","type":{"id":1,"name":"Individual"},"terms":{"tag":[],"area":["Teatro"]},"avatar":{"avatarBig":{"id":33811,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/822\/file\/33808\/gabi-f74b410ae6a0b08916cf36040b06a232.jpg"},"avatarMedium":{"id":33810,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/822\/file\/33808\/gabi-02a3ca8bc697afe2908558e020f29732.jpg"},"avatarSmall":{"id":33809,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/822\/file\/33808\/gabi-e82067205c04399d212f3332e0c6c8be.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/822\/"}},{"owner":{"className":"MapasCulturais\\Entities\\Project","id":424,"name":"CONVOCAT\u00d3RIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo Andr\u00e9 - Processo Seletivo 2018\/2019 N\u00facleo de Forma\u00e7\u00e3o de Atores e Atrizes  - Turma 23","terms":{"tag":["teatro","edital","convocat\u00f3ria","escola livre","forma\u00e7\u00e3o teatral","ensino de arte"]},"avatar":{"avatarBig":{"id":98102,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg"},"avatarMedium":{"id":98101,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-15a47f0ba1b6c638c05b55560581c727.jpg"},"avatarSmall":{"id":98100,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-96d8e67c96f7a97f7f9444cf5536763d.jpg"},"galleryFull":{"id":98251,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/project\/424\/file\/98099\/foto_capa_elt_credito_thais_oliversi-2-917c3e3832e37432d51d9a89ea3b53bb.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/projeto\/424\/"},"id":6527,"objectId":424,"group":"group-admin","hasControl":true,"createTimestamp":{"date":"2018-10-25 14:40:55.000000","timezone_type":3,"timezone":"America\/Sao_Paulo"},"status":1,"agent":{"id":2179,"name":"Fernando Gimenes","type":{"id":1,"name":"Individual"},"terms":{"tag":[],"area":["Teatro"]},"avatar":{"avatarBig":{"id":35058,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/2179\/file\/35055\/foto-5e57bae8874eb090bba80d78e5bfc0c4.jpg"},"avatarMedium":{"id":35057,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/2179\/file\/35055\/foto-7f5fa720a694e13b10fd4b820d2a4759.jpg"},"avatarSmall":{"id":35056,"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/agent\/2179\/file\/35055\/foto-0d8f2dc1610c2552d545bb97eb453027.jpg"}},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/agente\/2179\/"}}]}},"registrationFieldTypes":[{"slug":"url","name":"Campo de URL (link)","serialize":null,"unserialize":null,"requireValuesConfiguration":false,"validations":{"v::url()":"O valor n\u00e3o \u00e9 uma URL v\u00e1lida"}},{"slug":"date","name":"Campo de data","serialize":null,"unserialize":null,"requireValuesConfiguration":false,"validations":[]},{"slug":"email","name":"Campo de email","serialize":null,"unserialize":null,"requireValuesConfiguration":false,"validations":{"v::email()":"O valor n\u00e3o \u00e9 um endere\u00e7o de email v\u00e1lido"}},{"slug":"textarea","name":"Campo de texto (textarea)","serialize":null,"unserialize":null,"requireValuesConfiguration":false,"validations":[]},{"slug":"text","name":"Campo de texto simples","serialize":null,"unserialize":null,"requireValuesConfiguration":false,"validations":[]},{"slug":"checkboxes","name":"Sele\u00e7\u00e3o m\u00faltipla (checkboxes)","serialize":{},"unserialize":{},"requireValuesConfiguration":true,"validations":[]},{"slug":"select","name":"Sele\u00e7\u00e3o \u00fanica (select)","serialize":null,"unserialize":null,"requireValuesConfiguration":true,"validations":[]},{"slug":"section","name":"T\u00edtulo de Se\u00e7\u00e3o","serialize":null,"unserialize":null,"requireValuesConfiguration":false,"validations":[]}],"projectRegistrationsEnabled":true,"roles":[],"allowedSeals":[{"id":1,"name":"Prefeitura de Santo Andr\u00e9 - Secretaria de Cultura","status":1,"@files:avatar.avatarSmall":{"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/seal\/1\/file\/28266\/sant_andr-cb6541f383d328c6d820084a9b1936c8.png"},"@files:avatar.avatarMedium":{"url":"http:\/\/culturaz.santoandre.sp.gov.br\/files\/seal\/1\/file\/28266\/sant_andr-2df2ff88cf184aef5859507551255aa9.png"},"singleUrl":"http:\/\/culturaz.santoandre.sp.gov.br\/selo\/1\/","validateDate":null}],"canRelateSeal":true};
+</script>
+
+ <script type='text/javascript' src='http://culturaz.santoandre.sp.gov.br/assets/js/vendor-5cabcf35ad7d76ee35f68723f48d9ba2.js'></script>
+ <script type='text/javascript' src='http://culturaz.santoandre.sp.gov.br/assets/js/app-0cf7ce3d7839a452fb30fade177b9afb.js'></script>        <!--[if lt IE 9]>
+        <script src="http://culturaz.santoandre.sp.gov.br/assets/js/html5-1443807842.js" type="text/javascript"></script>
+        <![endif]-->
+    </head>
+
+    <body ng-app="entity.app" ng-controller="EntityController" class="controller-project action-single entity" >
+                       <!--facebook compartilhar-->
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                <!--fim do facebook-->
+                        <header id="main-header" class="clearfix"  ng-class="{'sombra':data.global.viewMode !== 'list'}">
+            <!-- mapasculturaisThemeSantoAndre/layouts/parts/header-logo.php # BEGIN --><h1 id="brand-logo"><a href="http://culturaz.santoandre.sp.gov.br/"><img src="http://culturaz.santoandre.sp.gov.br/assets/img/logo-culturars.png" /></a></h1>
+<!-- mapasculturaisThemeSantoAndre/layouts/parts/header-logo.php # END -->            <!-- mapasculturaisThemeSantoAndre/layouts/parts/header-about-nav.php # BEGIN --><nav id="about-nav" class="alignright clearfix">
+	<h1 id="organization-logo"><a href="http://www2.santoandre.sp.gov.br/index.php" target="_blank"><img src="http://culturaz.santoandre.sp.gov.br/assets/img/logo-governors.png" /></a></h1>
+    <ul id="secondary-menu">
+        <li><a class="icon icon-about hltip" href="http://culturaz.santoandre.sp.gov.br/sobre/" title="Sobre o CulturAZ"></a></li>
+        <li><a class="icon icon-help hltip" href="http://culturaz.santoandre.sp.gov.br/como-usar/" title="Como usar"></a></li>
+    </ul>
+</nav>
+<!-- mapasculturaisThemeSantoAndre/layouts/parts/header-about-nav.php # END -->            <!-- BaseV1/layouts/parts/header-main-nav.php # BEGIN -->
+<nav id="main-nav" class="clearfix">
+    <ul class="menu entities-menu clearfix">
+                                <li id="entities-menu-event"
+                ng-class="{'active':data.global.filterEntity === 'event',
+                           'current-entity-parent':'project' == 'event'}"
+                ng-click="tabClick('event')">
+                <a href="http://culturaz.santoandre.sp.gov.br/busca/##(global:(enabled:(event:!t),filterEntity:event))">
+                    <div class="icon icon-event"></div>
+                    <div class="menu-item-label">Eventos</div>
+                </a>
+            </li>
+                    
+                                <li id="entities-menu-space"
+                ng-class="{'active':data.global.filterEntity === 'space',
+                           'current-entity-parent':'project' == 'space'}"
+                ng-click="tabClick('space')">
+                <a href="http://culturaz.santoandre.sp.gov.br/busca/##(global:(enabled:(space:!t),filterEntity:space))">
+                    <div class="icon icon-space"></div>
+                    <div class="menu-item-label">Espaços</div>
+                </a>
+            </li>
+                    
+                                <li id="entities-menu-agent"
+                ng-class="{'active':data.global.filterEntity === 'agent',
+                           'current-entity-parent':'project' == 'agent'}"
+                ng-click="tabClick('agent')">
+                <a href="http://culturaz.santoandre.sp.gov.br/busca/##(global:(enabled:(agent:!t),filterEntity:agent))">
+                    <div class="icon icon-agent"></div>
+                    <div class="menu-item-label">Agentes</div>
+                </a>
+            </li>
+                    
+                                <li id="entities-menu-project"
+                ng-class="{'active':data.global.filterEntity === 'project',
+                           'current-entity-parent':'project' == 'project'}"
+                ng-click="tabClick('project')">
+                <a href="http://culturaz.santoandre.sp.gov.br/busca/##(global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    <div class="icon icon-project"></div>
+                    <div class="menu-item-label">Projetos</div>
+                </a>
+            </li>
+                    
+    </ul>
+    <!--.menu.entities-menu-->
+    <ul class="menu session-menu clearfix">
+                                <li class="notifications" ng-controller="NotificationController" style="display:none" ng-class="{'visible': data.length > 0}">
+                <a class="js-submenu-toggle" data-submenu-target="$(this).parent().find('.submenu')">
+                    <div class="icon icon-notifications"></div>
+                    <div class="menu-item-label">Notificações</div>
+                </a>
+                <ul class="submenu hidden">
+                    <li>
+                        <div class="clearfix">
+                            <h6 class="alignleft">Notificações</h6>
+                            <a href="#" style="display:none" class="staging-hidden hltip icon icon-check_alt" title="Marcar todas como lidas"></a>
+                        </div>
+                        <ul>
+                            <li ng-repeat="notification in data" on-last-repeat="adjustScroll();">
+                                <p class="notification clearfix">
+                                    <span ng-bind-html="notification.message"></span>
+                                    <br>
+
+                                    <a ng-if="notification.request.permissionTo.approve" class="btn btn-small btn-success" ng-click="approve(notification.id)">aceitar</a>
+
+                                    <span ng-if="notification.request.permissionTo.reject">
+                                        <span ng-if="notification.request.requesterUser === MapasCulturais.userId">
+                                            <a class="btn btn-small btn-default" ng-click="reject(notification.id)">cancelar</a>
+                                            <a class="btn btn-small btn-success" ng-click="delete(notification.id)">ok</a>
+                                        </span>
+                                        <span ng-if="notification.request.requesterUser !== MapasCulturais.userId">
+                                            <a class="btn btn-small btn-danger" ng-click="reject(notification.id)">rejeitar</a>
+                                        </span>
+                                    </span>
+
+                                    <span ng-if="!notification.request">
+                                        <a class="btn btn-small btn-success" ng-click="delete(notification.id)">ok</a>
+                                    </span>
+
+                                </p>
+                            </li>
+                        </ul>
+                        <a href="http://culturaz.santoandre.sp.gov.br/painel/">
+                            Ver todas atividades                        </a>
+                    </li>
+                </ul>
+                <!--.submenu-->
+            </li>
+            <!--.notifications-->
+            
+                        <li class="user">
+                <a href="#" class="js-submenu-toggle" data-submenu-target="$(this).parent().find('.submenu')">
+                    <div class="avatar">
+                                                    <img src="http://culturaz.santoandre.sp.gov.br/files/agent/1453/file/20863/img-20161031-wa0016-4085139b352bdf7b49c78ffaf2432fd3.jpg" />
+                                            </div>
+                </a>
+                <ul class="submenu hidden">
+                    <li>
+                        <a href="http://culturaz.santoandre.sp.gov.br/painel/">Painel de Controle</a>
+                    </li>
+                                                                    <li>
+                            <a href="http://culturaz.santoandre.sp.gov.br/painel/eventos/">Meus Eventos</a>
+                            <a class="add" href="http://culturaz.santoandre.sp.gov.br/eventos/create/" ></a>
+                        </li>
+                                            
+                                                                    <li>
+                            <a href="http://culturaz.santoandre.sp.gov.br/painel/agentes/">Meus Agentes</a>
+                            <a class="add" href="http://culturaz.santoandre.sp.gov.br/agentes/create/"></a>
+                        </li>
+                                            
+                                                                    <li>
+                            <a href="http://culturaz.santoandre.sp.gov.br/painel/espacos/">Meus Espaços</a>
+                            <a class="add"href="http://culturaz.santoandre.sp.gov.br/espacos/create/"></a>
+                        </li>
+                                            
+                   
+                                                                    <li>
+                            <a href="http://culturaz.santoandre.sp.gov.br/painel/projetos/">Meus Projetos</a>
+                            <a class="add" href="http://culturaz.santoandre.sp.gov.br/projetos/create/"></a>
+                        </li>
+                        
+                                                <li>
+                            <a href="http://culturaz.santoandre.sp.gov.br/painel/inscricoes/">Minhas Inscrições</a>
+                        </li>
+                                            
+                    
+                    <li class="row"></li>
+                    <!--<li><a href="#">Ajuda</a></li>-->
+                    <li>
+                                                <a href="http://culturaz.santoandre.sp.gov.br/sair/">Sair</a>
+                    </li>
+                </ul>
+            </li>
+            <!--.user-->
+                        </ul>
+    <!--.menu.session-menu-->
+</nav>
+<!-- BaseV1/layouts/parts/header-main-nav.php # END -->        </header>
+        <section id="main-section" class="clearfix">
+            <!-- BaseV1/layouts/parts/header.php # END --><!-- BaseV1/views/project/single.php # BEGIN -->
+
+<!-- BaseV1/layouts/parts/singles/breadcrumb.php # BEGIN --><ul class="breadcrumb">
+    <li>
+        <a href="http://culturaz.santoandre.sp.gov.br/painel/">Painel de Controle</a>
+    </li>
+    <li>
+        <a href="http://culturaz.santoandre.sp.gov.br/painel/projetos/">Meus Projetos</a>
+    </li>
+    <li>
+        <span></span>
+    </li>
+</ul>
+<!-- BaseV1/layouts/parts/singles/breadcrumb.php # END -->
+
+<!-- BaseV1/layouts/parts/editable-entity.php # BEGIN --><div id="editable-entity" class="clearfix sombra js-not-editable" style='display:none; min-height:0; height:42px;'></div><!-- BaseV1/layouts/parts/editable-entity.php # END -->
+<article class="main-content project" ng-controller="ProjectController">
+        <header class="main-content-header">
+        <!-- BaseV1/layouts/parts/singles/header-image.php # BEGIN --><div id="header-banner" class="header-image js-imagem-do-header" style="background-image: url(http://culturaz.santoandre.sp.gov.br/files/project/424/file/98097/foto_capa_elt_credito_thais_oliversi-24aa047284af7c071cbd30c8c25a219f.jpg);">        
+        </div>
+<!-- BaseV1/layouts/parts/singles/header-image.php # END -->
+        <!-- BaseV1/layouts/parts/singles/entity-status.php # BEGIN -->
+<!-- BaseV1/layouts/parts/singles/entity-status.php # END -->
+        <!--.header-image-->
+        <div class="header-content">
+            
+            <!-- BaseV1/layouts/parts/singles/avatar.php # BEGIN --><div class="avatar com-imagem">
+            <img src="http://culturaz.santoandre.sp.gov.br/files/project/424/file/98099/foto_capa_elt_credito_thais_oliversi-2-9a21f03722a9bd84986e38c34c992c41.jpg" alt="" class="js-avatar-img" />
+        </div>
+<!--.avatar-->
+<!-- BaseV1/layouts/parts/singles/avatar.php # END -->
+            <!-- BaseV1/layouts/parts/singles/type.php # BEGIN --><div class="entity-type project-type">
+    <div class="icon icon-project"></div>
+    <a href="#" class='js-editable-type required' data-original-title="Tipo" data-emptytext="Selecione um tipo" data-entity='project' data-value='9'>
+        Edital    </a>
+</div>
+<!--.entity-type-->
+<!-- BaseV1/layouts/parts/singles/type.php # END -->
+            <!-- BaseV1/layouts/parts/entity-parent.php # BEGIN --><!-- BaseV1/layouts/parts/entity-parent.php # END -->
+            <!-- BaseV1/layouts/parts/singles/name.php # BEGIN -->
+<h2><span class="js-editable " data-edit="name" data-original-title="Nome de exibição" data-emptytext="Nome de exibição">CONVOCATÓRIA PARA NOVOS(AS) APRENDIZES ELT  Escola Livre de Teatro de Santo André - Processo Seletivo 2018/2019 Núcleo de Formação de Atores e Atrizes  - Turma 23</span></h2>
+<!-- BaseV1/layouts/parts/singles/name.php # END -->
+                    </div>
+        <!--.header-content-->
+            </header>
+    <!--.main-content-header-->
+    
+    <!-- BaseV1/layouts/parts/singles/project-tabs.php # BEGIN --><ul class="abas clearfix">
+        <li class="active"><a href="#sobre">Sobre</a></li>
+
+    <li ng-if="data.projectRegistrationsEnabled"><a href="#inscricoes">Inscrições</a></li>
+    
+            <li ng-if="data.entity.userHasControl && data.entity.events.length" ><a href="#eventos">Status dos eventos</a></li>
+    
+        <li><a href="#permissao">Permissões</a></li>
+        <!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/AgendaSingles/layouts/parts/agenda-singles--tab.php # BEGIN --><li><a href="#agenda">Agenda</a></li><!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/AgendaSingles/layouts/parts/agenda-singles--tab.php # END --></ul>
+<!-- BaseV1/layouts/parts/singles/project-tabs.php # END -->
+    <div class="tabs-content">
+        
+        <!-- BaseV1/layouts/parts/singles/project-events.php # BEGIN -->    <div id="eventos" ng-if="data.entity.userHasControl && data.entity.events.length" ng-controller="ProjectEventsController">
+
+        <div class="alignright" >
+            <span class="btn btn-small btn-default" ng-click="selectAll()">marcar eventos listados</span>
+            <span class="btn btn-small btn-default" ng-click="deselectAll()">desmarcar eventos listados</span>
+        </div>
+        <input type="text" ng-model="data.eventFilter" ng-change="filterEvents()" placeholder="filtrar eventos" style="width:300px;"><br>
+
+        <div class="eventos-selecionados">
+            <div class="alignright" ng-show="!data.processing">
+                <span class="btn btn-small btn-default" ng-click="unpublishSelectedEvents()">tornar rascunho</span>
+                <span class="btn btn-small btn-success" ng-click="publishSelectedEvents()">publicar</span>
+            </div>
+            <div ng-show="data.processing" class="mc-spinner alignright" ><img ng-src="{{data.spinnerUrl}}" /> {{data.processingText}}</div>
+            {{numSelectedEvents}} {{numSelectedEvents == 1 ? 'evento selecionado' : 'eventos selecionados' }}
+        </div>
+
+
+        <article class="objeto clearfix" ng-repeat="event in ::events" ng-show="!event.hidden" ng-class="{'selected': event.selected, 'evt-publish': event.status == 1, 'evt-draft': event.status == 0}">
+            <h1><input type='checkbox' ng-model="event.selected" ng-checked="event.selected">
+                <a href='{{::event.singleUrl}}'>{{::event.name}}</a></h1>
+            <div class="objeto-content clearfix">
+                <div class="objeto-thumb"><img src="" ng-src="{{::event['@files:avatar.avatarSmall'] ? event['@files:avatar.avatarSmall'].url : data.assets.avatarEvent }}"></div>
+                <div class="objeto-resumo">
+                    <ul class="event-ocurrences">
+                        <li ng-repeat='occ in ::event.occurrences'>
+                            <a href="{{::occ.space.singleUrl}}">{{::occ.space.name}}</a> - {{::occ.rule.description}} <span ng-if='::occ.rule.price'>({{::occ.rule.price}})</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="objeto-meta">
+                    <div><span class="label">Status:</span> {{event.status === 0 ? 'rascunho' : 'publicado'}}</div>
+                    <div><span class="label">Autor:</span> <a href='{{::event.owner.singleUrl}}'>{{::event.owner.name}}</a></div>
+                    <div><span class="label">Linguagem:</span> {{::event.terms.linguagem.join(', ')}}</div>
+                    <div><span class="label">Classificação:</span> {{::event.classificacaoEtaria}}</div>
+                </div>
+            </div>
+        </article>
+    </div>
+<!-- BaseV1/layouts/parts/singles/project-events.php # END -->
+        <!-- BaseV1/layouts/parts/singles/project-about.php # BEGIN -->
+<div id="sobre" class="aba-content">
+    
+    <!-- BaseV1/layouts/parts/singles/project-about--highlighted-message.php # BEGIN --><div class="highlighted-message clearfix">
+    
+            <!-- BaseV1/layouts/parts/singles/project-about--registration-dates.php # BEGIN -->    <div class="registration-dates clear">
+                Inscrições abertas de        <strong  data-type="date" data-yearrange="2000:+3" data-viewformat="dd/mm/yyyy" data-edit="registrationFrom" data-showbuttons="false" data-emptytext="Data inicial">29/10/2018</strong>
+                a        <strong  data-type="date" data-yearrange="2000:+3" data-viewformat="dd/mm/yyyy" data-edit="registrationTo" data-timepicker="#registrationTo_time" data-showbuttons="false" data-emptytext="Data final">29/11/2018</strong>
+                às        <strong  data-datetime-value="2018-11-29 23:59" data-placeholder="Hora final" data-emptytext="Hora final">23:59</strong>
+        .
+    </div>
+<!-- BaseV1/layouts/parts/singles/project-about--registration-dates.php # END -->        
+        <!-- BaseV1/layouts/parts/singles/project-about--online-registration-button.php # BEGIN -->    <a ng-if="data.projectRegistrationsEnabled" class="btn btn-primary" href="#tab=inscricoes" onclick="$('#tab-inscricoes').click()">Inscrições online</a>
+<div class="clear" ng-if="data.projectRegistrationsEnabled && data.isEditable">Inscrições online <strong><span id="editable-use-registrations" class="js-editable clear" data-edit="useRegistrations" data-type="select" data-value="1"
+        data-source="[{value: 0, text: 'desativadas'},{value: 1, text:'ativadas'}]"></span></strong>
+</div>
+<!-- BaseV1/layouts/parts/singles/project-about--online-registration-button.php # END -->    
+    <!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/ProjectPhases/layouts/parts/widget-project-phases.php # BEGIN --><!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/ProjectPhases/layouts/parts/widget-project-phases.php # END --></div><!-- BaseV1/layouts/parts/singles/project-about--highlighted-message.php # END -->
+    <div class="ficha-spcultura">
+        
+        <p>
+            <span class="js-editable " data-edit="shortDescription" data-original-title="Descrição Curta" data-emptytext="Insira uma descrição curta" data-tpl='<textarea maxlength="400"></textarea>'>Abertas as inscrições para candidatos(as) interessados(as) no processo seletivo para composição do quadro de aprendizes da ELT de 2019 do Núcleo de Formação de Atores e Atrizes. Poderão candidatar-se às vagas apenas pessoas interessadas que já tiverem completado 18 anos até o dia 30 de novembro de 2018. OS INTERESSADOS DEVERÃO LER ATENTAMENTE A CONVOCATÓRIA AQUI PRESENTE NOS DOWNLOADS.</span>
+        </p>
+                <div class="servico">
+                                            </div>
+            </div>
+
+            <h3 class="">Descrição</h3>
+        <span class="descricao js-editable" data-edit="longDescription" data-original-title="Descrição do Projeto" data-emptytext="Insira uma descrição do projeto" >A simples inscrição digital na Convocatória através da Plataforma CulturAZ NÃO implica na garantia da vaga; o(a) candidato(a) interessado(a) deverá se submeter ao Processo Seletivo presencial até o fim. OS INTERESSADOS DEVERÃO LER ATENTAMENTE A CONVOCATÓRIA AQUI PRESENTE NOS DOWNLOADS.</span>
+    
+
+    <!-- Video Gallery BEGIN -->
+    <!-- BaseV1/layouts/parts/video-gallery.php # BEGIN -->
+<div id="editbox-videogallery" ng-non-bindable class="js-editbox mc-bottom" title="Editar Vídeo"
+     data-action-url="http://culturaz.santoandre.sp.gov.br/projetos/metalist/id:424/"
+     data-response-template="<li id='video-{{id}}'>
+                <a class='js-metalist-item-display' href='#video' data-videolink='{{value}}'>
+                    <img src='http://culturaz.santoandre.sp.gov.br/assets/img/spinner_192.gif' class='thumbnail_med_wide'/>
+                    <h1 class='title'>{{title}}</h1>
+                </a>
+                <div class='botoes-de-edicao'>
+                    <a class='js-open-editbox edit hltip'
+                        data-target='#editbox-videogallery'
+                        data-dialog-callback='MapasCulturais.MetalistManager.updateDialog'
+                        data-response-target='#video-{{id}}'
+                        data-metalist-action='edit'
+                        href='#' title='Editar'></a>
+                    <a class='icon icon-close_alt js-metalist-item-delete hltip js-remove-item' data-href='{{deleteUrl}}' data-target='#video-{{id}}' data-confirm-message='Excluir este vídeo?' title='Excluir'></a>
+                </div>
+            </li>"
+     data-metalist-group="videos"
+     data-metalist-title-label="Título" data-metalist-value-label="Endereço do vídeo (Youtube ou Vimeo)" data-metalist-description-label="Descrição">
+            <!-- BaseV1/layouts/parts/metalist-form-template.php # BEGIN --><form class="js-metalist-form" ng-non-bindable data-response-action="" data-response-target="" method="post" action="">
+    <input type="hidden" class='js-metalist-group'>
+    <script type="text/html" class="js-response-template"></script>
+    <div class="alert danger hidden"></div>
+    <label class="js-metalist-value"> <input type="text" class="js-metalist-value" name='value' style="width:100%" /></label>
+    <label class="js-metalist-title"> <input type="text" class="js-metalist-title" name='title' style="width:100%" /></label>
+</form>
+<!-- BaseV1/layouts/parts/metalist-form-template.php # END -->    </div>
+<!-- BaseV1/layouts/parts/video-gallery.php # END -->    <!-- Video Gallery END -->
+
+    <!-- Image Gallery BEGIN -->
+    <!-- BaseV1/layouts/parts/gallery.php # BEGIN --><!-- BaseV1/layouts/parts/gallery.php # END -->    <!-- Image Gallery END -->
+
+    </div>
+<!-- #sobre -->
+<!-- BaseV1/layouts/parts/singles/project-about.php # END -->
+        <!-- BaseV1/layouts/parts/singles/project-registrations.php # BEGIN --><!-- BaseV1/layouts/parts/singles/project-registrations--config.php # BEGIN --><div ng-if="data.projectRegistrationsEnabled" id="inscricoes" class="aba-content">
+            <p ng-if="data.isEditable" class="alert info">
+            Utilize este espaço caso queira abrir inscrições para Agentes Culturais cadastrados na plataforma.            <span class="close"></span>
+        </p>
+    
+    <!-- BaseV1/layouts/parts/singles/project-registrations--user-registrations.php # BEGIN --><!-- BaseV1/layouts/parts/singles/project-registrations--user-registrations.php # END -->
+    <!-- BaseV1/layouts/parts/singles/project-registrations--intro.php # BEGIN --><!-- BaseV1/layouts/parts/singles/project-registrations--intro.php # END -->
+    <!-- BaseV1/layouts/parts/singles/project-registrations--rules.php # BEGIN --><p ng-if="!data.isEditable && data.entity.registrationRulesFile"><a class="btn btn-default download" href="{{data.entity.registrationRulesFile.url}}" >Baixar o regulamento</a></p>
+<div ng-if="data.isEditable" class="registration-fieldset">
+    <h4>Regulamento</h4>
+
+            <p class="registration-help">Envie um arquivo com o regulamento. Formatos aceitos .doc, .odt e .pdf.</p>
+        <a class="btn btn-default send hltip" ng-if="!data.entity.registrationRulesFile" ng-click="openRulesUploadEditbox($event)" title="Enviar regulamento" >Enviar</a>
+        <div ng-if="data.entity.registrationRulesFile">
+            <span class="js-open-editbox mc-editable" ng-click="openRulesUploadEditbox($event)">{{data.entity.registrationRulesFile.name}}</span>
+            <a class="delete hltip" ng-click="removeRegistrationRulesFile()" title="excluir regulamento"></a>
+        </div>
+        <edit-box id="edibox-upload-rules" position="bottom" title="Regulamento" submit-label="Enviar" cancel-label="Cancelar" close-on-cancel='true' on-submit="sendRegistrationRulesFile" on-cancel="closeRegistrationRulesUploadEditbox" spinner-condition="data.uploadSpinner">
+            <form class="js-ajax-upload" method="post" action="http://culturaz.santoandre.sp.gov.br/projetos/upload/424/" data-group="rules"  enctype="multipart/form-data">
+                <div class="alert danger hidden"></div>
+                <p class="form-help">Tamanho máximo do arquivo: {{maxUploadSizeFormatted}}</p>
+                <input type="file" name="rules" />
+
+                <div class="js-ajax-upload-progress">
+                    <div class="progress">
+                        <div class="bar"></div>
+                        <div class="percent">0%</div>
+                    </div>
+                </div>
+            </form>
+        </edit-box>
+    </div>
+<!-- #registration-rules -->
+<!-- BaseV1/layouts/parts/singles/project-registrations--rules.php # END -->
+    
+    <!-- BaseV1/layouts/parts/singles/project-registrations--form.php # BEGIN -->            <div class="registration-fieldset hide-tablet">
+            <p class="registration-help">Não é possível realizar as inscrições online através desse dispositivo. Tente se inscrever a partir de um dispositivo com a tela maior.</p>
+        </div>
+        <form id="project-registration" class="registration-form clearfix">
+            <p class="registration-help">Para iniciar sua inscrição, selecione o agente responsável. Ele deve ser um agente individual (pessoa física), com um CPF válido preenchido.</p>
+            <div>
+                <div id="select-registration-owner-button" class="input-text" ng-click="editbox.open('editbox-select-registration-owner', $event)">{{data.registration.owner ? data.registration.owner.name : data.registration.owner_default_label}}</div>
+                <edit-box id="editbox-select-registration-owner" position="bottom" title="Selecione o agente responsável pela inscrição." cancel-label="Cancelar" close-on-cancel='true' spinner-condition="data.registrationSpinner">
+                    <find-entity id='find-entity-registration-owner' entity="agent" no-results-text="Nenhum agente encontrado" select="setRegistrationOwner" api-query='data.relationApiQuery.owner' spinner-condition="data.registrationSpinner"></find-entity>
+                </edit-box>
+            </div>
+            <div>
+                <a class="btn btn-primary" ng-click="register()">Fazer inscrição</a>
+            </div>
+        </form>
+    <!-- BaseV1/layouts/parts/singles/project-registrations--form.php # END --></div>
+<!--#inscricoes-->
+<!-- BaseV1/layouts/parts/singles/project-registrations--config.php # END -->
+<!-- BaseV1/layouts/parts/singles/project-registrations--tables.php # BEGIN --><div ng-if="data.projectRegistrationsEnabled" id="inscritos" class="aba-content">
+    </div>
+<!--#inscritos--><!-- BaseV1/layouts/parts/singles/project-registrations--tables.php # END --><!-- BaseV1/layouts/parts/singles/project-registrations.php # END -->
+        <!-- #permissao -->
+        <!-- BaseV1/layouts/parts/singles/permissions.php # BEGIN -->
+<div id="permissao" class="aba-content">
+            <article class="objeto clearfix">
+            <h1>
+                <a href="http://culturaz.santoandre.sp.gov.br/agente/51/">Vania Cristina  Ribeiro</a>
+            </h1>
+            <div class="objeto-meta">
+                                                <div><span class="label">Tipo:</span> Individual</div>
+                <div><span class="label">Área(s) de atuação:</span> Gestão Cultural</div>
+            </div>
+        </article>
+            <article class="objeto clearfix">
+            <h1>
+                <a href="http://culturaz.santoandre.sp.gov.br/agente/822/">gabriela simioni</a>
+            </h1>
+            <div class="objeto-meta">
+                                                <div><span class="label">Tipo:</span> Individual</div>
+                <div><span class="label">Área(s) de atuação:</span> Teatro</div>
+            </div>
+        </article>
+            <article class="objeto clearfix">
+            <h1>
+                <a href="http://culturaz.santoandre.sp.gov.br/agente/2179/">Fernando Gimenes</a>
+            </h1>
+            <div class="objeto-meta">
+                                                <div><span class="label">Tipo:</span> Individual</div>
+                <div><span class="label">Área(s) de atuação:</span> Teatro</div>
+            </div>
+        </article>
+        </div>
+<!-- BaseV1/layouts/parts/singles/permissions.php # END -->        <!-- #permissao -->
+
+        <!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/AgendaSingles/layouts/parts/agenda-singles.php # BEGIN --><div id="agenda" class="aba-content">
+    <!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/AgendaSingles/layouts/parts/agenda-singles--header.php # BEGIN --><header class="entinty-calendar-header clearfix">
+    <strong><span id="agenda-count"></span></strong>
+    evento<span id="agenda-count-plural" class="hidden">s</span>
+    entre    <input id="agenda-from-visible" type="text" class="js-agenda-singles-dates agenda-singles-datepicker tag"
+           readonly="readonly" placeholder="00/00/0000" value="26/11/2018">
+    <input id="agenda-from" name="startsOn" type="hidden" value="2018-11-26">
+
+    e
+
+    <input id="agenda-to-visible" type="text" class="js-agenda-singles-dates agenda-singles-datepicker tag"
+           readonly="readonly" placeholder="00/00/0000" value="26/12/2018">
+    <input id="agenda-to" name="until" type="hidden" value="2018-12-26">
+
+    <img src="http://culturaz.santoandre.sp.gov.br/assets/img/spinner-black.gif" class="spinner" />
+    <!-- OCULTADO POR ENQUANTO BOTÃO DE CADSTRAR EVENTO
+    <a class="btn btn-default add" href="#">adicionar evento</a>
+    -->
+</header>
+<!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/AgendaSingles/layouts/parts/agenda-singles--header.php # END -->    <div id="agenda-content">
+        
+    </div>
+</div>
+<!-- #agenda -->
+<!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/AgendaSingles/layouts/parts/agenda-singles.php # END -->    </div>
+    <!-- .tabs-content -->
+    
+    <!-- BaseV1/layouts/parts/owner.php # BEGIN -->    <footer id='entity-owner' class="owner clearfix js-owner" ng-controller="ChangeOwnerController">
+        <img src="http://culturaz.santoandre.sp.gov.br/files/agent/26/file/98135/foto_capa_elt_credito_thais_oliversi-1529879fbe0e71acb8675950d9d00159.jpg" class="avatar js-owner-avatar" />
+        <p class="small bottom">Publicado por</p>
+
+                    <h6 class='js-owner-name'><a href="http://culturaz.santoandre.sp.gov.br/agente/26/">ELT - Escola Livre de Teatro</a></h6>
+        
+
+
+        <p class="owner-description js-owner-description">A Escola Livre de Teatro de Santo André é um centro de formação, pesquisa e 	experimentação das linguagens teatrais de acesso público e gratuito. Há 25 anos mantida pela Secretaria de Cultura e Turismo da Prefeitura da cidade de Santo 	André, a ELT é um espaço que proporciona atividades nas diversas áreas do fazer teatral.</p>
+        <div class="clearfix">
+                            <a class="btn btn-small btn-default staging-hidden" href="#">Reportar erro</a>
+                                    <a id="change-owner-button" class="btn btn-small btn-primary" ng-click="editbox.open('editbox-change-owner', $event)">Reivindicar propriedade</a>
+                                <edit-box id="editbox-change-owner" position="right" title="Selecione o agente para o qual você deseja passar a propriedade deste projeto" cancel-label="Cancelar" close-on-cancel='true' spinner-condition="data.spinner">
+                    <find-entity id='find-entity-change-owner' entity="agent" no-results-text="Nenhum agente encontrado" select="requestEntity" api-query='data.apiQuery' spinner-condition="data.spinner"></find-entity>
+                </edit-box>
+                    </div>
+    </footer>
+<!-- BaseV1/layouts/parts/owner.php # END -->
+    <!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/CompliantSuggestion/layouts/parts/compliant_suggestion.php # BEGIN -->
+<div class="compliant-suggestion-box">
+        <input class="button-form-compliant-suggestion compliant btn-primary" type="button" name="compliant" value="Denunciar">
+            &nbsp;
+    <input class="button-form-compliant-suggestion suggestion btn-success" type="button" name="suggestion" value="Contato">
+    </div>
+
+
+
+<form class="form-complaint-suggestion js-compliant-form hidden" ng-controller="CompliantController">
+        <p>
+        Tipo:</br>
+        <select ng-model="data.type" ng-options="item for item in compliant_type" class="compliant-type"></select>
+    </p>
+    <p>
+        Mensagem:<br />
+        <textarea ng-model="data.message" type="text" rows="5" cols="56" name="message"></textarea>
+    </p>
+    <p>
+        <input type='checkbox' ng-model="data.anonimous" name="anonimous">
+        <label for="anonimous">Denúncia anônima</label>
+    </p>
+    <p>
+        <input type='checkbox' ng-model="data.copy" name="copy">
+        <label for="copy">Receber cópia da denúncia</label>
+    </p>
+    <p>
+        <button class="js-submit-button compliant-form" ng-click="send()">Enviar Denúncia</button>
+    </p>
+    <div class="widget compliant-box" hidden="hidden">
+        <p class="alert sucess">Enviado com Sucesso.<span class="close compliant-form"></span></p>
+    </div>
+</form>
+
+<form class="form-complaint-suggestion js-suggestion-form hidden" ng-controller="SuggestionController">
+        <p>
+        Tipo:</br>
+        <select ng-model="data.type" ng-options="item for item in suggestion_type" class="suggestion-type"></select>
+    </p>
+    <p>
+        Mensagem:<br />
+        <textarea ng-model="data.message" type="text" rows="5" cols="56" name="message"></textarea>
+    </p>
+    <p>
+        <input id="anonimous" type='checkbox' ng-model="data.anonimous" name="anonimous">
+        <label for="anonimous">Mensagem anônima</label>
+    </p>
+    <p>
+        <input id="only_owner" type='checkbox' ng-model="data.only_owner" name="only_owner">
+        <label for="only_owner">Enviar somente para o Responsável</label>
+    </p>
+    <p>
+        <input type='checkbox' ng-model="data.copy" name="copy">
+        <label for="copy">Receber cópia da mensagem</label>
+    </p>
+    <p>
+        <button class="js-submit-button suggestion-form" ng-click="send()">Enviar mensagem</button>
+    </p>
+    <div class="widget suggestion-box" hidden="hidden">
+        <p class="alert sucess">Enviado com Sucesso.<span class="close suggestion-form"></span></p>
+    </div>
+</form>
+<!-- /srv/mapas/mapasculturais/src/protected/application/lib/modules/CompliantSuggestion/layouts/parts/compliant_suggestion.php # END --></article>
+<div class="sidebar-left sidebar project">
+    <!-- Related Seals BEGIN -->
+    <!-- BaseV1/layouts/parts/related-seals.php # BEGIN -->
+    <div class="selos-add" ng-controller="RelatedSealsController">
+        <div ng-if="getLength(relations) > 0 || (isEditable && seals.length > 0)" class="widget">
+            <h3 text-align="left" vertical-align="bottom">Selos Aplicados <div ng-if="isEditable && canRelateSeal" ng-click="editbox.open('sealsAvailable', $event)" class="hltip editable editable-empty" title="Adicionar selo relacionado"></div></h3>
+            <edit-box id="sealsAvailable" position="right" title="Adicionar selo relacionado" cancel-label="Fechar" close-on-cancel='true'>
+                <div ng-if="seals.length > 0" class="widget">
+                    <h3>Selos Disponíveis</h3>
+                    <div class="selos clearfix">
+                        <div ng-if="!sealRelated(seal.id)" class="avatar-seal" ng-repeat="seal in seals" ng-class="{pending: seal.status < 0}" ng-click="createRelation(seal)">
+                            <img ng-src="{{avatarUrl(seal['@files:avatar.avatarMedium'].url)}}">
+                            <div class="descricao-do-selo">
+                                <h1><a href="{{seal.singleUrl}}" class="ng-binding">{{seal.name}}</a></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </edit-box>
+            <div class="selos clearfix">
+                <div class="avatar-seal ng-scope" ng-repeat="relation in relations" ng-class="{pending: relation.status < 0 || relation.toExpire == 0}">
+                                        <a ng-href="http://culturaz.santoandre.sp.gov.br/selos/sealrelation/{{relation.id}}/" class="ng-binding">
+                        <img ng-src="{{avatarUrl(relation.seal.avatar.avatarMedium.url)}}">
+                    </a>
+                    <div class="botoes" ng-if="isEditable && canRelateSeal"><a class="delete hltip js-remove-item"  data-href="" data-target="" data-confirm-message="" title="Excluir selo" ng-click="deleteRelation(relation,relation.seal.id)"></a></div>
+                    <div class="descricao-do-selo">
+                        <h1><a ng-href="http://culturaz.santoandre.sp.gov.br/selos/sealrelation/{{relation.id}}/" class="ng-binding">{{relation.seal.name}}</a></h1>
+                        <p>
+                            <span ng-if="relation.toExpire === 2"><b>Não expira</b></span>
+                            <span ng-if="relation.toExpire === 1"><b>Expira em: {{relation.validateDate}}</b></span>
+                            <span ng-if="relation.toExpire === 0"><b>Expirou em: {{relation.validateDate}}</b></span>
+                        </p>
+                        <p>
+                            <div ng-if="relation.ownerSealUserId != 1264" align="center">
+                                <a ng-if="!relation.renovation_request && relation.toExpire < 2" ng-href="{{relation.requestSealRelationUrl}}" class="btn btn-default js-toggle-edit">
+                                Solicitar renovação                                </a>
+                                <div ng-if="relation.renovation_request && relation.toExpire < 2" class="alert warning">
+                                Renovação Solicitada                                </div>
+                            </div>
+                            <div ng-if="relation.ownerSealUserId == 1264" align="center">
+                                <a ng-if="relation.toExpire < 2" ng-href="{{relation.renewSealRelationUrl}}" class="btn btn-default js-toggle-edit">
+                                Renovar selo                                </a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- BaseV1/layouts/parts/related-seals.php # END -->    <!-- Related Seals END -->
+    <!-- BaseV1/layouts/parts/widget-tags.php # BEGIN -->    <div class="widget">
+        <h3>Tags</h3>
+                                    <a class="tag tag-project" href="http://culturaz.santoandre.sp.gov.br/busca/##(project:(keyword:'teatro'),global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    teatro                </a>
+                            <a class="tag tag-project" href="http://culturaz.santoandre.sp.gov.br/busca/##(project:(keyword:'edital'),global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    edital                </a>
+                            <a class="tag tag-project" href="http://culturaz.santoandre.sp.gov.br/busca/##(project:(keyword:'convocatória'),global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    convocatória                </a>
+                            <a class="tag tag-project" href="http://culturaz.santoandre.sp.gov.br/busca/##(project:(keyword:'escola livre'),global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    escola livre                </a>
+                            <a class="tag tag-project" href="http://culturaz.santoandre.sp.gov.br/busca/##(project:(keyword:'formação teatral'),global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    formação teatral                </a>
+                            <a class="tag tag-project" href="http://culturaz.santoandre.sp.gov.br/busca/##(project:(keyword:'ensino de arte'),global:(enabled:(project:!t),filterEntity:project,viewMode:list))">
+                    ensino de arte                </a>
+                        </div>
+<!-- BaseV1/layouts/parts/widget-tags.php # END -->    <!-- BaseV1/layouts/parts/redes-sociais.php # BEGIN --><div class="widget">
+	<h3>Compartilhar</h3>
+	<div class="fb-share-button btn-social-share" data-href="http://culturaz.santoandre.sp.gov.br/projeto/424/" data-type="button_count"></div>
+	<div class="btn-social-share">
+		<a href="https://twitter.com/share?url=http://culturaz.santoandre.sp.gov.br/projeto/424/" class="twitter-share-button" data-lang="en">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+	<div class="btn-social-share">
+		<div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://culturaz.santoandre.sp.gov.br/projeto/424/"></div>
+		<script type="text/javascript">
+		  window.___gcfg = {lang: 'pt_BR'};
+
+		  (function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/platform.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+	</div>
+</div>
+
+<!-- BaseV1/layouts/parts/redes-sociais.php # END --></div>
+<div class="sidebar project sidebar-right">
+    
+    <!-- Related Admin Agents BEGIN -->
+        <!-- BaseV1/layouts/parts/related-admin-agents.php # BEGIN --><!-- BaseV1/layouts/parts/related-admin-agents.php # END -->    <!-- Related Admin Agents END -->
+
+    <!-- Related Agents BEGIN -->
+    <!-- BaseV1/layouts/parts/related-agents.php # BEGIN --><div class="agentes-relacionados" ng-controller="RelatedAgentsController">
+    <div class="widget" ng-if="isEditable">
+        <edit-box id="new-related-agent-group" position="left" title="Adicionar grupo de agentes" cancel-label="Cancelar" submit-label="Criar" on-cancel="closeNewGroupEditBox" on-submit="createGroup">
+            <input type="text" ng-model="data.newGroupName" placeholder="Nome do grupo de agentes"/>
+        </edit-box>
+        <edit-box id="rename-related-agent-group" position="left" title="Renomear grupo de agentes" cancel-label="Cancelar" submit-label="Renomear" on-cancel="closeRenameGroupEditBox" on-submit="renameGroup">
+            <input type="text" ng-model="data.editGroup.name" value="{{data.editGroup.name}}"/>
+        </edit-box>
+        <a class="btn btn-default add hltip" title="Grupos de agentes podem ser usados para exibir membros de um coletivo, equipes técnicas, etc." ng-click="editbox.open('new-related-agent-group', $event)">Adicionar agentes</a>
+    </div>
+    <div class="widget" ng-repeat="group in groups">
+        
+            
+        <h3>
+            {{group.name}} 
+            <a ng-if="isEditable" class="hltip edit" ng-click="setRenameGroup(group); editbox.open('rename-related-agent-group', $event)" title="Renomear este grupo"></a>
+            <a ng-if="isEditable" class="delete hltip" ng-click="deleteGroup(group)" title="Remover este grupo"></a>
+        </h3>
+        <div class="agentes clearfix">
+            <div class="avatar" ng-repeat="(i, relation) in group.relations" ng-class="{pending: relation.status < 0}">
+                <a href="{{relation.agent.singleUrl}}" ng-if="!isEditable">
+                    <img ng-src="{{avatarUrl(relation.agent)}}" />
+                </a>
+                <img ng-if="isEditable" ng-src="{{avatarUrl(relation.agent)}}" />
+
+                <div class="descricao-do-agente">
+                    <h1><a href="{{relation.agent.singleUrl}}">{{relation.agent.name}}</a></h1>
+                    <div class="alert warning" ng-if="relation.status < 0">Aguardando confirmação.</div>
+                    <div class="objeto-meta">
+                        <div ng-if="relation.agent.terms.area">
+                            <span class="label">Área de Atuação:</span>
+                            <span ng-repeat="area in relation.agent.terms.area">{{area}}<span ng-if="!$last && area">, </span></span>
+                        </div>
+                        <div><span class="label">tipo:</span> {{relation.agent.type.name}}</div>
+                    </div>
+                    <div class="clearfix" ng-if='isEditable && canChangeControl'>
+                        <span class="label">Permitir editar:</span>
+                        <div class="slider-frame" ng-click="toggleControl(relation)" >
+                            <span class="slider-button" ng-class="{'on':relation.hasControl}">{{relation.hasControl ? 'Sim' : 'Não' }}</span>
+                        </div>
+                    </div>
+                    <div ng-if="isEditable && (!relation.hasControl || canChangeControl) && !disabledCD(group.name)">
+                        <a href="#" class="btn btn-danger delete" ng-click="deleteRelation(relation)">Excluir</a>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="isEditable && !disabledCD(group.name)" ng-if="isEditable && !disabledCD(group.name)" ng-click="editbox.open(getCreateAgentRelationEditBoxId(group.name), $event)" class="hltip editable editable-empty" title="Adicionar Integrante a este Grupo"></div>
+            
+            <edit-box ng-if="isEditable" id="{{getCreateAgentRelationEditBoxId(group.name)}}" position="left" title="Adicionar agente relacionado" spinner-condition="spinners[group.name]" cancel-label="Cancelar" close-on-cancel='true'>
+                <find-entity entity="agent" no-results-text="Nenhum agente encontrado" spinner-condition="spinners[group.name]" description="" group="{{group.name}}" filter="filterResult" select="createRelation"></find-entity>
+            </edit-box>
+        </div>
+    </div>
+</div>
+<!-- BaseV1/layouts/parts/related-agents.php # END -->    <!-- Related Agents END -->
+
+    <!-- Projects BEGIN -->
+    <!-- BaseV1/layouts/parts/singles/widget-projects.php # BEGIN -->
+<div class="widget">
+        
+    </div><!-- BaseV1/layouts/parts/singles/widget-projects.php # END -->    <!-- Projects END -->
+
+    <!-- Downloads BEGIN -->
+    <!-- BaseV1/layouts/parts/downloads.php # BEGIN -->    <div class="widget">
+        <h3 class="">Downloads</h3>
+                <ul class="widget-list js-downloads js-slimScroll">
+                            <li id="file-98431" class="widget-list-item" >
+                    <a href="http://culturaz.santoandre.sp.gov.br/files/project/424/ficha_de_inscricao__elt___2018___turma_23.docx"><span>Ficha de Inscrição 2018/2019</span></a>
+                                    </li>
+                            <li id="file-98247" class="widget-list-item" >
+                    <a href="http://culturaz.santoandre.sp.gov.br/files/project/424/convocatoria_elt_turma23_2019_3.pdf"><span>Convocatória ELT Turma 23 2019</span></a>
+                                    </li>
+                            <li id="file-98109" class="widget-list-item" >
+                    <a href="http://culturaz.santoandre.sp.gov.br/files/project/424/cultura_política_e_política_cultural_-_marilena_chauí.pdf"><span>Texto CULTURA POLÍTICA E POLÍTICA CULTURAL, de Marilena Chauí – (Conferência do mês do IEA-USP feita pela autora em 6 de dezembro de 1994.)</span></a>
+                                    </li>
+                            <li id="file-98107" class="widget-list-item" >
+                    <a href="http://culturaz.santoandre.sp.gov.br/files/project/424/a_exibição_das_palavras.pdf"><span>Livro A EXIBIÇÃO DAS PALAVRAS - Uma idéia (política) do teatro, de Denis Guénoun</span></a>
+                                    </li>
+                    </ul>
+    </div>
+<!-- BaseV1/layouts/parts/downloads.php # END -->    <!-- Downloads END -->
+
+    <!-- Link List BEGIN -->
+    <!-- BaseV1/layouts/parts/link-list.php # BEGIN -->
+    <div class="widget" ng-non-bindable>
+        <h3>Links</h3>
+                <ul class="js-metalist widget-list js-slimScroll">
+                            <li id="link-98106" class="widget-list-item" >
+                    <a class="js-metalist-item-display" href="https://www.youtube.com/watch?v=sJd1te_3pjI"><span>Vídeo DOCUMENTÁRIO SOTIGUI KOUYATÉ, UM GRIOT NO BRASIL – Sesc TV </span></a>
+                                    </li>
+                    </ul>
+
+        <div id="editbox-links" ng-non-bindable class="js-editbox mc-left" title="Editar Link"
+             data-action-url="http://culturaz.santoandre.sp.gov.br/projetos/metalist/id:424/"
+             data-response-template="<li id='link-{{id}}' data-item-id='{{id}}' class='widget-list-item'>
+                <a class='js-metalist-item-display' href='{{value}}'>{{title}}</a>
+                <div class='botoes'>
+                    <a class='edit js-open-editbox hltip'
+                        data-target='#editbox-links'
+                        data-dialog-callback='MapasCulturais.MetalistManager.updateDialog'
+                        data-response-target='#link-{{id}}'
+                        data-metalist-action='edit'
+                        href='#' title='editar'></a>
+                    <a class='icon icon-close js-metalist-item-delete hltip js-remove-item' data-href='{{deleteUrl}}' data-target='#link-{{id}}' data-confirm-message='Excluir este link?' title='excluir'></a>
+                </div>
+            </li>"
+             data-metalist-group="links"
+             data-metalist-title-label="Título" 
+             data-metalist-value-label="Endereço (com http://)" 
+             data-metalist-description-label="Descrição">
+                            <!-- BaseV1/layouts/parts/metalist-form-template.php # BEGIN --><form class="js-metalist-form" ng-non-bindable data-response-action="" data-response-target="" method="post" action="">
+    <input type="hidden" class='js-metalist-group'>
+    <script type="text/html" class="js-response-template"></script>
+    <div class="alert danger hidden"></div>
+    <label class="js-metalist-value"> <input type="text" class="js-metalist-value" name='value' style="width:100%" /></label>
+    <label class="js-metalist-title"> <input type="text" class="js-metalist-title" name='title' style="width:100%" /></label>
+</form>
+<!-- BaseV1/layouts/parts/metalist-form-template.php # END -->                    </div>
+    </div>
+<!-- BaseV1/layouts/parts/link-list.php # END -->    <!-- Link List END -->
+</div>
+<!-- BaseV1/views/project/single.php # END --><!-- BaseV1/layouts/parts/footer.php # BEGIN --></section>
+<footer id="main-footer"></footer>
+<!-- BaseV1/layouts/parts/templates.php # BEGIN --><script type="text/html" id="agent-search-result-template">
+    <div class="search-agent clearfix">
+        <img class="search-agent-thumb" src='{{thumbnail}}' alt="{{name}}" />
+        <h1>{{name}}</h1>
+        <div class="objeto-meta">
+            <div>
+                <span class="label">área de atuação:</span>
+                {{areas}}
+            </div>
+            <div><span class="label">tipo:</span>{{type.name}}</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="seal-result-template">
+    <div class="search-seal clearfix">
+        <img class="search-agent-thumb" src='{{thumbnail}}' alt="{{name}}" />
+        <h1>{{name}}</h1>
+    </div>
+</script>
+<!-- BaseV1/layouts/parts/templates.php # END --><iframe id="require-authentication" src="" style="display:none; position:fixed; top:0%; left:0%; width:100%; height:100%; z-index:100000"></iframe>
+</body>
+</html><!-- BaseV1/layouts/parts/footer.php # END -->

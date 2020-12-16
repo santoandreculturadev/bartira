@@ -94,7 +94,7 @@ ini_set(“display_errors”, 1 );
 							<td><?php if(isset($nota['pareceristas'][1]['nota'])){ echo $nota['pareceristas'][1]['nota']; } ?></td>
 							<td><?php if(isset($nota['pareceristas'][1]['usuario'])){ echo $avaliador2['display_name']; } ?></td>
 							<td><?php if(isset($anotacao['pareceristas'][1]['anotacao'])){ echo $anotacao['pareceristas'][1]['anotacao']; } ?></td>
-							<td><?php echo retornaNota2Fase($json['inscricao'],430); ?></td>
+							<td><?php echo retornaNota2Fase($json['inscricao'],580); ?></td>
 							<td><?php echo $res[$i]['nota']; //var_dump($nota);?></td>
 							<td>
 							</td>
