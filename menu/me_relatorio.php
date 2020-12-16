@@ -28,6 +28,14 @@
       </li>
 
       <li class="nav-item">
+           <a class="nav-link" href="relatorioaniversario2020.php" target="_blank">Relatório do Edital de Aniversário 2020 para Impressão</a>
+      </li>
+
+      <li class="nav-item">
+         <a class="nav-link" href="relatoriofundo2020.php" target="_blank">Relatório do Fundo de Cultura 2019/2020 para Impressão</a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="relatoriofundo2019.php" target="_blank">Relatório do Fundo de Cultura 2018/2019 para Impressão</a>
       </li>
 
@@ -42,6 +50,10 @@
       <li class="nav-item">
         <a class="nav-link" href="relatorio.php?p=excel2019" target="_blank">Por Programa (2019)</a>
       </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="relatorio.php?p=excel2020" target="_blank">Por Programa (2020)</a>
+       </li>
       
       <li class="nav-item">
         <a class="nav-link" href="?p=fip2018" >Números do FIP2018</a>
@@ -59,3 +71,28 @@
       </li>
     </ul>
   </nav>
+  <style>
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 200px;
+      }
+
+      li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+      }
+
+      li a.active {
+          background-color: #4CAF50;
+          color: white;
+      }
+
+      li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+      }
+  </style>

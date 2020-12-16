@@ -173,7 +173,7 @@ case "dotacoes":
 							<tbody>
 								<?php 
 								global $wpdb;
-								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2019' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
+								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2020' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
 									
@@ -540,7 +540,7 @@ if(isset($_SESSION['id'])){
 						<div class="col-md-offset-2">
 							<label>Classificação/indicação etária *</label>
 							<select class="form-control" name="faixaEtaria" id="inputSubject" >
-								<option>Escolha uma opção</option>
+								<option value=''>Escolha uma opção</option>
 								<?php geraTipoOpcao("faixa_etaria") ?>
 							</select>
 						</div>
@@ -638,7 +638,7 @@ $idUser = $user->ID;
 	// Inserir evento
 if(isset($_POST['inserir'])){
 	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base` ) 
-	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2019')";		
+	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2020')";
 	$ins = $wpdb->query($sql);
 	if($ins){
 		$mensagem = "Inserido com sucesso";
@@ -856,7 +856,7 @@ if(isset($_POST['atualizar'])){
 						<div class="col-md-offset-2">
 							<label>Classificação/indicação etária *</label>
 							<select class="form-control" name="faixaEtaria" id="inputSubject" >
-								<option>Escolha uma opção</option>
+								<option value=''>Escolha uma opção</option>
 								<?php geraTipoOpcao("faixa_etaria",$evento['faixaEtaria']) ?>
 							</select>
 						</div>
@@ -978,7 +978,7 @@ $event = evento($_SESSION['id']);
 		<div class="row">    
 			<div class="col-md-offset-2 col-md-8">
 				<h1>Pedidos de Contratação</h1>
-				<p>Para que as informações de Empenho e Pagamento sejam visualizadas, é preciso que seja inserido o número do processo (XXXXX/2019). </p>
+				<p>Para que as informações de Empenho e Pagamento sejam visualizadas, é preciso que seja inserido o número do processo (XXXXX/2020). </p>
 				<p><?php if(isset($mensagem)){ echo $mensagem; }?></p>
 			</div>
 		</div>

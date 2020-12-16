@@ -107,6 +107,8 @@ $_SESSION['entidade'] = 'orcamento';
 						</div>
 					</section>
 
+					
+					
 					<?php 	 
 					break;	 
 					case "inserir":
@@ -244,6 +246,8 @@ $_SESSION['entidade'] = 'orcamento';
 						</div>
 					</section>
 
+
+
 					<?php 
 					break;
 					case "editar":
@@ -350,6 +354,17 @@ $_SESSION['entidade'] = 'orcamento';
 							<div class="row">
 								<div class="col-md-offset-1 col-md-10">
 									<form method="POST" action="?p=editar" class="form-horizontal" role="form">
+					<!-- Verificar com a área
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Visualizar?</label>
+							<select class="form-control" name="visualizar" id="projeto" >
+							<option value='0'></option>
+							<option value='1'></option>
+							
+							</select>
+						</div>
+					</div>-->
 
 					<div class="form-group">
 						<div class="col-md-offset-2">
@@ -564,7 +579,7 @@ if(isset($_POST['mov_inserir']) OR isset($_POST['mov_editar']) ){
 if(isset($_POST['mov_inserir'])){
 	global $wpdb;
 	$idUsuario = $user->ID;
-	$sql = "INSERT INTO `sc_mov_orc` (`titulo`, `tipo`, `dotacao`, `data`, `valor`, `descricao`, `idUsuario`, `publicado`) 
+	$sql = "INSERT INTO `sc_mov_orc` (`titulo`, `tipo`, `idOrc`, `data`, `valor`, `descricao`, `idUsuario`, `publicado`) 
 	VALUES ('$titulo', '$tipo', '$dotacao', '$data', '$valor', '$descricao', '$idUsuario', '1')";
 	$ins = $wpdb->query($sql);
 	$id_orc = $wpdb->insert_id;
@@ -585,7 +600,7 @@ if(isset($_POST['mov_editar'])){
 	$sql = "UPDATE `sc_mov_orc` SET
 	`titulo` = '$titulo', 
 	`tipo` = '$tipo', 
-	`dotacao` = '$dotacao', 
+	`idOrc` = '$dotacao', 
 	`data` = '$data', 
 	`valor` = '$valor', 
 	`descricao` = '$descricao', 
@@ -740,7 +755,7 @@ if(isset($_POST['deletar'])){
 					$sql_list =  "SELECT * FROM sc_mov_orc WHERE publicado = '1' ORDER BY data DESC";
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					for($i = 0; $i < count($res); $i++){
-						$dot = recuperaDados("sc_orcamento",$res[$i]['dotacao'],"id");
+						$dot = recuperaDados("sc_orcamento",$res[$i]['idOrc'],"id");
 						$tipo = tipo($res[$i]['tipo']);
 						?>
 						<tr>

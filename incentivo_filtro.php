@@ -72,7 +72,7 @@
 		</div>
 
 		<?php 
-		$sel = "SELECT * FROM sc_ind_incentivo WHERE publicado = '1' $ano_base ORDER BY ocor_inicio DESC";
+		$sel = "SELECT * FROM sc_ind_incentivo WHERE publicado = '1' AND projeto NOT IN (378,723) $ano_base ORDER BY ocor_inicio DESC";
 		$ocor = $wpdb->get_results($sel,ARRAY_A);
 		if(count($ocor) > 0){
 			?>

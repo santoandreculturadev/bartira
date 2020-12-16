@@ -68,7 +68,7 @@ if(isset($_GET['edital'])){
 					$x = opcaoDados($tipo,$id);
 					$g = $x['edital'][1];
 					
-					$edital =  editais("",33);
+					$edital =  editais("",31);
 					
 					if(isset($_GET['order'])){
 						$order = "ORDER BY nota DESC, filtro ASC";
@@ -107,10 +107,10 @@ if(isset($_GET['edital'])){
 							<td><?php echo $k;?></td>
 							<td><a href="http://culturaz.santoandre.sp.gov.br/inscricao/<?php echo substr($json['inscricao'],3); ?>" target="_blank" ><?php echo $json['inscricao']; ?> </a></td>
 
-							<td><?php echo $res_json['5. Título do Projeto']; ?></td>
+							<td><?php echo $res_json['2.1 Título do Projeto']; ?></td>
 							<td><?php echo $res_json['Agente responsável pela inscrição']; ?></td>
-							<td><?php echo $res_json['29. Valor total do projeto (em Reais)']; ?> </td>
-							<td><?php echo retornaNota2Fase($json['inscricao'],492); ?></td> 
+							<td><?php echo $res_json['Valor (em Reais)']; ?> </td>
+							<td><?php echo retornaNota2Fase($json['inscricao'],578); ?></td>
 							<td><?php echo $res[$i]['nota']; ?></td>
 							<td><?php echo listarAvaliadores($json['inscricao']); ?></td>
 							

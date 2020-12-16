@@ -205,6 +205,7 @@ if(isset($_GET['p'])){
 					$duracao   = $_POST["duracao"];
 					$local   = $_POST["local"];
 					$ingressos   = $_POST["ingressos"];
+					$valorIngresso = $_POST["valorIngresso"];
 					$horaFinal = somaMinutos($hora,$duracao);
 					$descricao = addslashes($_POST['descricao']);
 
@@ -336,7 +337,7 @@ if(isset($_GET['p'])){
 							<div class="form-group">
 								<div class="col-md-offset-2 col-md-8">
 									<label>Valor do ingresso (se for entrada franca, inserir 0)</label>
-									<input type="text" name="valorIngresso" class="form-control valor" value="<?php echo dinheiroParaBr($ocor['valorIngresso']); ?>" />
+									<input type="text" name="valorIngresso" class="form-control" value="<?php echo $ocor['valorIngresso']; ?>" />
 								</div>
 							</div>
 

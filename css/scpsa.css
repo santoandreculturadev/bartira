@@ -13,4 +13,9 @@ width: 100%;
 .container{
 	margin-left: none !important;
 }
-
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+}

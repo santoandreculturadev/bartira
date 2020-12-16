@@ -156,17 +156,20 @@
 										<div class="col-md-offset-1 col-md-10">
 											<h2><?php echo $evento['titulo']; ?></h2>
 											<br />
-											<p>Programa : <?php echo $evento['programa']; ?> / Projeto: <?php echo $evento['projeto']; ?> <p>
-												<p>Linguagem: <?php echo $evento['linguagem']; ?></p>
-												<p>Responsavel: <?php echo $evento['responsavel']; ?></p>
-												<p>Autor: <?php echo $evento['autor']; ?></p>
-												<p>Ficha Técnica: <br /> <?php echo $evento['ficha_tecnica']; ?></p>
-												<p>Sinopse: <br /><?php echo $evento['sinopse']; ?></p>
-												<p>Período: <?php echo $evento['periodo']['legivel']; ?> / Local: <?php echo $evento['local']; ?></p>
-												<p>Faixa etária: <?php echo $evento['faixa_etaria']?></p>
+											<p><strong>Programa:</strong> <?php echo $evento['programa']; ?> / <strong>Projeto:</strong> <?php echo $evento['projeto']; ?> <p>
+												<p><strong>Linguagem:</strong> <?php echo $evento['linguagem']; ?></p>
+												<p><strong>Responsavel:</strong> <?php echo $evento['responsavel']; ?></p>
+												<p><strong>Nome do Artista/Cia/Banda/Grupo/Dupla:
+
+</strong> <?php echo $evento['grupo']; ?></p>
+												<p><strong>Ficha Técnica:</strong> <br /> <?php echo $evento['ficha_tecnica']; ?></p>
+												<p><strong>Sinopse:</strong> <br /><?php echo $evento['sinopse']; ?></p>
+												<p><strong>Período:</strong> <?php echo $evento['periodo']['legivel']; ?> / <strong>Local:</strong> <?php echo $evento['local']; ?></p>
+												<p><strong>Faixa etária:</strong> <?php echo $evento['faixa_etaria']?></p>
 												<?php if($evento['mapas']['id'] != 0){ ?>
-													<p>CulturAZ: <a href='<?php echo $GLOBALS['url_mapas']."evento/".$evento['mapas']['id']; ?>' ><?php echo $GLOBALS['url_mapas']."evento/".$evento['mapas']['id']; ?></a>
+													<p><strong>CulturAZ:</strong> <a href='<?php echo $GLOBALS['url_mapas']."evento/".$evento['mapas']['id']; ?>' ><?php echo $GLOBALS['url_mapas']."evento/".$evento['mapas']['id']; ?></a>
 													<?php } ?>
+													<p><strong><font color="#FF0000">Data do último envio:</font></strong> <?php echo $evento['dataEnvio']?></p>
 													<hr>
 													<h4>Infraestrutura ATA</h4>		
 													<?php 
@@ -200,25 +203,6 @@
 													?>
 													
 													<hr>
-													<h4>Comunicação</h4>
-													<?php 
-													$x = producao($_GET['id']);
-													for($i = 0; $i < count($x); $i++){
-														
-														$y = retornaProducao($x[$i]['id_lista_producao']);
-														if($y != false){					
-															if($y['tipo'] == "com"){
-																if($x[$i]['valor'] != ""){	
-																	echo "<li>".$y['titulo']." : ".$x[$i]['valor']."</li>";
-																}
-															}
-														}
-														
-													}
-													
-													
-													?>
-													<hr>
 													<h4>Apoio</h4>
 													<?php 
 													$x = producao($_GET['id']);
@@ -246,9 +230,11 @@
 											<?php 
 											$ped = listaPedidos($_GET['id'],'evento');
 		//var_dump($ped);
-											?><h4><b>Pedidos Relacionados</h4><br />
+											?>
 											<?php 		
-											for($i = 0; $i < count($ped); $i++){
+											for($i = 0; $i < count($ped); $i++){ ?>
+												<h4><b>Pedidos Relacionados</h4><br />
+													<?php 
 												$pedido = retornaPedido($ped[$i]['idPedidoContratacao']);
 												?>
 												<div class="row">

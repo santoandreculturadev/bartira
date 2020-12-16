@@ -68,7 +68,7 @@ $_SESSION['entidade'] = 'orcamento';
 							<tbody>
 								<?php 
 								global $wpdb;
-								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2019' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
+								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2020' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
 									
@@ -206,7 +206,9 @@ $_SESSION['entidade'] = 'orcamento';
 													<option value="3" >3</option>							
 													<option value="4" >4</option>							
 													<option value="5" >5</option>							
-													<option value="6" >6</option>							
+													<option value="6" >6</option>
+                                                    <option value="7" >7</option>
+                                                    <option value="8" >8</option>
 
 												</select>
 											</div>
@@ -220,7 +222,7 @@ $_SESSION['entidade'] = 'orcamento';
 										<div class="form-group">
 											<div class="col-md-offset-2">
 												<label>Ano Base</label>
-												<input type="text" name="ano" class="form-control" id="inputSubject" value="2019" />
+												<input type="text" name="ano" class="form-control" id="inputSubject" value="" />
 											</div> 
 										</div>
 
@@ -416,7 +418,9 @@ $_SESSION['entidade'] = 'orcamento';
 								<option value="3" <?php checado($orcamento['fonte'],array(3)); ?>>3</option>							
 								<option value="4" <?php checado($orcamento['fonte'],array(4)); ?>>4</option>							
 								<option value="5" <?php checado($orcamento['fonte'],array(5)); ?>>5</option>							
-								<option value="6" <?php checado($orcamento['fonte'],array(6)); ?>>6</option>							
+								<option value="6" <?php checado($orcamento['fonte'],array(6)); ?>>6</option>
+                                <option value="7" <?php checado($orcamento['fonte'],array(7)); ?>>7</option>
+                                <option value="8" <?php checado($orcamento['fonte'],array(8)); ?>>8</option>
 
 							</select>
 						</div>
@@ -510,9 +514,9 @@ case "mov_inserir":
 								<option>Escolha uma opção</option>
 								<?php 
 								if(isset($_POST['id'])){
-									echo geraOpcaoDotacao('2019',$_POST['id']); 
+									echo geraOpcaoDotacao('2020',$_POST['id']);
 								}else{
-									echo geraOpcaoDotacao('2019'); 
+									echo geraOpcaoDotacao('2020');
 								}	
 								?>
 								
@@ -559,7 +563,7 @@ case "mov_editar":
 
 if(isset($_POST['carregar'])){
 	$id_orc = $_POST['carregar'];
-	$mov = $wpdb->get_row("SELECT * FROM sc_mov_orc WHERE id =  '$id_orc' AND data NOT LIKE '%2018%'",ARRAY_A);
+	$mov = $wpdb->get_row("SELECT * FROM sc_mov_orc WHERE id =  '$id_orc' AND data NOT LIKE '%2018%' AND data NOT LIKE '%2019%'",ARRAY_A);
 }
 
 if(isset($_POST['mov_inserir']) OR isset($_POST['mov_editar']) ){
@@ -588,7 +592,7 @@ if(isset($_POST['mov_inserir'])){
 		$mensagem = alerta("Erro[4]. Tente novamente.","warning");				
 	}
 
-	$mov = $wpdb->get_row("SELECT * FROM sc_mov_orc WHERE id =  '$id_orc'  AND data NOT LIKE '%2018%'",ARRAY_A);
+	$mov = $wpdb->get_row("SELECT * FROM sc_mov_orc WHERE id =  '$id_orc'  AND data NOT LIKE '%2018%' AND data NOT LIKE '%2019%'",ARRAY_A);
 	
 }
 
@@ -611,7 +615,7 @@ if(isset($_POST['mov_editar'])){
 	}else{
 		$mensagem =  alerta("Erro. Tente novamente.","warning");	
 	}
-	$mov = $wpdb->get_row("SELECT * FROM sc_mov_orc WHERE id =  '$id_orc'  AND data NOT LIKE '%2018%'",ARRAY_A);
+	$mov = $wpdb->get_row("SELECT * FROM sc_mov_orc WHERE id =  '$id_orc'  AND data NOT LIKE '%2018%' AND data NOT LIKE '%2019%'",ARRAY_A);
 	
 }
 
@@ -669,7 +673,7 @@ if(isset($_POST['mov_editar'])){
 							<label>Dotação</label>
 							<select class="form-control" name="dotacao" id="inputSubject" >
 								<option value='0'>Escolha uma opção</option>
-								<?php echo geraOpcaoDotacao('2019',$mov['dotacao']); ?>
+								<?php echo geraOpcaoDotacao('2020',$mov['dotacao']); ?>
 							</select>
 						</div>
 					</div>	
@@ -751,7 +755,7 @@ if(isset($_POST['deletar'])){
 
 					<?php 
 					global $wpdb;
-					$sql_list =  "SELECT * FROM sc_mov_orc WHERE publicado = '1'  AND data NOT LIKE '%2018%' ORDER BY data DESC";
+					$sql_list =  "SELECT * FROM sc_mov_orc WHERE publicado = '1'  AND data NOT LIKE '%2018%' AND data NOT LIKE '%2019%'ORDER BY data DESC";
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					for($i = 0; $i < count($res); $i++){
 						$dot = recuperaDados("sc_orcamento",$res[$i]['dotacao'],"id");
@@ -843,13 +847,14 @@ if(isset($_POST['deletar'])){
 			<h3>Filtro</h3>
 			<font color="#ff0000"><strong>Atenção! Escolha o ano base para iniciar.</strong></font>
 			<div class="col-md-offset-1 col-md-10">
-				<form method="GET" action="orcamento.php?p=visaogeral&ano=2019" class="form-horizontal" role="form">
+				<form method="GET" action="orcamento.php?p=visaogeral&ano=2020" class="form-horizontal" role="form">
 					<div class="col-md-offset-2">
 						<label>Ano Base *</label>
 						<select class="form-control" name="ano_base" id="inputSubject" >
 							<option value='0'>Escolha uma opção</option>
 							<option <?php echo select(1,$anobase_option) ?> >2018</option>
 							<option <?php echo select(2,$anobase_option) ?> >2019</option>
+                            <option <?php echo select(3,$anobase_option) ?> >2020</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -873,6 +878,8 @@ if(isset($_POST['deletar'])){
 								<option <?php echo select(4,$fonte_option) ?> >4</option>
 								<option <?php echo select(5,$fonte_option) ?> >5</option>
 								<option <?php echo select(6,$fonte_option) ?> >6</option>
+                                <option <?php echo select(7,$fonte_option) ?> >7</option>
+                                <option <?php echo select(8,$fonte_option) ?> >8</option>
 								<option value= '0'>Todas as opções</option>
 
 							</select>
@@ -915,18 +922,19 @@ if(isset($_POST['deletar'])){
 				<form method="POST" action="?" />
 				<?php 
 				global $wpdb;
-				$sql_list =  "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' $ano_base $unidade $fonte $projeto $ficha ORDER BY projeto ASC, ficha ASC";
+				$sql_list =  "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' $ano_base $unidade $fonte $projeto $ficha 
+                                ORDER BY projeto ASC, ficha ASC";
 				$res = $wpdb->get_results($sql_list,ARRAY_A);
-				$total_orc = array(2018 => 0, 2019 => 0);
-				$total_con = array(2018 => 0, 2019 => 0);
-				$total_des = array(2018 => 0, 2019 => 0);
-				$total_sup = array(2018 => 0, 2019 => 0);
-				$total_res = array(2018 => 0, 2019 => 0);
-				$total_tot = array(2018 => 0, 2019 => 0);
-				$total_pla = array(2018 => 0, 2019 => 0);
-				$total_lib = array(2018 => 0, 2019 => 0);
-				$total_anul = array(2018 => 0, 2019 => 0);
-				$total_rev = array(2018 => 0, 2019 => 0);
+				$total_orc = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_con = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_des = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_sup = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_res = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_tot = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_pla = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_lib = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_anul = array(2018 => 0, 2019 => 0, 2020 => 0);
+				$total_rev = array(2018 => 0, 2019 => 0, 2020 => 0);
 				
 				for($i = 0; $i < count($res); $i++){
 					$orc = orcamento($res[$i]['id']);
@@ -1062,7 +1070,25 @@ if(isset($_POST['deletar'])){
 					<td><?php echo dinheiroParaBr($total_pla['2019']); ?></td>
 					<td><?php echo dinheiroParaBr($total_tot['2019'] - $total_pla['2019'] + $total_lib['2019']); ?></td>
 					<td></td>
-					
+                <tr>
+                </tr>
+                    <td></td>
+                    <td>TOTAL 2020:</td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo dinheiroParaBr($total_orc['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_con['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_des['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_sup['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_anul['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_rev['2020']); ?></td>
+
+                    <td><?php echo dinheiroParaBr($total_lib['2020']); ?></td>
+                    
+                    <td><?php echo dinheiroParaBr($total_tot['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_pla['2020']); ?></td>
+                    <td><?php echo dinheiroParaBr($total_tot['2020'] - $total_pla['2020'] + $total_lib['2020']); ?></td>
+                    <td></td>
 				</tr>
 				<?php ?>
 			</tbody>
@@ -1129,6 +1155,7 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 							<option value='0'>Escolha uma opção</option>
 							<option <?php echo select(1,$fonte_option) ?> >2018</option>
 							<option <?php echo select(2,$fonte_option) ?> >2019</option>
+							<option <?php echo select(3,$fonte_option) ?> >2020</option>
 						</select>
 					</div>
 					<div class="col-md-offset-2">
@@ -1150,6 +1177,8 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 						<option <?php echo select(4,$fonte_option) ?> >4</option>
 						<option <?php echo select(5,$fonte_option) ?> >5</option>
 						<option <?php echo select(6,$fonte_option) ?> >6</option>
+                        <option <?php echo select(7,$fonte_option) ?> >7</option>
+                        <option <?php echo select(8,$fonte_option) ?> >8</option>
 						<option value= '0'>Todas as opções</option>
 
 					</select>
@@ -1683,7 +1712,8 @@ if(isset($_POST['apagar'])){
 		$obs = addslashes($_POST['obs']);					
 		$ver = retornaPlanejamento2019($idPlan);
 	if($ver['bool'] == FALSE){ // insere
-		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) VALUES ('$valor','$idPlan','$dotacao','1','$obs','2019')";
+		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
+            VALUES ('$valor','$idPlan','$dotacao','1','$obs','2019')";
 		$ins = $wpdb->query($sql_ins);
 		if($ins == 1){
 			$mensagem = alerta("Planejamento atualizado.","success");	
@@ -1764,7 +1794,8 @@ if(isset($_POST['apagar'])){
 				<tbody>
 					<?php 
 					global $wpdb;
-					$sql_list =  "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1' AND ano_base = '2019' ORDER BY tipo ASC";
+					$sql_list =  "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1' 
+                        AND ano_base = '2019' ORDER BY tipo ASC";
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					
 					for($i = 0; $i < count($res); $i++){
@@ -1777,7 +1808,9 @@ if(isset($_POST['apagar'])){
 							<td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
 							<td><?php echo $programa['tipo']; //var_dump($json); ?></td>
 							<form method="POST" action="?p=planejamento2019" class="form-horizontal" role="form">
-								<td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"   value="<?php echo dinheiroParaBr($plan['valor']); ?>"/></td>	
+								<td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"
+                                              value="<?php echo dinheiroParaBr($plan['valor']); ?>"/>
+                                </td>
 								<td>					
 									
 									<select class="form-control" name="dotacao" id="inputSubject" >
@@ -1809,10 +1842,150 @@ if(isset($_POST['apagar'])){
 		</div>
 	</section>
 
+        <?php
+        break;
+        case "planejamento2020":
 
-	<?php 
-	break;
-	case "listaprograma":
+        if(isset($_POST['atualiza'])){
+            $idPlan = $_POST['atualiza'];
+            $valor = dinheiroDeBr($_POST['valor']);
+            $dotacao = $_POST['dotacao'];
+            $obs = addslashes($_POST['obs']);
+            $ver = retornaPlanejamento2020($idPlan);
+            if($ver['bool'] == FALSE){ // insere
+                $sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
+            VALUES ('$valor','$idPlan','$dotacao','1','$obs','2020')";
+                $ins = $wpdb->query($sql_ins);
+                if($ins == 1){
+                    $mensagem = alerta("Planejamento atualizado.","success");
+
+                }else{
+                    $mensagem = alerta("Erro. Tente novamente","warning");
+                }
+
+            }else{ // atualiza
+                $sql_ins = "UPDATE `sc_orcamento` SET `valor` = '$valor',
+		`idPai` = '$dotacao' ,
+		`obs` = '$obs' 
+		WHERE planejamento = '$idPlan' AND ano_base = '2020'";
+                $ins = $wpdb->query($sql_ins);
+                if($ins == 1){
+                    $mensagem = alerta("Planejamento atualizado.","success");
+
+                }else{
+                    $mensagem = alerta("Erro. Tente novamente","warning");
+                }
+            }
+        }
+
+        if(isset($_POST['apagar'])){
+            $id = $_POST['apagar'];
+            $sql_upd = "UPDATE sc_tipo SET publicado = '0' WHERE id_tipo = '$id' ";
+            $ins = $wpdb->query($sql_upd);
+            if($ins == 1){
+                $mensagem = alerta("Projeto apagado.","success");
+            }else{
+                $mensagem = alerta("Erro. Tente novamente","warning");
+            }
+        }
+
+
+        ?>
+        <link href="css/jquery-ui.css" rel="stylesheet">
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/mask.js"></script>
+        <script src="js/maskMoney.js"></script>
+        <script>
+            $(function() {
+                $( ".calendario" ).datepicker();
+                $( ".hora" ).mask("99:99");
+                $( ".min" ).mask("999");
+                $( ".valor" ).maskMoney({prefix:'', thousands:'.', decimal:',', affixesStay: true});
+            });
+
+
+
+        </script>
+        <section id="contact" class="home-section bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <h1>Planejamento 2020</h1>
+                        <p><?php if(isset($mensagem)){echo $mensagem;}?></p>
+                    </div>
+                </div>
+
+                <div class="col-md-offset-1 col-md-10">
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+
+                            <th>Projeto</th>
+                            <th>Programa</th>
+                            <th width="15%">Valor</th>
+                            <th>Dotação</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        global $wpdb;
+                        $sql_list =  "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1' 
+                        AND ano_base = '2020' ORDER BY tipo ASC";
+                        $res = $wpdb->get_results($sql_list,ARRAY_A);
+
+                        for($i = 0; $i < count($res); $i++){
+                            $json = json_decode($res[$i]['descricao'],true);
+                            $programa = tipo($json['programa']);
+                            $plan = retornaPlanejamento2020($res[$i]['id_tipo']);
+                            ?>
+                            <tr>
+
+                                <td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
+                                <td><?php echo $programa['tipo']; //var_dump($json); ?></td>
+                                <form method="POST" action="?p=planejamento2020" class="form-horizontal" role="form">
+                                    <td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"
+                                                                          value="<?php echo dinheiroParaBr($plan['valor']); ?>"/>
+                                    </td>
+                                    <td>
+
+                                        <select class="form-control" name="dotacao" id="inputSubject" >
+                                            <option value="NULL">Escolha uma opção</option>
+                                            <?php echo geraOpcaoDotacao('2020',$plan['dotacao']); ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                    <td><textarea class="form-control" name="obs" cols="120"><?php echo $plan['obs']; ?></textarea></td>
+                                    <td>
+                                        <input type="hidden" name="atualiza" value="<?php echo $res[$i]['id_tipo']; ?>" />
+                                        <input type="submit" class="btn btn-theme btn-sm btn-block" value="Atualiza">
+                                </form>
+                                </td>
+                                <td>
+                                    <form method="POST" action="?p=planejamento2020" class="form-horizontal" role="form">
+                                        <input type="hidden" name="apagar" value="<?php echo $res[$i]['id_tipo']; ?>" />
+                                        <input type="submit" class="btn btn-theme btn-sm btn-block" value="Apagar">
+                                    </form>
+                                </td>
+                            </tr>
+
+                        <?php } ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+        <?php
+        break;
+        case "listaprograma":
 
 
 
@@ -1862,13 +2035,13 @@ if(isset($_POST['apagar'])){
 						for($i = 0; $i < count($res); $i++){
 							$json = json_decode($res[$i]['descricao'],true);
 							$programa = tipo($json['programa']);
-							$plan = retornaPlanejamento($res[$i]['id_tipo']);
+							$plan = retornaPlanejamento2020($res[$i]['id_tipo']);
 							?>
 							<tr>
 								
 								<td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
 
-								<form method="POST" action="?p=planejamento2018" class="form-horizontal" role="form">
+								<form method="POST" action="?p=planejamento2019" class="form-horizontal" role="form">
 									<td>	
 
 										<input type="hidden" name="atualiza" value="<?php echo $res[$i]['id_tipo']; ?>" />
@@ -1889,6 +2062,17 @@ if(isset($_POST['apagar'])){
 	break;
 	case "listaprojeto":
 
+    if(isset($_GET['ano_base']) AND $_GET['ano_base'] != 0 ){
+        $ano_base = " AND ano_base ='".$_GET['ano_base']."' ";
+        $anobase_option = $_GET['ano_base'];
+    }else{
+        $ano_base = "";
+        $anobase_option = 0;
+
+    }
+    ?>
+
+    <?php
 	if(isset($_POST['inserir'])){
 		$titulo = $_POST['titulo'];
 		$programa = $_POST['programa'];
@@ -1904,7 +2088,8 @@ if(isset($_POST['apagar'])){
 			"descricao" => "$descricao"
 		);
 		$des = json_encode($json);
-		$sql_upd = "INSERT INTO `sc_tipo` (`id_tipo`, `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`) VALUES (NULL, '$titulo', '$des', 'projeto', '1', '2019')";
+		$sql_upd = "INSERT INTO `sc_tipo` (`id_tipo`, `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`) 
+            VALUES (NULL, '$titulo', '$des', 'projeto', '1', '2020')";
 		$upd = $wpdb->query($sql_upd);
 		if($upd == 1){
 			$mensagem = alerta("Inserido com sucesso.","success");
@@ -1989,7 +2174,8 @@ if(isset($_POST['apagar'])){
 
 						<?php 
 						global $wpdb;
-						$sql_list =  "SELECT * FROM sc_tipo WHERE publicado = '1' AND abreviatura = 'projeto' AND ano_base = '2019' ORDER BY tipo ASC";
+						$sql_list =  "SELECT * FROM sc_tipo WHERE publicado = '1' AND abreviatura = 'projeto' 
+                                AND ano_base = '2020' ORDER BY tipo ASC";
 						$res = $wpdb->get_results($sql_list,ARRAY_A);
 						
 						for($i = 0; $i < count($res); $i++){

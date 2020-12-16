@@ -797,7 +797,8 @@ $data = array(
 
 $teste = chamaAPI("http://culturaz.santoandre.sp.gov.br/api/agent/find/",$data);
 
-?>		  
+
+?>
 <div class="container">
 	<div class="row">    
 		<div class="col-md-offset-2 col-md-8">
@@ -1096,7 +1097,11 @@ $abc = array("SANTO ANDRÉ","SÃO BERNARDO DO CAMPO","SÃO CAETANO DO SUL", "DIA
 				</td>
 
 			</tr>				
-			
+			<tr>
+				<td>Orçamento Executado por linguagem </td>
+				<td></td>
+
+			</tr>				
 
 		</tbody>
 	</table>
@@ -1370,6 +1375,11 @@ $abc = array("SANTO ANDRE","SAO BERNARDO DO CAMPO","SAO CAETANO DO SUL", "DIADEM
 					
 					
 				</td>
+
+			</tr>				
+			<tr>
+				<td>Orçamento Executado por linguagem </td>
+				<td></td>
 
 			</tr>				
 
@@ -2221,6 +2231,140 @@ echo "</pre>";
 
 
 	?>
+
+    <?php
+    break;
+    case "excel2020":
+    ?>
+        <form method="POST" action="?p=excel2019" class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <label>Programa</label>
+                    <select class="form-control" name="programa" id="programa" >
+                        <?php
+                        global $wpdb;
+                        $sql_prog = "SELECT * FROM sc_tipo WHERE abreviatura = 'programa' AND publicado = '1' ORDER BY tipo ASC";
+                        $prog = $wpdb->get_results($sql_prog,ARRAY_A);
+                        for($j = 0; $j < count($prog); $j++){ ?>
+                            <option value="<?php echo $prog[$j]['id_tipo'];?>" >
+                                <?php echo $prog[$j]['tipo']; ?>
+                            </option>
+                        <?php } ?>
+                        <option value='0'>TODOS OS PROGRAMAS</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-theme" value="Filtrar">
+        </form>
+        <br /><br />
+
+
+        <?php
+
+        if(isset($_GET['programa']) AND $_GET['programa'] != 0 ){
+            $programa = " AND idPrograma ='".$_GET['programa']."' ";
+        }else{
+            $programa = "";
+        }
+
+        if(isset($_POST['programa']) AND $_POST['programa'] != 0 ){
+            $programa = " AND idPrograma ='".$_POST['programa']."' ";
+        }else{
+            $programa = "";
+        }
+
+
+        if ($programa != '')
+        {
+            $prog = tipo($programa);
+            echo "<h1>".$prog['tipo']."</h1>";
+        }
+        elseif ($programa == 0)
+        {
+            echo "<h1>TODOS OS PROGRAMAS</h1>";
+        }
+        else
+        {
+            echo "<h1>TODOS OS PROGRAMAS</h1>";
+        }
+
+        $total = 0;
+    // nomeEvento e o programa
+        echo "<table border='1'>";
+        $sql = "SELECT nomeEvento,idProjeto, valor, nLiberacao, dotacao, idPrograma FROM sc_evento,sc_contratacao 
+            WHERE sc_evento.idEvento = sc_contratacao.idEvento AND sc_contratacao.ano_base = '2020' 
+            AND sc_evento.publicado = '1' AND sc_contratacao.publicado = '1' AND sc_evento.dataEnvio 
+            IS NOT NULL AND cancelamento = '0' $programa ORDER BY nLiberacao";
+        $x = $wpdb->get_results($sql,ARRAY_A);
+
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>Programa</th>";
+        echo "<th>Tipo</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Projeto</th>";
+        echo "<th>Valor</th>";
+        echo "<th>Liberação</th>";
+        echo "<th>Projeto/Ficha</th>";
+        echo "<th>Descrição</th>";
+        echo "<th></th>";
+        echo "</tr>";
+        echo "</thead>";
+        for($i = 0; $i < count($x); $i++){
+            $projeto = tipo($x[$i]['idProjeto']);
+            $dot = retornaDot($x[$i]['dotacao']);
+            $prog = tipo($x[$i]['idPrograma']);
+            if($x[$i]['nLiberacao'] != ""){
+                echo "<tr>";
+                echo "<td>".$prog['tipo']."</td>";
+                echo "<td>Evento</td>";
+                echo "<td>".$x[$i]['nomeEvento']."</td>";
+                echo "<td>".$projeto['tipo']."</td>";
+                echo "<td>".dinheiroParaBr($x[$i]['valor'])."</td>";
+                echo "<td>".$x[$i]['nLiberacao']."</td>";
+                echo "<td>".$dot['projeto']."/".$dot['ficha']."</td>";
+                echo "<td>".$dot['descricao']."</td>";
+                echo "<tr />";
+                $total = $total + $x[$i]['valor'];
+            }
+
+        }
+
+        $sql = "SELECT titulo,idProjeto, valor, nLiberacao, dotacao FROM sc_atividade,sc_contratacao,idPrograma WHERE sc_atividade.id = sc_contratacao.idAtividade AND sc_contratacao.ano_base = '2019' AND sc_atividade.publicado = '1' AND sc_contratacao.publicado = '1' $programa ORDER BY nLiberacao";
+        $x = $wpdb->get_results($sql,ARRAY_A);
+
+        for($i = 0; $i < count($x); $i++){
+            $projeto = tipo($x[$i]['idProjeto']);
+            $dot = retornaDot($x[$i]['dotacao']);
+            $prog = tipo($x[$i]['idPrograma']);
+            if($x[$i]['nLiberacao'] != ""){
+                echo "<tr>";
+                echo "<td>".$prog['tipo']."</td>";
+                echo "<td>Atividade</td>";
+                echo "<td>".$x[$i]['titulo']."</td>";
+                echo "<td>".$projeto['tipo']."</td>";
+                echo "<td>".dinheiroParaBr($x[$i]['valor'])."</td>";
+                echo "<td>".$x[$i]['nLiberacao']."</td>";
+                echo "<td>".$dot['projeto']."/".$dot['ficha']."</td>";
+                echo "<td>".$dot['descricao']."</td>";
+                echo "<tr />";
+                $total = $total + $x[$i]['valor'];
+            }
+
+        }
+        echo "<tr>
+        <td>Total:</td>";
+        echo "<td></td>";
+        echo "<td></td>";
+        echo "<td></td>";
+        echo "<td>".dinheiroParaBr($total)."</td>";
+        echo "<td></td>";
+        echo "</tr>";
+
+        echo "<table>";
+
+    ?>
 
 	<?php 
 	break;

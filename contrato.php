@@ -93,7 +93,7 @@ if((isset($numero))){
 		$evento = $_SESSION['id'];
 		$pessoa = 1;
 		$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-		VALUES ('$evento', '1', '$numero','1','2019')";
+		VALUES ('$evento', '1', '$numero','1','2020')";
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id){
 			$mensagem = '<div class="alert alert-success"> Pedido inserido com sucesso. </div>';			
@@ -109,7 +109,7 @@ if(isset($_POST['insere_pedido_pf'])){
 		$pessoa = 1;
 		$id_pessoa = $_POST['insere_pedido_pf'];
 		$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-		VALUES ('$evento', '1', '$id_pessoa', '1', '2019')";
+		VALUES ('$evento', '1', '$id_pessoa', '1', '2020')";
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
 			$mensagem = '<div class="alert alert-success">Pedido criado com sucesso.</div>';
@@ -126,7 +126,7 @@ if(isset($_POST['insere_pedido_pj'])){
 		$pessoa = 2;
 		$id_pessoa = $_POST['insere_pedido_pj'];
 		$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-		VALUES ('$evento', '2', '$id_pessoa', '1', '2019')";
+		VALUES ('$evento', '2', '$id_pessoa', '1', '2020')";
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
 			$mensagem = '<div class="alert alert-success">Pedido criado com sucesso.</div>';
@@ -201,7 +201,7 @@ if((isset($numero_pj))){
 		$evento = $_SESSION['id'];
 		$pessoa = 1;
 		$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-		VALUES ('$evento', '2', '$numero_pj','1','2019')";
+		VALUES ('$evento', '2', '$numero_pj','1','2020')";
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id){
 			$mensagem = '<div class="alert alert-success"> Pedido inserido com sucesso. </div>';			
@@ -253,12 +253,18 @@ if((isset($numero_pj))){
 					<tbody>
 						<?php 
 						if(isset($_GET['f'])){
-							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '2019' AND (liberado = '0000-00-00' OR nLiberacao = '') AND (idEvento IN (SELECT idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (status = '3' OR status = '4') AND cancelamento = '0') OR idAtividade <> '0') AND (valor <> '0' AND valor IS NOT NULL) AND (dotacao IS NOT NULL AND dotacao <> '0')  ORDER BY nLiberacao DESC";
+							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '2020' AND (liberado = '0000-00-00' OR nLiberacao = '') 
+                            AND (idEvento IN (SELECT idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (status = '3' OR status = '4') 
+                            AND cancelamento = '0') OR idAtividade <> '0') AND (valor <> '0' AND valor IS NOT NULL) 
+                            AND (dotacao IS NOT NULL AND dotacao <> '0')  ORDER BY nLiberacao DESC";
 							$peds = $wpdb->get_results($sql_seleciona,ARRAY_A);
 						}
 						else
 						{
-							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '2019' AND (liberado != '0000-00-00' OR nLiberacao != '') AND (idEvento IN (SELECT idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (status = '3' OR status = '4') AND cancelamento = '0') OR idAtividade <> '0') AND (valor <> '0' AND valor IS NOT NULL) AND (dotacao IS NOT NULL AND dotacao <> '0')  ORDER BY nLiberacao DESC";
+							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '2020' 
+                            AND (liberado != '0000-00-00' OR nLiberacao != '') AND (idEvento IN (SELECT idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL 
+                            AND (status = '3' OR status = '4') AND cancelamento = '0') OR idAtividade <> '0') AND (valor <> '0' AND valor IS NOT NULL) 
+                            AND (dotacao IS NOT NULL AND dotacao <> '0')  ORDER BY nLiberacao DESC";
 							$peds = $wpdb->get_results($sql_seleciona,ARRAY_A);
 
 						}	
@@ -283,7 +289,7 @@ if((isset($numero_pj))){
 							<td><?php echo $pedido['periodo']; ?></td>
 							<td><?php echo dinheiroParaBr($peds[$i]['valor']); ?></td>
 							<td>	
-								<form method="POST" action="?p=editar_pedido" class="form-horizontal" role="form">
+								<form method="POST" action="?p=editar_pedido" class="form-horizontal" role="form" target="_blank">
 									<input type="hidden" name="editar_pedido" value="<?php echo $peds[$i]['idPedidoContratacao']; ?>" />
 									<input type="submit" class="btn btn-theme btn-sm btn-block" value="Editar Pedido">
 								</form>
@@ -1327,7 +1333,7 @@ if(count($res) > 0){
  						<label>Dotação</label>
  						<select class="form-control" name="dotacao" id="inputSubject" >
  							<option>Escolha uma opção</option>
- 							<?php echo geraOpcaoDotacao('2019',$pedido['dotacao']); ?>
+ 							<?php echo geraOpcaoDotacao('2020',$pedido['dotacao']); ?>
  						</select>			
  					</div>
  				</div>
