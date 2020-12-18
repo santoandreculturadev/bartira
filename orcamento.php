@@ -207,8 +207,8 @@ $_SESSION['entidade'] = 'orcamento';
 													<option value="4" >4</option>							
 													<option value="5" >5</option>							
 													<option value="6" >6</option>
-                                                    <option value="7" >7</option>
-                                                    <option value="8" >8</option>
+                                                  							<option value="7" >7</option>
+                                                    							<option value="8" >8</option>
 
 												</select>
 											</div>
@@ -419,8 +419,8 @@ $_SESSION['entidade'] = 'orcamento';
 								<option value="4" <?php checado($orcamento['fonte'],array(4)); ?>>4</option>							
 								<option value="5" <?php checado($orcamento['fonte'],array(5)); ?>>5</option>							
 								<option value="6" <?php checado($orcamento['fonte'],array(6)); ?>>6</option>
-                                <option value="7" <?php checado($orcamento['fonte'],array(7)); ?>>7</option>
-                                <option value="8" <?php checado($orcamento['fonte'],array(8)); ?>>8</option>
+                                				<option value="7" <?php checado($orcamento['fonte'],array(7)); ?>>7</option>
+                                				<option value="8" <?php checado($orcamento['fonte'],array(8)); ?>>8</option>
 
 							</select>
 						</div>
@@ -854,7 +854,8 @@ if(isset($_POST['deletar'])){
 							<option value='0'>Escolha uma opção</option>
 							<option <?php echo select(1,$anobase_option) ?> >2018</option>
 							<option <?php echo select(2,$anobase_option) ?> >2019</option>
-                            <option <?php echo select(3,$anobase_option) ?> >2020</option>
+                            				<option <?php echo select(3,$anobase_option) ?> >2020</option>
+							<option <?php echo select(3,$anobase_option) ?> >2021</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -878,8 +879,8 @@ if(isset($_POST['deletar'])){
 								<option <?php echo select(4,$fonte_option) ?> >4</option>
 								<option <?php echo select(5,$fonte_option) ?> >5</option>
 								<option <?php echo select(6,$fonte_option) ?> >6</option>
-                                <option <?php echo select(7,$fonte_option) ?> >7</option>
-                                <option <?php echo select(8,$fonte_option) ?> >8</option>
+                                				<option <?php echo select(7,$fonte_option) ?> >7</option>
+                                				<option <?php echo select(8,$fonte_option) ?> >8</option>
 								<option value= '0'>Todas as opções</option>
 
 							</select>
@@ -1070,25 +1071,44 @@ if(isset($_POST['deletar'])){
 					<td><?php echo dinheiroParaBr($total_pla['2019']); ?></td>
 					<td><?php echo dinheiroParaBr($total_tot['2019'] - $total_pla['2019'] + $total_lib['2019']); ?></td>
 					<td></td>
-                <tr>
-                </tr>
-                    <td></td>
-                    <td>TOTAL 2020:</td>
-                    <td></td>
-                    <td></td>
-                    <td><?php echo dinheiroParaBr($total_orc['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_con['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_des['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_sup['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_anul['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_rev['2020']); ?></td>
+				<tr>
+				</tr>
+				    <td></td>
+				    <td>TOTAL 2020:</td>
+				    <td></td>
+				    <td></td>
+				    <td><?php echo dinheiroParaBr($total_orc['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_con['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_des['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_sup['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_anul['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_rev['2020']); ?></td>
 
-                    <td><?php echo dinheiroParaBr($total_lib['2020']); ?></td>
-                    
-                    <td><?php echo dinheiroParaBr($total_tot['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_pla['2020']); ?></td>
-                    <td><?php echo dinheiroParaBr($total_tot['2020'] - $total_pla['2020'] + $total_lib['2020']); ?></td>
-                    <td></td>
+				    <td><?php echo dinheiroParaBr($total_lib['2020']); ?></td>
+				    
+				    <td><?php echo dinheiroParaBr($total_tot['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_pla['2020']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_tot['2020'] - $total_pla['2020'] + $total_lib['2020']); ?></td>
+				    <td></td>
+				</tr>
+				</tr>
+				    <td></td>
+				    <td>TOTAL 2021:</td>
+				    <td></td>
+				    <td></td>
+				    <td><?php echo dinheiroParaBr($total_orc['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_con['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_des['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_sup['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_anul['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_rev['2021']); ?></td>
+
+				    <td><?php echo dinheiroParaBr($total_lib['2021']); ?></td>
+				    
+				    <td><?php echo dinheiroParaBr($total_tot['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_pla['2021']); ?></td>
+				    <td><?php echo dinheiroParaBr($total_tot['2021'] - $total_pla['2021'] + $total_lib['2021']); ?></td>
+				    <td></td>
 				</tr>
 				<?php ?>
 			</tbody>
@@ -1156,6 +1176,7 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 							<option <?php echo select(1,$fonte_option) ?> >2018</option>
 							<option <?php echo select(2,$fonte_option) ?> >2019</option>
 							<option <?php echo select(3,$fonte_option) ?> >2020</option>
+							<option <?php echo select(3,$fonte_option) ?> >2021</option>
 						</select>
 					</div>
 					<div class="col-md-offset-2">
@@ -1177,8 +1198,8 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 						<option <?php echo select(4,$fonte_option) ?> >4</option>
 						<option <?php echo select(5,$fonte_option) ?> >5</option>
 						<option <?php echo select(6,$fonte_option) ?> >6</option>
-                        <option <?php echo select(7,$fonte_option) ?> >7</option>
-                        <option <?php echo select(8,$fonte_option) ?> >8</option>
+                        			<option <?php echo select(7,$fonte_option) ?> >7</option>
+                        			<option <?php echo select(8,$fonte_option) ?> >8</option>
 						<option value= '0'>Todas as opções</option>
 
 					</select>
