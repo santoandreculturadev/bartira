@@ -2,7 +2,7 @@
 # SCPSA - Secretária de Cultura Prefeitura de Santo Andre
 
 
-Bartira  é  uma  plataforma  deintranet  implantada  em  2017 especialmente  para  atender  às necessidades  da  Secretaria  deCultura relativas ao gerenciamentode procedimentos internos. É de usoexclusivo  dos  funcionários  da Secretaria e administra informações de orçamento,planejamento, execução orçamentária,divulgação e indicadores culturais. É a principal fonte de entrada de dados e a partir de onde  derivam  as  informações para  plataformas  como  a  AgendaCultural Online e o CulturAZ.
+Bartira  é  uma  plataforma  de intranet  implantada  em  2017 especialmente  para  atender  às necessidades  da  Secretaria  deCultura relativas ao gerenciamentode procedimentos internos. É de usoexclusivo  dos  funcionários  da Secretaria e administra informações de orçamento,planejamento, execução orçamentária,divulgação e indicadores culturais. É a principal fonte de entrada de dados e a partir de onde  derivam  as  informações para  plataformas  como  a  AgendaCultural Online e o CulturAZ.
 
 Através do “Bartira” estabelecemosa  integração  dos  dados  culturaiscom  outros  sistemas  e  bases  dedados da Prefeitura Municipal, tais como   o   SIGA   (Sistema   deInformações GeográficasAndreense)  e  o  BDM  (Banco  deDados Municipais)
 
