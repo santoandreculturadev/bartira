@@ -6,6 +6,8 @@ Bartira  é  uma  plataforma  deintranet  implantada  em  2017especialmente  par
 
 Através do “Bartira” estabelecemosa  integração  dos  dados  culturaiscom  outros  sistemas  e  bases  dedados da Prefeitura Municipal, taiscomo   o   SIGA   (Sistema   deInformações GeográficasAndreense)  e  o  BDM  (Banco  deDados Municipais)
 
+# Temas especificos da modelagem do sistema
+
 Modelagem "Atividade" (não é evento);
 
 titulo VARCHAR(250)
