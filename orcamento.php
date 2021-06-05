@@ -889,7 +889,7 @@ if(isset($_POST['deletar'])){
 
 //filtros projeto e ficha
 	?>
-	<section id="contact" class="home-section bg-white">
+	<section id="contact" class="home-section bg-white barra-horizontal">
 		<div class="container">
 			<div class="row">    
 				<div class="col-md-offset-2 col-md-8">
@@ -1174,7 +1174,7 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 
 //filtros projeto e ficha
 ?>
-<section id="contact" class="home-section bg-white">
+<section id="contact" class="home-section bg-white ">
 	<div class="container">
 		<div class="row">    
 			<div class="col-md-offset-2 col-md-8">
