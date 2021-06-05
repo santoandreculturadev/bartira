@@ -30,6 +30,13 @@ $_SESSION['entidade'] = 'orcamento';
 				unset($_SESSION['id']);
 			}
 
+			if(isset($_GET['ano_base'])){
+				$anobase = $_GET['ano_base'];
+			}else{
+				$anobase = date('Y');
+			}	
+
+
 			if(isset($_POST['apagar'])){
 				$id = $_POST['apagar'];
 				$sql_upd = "UPDATE `sc_orcamento` SET `publicado` = '0' WHERE `id` = '$id'";
@@ -51,6 +58,35 @@ $_SESSION['entidade'] = 'orcamento';
 							<?php if(isset($mensagem)){echo $mensagem;}?>
 						</div>
 					</div>
+										<div class="row">    
+						<div class="col-md-offset-2 col-md-8">
+									<form method="GET" action="orcamento.php?p=listar" class="form-horizontal" role="form">
+					<div class="col-md-offset-2">
+						<label>Ano Base *</label>
+						<select class="form-control" name="ano_base" id="inputSubject" >
+							<option value='0'>Escolha uma opção</option>
+							<?php 
+							$ano_b = anoOrcamento();
+							for($i = 0; $i < sizeof($ano_b); $i++){
+							?>
+							<option value='<?php echo $ano_b[$i]['ano_base']; ?>' <?php echo select($anobase,$ano_b[$i]['ano_base']);?>><?php echo $ano_b[$i]['ano_base']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<input type="submit" class="btn btn-theme btn-sm btn-block" value="Aplicar">
+				</div>
+			</div>	
+						</form>
+						
+						</div>
+						
+					
+					
+					
+					
+					
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
@@ -68,7 +104,7 @@ $_SESSION['entidade'] = 'orcamento';
 							<tbody>
 								<?php 
 								global $wpdb;
-								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2020' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
+								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '$anobase' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
 									
@@ -863,14 +899,17 @@ if(isset($_POST['deletar'])){
 			<h3>Filtro</h3>
 			<font color="#ff0000"><strong>Atenção! Escolha o ano base para iniciar.</strong></font>
 			<div class="col-md-offset-1 col-md-10">
-				<form method="GET" action="orcamento.php?p=visaogeral&ano=2020" class="form-horizontal" role="form">
+				<form method="GET" action="orcamento.php?p=visaogeral" class="form-horizontal" role="form">
 					<div class="col-md-offset-2">
 						<label>Ano Base *</label>
 						<select class="form-control" name="ano_base" id="inputSubject" >
 							<option value='0'>Escolha uma opção</option>
-							<option <?php echo select(1,$anobase_option) ?> >2018</option>
-							<option <?php echo select(2,$anobase_option) ?> >2019</option>
-                            <option <?php echo select(3,$anobase_option) ?> >2020</option>
+							<?php 
+							$ano_b = anoOrcamento();
+							for($i = 0; $i < sizeof($ano_b); $i++){
+							?>
+							<option value='<?php echo $ano_b[$i]['ano_base']; ?>' <?php echo select($anobase_option,$ano_b[$i]['ano_base']);?>><?php echo $ano_b[$i]['ano_base']; ?></option>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="form-group">
@@ -906,7 +945,7 @@ if(isset($_POST['deletar'])){
 						<div class="col-md-offset-2">
 							<input type="submit" class="btn btn-theme btn-sm btn-block" value="Aplicar">
 						</form>
-					</select>
+
 				</div>
 			</div>		
 			
