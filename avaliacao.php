@@ -44,7 +44,8 @@ if(isset($_POST['gravar'])){
 	if($_POST['obs'] != ""){
 		$sql_sel_obs = "SELECT id FROM ava_anotacao WHERE usuario = '".$user->ID."' AND inscricao = '".$inscricao."'";
 		$res_obs = $wpdb->get_row($sql_sel_obs,ARRAY_A);
-		if(count($res_obs) > 0){ // atualiza
+		$n_obs = (is_array($res_obs) ? count($res_obs) : 0);
+		if($n_obs > 0){ // atualiza
 			$sql_up_obs = "UPDATE ava_anotacao SET anotacao = '".addslashes($_POST['obs'])."' WHERE usuario = '".$user->ID."' AND inscricao = '".$inscricao."'";
 			$res_up_obs = $wpdb->query($sql_up_obs);
 		}else{ //insere

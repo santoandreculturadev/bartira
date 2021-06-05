@@ -2276,9 +2276,16 @@ function verificaAvaliacao($usuario,$edital){
 	$sql_sel_ins = "SELECT avaliadores FROM ava_edital WHERE id_mapas = '$edital'";
 	$sel = $wpdb->get_row($sql_sel_ins,ARRAY_A);
 	$res = json_decode($sel['avaliadores'],true);
-	$inscritos = $res[$g];
+	
 
-	for($i = 0; $i < count($res[$g]); $i++){ //roda as notas das inscrições
+	
+	$n_inscritos = (is_array($res[$g]) ? count($res[$g]) : 0);
+
+	echo "<pre>";
+	var_dump($g);
+	echo "</pre>";
+
+	for($i = 0; $i < $n_inscritos; $i++){ //roda as notas das inscrições
 		$id_insc = $res[$g][$i];
 		$y = retornaAnotacao($id_insc,$usuario,$edital);
 		if($y == NULL OR $y == ""){
