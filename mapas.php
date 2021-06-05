@@ -5,7 +5,7 @@ if(isset($_GET['p'])){
 }else{
     $p = 'inicio';
 }
-//session_start();
+session_start();
 $_SESSION['entidade'] = 'mapas';
 ?>
 
@@ -55,15 +55,31 @@ $_SESSION['entidade'] = 'mapas';
 
                 //instancia o objeto
 
-                $new_event = $mapas->createEntity('event', [
-                    'name' => $event['titulo'],
-                    'shortDescription' => substr($event['sinopse'], 0, 400),
-                    'longDescription' => $event['descricao'],
-                    'terms' => [
-                        'linguagem' => [$event['linguagem']]
-                    ],
-                    'classificacaoEtaria' => $event['faixa_etaria'],
-                ]);
+				if($evento['online'] == 1){
+
+					$new_event = $mapas->createEntity('event', [
+						'name' => $event['titulo'],
+						'shortDescription' => substr($event['sinopse'], 0, 400),
+						'longDescription' => $event['descricao'],
+						'terms' => [
+							'linguagem' => [$event['linguagem']],
+							'tag' => 'online'
+						],
+						'classificacaoEtaria' => $event['faixa_etaria'],
+						'site' => $event['url'],
+					]);
+				}else{
+					$new_event = $mapas->createEntity('event', [
+						'name' => $event['titulo'],
+						'shortDescription' => substr($event['sinopse'], 0, 400),
+						'longDescription' => $event['descricao'],
+						'terms' => [
+							'linguagem' => [$event['linguagem']]
+						],
+						'classificacaoEtaria' => $event['faixa_etaria'],
+						'site' => $event['url'],
+					]);
+				}
 
                 $new_event = converterObjParaArray($new_event);
 

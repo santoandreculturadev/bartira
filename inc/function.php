@@ -605,7 +605,10 @@ function evento($id){
 		'previsto' => $res['previsto'],
 		'artista_local' => $res['artista_local'],
 		'cidade' => $res['cidade'],
-		'descricao' => $res['descricao']
+		'descricao' => $res['descricao'],
+		'url' => $res['url'],
+		'online' => $res['online'],
+
 	);
 
 	
@@ -832,11 +835,10 @@ function geraOpcaoUsuario($select = NULL, $role = NULL){
 
 function geraOpcaoDotacao($ano_base,$id = NULL){
 	global $wpdb;
-	$sql_orc = "SELECT * FROM sc_orcamento WHERE ano_base = '$ano_base' AND descricao IS NOT NULL AND (valor <> '0.00' OR id = '142') AND publicado = '1' AND idPai = '0' ORDER BY projeto ASC, ficha ASC ";
+	$sql_orc = "SELECT * FROM sc_orcamento WHERE ano_base = '$ano_base' AND descricao IS NOT NULL AND valor <> '0.00' AND publicado = '1' AND idPai = '0' ORDER BY projeto ASC, ficha ASC ";
+	echo $sql_orc;
 	$res = $wpdb->get_results($sql_orc,ARRAY_A);
-	echo "<pre>";
-	var_dump(($res));
-	echo "</pre>";
+
 	for($i = 0; $i < count($res) ; $i++){
 		if($res[$i]['id'] == $id){
 			echo "<option value = '".$res[$i]['id']."' selected > ".$res[$i]['projeto']."/".$res[$i]['ficha']." - ".$res[$i]['descricao']." </option>";
@@ -2308,57 +2310,21 @@ function retornaInscricao($inscricao){
 
 /* Planejamento */
 
-function retornaPlanejamento($idPlan){
-    global $wpdb;
-    $x = array();
-    $x['bool'] = FALSE;
-    $x['dotacao'] = 0;
-    $x['valor'] = 0;
-    $x['obs'] = "";
-    $sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '2018'";
-    //echo $sql_ver;
-    $res_ver = $wpdb->get_results($sql_ver,ARRAY_A);
-    if(count($res_ver) > 0){
-        $x['bool'] = TRUE;
-        $x['dotacao'] = $res_ver[0]['idPai'];
-        $x['valor'] = $res_ver[0]['valor'];
-        $x['obs'] = $res_ver[0]['obs'];
-    }
-
-    return $x;
-
-}
-
-/* Planejamento */
-
-function retornaPlanejamento2019($idPlan){
+function anoOrcamento(){
 	global $wpdb;
-	$x = array();
-	$x['bool'] = FALSE;
-	$x['dotacao'] = 0;
-	$x['valor'] = 0;
-	$x['obs'] = "";	
-	$sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '2019'";
-	//echo $sql_ver;
-	$res_ver = $wpdb->get_results($sql_ver,ARRAY_A);
-	if(count($res_ver) > 0){
-		$x['bool'] = TRUE;
-		$x['dotacao'] = $res_ver[0]['idPai'];
-		$x['valor'] = $res_ver[0]['valor'];
-		$x['obs'] = $res_ver[0]['obs'];
-	}
-	
-	return $x;
-
+	$sql = "SELECT DISTINCT ano_base FROM sc_orcamento ORDER BY ano_base ASC";
+	$res_ava = $wpdb->get_results($sql,ARRAY_A);
+	return $res_ava;
 }
-function retornaPlanejamento2020($idPlan){
+
+function retornaPlanejamento($idPlan,$anobase){
     global $wpdb;
     $x = array();
     $x['bool'] = FALSE;
     $x['dotacao'] = 0;
     $x['valor'] = 0;
     $x['obs'] = "";
-    $sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '2020'";
+    $sql_ver = "SELECT id, valor, idPai, obs FROM sc_orcamento WHERE planejamento = '$idPlan' AND ano_base = '$anobase'";
     //echo $sql_ver;
     $res_ver = $wpdb->get_results($sql_ver,ARRAY_A);
     if(count($res_ver) > 0){
@@ -2371,6 +2337,8 @@ function retornaPlanejamento2020($idPlan){
     return $x;
 
 }
+
+
 
 function orcamentoTotal($ano){
 	global $wpdb;
@@ -2761,3 +2729,64 @@ function projeto600($ano){
 	$pessoal = $_600_1116['v_op_baixado'] + $_600_1117['v_op_baixado'] + $_600_1118['v_op_baixado'] + $_600_1119['v_op_baixado'];
 	return $pessoal;
 }
+
+
+//indicadores
+
+
+/*
+retorna número dos indicadores inseridos
+os tipos são: 
+	acervos // sc_ind_acervos
+                    <th>Período</th>
+                    <th>Público</th>
+                    <th>Nº Atividades</th>
+                    <th>Nº Atividades com Agentes Locais</th>
+                    <th>Nº Agentes Culturais Locais Envolvidos</th>
+                    <th>Nº Bairros</th>
+                    <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
+                    <th>Nº Bairros Descentralizados</th>
+
+
+	continuadas // sc_ind_continuadas
+	biblioteca // sc_ind_biblioteca
+	comunicacao // sc_ind_comunicacao
+	convocatorias // sc_ind_convocatorias
+	eventos // sc_indicadores
+	incentivo // sc_ind_incentivo
+	lazer // 
+	orcamento // sc_ind_orcamento
+	culturaz // sc_ind_culturaz
+	redes // sc_indi_redes
+	geral
+*/
+
+
+
+function indResumo($tipo,$ano){   
+
+	global $wpdb;
+	switch($tipo){
+		case "eventos":
+			for($i = 1; $i <= 12; $i++){ //meses
+				$data_inicio = $ano."-".$i."-01";
+				$data_fim = $ano."-".$i."-".ultimoDiaMes($ano,$i);
+				$sql = "SELECT * FROM sc_indicadores WHERE periodoInicio BETWEEN '$data_inicio' AND '$data_fim' AND publicado = '1'";		
+				$c = $wpdb->get_results($sql,ARRAY_A);
+				echo $data_inicio." / ".$data_fim."<br />";	
+				echo "<pre>";
+				var_dump($c);
+				echo "</pre>";
+		
+			}
+		break;
+		
+		
+		
+		
+	}
+	
+	
+}
+
+

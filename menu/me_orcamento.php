@@ -16,7 +16,7 @@
       
       ?>
       <ul class="nav nav-pills flex-column">
-       <li class="nav-item">
+       <li class="nav-item button">
         <a class="nav-link" href="orcamento.php?p=visaogeral">Visão Geral</a>
       </li>
       <?php $autorizados = array(1,5,62,146,171);
@@ -35,18 +35,17 @@
       <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=listar">Listar Dotações</a>
       </li> 
+	  
+	 <?php 
+	 $ano_orcamento = anoOrcamento();
+	 //var_dump($ano_orcamento);
+	 for($i = 0; $i < count($ano_orcamento);$i++){
+	 ?> 
       <li class="nav-item">
-        <a class="nav-link" href="orcamento.php?p=planejamento2018">Planejamento 2018</a>
+        <a class="nav-link" href="orcamento.php?p=planejamento&ano=<?php echo $ano_orcamento[$i]['ano_base']  ?>">Planejamento <?php echo $ano_orcamento[$i]['ano_base']  ?></a>
       </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="orcamento.php?p=planejamento2019">Planejamento 2019</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="orcamento.php?p=planejamento2020">Planejamento 2020</a>
-      </li>
-          <li class="nav-item">
-        <a class="nav-link" href="orcamento.php?p=listaprojeto">Projetos</a>
-      </li> 
+	 <?php } ?>
+
       <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=giap">GIAP</a>
       </li> 

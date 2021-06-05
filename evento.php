@@ -5,7 +5,7 @@ if(isset($_GET['p'])){
 }else{
 	$p = 'inicio';	
 }
-//session_start();
+session_start();
 $_SESSION['entidade'] = 'evento';
 ?>
 
@@ -87,9 +87,9 @@ if(isset($_POST['apagar'])){
 					global $wpdb;
 					$idUser = $user->ID;
 					if($idUser == 63 OR $idUser == 1 OR $idUser == 5 OR $idUser == 77 OR $idUser == 15){
-						$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' $order";					
+						$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' $order LIMIT 0,200" ;					
 					}else{
-						$sql_list =  "SELECT idEvento FROM sc_evento WHERE  publicado = '1' AND (idUsuario = '$idUser' OR idResponsavel = '$idUser' OR idSuplente = '$idUser')  $order";
+						$sql_list =  "SELECT idEvento FROM sc_evento WHERE  publicado = '1' AND (idUsuario = '$idUser' OR idResponsavel = '$idUser' OR idSuplente = '$idUser')  $order LIMIT 0,200";
 					}
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					for($i = 0; $i < count($res); $i++){
@@ -572,6 +572,24 @@ if(isset($_SESSION['id'])){
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2">
+							<label>Evento online? *</label>
+							<select class="form-control" name="online" id="inputSubject" >
+								<option value="0">Não</option>
+								<option value="1">Sim</option>
+							</select>	
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Endereço/Link do evento online (não esqueça http:// ou https://)</label>
+							<input type="text" name="urlonline" class="form-control" maxlength="255" id="inputSubject" placeholder="" value=""/>
+						</div> 
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<div class="col-md-offset-2">
 							<input type="hidden" name="inserir" value="1" />
 							<input type="submit" class="btn btn-theme btn-lg btn-block" value="Gravar">
 						</div>
@@ -615,6 +633,8 @@ if(isset($_POST['atualizar']) OR isset($_POST['inserir'])){
 	$p_interno = addslashes($_POST['pInterno']);
 	$id_aprovacao = $_POST['id_aprovacao'];
 	$previsto = $_POST['previsto'];		
+	$online = $_POST['online'];
+	$urlonline = addslashes($_POST['urlonline']);
 	
 
 	if(isset($_POST['subEvento'])){
@@ -637,8 +657,8 @@ $idUser = $user->ID;
 
 	// Inserir evento
 if(isset($_POST['inserir'])){
-	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base` ) 
-	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2020')";
+	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url` ) 
+	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2021','$online','$urlonline')";
 	$ins = $wpdb->query($sql);
 	if($ins){
 		$mensagem = "Inserido com sucesso";
@@ -679,7 +699,10 @@ if(isset($_POST['atualizar'])){
 	`inscricao` = '$inscricao',
 	`descricao` = '$descricao',
 
-	`previsto` = '$previsto'
+	`previsto` = '$previsto',
+	`online` = '$online',
+	`url` = '$urlonline'
+	
 	
 	WHERE `idEvento` = '$atualizar';
 	";
@@ -692,7 +715,7 @@ if(isset($_POST['atualizar'])){
 		$mensagem = alerta("Evento atualizado com sucesso.","success");
 		gravarLog($sql_atualizar, $user->ID);
 	}else{
-			//$mensagem = "Erro ao atualizar.";
+			$mensagem = "Erro ao atualizar.<br />";
 	}
 
 }
@@ -885,6 +908,23 @@ if(isset($_POST['atualizar'])){
 							<textarea name="linksCom" class="form-control" rows="10" placeholder="Links para auxiliar a divulgação e o jurídico. Site oficinal, vídeos, clipping, artigos, etc "><?php echo stripslashes($evento["linksCom"]) ?></textarea>
 						</div> 
 					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Evento online? *</label>
+							<select class="form-control" name="online" id="inputSubject" >
+								<option value="0" <?php if($evento['online'] == 0){echo 'selected';} ?>>Não</option>
+								<option value="1" <?php if($evento['online'] == 1){echo 'selected';} ?>>Sim</option>
+							</select>	
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Endereço/Link do evento online (não esqueça http:// ou https://)</label>
+							<input type="text" name="urlonline" class="form-control" maxlength="255" id="inputSubject" placeholder="" value="<?php echo stripslashes($evento['url']); ?>"/>
+						</div> 
+					</div>
+					
+					
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<input type="hidden" name="atualizar" value="<?php echo $evento['idEvento']; ?>" />
