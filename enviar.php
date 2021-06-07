@@ -5,7 +5,7 @@ if(isset($_GET['p'])){
 }else{
 	$p = 'inicio';	
 }
-//session_start();
+session_start();
 ?>
 
 

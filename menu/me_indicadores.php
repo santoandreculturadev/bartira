@@ -12,7 +12,7 @@
           <a class="nav-link active" href="#">Módulo Indicadores <span class="sr-only">(current)</span></a>
         </li>
       </ul>
-
+         <ul class="nav nav-pills flex-column">
         <?php
       $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
       if(in_array($user->ID,$peruser)){ ?>  
@@ -43,7 +43,7 @@
       <?php
          $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87);
           if(in_array($user->ID,$peruser)){ ?>
-         <ul class="nav nav-pills flex-column">
+
           <li class="nav-item">
             <a class="nav-link" href="indicadores.php?p=tabelacontinuadas">Resumo Ações Continuadas - Resumo</a>
           </li>

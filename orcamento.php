@@ -30,6 +30,13 @@ $_SESSION['entidade'] = 'orcamento';
 				unset($_SESSION['id']);
 			}
 
+			if(isset($_GET['ano_base'])){
+				$anobase = $_GET['ano_base'];
+			}else{
+				$anobase = date('Y');
+			}	
+
+
 			if(isset($_POST['apagar'])){
 				$id = $_POST['apagar'];
 				$sql_upd = "UPDATE `sc_orcamento` SET `publicado` = '0' WHERE `id` = '$id'";
@@ -51,6 +58,35 @@ $_SESSION['entidade'] = 'orcamento';
 							<?php if(isset($mensagem)){echo $mensagem;}?>
 						</div>
 					</div>
+										<div class="row">    
+						<div class="col-md-offset-2 col-md-8">
+									<form method="GET" action="orcamento.php?p=listar" class="form-horizontal" role="form">
+					<div class="col-md-offset-2">
+						<label>Ano Base *</label>
+						<select class="form-control" name="ano_base" id="inputSubject" >
+							<option value='0'>Escolha uma opção</option>
+							<?php 
+							$ano_b = anoOrcamento();
+							for($i = 0; $i < sizeof($ano_b); $i++){
+							?>
+							<option value='<?php echo $ano_b[$i]['ano_base']; ?>' <?php echo select($anobase,$ano_b[$i]['ano_base']);?>><?php echo $ano_b[$i]['ano_base']; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<input type="submit" class="btn btn-theme btn-sm btn-block" value="Aplicar">
+				</div>
+			</div>	
+						</form>
+						
+						</div>
+						
+					
+					
+					
+					
+					
 					<div class="table-responsive">
 						<table class="table table-striped">
 							<thead>
@@ -68,7 +104,7 @@ $_SESSION['entidade'] = 'orcamento';
 							<tbody>
 								<?php 
 								global $wpdb;
-								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2020' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
+								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '$anobase' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
 									
@@ -207,8 +243,8 @@ $_SESSION['entidade'] = 'orcamento';
 													<option value="4" >4</option>							
 													<option value="5" >5</option>							
 													<option value="6" >6</option>
-                                                  							<option value="7" >7</option>
-                                                    							<option value="8" >8</option>
+                                                    <option value="7" >7</option>
+                                                    <option value="8" >8</option>
 
 												</select>
 											</div>
@@ -419,8 +455,8 @@ $_SESSION['entidade'] = 'orcamento';
 								<option value="4" <?php checado($orcamento['fonte'],array(4)); ?>>4</option>							
 								<option value="5" <?php checado($orcamento['fonte'],array(5)); ?>>5</option>							
 								<option value="6" <?php checado($orcamento['fonte'],array(6)); ?>>6</option>
-                                				<option value="7" <?php checado($orcamento['fonte'],array(7)); ?>>7</option>
-                                				<option value="8" <?php checado($orcamento['fonte'],array(8)); ?>>8</option>
+                                <option value="7" <?php checado($orcamento['fonte'],array(7)); ?>>7</option>
+                                <option value="8" <?php checado($orcamento['fonte'],array(8)); ?>>8</option>
 
 							</select>
 						</div>
@@ -798,6 +834,18 @@ if(isset($_POST['deletar'])){
 	break;
 	case "visaogeral": 
 
+	if(!isset($_GET['ano_base']) AND !isset($_GET['unidade']) AND !isset($_GET['fonte'])){
+		$anobase_option = date('Y');
+		$ano_base = " AND ano_base ='".$anobase_option."'";
+		$unidade = "";
+		$fonte = "";
+		$fonte_option = 0; 	
+		$projeto = "";	
+		$ficha = "";	
+	}
+
+
+
 	if(isset($_GET['ano_base']) AND $_GET['ano_base'] != 0 ){
 		$ano_base = " AND ano_base ='".$_GET['ano_base']."' ";
 		$anobase_option = $_GET['ano_base']; 	
@@ -835,9 +883,13 @@ if(isset($_POST['deletar'])){
 		$ficha = "";	
 	}
 
+
+
+
+
 //filtros projeto e ficha
 	?>
-	<section id="contact" class="home-section bg-white">
+	<section id="contact" class="home-section bg-white barra-horizontal">
 		<div class="container">
 			<div class="row">    
 				<div class="col-md-offset-2 col-md-8">
@@ -847,15 +899,17 @@ if(isset($_POST['deletar'])){
 			<h3>Filtro</h3>
 			<font color="#ff0000"><strong>Atenção! Escolha o ano base para iniciar.</strong></font>
 			<div class="col-md-offset-1 col-md-10">
-				<form method="GET" action="orcamento.php?p=visaogeral&ano=2020" class="form-horizontal" role="form">
+				<form method="GET" action="orcamento.php?p=visaogeral" class="form-horizontal" role="form">
 					<div class="col-md-offset-2">
 						<label>Ano Base *</label>
 						<select class="form-control" name="ano_base" id="inputSubject" >
 							<option value='0'>Escolha uma opção</option>
-							<option <?php echo select(1,$anobase_option) ?> >2018</option>
-							<option <?php echo select(2,$anobase_option) ?> >2019</option>
-                            				<option <?php echo select(3,$anobase_option) ?> >2020</option>
-							<option <?php echo select(3,$anobase_option) ?> >2021</option>
+							<?php 
+							$ano_b = anoOrcamento();
+							for($i = 0; $i < sizeof($ano_b); $i++){
+							?>
+							<option value='<?php echo $ano_b[$i]['ano_base']; ?>' <?php echo select($anobase_option,$ano_b[$i]['ano_base']);?>><?php echo $ano_b[$i]['ano_base']; ?></option>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="form-group">
@@ -879,8 +933,8 @@ if(isset($_POST['deletar'])){
 								<option <?php echo select(4,$fonte_option) ?> >4</option>
 								<option <?php echo select(5,$fonte_option) ?> >5</option>
 								<option <?php echo select(6,$fonte_option) ?> >6</option>
-                                				<option <?php echo select(7,$fonte_option) ?> >7</option>
-                                				<option <?php echo select(8,$fonte_option) ?> >8</option>
+                                <option <?php echo select(7,$fonte_option) ?> >7</option>
+                                <option <?php echo select(8,$fonte_option) ?> >8</option>
 								<option value= '0'>Todas as opções</option>
 
 							</select>
@@ -891,7 +945,7 @@ if(isset($_POST['deletar'])){
 						<div class="col-md-offset-2">
 							<input type="submit" class="btn btn-theme btn-sm btn-block" value="Aplicar">
 						</form>
-					</select>
+
 				</div>
 			</div>		
 			
@@ -926,17 +980,24 @@ if(isset($_POST['deletar'])){
 				$sql_list =  "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' $ano_base $unidade $fonte $projeto $ficha 
                                 ORDER BY projeto ASC, ficha ASC";
 				$res = $wpdb->get_results($sql_list,ARRAY_A);
-				$total_orc = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_con = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_des = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_sup = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_res = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_tot = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_pla = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_lib = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_anul = array(2018 => 0, 2019 => 0, 2020 => 0);
-				$total_rev = array(2018 => 0, 2019 => 0, 2020 => 0);
 				
+				$anos = anoOrcamento(); //puxa todos os anos-base existentes no banco
+
+				
+				for($j = 0; $j < count($anos); $j++){
+					$total_orc[$anos[$j]['ano_base']] = 0;
+					$total_con[$anos[$j]['ano_base']] = 0;
+					$total_des[$anos[$j]['ano_base']] = 0;
+					$total_sup[$anos[$j]['ano_base']] = 0;
+					$total_res[$anos[$j]['ano_base']] = 0;
+					$total_tot[$anos[$j]['ano_base']] = 0;
+					$total_pla[$anos[$j]['ano_base']] = 0;
+					$total_lib[$anos[$j]['ano_base']] = 0;
+					$total_anul[$anos[$j]['ano_base']] = 0;
+					$total_rev[$anos[$j]['ano_base']] = 0;
+				
+				}
+
 				for($i = 0; $i < count($res); $i++){
 					$orc = orcamento($res[$i]['id']);
 					$total = $orc['total'] - $orc['contigenciado'] + $orc['descontigenciado'] + $orc['suplementado'] - $orc['liberado'] - $orc['anulado'];
@@ -1032,85 +1093,40 @@ if(isset($_POST['deletar'])){
 					
 				} // fim do for?>	
 				<?php  ?>
-				<tr>
-					<td></td>
-					<td>TOTAL 2018:</td>
-					<td></td>
-					<td></td>
-					<td><?php echo dinheiroParaBr($total_orc['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_con['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_des['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_sup['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_anul['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_rev['2018']); ?></td>
+
+						
+				<?php for($j = 0; $j < count($anos); $j++){ 
+					if(isset($_GET['ano_base']) AND $_GET['ano_base'] == $anos[$j]['ano_base'] ){
+				
+				
+				
+				?>
+				
 					
-					<td><?php echo dinheiroParaBr($total_lib['2018']); ?></td>
-
-					<td><?php echo dinheiroParaBr($total_tot['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_pla['2018']); ?></td>
-					<td><?php echo dinheiroParaBr($total_tot['2018'] - $total_pla['2018'] + $total_lib['2018']); ?></td>
-					<td></td>
-					
-				</tr>
 				<tr>
-
+				<td></td>
+					<td>TOTAL <?php echo $anos[$j]['ano_base']; ?>:</td>
 					<td></td>
-					<td>TOTAL 2019:</td>
 					<td></td>
-					<td></td>
-					<td><?php echo dinheiroParaBr($total_orc['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_con['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_des['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_sup['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_anul['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_rev['2019']); ?></td>
+					<td><?php echo dinheiroParaBr($total_orc[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_con[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_des[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_sup[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_anul[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_rev[$anos[$j]['ano_base']]); ?></td>
 					
-					<td><?php echo dinheiroParaBr($total_lib['2019']); ?></td>
+					<td><?php echo dinheiroParaBr($total_lib[$anos[$j]['ano_base']]); ?></td>
 
-					<td><?php echo dinheiroParaBr($total_tot['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_pla['2019']); ?></td>
-					<td><?php echo dinheiroParaBr($total_tot['2019'] - $total_pla['2019'] + $total_lib['2019']); ?></td>
+					<td><?php echo dinheiroParaBr($total_tot[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_pla[$anos[$j]['ano_base']]); ?></td>
+					<td><?php echo dinheiroParaBr($total_tot[$anos[$j]['ano_base']] - $total_pla[$total_orc[$anos[$j]['ano_base']]] + $total_lib[$total_orc[$anos[$j]['ano_base']]]); ?></td>
 					<td></td>
-				<tr>
 				</tr>
-				    <td></td>
-				    <td>TOTAL 2020:</td>
-				    <td></td>
-				    <td></td>
-				    <td><?php echo dinheiroParaBr($total_orc['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_con['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_des['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_sup['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_anul['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_rev['2020']); ?></td>
+				<?php 
+					}
+					
+				} ?>	
 
-				    <td><?php echo dinheiroParaBr($total_lib['2020']); ?></td>
-				    
-				    <td><?php echo dinheiroParaBr($total_tot['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_pla['2020']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_tot['2020'] - $total_pla['2020'] + $total_lib['2020']); ?></td>
-				    <td></td>
-				</tr>
-				</tr>
-				    <td></td>
-				    <td>TOTAL 2021:</td>
-				    <td></td>
-				    <td></td>
-				    <td><?php echo dinheiroParaBr($total_orc['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_con['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_des['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_sup['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_anul['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_rev['2021']); ?></td>
-
-				    <td><?php echo dinheiroParaBr($total_lib['2021']); ?></td>
-				    
-				    <td><?php echo dinheiroParaBr($total_tot['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_pla['2021']); ?></td>
-				    <td><?php echo dinheiroParaBr($total_tot['2021'] - $total_pla['2021'] + $total_lib['2021']); ?></td>
-				    <td></td>
-				</tr>
-				<?php ?>
 			</tbody>
 		</table>
 	</div>
@@ -1158,7 +1174,7 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 
 //filtros projeto e ficha
 ?>
-<section id="contact" class="home-section bg-white">
+<section id="contact" class="home-section bg-white ">
 	<div class="container">
 		<div class="row">    
 			<div class="col-md-offset-2 col-md-8">
@@ -1176,7 +1192,6 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 							<option <?php echo select(1,$fonte_option) ?> >2018</option>
 							<option <?php echo select(2,$fonte_option) ?> >2019</option>
 							<option <?php echo select(3,$fonte_option) ?> >2020</option>
-							<option <?php echo select(3,$fonte_option) ?> >2021</option>
 						</select>
 					</div>
 					<div class="col-md-offset-2">
@@ -1198,8 +1213,8 @@ if(isset($_GET['ficha']) AND $_GET['ficha'] != 0){
 						<option <?php echo select(4,$fonte_option) ?> >4</option>
 						<option <?php echo select(5,$fonte_option) ?> >5</option>
 						<option <?php echo select(6,$fonte_option) ?> >6</option>
-                        			<option <?php echo select(7,$fonte_option) ?> >7</option>
-                        			<option <?php echo select(8,$fonte_option) ?> >8</option>
+                        <option <?php echo select(7,$fonte_option) ?> >7</option>
+                        <option <?php echo select(8,$fonte_option) ?> >8</option>
 						<option value= '0'>Todas as opções</option>
 
 					</select>
@@ -1584,157 +1599,26 @@ $historico = orcamento($id_hist);
 						
 					</div>
 				</section>
-
 				<?php 
 				break;
-				case "planejamento2018":
-
-				if(isset($_POST['atualiza'])){
-					$idPlan = $_POST['atualiza'];
-					$valor = dinheiroDeBr($_POST['valor']);
-					$dotacao = $_POST['dotacao'];
-					$obs = addslashes($_POST['obs']);
-					$ver = retornaPlanejamento($idPlan);
-	if($ver['bool'] == FALSE){ // insere
-		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`, `ano_base`) VALUES ('$valor','$idPlan','$dotacao','1','$obs','2018')";
-		$ins = $wpdb->query($sql_ins);
-		if($ins == 1){
-			$mensagem = alerta("Planejamento atualizado.","success");	
-
-		}else{
-			$mensagem = alerta("Erro. Tente novamente","warning");	
-		}
-		
-	}else{ // atualiza
-		$sql_ins = "UPDATE `sc_orcamento` SET `valor` = '$valor',
-		`idPai` = '$dotacao' ,
-		`obs` = '$obs' 
-		WHERE planejamento = '$idPlan' AND ano_base = '2018'";
-		$ins = $wpdb->query($sql_ins);
-		if($ins == 1){
-			$mensagem = alerta("Planejamento atualizado.","success");	
-
-		}else{
-			$mensagem = alerta("Erro. Tente novamente","warning");	
-		}
-	}
-}
-
-if(isset($_POST['apagar'])){
-	$id = $_POST['apagar'];
-	$sql_upd = "UPDATE sc_tipo SET publicado = '0' WHERE id_tipo = '$id' ";
-	$ins = $wpdb->query($sql_upd);
-	if($ins == 1){
-		$mensagem = alerta("Projeto apagado.","success");
-	}else{
-		$mensagem = alerta("Erro. Tente novamente","warning");	
-	}
-}
-
-
-?>
-<link href="css/jquery-ui.css" rel="stylesheet">
-<script src="js/jquery-ui.js"></script>
-<script src="js/mask.js"></script>
-<script src="js/maskMoney.js"></script> 
-<script>
-	$(function() {
-		$( ".calendario" ).datepicker();
-		$( ".hora" ).mask("99:99");
-		$( ".min" ).mask("999");
-		$( ".valor" ).maskMoney({prefix:'', thousands:'.', decimal:',', affixesStay: true});
-	});
-
-
-
-</script>
-<section id="contact" class="home-section bg-white">
-	<div class="container">
-		<div class="row">    
-			<div class="col-md-offset-2 col-md-8">
-				<h1>Planejamento 2018</h1>
-				<p><?php if(isset($mensagem)){echo $mensagem;}?></p>
-			</div>
-		</div>
-
-		<div class="col-md-offset-1 col-md-10">
-			
-		</div>		
-		<div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						
-						<th>Projeto</th>
-						<th>Programa</th>
-						<th width="15%">Valor</th>
-						<th>Dotação</th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-					global $wpdb;
-					$sql_list =  "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1' AND ano_base = '2018' ORDER BY tipo ASC";
-					$res = $wpdb->get_results($sql_list,ARRAY_A);
+				case "planejamento":
+				if(isset($_GET['ano'])){
+					$anobase = $_GET['ano'];
+				}else{
+					$anobase = date('Y');
 					
-					for($i = 0; $i < count($res); $i++){
-						$json = json_decode($res[$i]['descricao'],true);
-						$programa = tipo($json['programa']);
-						$plan = retornaPlanejamento($res[$i]['id_tipo']);
-						?>
-						<tr>
-							
-							<td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
-							<td><?php echo $programa['tipo']; //var_dump($json); ?></td>
-							<form method="POST" action="?p=planejamento2018" class="form-horizontal" role="form">
-								<td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"   value="<?php echo dinheiroParaBr($plan['valor']); ?>"/></td>	
-								<td>					
-									
-									<select class="form-control" name="dotacao" id="inputSubject" >
-										<option value="NULL">Escolha uma opção</option>
-										<?php echo geraOpcaoDotacao('2018',$plan['dotacao']); ?>
-									</select>			
-								</td>		
-								<td>	
-									<td><textarea class="form-control" name="obs" cols="120"><?php echo $plan['obs']; ?></textarea></td>
-									<td>
-										<input type="hidden" name="atualiza" value="<?php echo $res[$i]['id_tipo']; ?>" />
-										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Atualiza">
-									</form>					  
-								</td>
-								<td>
-									<form method="POST" action="?p=planejamento2018" class="form-horizontal" role="form">
-										<input type="hidden" name="apagar" value="<?php echo $res[$i]['id_tipo']; ?>" />
-										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Apagar">
-									</form>
-								</td>
-							</tr>		
-							
-						<?php } ?>
-
-					</tbody>
-				</table>
-			</div>
-
-		</div>
-	</section>
-
-	<?php 
-	break;
-	case "planejamento2019":
-
+				}
+				
+				
 	if(isset($_POST['atualiza'])){
 		$idPlan = $_POST['atualiza'];
 		$valor = dinheiroDeBr($_POST['valor']);
 		$dotacao = $_POST['dotacao'];
 		$obs = addslashes($_POST['obs']);					
-		$ver = retornaPlanejamento2019($idPlan);
+		$ver = retornaPlanejamento($idPlan,$anobase);
 	if($ver['bool'] == FALSE){ // insere
 		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
-            VALUES ('$valor','$idPlan','$dotacao','1','$obs','2019')";
+            VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase')";
 		$ins = $wpdb->query($sql_ins);
 		if($ins == 1){
 			$mensagem = alerta("Planejamento atualizado.","success");	
@@ -1747,7 +1631,7 @@ if(isset($_POST['apagar'])){
 		$sql_ins = "UPDATE `sc_orcamento` SET `valor` = '$valor',
 		`idPai` = '$dotacao' ,
 		`obs` = '$obs' 
-		WHERE planejamento = '$idPlan' AND ano_base = '2019'";
+		WHERE planejamento = '$idPlan' AND ano_base = '$anobase'";
 		$ins = $wpdb->query($sql_ins);
 		if($ins == 1){
 			$mensagem = alerta("Planejamento atualizado.","success");	
@@ -1790,7 +1674,7 @@ if(isset($_POST['apagar'])){
 	<div class="container">
 		<div class="row">    
 			<div class="col-md-offset-2 col-md-8">
-				<h1>Planejamento 2019</h1>
+				<h1>Planejamento <?php echo $anobase;?></h1>
 				<p><?php if(isset($mensagem)){echo $mensagem;}?></p>
 			</div>
 		</div>
@@ -1816,19 +1700,19 @@ if(isset($_POST['apagar'])){
 					<?php 
 					global $wpdb;
 					$sql_list =  "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1' 
-                        AND ano_base = '2019' ORDER BY tipo ASC";
+                        AND ano_base = '$anobase' ORDER BY tipo ASC";
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					
 					for($i = 0; $i < count($res); $i++){
 						$json = json_decode($res[$i]['descricao'],true);
 						$programa = tipo($json['programa']);
-						$plan = retornaPlanejamento2019($res[$i]['id_tipo']);
+						$plan = retornaPlanejamento($res[$i]['id_tipo'],$anobase);
 						?>
 						<tr>
 							
 							<td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
 							<td><?php echo $programa['tipo']; //var_dump($json); ?></td>
-							<form method="POST" action="?p=planejamento2019" class="form-horizontal" role="form">
+							<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
 								<td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"
                                               value="<?php echo dinheiroParaBr($plan['valor']); ?>"/>
                                 </td>
@@ -1836,7 +1720,8 @@ if(isset($_POST['apagar'])){
 									
 									<select class="form-control" name="dotacao" id="inputSubject" >
 										<option value="NULL">Escolha uma opção</option>
-										<?php echo geraOpcaoDotacao('2019',$plan['dotacao']); ?>
+										<?php //echo geraOpcaoDotacao('$anobase'); ?>
+										<?php echo geraOpcaoDotacao($anobase,$plan['dotacao']); ?>
 									</select>			
 								</td>		
 								<td>	
@@ -1847,7 +1732,7 @@ if(isset($_POST['apagar'])){
 									</form>					  
 								</td>
 								<td>
-									<form method="POST" action="?p=planejamento2019" class="form-horizontal" role="form">
+									<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
 										<input type="hidden" name="apagar" value="<?php echo $res[$i]['id_tipo']; ?>" />
 										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Apagar">
 									</form>
@@ -1863,146 +1748,6 @@ if(isset($_POST['apagar'])){
 		</div>
 	</section>
 
-        <?php
-        break;
-        case "planejamento2020":
-
-        if(isset($_POST['atualiza'])){
-            $idPlan = $_POST['atualiza'];
-            $valor = dinheiroDeBr($_POST['valor']);
-            $dotacao = $_POST['dotacao'];
-            $obs = addslashes($_POST['obs']);
-            $ver = retornaPlanejamento2020($idPlan);
-            if($ver['bool'] == FALSE){ // insere
-                $sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
-            VALUES ('$valor','$idPlan','$dotacao','1','$obs','2020')";
-                $ins = $wpdb->query($sql_ins);
-                if($ins == 1){
-                    $mensagem = alerta("Planejamento atualizado.","success");
-
-                }else{
-                    $mensagem = alerta("Erro. Tente novamente","warning");
-                }
-
-            }else{ // atualiza
-                $sql_ins = "UPDATE `sc_orcamento` SET `valor` = '$valor',
-		`idPai` = '$dotacao' ,
-		`obs` = '$obs' 
-		WHERE planejamento = '$idPlan' AND ano_base = '2020'";
-                $ins = $wpdb->query($sql_ins);
-                if($ins == 1){
-                    $mensagem = alerta("Planejamento atualizado.","success");
-
-                }else{
-                    $mensagem = alerta("Erro. Tente novamente","warning");
-                }
-            }
-        }
-
-        if(isset($_POST['apagar'])){
-            $id = $_POST['apagar'];
-            $sql_upd = "UPDATE sc_tipo SET publicado = '0' WHERE id_tipo = '$id' ";
-            $ins = $wpdb->query($sql_upd);
-            if($ins == 1){
-                $mensagem = alerta("Projeto apagado.","success");
-            }else{
-                $mensagem = alerta("Erro. Tente novamente","warning");
-            }
-        }
-
-
-        ?>
-        <link href="css/jquery-ui.css" rel="stylesheet">
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/mask.js"></script>
-        <script src="js/maskMoney.js"></script>
-        <script>
-            $(function() {
-                $( ".calendario" ).datepicker();
-                $( ".hora" ).mask("99:99");
-                $( ".min" ).mask("999");
-                $( ".valor" ).maskMoney({prefix:'', thousands:'.', decimal:',', affixesStay: true});
-            });
-
-
-
-        </script>
-        <section id="contact" class="home-section bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-8">
-                        <h1>Planejamento 2020</h1>
-                        <p><?php if(isset($mensagem)){echo $mensagem;}?></p>
-                    </div>
-                </div>
-
-                <div class="col-md-offset-1 col-md-10">
-
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-
-                            <th>Projeto</th>
-                            <th>Programa</th>
-                            <th width="15%">Valor</th>
-                            <th>Dotação</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        global $wpdb;
-                        $sql_list =  "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1' 
-                        AND ano_base = '2020' ORDER BY tipo ASC";
-                        $res = $wpdb->get_results($sql_list,ARRAY_A);
-
-                        for($i = 0; $i < count($res); $i++){
-                            $json = json_decode($res[$i]['descricao'],true);
-                            $programa = tipo($json['programa']);
-                            $plan = retornaPlanejamento2020($res[$i]['id_tipo']);
-                            ?>
-                            <tr>
-
-                                <td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
-                                <td><?php echo $programa['tipo']; //var_dump($json); ?></td>
-                                <form method="POST" action="?p=planejamento2020" class="form-horizontal" role="form">
-                                    <td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"
-                                                                          value="<?php echo dinheiroParaBr($plan['valor']); ?>"/>
-                                    </td>
-                                    <td>
-
-                                        <select class="form-control" name="dotacao" id="inputSubject" >
-                                            <option value="NULL">Escolha uma opção</option>
-                                            <?php echo geraOpcaoDotacao('2020',$plan['dotacao']); ?>
-                                        </select>
-                                    </td>
-                                    <td>
-                                    <td><textarea class="form-control" name="obs" cols="120"><?php echo $plan['obs']; ?></textarea></td>
-                                    <td>
-                                        <input type="hidden" name="atualiza" value="<?php echo $res[$i]['id_tipo']; ?>" />
-                                        <input type="submit" class="btn btn-theme btn-sm btn-block" value="Atualiza">
-                                </form>
-                                </td>
-                                <td>
-                                    <form method="POST" action="?p=planejamento2020" class="form-horizontal" role="form">
-                                        <input type="hidden" name="apagar" value="<?php echo $res[$i]['id_tipo']; ?>" />
-                                        <input type="submit" class="btn btn-theme btn-sm btn-block" value="Apagar">
-                                    </form>
-                                </td>
-                            </tr>
-
-                        <?php } ?>
-
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </section>
 
         <?php
         break;
