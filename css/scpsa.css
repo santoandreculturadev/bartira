@@ -57,6 +57,7 @@ ul {
 .button:hover span:after {
 	opacity: 1;
 	right: 0;
+<<<<<<< Updated upstream
 }
 
 .barra-horizontal{
@@ -64,3 +65,5 @@ ul {
     overflow-y: hidden;
     white-space: nowrap;
 }
+=======
+>>>>>>> Stashed changes
