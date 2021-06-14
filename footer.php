@@ -3,7 +3,7 @@
 
 <?php 
 echo "<div class='variaveis' >";
-if($user->ID == '1'){
+if($user->ID == '1' OR $user->ID == '193'){
 	vGlobais();
 }
 echo "</div>";

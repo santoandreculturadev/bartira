@@ -16,7 +16,9 @@
 				<?php 
 				$per = opcaoDados('usuario',$user->ID);
 				
-				for($i = 0; $i < count($per['modulos']) ; $i++){
+				$n_modulos = (is_array($per['modulos']) ? count($per['modulos']) : 0);
+				
+				for($i = 0; $i < $n_modulos ; $i++){
 					?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo $per['modulos'][$i]; ?>.php"><?php echo $per['modulos'][$i]; ?></a>

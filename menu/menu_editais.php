@@ -232,7 +232,7 @@ if(in_array($user->ID,$peruser)){ ?>
               </li>
           <?php } ?>
           <?php
-          $peruser = array(1,189,190,191,174,77,151,52,66,70);
+          $peruser = array(1,200);
           if(in_array($user->ID,$peruser)){ ?>
               <li class="nav-item">
                   <a class="nav-link" href="inscricoes.php?edital=748">Edital Paranapiacaba 2021</a>
