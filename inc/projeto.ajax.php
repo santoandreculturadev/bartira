@@ -21,7 +21,7 @@ $res = $wpdb->get_results($sql);
 for($i = 0; $i < count($res); $i++){
 	$k[] = array(
 		'id'	=> $res[$i]->id_tipo,
-		'projeto'			=> (($res[$i]->tipo)),
+		'projeto' => (($res[$i]->tipo)),
 	);
 }
 echo( json_encode( $k ) );

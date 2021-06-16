@@ -515,6 +515,34 @@ case "mov_inserir":
 
 
 </script>
+
+<script type="application/javascript">
+	$(function()
+	{
+		$('#anobase').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#dotacao').hide();
+				$('.carregando').show();
+				$.getJSON('inc/projetoficha.ajax.php?v=1',{anobase: $(this).val(), ajax: 'true'}, function(j)
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].id + '">' + j[i].projeto + '</option>';
+					}	
+					$('#dotacao').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#dotacao').html('<option value="">-- Escolha um projeto/ficha --</option>');
+			}
+		});
+	});
+</script>
 <section id="inserir" class="home-section bg-white">
 	<div class="container">
 		<div class="row">
@@ -545,17 +573,33 @@ case "mov_inserir":
 					</div>	
 					<div class="form-group">
 						<div class="col-md-offset-2">
-							<label>Dotação</label>
-							<select class="form-control" name="dotacao" id="inputSubject" >
+							<label>Ano Base</label>
+							<select class="form-control" name="anobase" id="anobase" >
+							
+							<?php 
+							
+							$anobase = anoOrcamento();
+							
+							?>
 								<option>Escolha uma opção</option>
 								<?php 
-								if(isset($_POST['id'])){
-									echo geraOpcaoDotacao('2020',$_POST['id']);
-								}else{
-									echo geraOpcaoDotacao('2020');
-								}	
+																
+								for($i = 0; $i < count($anobase); $i++){
+									?>
+									<option value="<?php echo $anobase[$i]['ano_base']; ?>"><?php echo $anobase[$i]['ano_base']; ?></option>
+									
+									<?php
+								}
 								?>
 								
+							</select>
+						</div>
+					</div>	
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Dotação</label>
+							<select class="form-control" name="dotacao" id="dotacao" >
+							
 							</select>
 						</div>
 					</div>	
@@ -672,7 +716,33 @@ if(isset($_POST['mov_editar'])){
 
 
 </script>
-
+<script type="application/javascript">
+	$(function()
+	{
+		$('#anobase').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#dotacao').hide();
+				$('.carregando').show();
+				$.getJSON('inc/projetoficha.ajax.php?v=1',{anobase: $(this).val(), ajax: 'true'}, function(j)
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].id + '">' + j[i].projeto + '</option>';
+					}	
+					$('#dotacao').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#dotacao').html('<option value="">-- Escolha um projeto/ficha --</option>');
+			}
+		});
+	});
+</script>
 
 
 </script>
@@ -704,15 +774,54 @@ if(isset($_POST['mov_editar'])){
 							</select>
 						</div>
 					</div>	
+
 					<div class="form-group">
 						<div class="col-md-offset-2">
-							<label>Dotação</label>
-							<select class="form-control" name="dotacao" id="inputSubject" >
-								<option value='0'>Escolha uma opção</option>
-								<?php echo geraOpcaoDotacao('2020',$mov['dotacao']); ?>
+							<label>Ano Base</label>
+							<select class="form-control" name="anobase" id="anobase" >
+							
+							<?php 
+							
+							$anobase = anoOrcamento();
+							$dota = retornaDot($mov['dotacao']);
+							 var_dump($dota);
+							
+							
+							
+							?>
+								<option>Escolha uma opção</option>
+								<?php 
+																
+								for($i = 0; $i < count($anobase); $i++){
+									?>
+									<option value="<?php echo $anobase[$i]['ano_base']; ?>"  
+									<?php 
+									if($anobase[$i]['ano_base'] == $dota['ano_base']){
+										echo " selected ";
+									}
+									?> >				
+									
+									
+									
+									
+									<?php echo $anobase[$i]['ano_base']; ?></option> 									
+									<?php
+								}
+								?>
+								
 							</select>
 						</div>
 					</div>	
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Dotação</label>
+							<select class="form-control" name="dotacao" id="dotacao" >
+							<option value='0'>Escolha uma opção</option>
+								<?php echo geraOpcaoDotacao($dota['ano_base'],$mov['dotacao']); ?>
+							</select>
+						</div>
+					</div>	
+					
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Valor *</label>
@@ -1119,7 +1228,7 @@ if(isset($_POST['deletar'])){
 
 					<td><?php echo dinheiroParaBr($total_tot[$anos[$j]['ano_base']]); ?></td>
 					<td><?php echo dinheiroParaBr($total_pla[$anos[$j]['ano_base']]); ?></td>
-					<td><?php echo dinheiroParaBr($total_tot[$anos[$j]['ano_base']] - $total_pla[$total_orc[$anos[$j]['ano_base']]] + $total_lib[$total_orc[$anos[$j]['ano_base']]]); ?></td>
+					<td><?php echo dinheiroParaBr($total_tot[$anos[$j]['ano_base']] - $total_pla[$anos[$j]['ano_base']] + $total_lib[$anos[$j]['ano_base']]); ?></td>
 					<td></td>
 				</tr>
 				<?php 

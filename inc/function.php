@@ -835,7 +835,7 @@ function geraOpcaoUsuario($select = NULL, $role = NULL){
 
 function geraOpcaoDotacao($ano_base,$id = NULL){
 	global $wpdb;
-	$sql_orc = "SELECT * FROM sc_orcamento WHERE ano_base = '$ano_base' AND descricao IS NOT NULL AND valor <> '0.00' AND publicado = '1' AND idPai = '0' ORDER BY projeto ASC, ficha ASC ";
+	$sql_orc = "SELECT * FROM sc_orcamento WHERE ano_base = '$ano_base' AND descricao IS NOT NULL AND publicado = '1' AND idPai = '0' ORDER BY projeto ASC, ficha ASC ";
 	echo $sql_orc;
 	$res = $wpdb->get_results($sql_orc,ARRAY_A);
 
@@ -2796,4 +2796,6 @@ function indResumo($tipo,$ano){
 	
 }
 
-
+function dotacao($id){
+	
+}
