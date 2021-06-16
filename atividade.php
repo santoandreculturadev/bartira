@@ -5,6 +5,7 @@ if(isset($_GET['p'])){
 }else{
 	$p = 'inicio';	
 }
+session_start();
 $_SESSION['entidade'] = 'atividade';
 
 ?>

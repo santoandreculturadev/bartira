@@ -1,15 +1,13 @@
 <?php include "header.php"; ?>
 <?php 
 
-
+session_start();
 
 if(isset($_GET['p'])){
 	$p = $_GET['p'];
 }else{
 	$p = 'inicio';	
 }
-session_start();
-
 
 ?>
 
@@ -272,6 +270,7 @@ if($_SESSION['entidade'] == 'evento'){
 	$e = evento($_SESSION['id']);
 	$n = $e['titulo'];
 }else{
+
 	$e = atividade($_SESSION['id']);
 	$n = $e['titulo'];
 }
