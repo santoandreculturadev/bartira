@@ -149,6 +149,7 @@ case "dotacoes":
 				unset($_SESSION['id']);
 			}
 
+			$ano_base = date('Y');
 
 			?>
 			<section id="contact" class="home-section bg-white">
@@ -173,7 +174,7 @@ case "dotacoes":
 							<tbody>
 								<?php 
 								global $wpdb;
-								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '2020' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
+								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '$ano_base' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
 									
