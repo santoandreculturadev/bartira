@@ -86,7 +86,8 @@ if(isset($_POST['reabrir_evento'])){
 					<?php 
 					global $wpdb;
 					$idUser = $user->ID;
-					$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' AND status != '1' AND idEvento NOT IN (SELECT idEvento FROM sc_contratacao) $order";
+					//$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' AND status != '1' AND idEvento NOT IN (SELECT idEvento FROM sc_contratacao) $order";
+					$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' AND status != '1' $order";
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					for($i = 0; $i < count($res); $i++){
 						$evento = evento($res[$i]['idEvento']);
