@@ -52,7 +52,7 @@
 				$x = opcaoDados($tipo,$id);
 				$g = $x['edital'][1];
 				
-				$edital =  editais("",$);
+				$edital =  editais("",27);
 				
 				if(isset($_GET['order'])){
 					$order = "ORDER BY nota DESC, filtro ASC";
