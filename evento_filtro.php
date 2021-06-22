@@ -29,12 +29,20 @@
 					case "inicio": ?>
 
 					<?php
+                     
+					}
 
-					if(isset($_GET['ano_base']) AND $_GET['ano_base'] != 0 ){
+					if(isset($_GET['ano_base'])){
+						$anobase = $_GET['ano_base'];
+					}else{
+						$anobase = date('Y');
+					}	
 
-						$ano_base = " AND ano_base ='".$_GET['ano_base']."' ";
+					//if(isset($_GET['ano_base']) AND $_GET['ano_base'] != 0 ){
 
-						$anobase_option = $_GET['ano_base'];	
+					$ano_base = " AND ano_base ='".$_GET['ano_base']."' ";
+
+					  $anobase_option = $_GET['ano_base'];	
 					}else{
 						$ano_base = "";
 						$anobase_option = 0; 	
