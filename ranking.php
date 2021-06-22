@@ -32,7 +32,7 @@
 				<tr>
 					<th>CulturAZ</th>
 					<th>Proponente</th>
-					<th>Título</th>
+					<th>Participou de algum edital entre 2019 e 2020?</th>
 					<th>Nota Avaliador01</th>
 					<th>Avaliador01</th>
 					<th>Anotação Avaliador01</th>
@@ -88,7 +88,7 @@
 						<td><a href="http://culturaz.santoandre.sp.gov.br/inscricao/<?php echo substr($json['inscricao'],3); ?>" target="_blank" ><?php echo $json['inscricao']; ?> </a></td>
 
 						<td><?php echo $res_json['Agente responsável pela inscrição - Nome completo ou Razão Social']; ?></td>
-						<td><?php echo $res_json['2.1 Título do Projeto']; ?></td>
+						<td><?php echo $res_json['1.7 - Participou de algum edital entre 2019 e 2020?']; ?></td>
 						<td><?php if(isset($nota['pareceristas'][0]['nota'])){ echo $nota['pareceristas'][0]['nota']; } ?></td>
 						<td><?php if(isset($nota['pareceristas'][0]['usuario'])){ echo $avaliador1['display_name']; } ?></td>
 						<td><?php if(isset($anotacao['pareceristas'][0]['anotacao'])){ echo $anotacao['pareceristas'][0]['anotacao']; } ?></td>
