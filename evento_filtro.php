@@ -29,17 +29,16 @@
 					case "inicio": ?>
 
 					<?php
-
-					if(isset($_GET['ano_base']) AND $_GET['ano_base'] != 0 ){
-
-						$ano_base = " AND ano_base ='".$_GET['ano_base']."' ";
-
-						$anobase_option = $_GET['ano_base'];	
-					}else{
-						$ano_base = "";
-						$anobase_option = 0; 	
-
+                     
 					}
+
+					if(isset($_GET['ano_base'])){
+						$anobase = $_GET['ano_base'];
+					}else{
+						$anobase = date('Y');
+					}	
+
+					
 					?>
 
 					<div class="row">    
@@ -52,7 +51,7 @@
 									<div class="form-group">
 										<div class="col-md-offset-2">
 											<label>Ano Base *</label>
-											<select class="form-control" name="ano_base" id="inputSubject" >
+											<select class="form-control" name='ano_base' id="inputSubject" >
 												<option value='0'>Escolha uma opção</option>
 												<option <?php echo select(1,$anobase_option) ?> >2017</option>
 												<option <?php echo select(2,$anobase_option) ?> >2018</option>
