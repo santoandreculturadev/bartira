@@ -2,8 +2,8 @@
 
 <?php
 
-error_reporting(E_WARNING);
-ini_set(“display_errors”, 1 );
+//error_reporting(E_WARNING);
+//ini_set(“display_errors”, 1 );
 
 ?>
 
@@ -52,7 +52,7 @@ ini_set(“display_errors”, 1 );
 				$x = opcaoDados($tipo,$id);
 				$g = $x['edital'][1];
 				
-				$edital =  editais("",27);
+				$edital =  editais("",$);
 				
 				if(isset($_GET['order'])){
 					$order = "ORDER BY nota DESC, filtro ASC";

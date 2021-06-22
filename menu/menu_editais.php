@@ -246,6 +246,21 @@ if(in_array($user->ID,$peruser)){ ?>
               </li>
           <?php } ?>
 
+          <?php
+          $peruser = array(1,193,75,194,195);
+          if(in_array($user->ID,$peruser)){ ?>
+              <li class="nav-item">
+                  <a class="nav-link" href="ranking.php?edital=1062">Ranking FIP2021</a>
+              </li>
+          <?php } ?>
+
+          <?php
+          $peruser = array(1,193,75,194,195);
+          if(in_array($user->ID,$peruser)){ ?>
+              <li class="nav-item">
+                  <a class="nav-link" href="inscricoes.php?edital=1062">Inscrições FIP2021</a>
+              </li>
+          <?php } ?>
 <?php ?>
 <li class="nav-item">
   <a class="nav-link" href="http://culturaz.santoandre.sp.gov.br/autenticacao/" target="_blanck"> Login CulturAZ</a>
