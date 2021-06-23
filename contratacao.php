@@ -1437,6 +1437,8 @@ if(count($res) > 0){
  
  $pedido = recuperaDados("sc_contratacao",$id_pedido,"idPedidoContratacao");
  $ped = retornaPedido($id_pedido);
+ 
+ $ano_base = date('Y');
  ?>
  <section id="inserir" class="home-section bg-white">
  	<div class="container">
@@ -1510,7 +1512,7 @@ if(count($res) > 0){
  							<label>Dotação *</label>
  							<select class="form-control" name="dotacao" id="inputSubject" >
  								<option>Escolha uma opção</option>
- 								<?php echo geraOpcaoDotacao('2020',$pedido['dotacao']); ?>
+ 								<?php echo geraOpcaoDotacao($ano_base,$pedido['dotacao']); ?>
  							</select>			
  						</div>
  					</div>
