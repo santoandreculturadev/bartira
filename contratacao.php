@@ -1512,7 +1512,7 @@ if(count($res) > 0){
  							<label>Dotação *</label>
  							<select class="form-control" name="dotacao" id="inputSubject" >
  								<option>Escolha uma opção</option>
- 								<?php echo geraOpcaoDotacao($ano_base,$pedido['dotacao']); ?>
+ 								<?php echo geraOpcaoDotacao(date('Y'),$pedido['dotacao']); ?>
  							</select>			
  						</div>
  					</div>
