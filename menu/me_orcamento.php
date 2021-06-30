@@ -35,6 +35,10 @@
       <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=listar">Listar Dotações</a>
       </li> 
+        <a class="nav-link" href="orcamento.php?p=listaprojeto">Projetos</a>
+      </li> 
+
+
 	  
 	 <?php 
 	 $ano_orcamento = anoOrcamento();
