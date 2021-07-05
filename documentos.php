@@ -254,35 +254,24 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
         <p><justify>
             Trata-se de contratação de <?php echo $pedido['nome_razaosocial']  ?>, inscrita no
-            CNPJ <?php echo $pedido['cpf_cnpj']  ?>, representando  <?php echo $pedido['titulo'] ?>,<font color="#FF0000">
+            CNPJ <?php echo $pedido['cpf_cnpj']  ?>, representando(a)  <?php echo $pedido['titulo'] ?>,<font color="#FF0000">
             em artes (artista/cia/banda/grupo/dupla)</font><?php echo $pedido['autor']  ?>, para apresentação artística no(s)
-            dia(s)<?php echo $pedido['periodo'] ?> no(a) <?php echo $pedido['local'] ?>, inserida na programação do Aniversário da Cidade 2020.
+            dia(s)<?php echo $pedido['periodo'] ?> no(a) <?php echo $pedido['local'] ?>, ?> inserida na programação do  20° Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural
         </p>
         <p>
-            O Aniversário da Cidade se consagrou ao longo dos últimos anos como uma data extremamente importante no município;
-            do micro universo - como as salas de aulas nas EMEIS, ao macro - como as melhorias nas infraestruturas, todo o
-            governo municipal é mobilizado à programações diferenciadas. A Secretaria de Cultura, especialmente, dedica
-            grande parte de seus esforços à construção de uma grade de programação tão diversa quanto descentralizada possível,
-            partindo inclusive do princípio da participação de representações de indivíduos da sociedade civil nessa construção.
-        </p>
-        <p>A presente contratação conta com o(s) seguintes(s) integrante(s): <?php echo $pedido['ficha_tecnica'] ?>. </p>
+		Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos, proporcionando ao público o contato com diversos estilos culturais.</p>
+        <p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política governamental de difusão e fomento às diferentes manifestações culturais.</p>
+        <p>A Prefeitura pretende proporcionar à população o contato com os mais variados movimentos e correntes artísticas, não se limitando a determinada manifestação cultural ou artística.</p>
+        <p>Desta forma, pretende estimular a fruição e diversidade, a fim de que a população possa usufruir de estilos variados de cultura, lazer e entretenimento, o que proporciona o desenvolvimento humano pleno no que diz respeito à dignidade e à consciência humana e, ao mesmo tempo, aproxima o público das manifestações e linguagens. </p>
+
+        <p>Quando for Grupo/Banda/Cia:<\p>
+		<p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
         <p>Breve release: <?php echo $pedido['release'] ?></p>
         <p>
-            Ressaltamos que a referida contratação se justifica por tratar de trabalho artístico – cultural de qualidade
-            e por atender às necessidades públicas de acesso à política governamental de difusão e fomento às diferentes
-            manifestações culturais. Através da realização do Aniversário da Cidade, a Prefeitura pretende oferecer opções
-            artísticas, de lazer e entretenimento e promover a interação entre as propostas, os locais e os públicos.
-        </p>
-        <p>
-            Assim, tal contratação atende às expectativas da Secretaria e o interesse público implícito neste panorama,
-            pois atende às necessidades públicas de acesso à cultura e à política governamental de difusão e fomento às
-            diferentes manifestações culturais. A proposta é consagrada pela crítica especializada e pela opinião pública.
-        </p>
-        <p>
-            Não existem parâmetros nem tabelas que comprovem o valor solicitado pelo(a) artista/grupo, estando avaliado
-            em consonância com a economicidade.  Atesto ainda que é inviável a competição, pela singularidade do trabalho artístico.
-        </p>
-        </justify>
+		<font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.
+        Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify>
+ 
+        </center></p>
 
 
   <!--      <p><justify>Trata-se de contratação da empresa <?php //echo $pedido['nome'] ?> representando o(a) <font color="#FF0000">
