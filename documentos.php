@@ -194,7 +194,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	
 	case 101: //Justificativa FIP
 
-	$file_name='justificativa_aniver_20.doc';
+	$file_name='justificativa_FIP.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -253,11 +253,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 		<br />
 
         <p><justify>
-            Trata-se de contratação de <?php echo $pedido['nome_razaosocial']  ?>, inscrita no
-            CNPJ <?php echo $pedido['cpf_cnpj']  ?>, representando(a)  <?php echo $pedido['titulo'] ?>,<font color="#FF0000">
-            em artes (artista/cia/banda/grupo/dupla)</font><?php echo $pedido['autor']  ?>, para apresentação artística no(s)
-            dia(s)<?php echo $pedido['periodo'] ?> no(a) <?php echo $pedido['local'] ?>, ?> inserida na programação do  20° Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural
-        </p>
+		Trata-se de contratação da empresa <?php echo $pedido['nome'] ?> representando o(a) <font color="#FF0000"> (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> em artes <font color="#FF0000">(inserir o nome artístico)</font> para apresentação artística no dia <?php echo $pedido['periodo'] ?>, no <?php echo $pedido['local'] ?> inserida na programação do  20° Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
         <p>
 		Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos, proporcionando ao público o contato com diversos estilos culturais.</p>
         <p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política governamental de difusão e fomento às diferentes manifestações culturais.</p>
