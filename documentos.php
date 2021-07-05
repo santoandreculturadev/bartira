@@ -751,12 +751,12 @@ $file_name='folha_os_fip.doc';
 			</tr>
 		</tr>
 		<tr>
-			<td colspan="3">Cód. Vinculação de Despesa<br /><center>110.000</center></td>
+			<td colspan="3">Cód. Vinculação de Despesa<br /><center>32.000</center></td>
 			<td>Fonte de Recursos: <br /><center>  <?php echo $pedido['fonte']; ?></center></td>
 		</tr>
 		<tr>
-			<td colspan="3">Nome do Contato <br />Rodrigo Fernando da Silva</td>
-			<td>Telefone Contato<br />(11) 4433-0711</td>
+			<td colspan="3">Nome do Contato <br />Paulo Augusto Ferreira Vitor</td>
+			<td>Telefone Contato<br />(11) 4433-0785</td>
 		</tr>
 		<tr><td colspan="4">Conta corrente (cód.Reduzido)/DB<br /><center>252</center></td></tr>	
 		<tr>
@@ -769,7 +769,7 @@ $file_name='folha_os_fip.doc';
 			<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
 			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
                     realização de apresentação artística, inserida na programação do aniversário da Cidade de <!-- XIX Festival de Inverno de Paranapiacaba
-                    em -->Santo André 2020.</p>
+                    em -->Santo André 2021.</p>
 				<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 					CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 					Endereço: <?php echo $pedido['end']  ?>
