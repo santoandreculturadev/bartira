@@ -1613,6 +1613,20 @@ if(count($res) > 0){
  						<div class="col-12">
  							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=101&id=<?php echo $id_pedido?>" target="_blank">Justificativa Aniversário 2020</a><br />
  						</div>
+						 <div class="row">
+ 						<div class="col-12">
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=549&id=<?php echo $id_pedido?>" target="_blank">Criar Folha de OS FIP</a>
+ 						</div>
+ 					</div>
+ 					<div class="row">
+ 						<div class="col-12">
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=561&id=<?php echo $id_pedido?>" target="_blank">CAPUT FIP</a><br />
+ 						</div>
+ 					</div>					
+ 					<div class="row">
+ 						<div class="col-12">
+ 							<a  class="btn btn-theme btn-lg btn-block" href="documentos.php?modelo=101&id=<?php echo $id_pedido?>" target="_blank">Justificativa FIP</a><br />
+ 						</div>
  					</div>	
 					
  					
