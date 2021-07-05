@@ -682,7 +682,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 case 549: // OS para FIP
 
-/*$file_name='folha_os_fip.doc';
+$file_name='folha_os_fip.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -690,7 +690,7 @@ case 549: // OS para FIP
 	header('Content-type: application/vnd.ms-word');
 	header('Content-Type: application/download');
 	header('Content-Disposition: attachment;filename='.$file_name);
-	header('Content-Transfer-Encoding: binary ');*/
+	header('Content-Transfer-Encoding: binary ');
 
 ?>
 
@@ -810,7 +810,7 @@ case 549: // OS para FIP
 					</tr>
 
 					
-	<?php /*
+	<?php 
 	echo '<pre>';
 	var_dump($pedido);
 	echo '</pre>';
@@ -819,7 +819,7 @@ case 549: // OS para FIP
 	$metausuario = opcaoDados("usuario",1);
 	var_dump($metausuario);
 	echo '</pre>';
-	*/
+	
 	?>
 	
 	
