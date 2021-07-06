@@ -16,7 +16,6 @@ AND ano_base = '.$ano_base.'
 AND descricao LIKE "%'.addslashes($programa).'%" 
 ORDER BY tipo ASC';
 
-echo $sql;
 
 $res = $wpdb->get_results($sql);
 		//echo "<pre>";
