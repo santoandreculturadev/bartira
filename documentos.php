@@ -736,7 +736,7 @@ $file_name='folha_os_fip.doc';
 			</tr>
 		</tr>
 		<tr>
-			<td colspan="3">Cód. Vinculação de Despesa<br /><center>32.000</center></td>
+			<td colspan="3">Cód. Vinculação de Despesa<br /><center>110.000</center></td>
 			<td>Fonte de Recursos: <br /><center>  <?php echo $pedido['fonte']; ?></center></td>
 		</tr>
 		<tr>
