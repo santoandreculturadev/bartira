@@ -1860,6 +1860,7 @@ if(isset($_POST['apagar'])){
 
         <?php
         break;
+
         case "listaprograma":
 
 
@@ -2050,13 +2051,13 @@ if(isset($_POST['apagar'])){
 						<?php 
 						global $wpdb;
 						$sql_list =  "SELECT * FROM sc_tipo WHERE publicado = '1' AND abreviatura = 'projeto' 
-                                AND ano_base = '2020' ORDER BY tipo ASC";
+                                AND ano_base = '".date('Y')."' ORDER BY tipo ASC";
 						$res = $wpdb->get_results($sql_list,ARRAY_A);
 						
 						for($i = 0; $i < count($res); $i++){
 							$json = json_decode($res[$i]['descricao'],true);
 							$programa = tipo($json['programa']);
-							$plan = retornaPlanejamento($res[$i]['id_tipo']);
+							$plan = retornaPlanejamento($res[$i]['id_tipo'],date('Y'));
 							?>
 							<tr>
 								
@@ -2088,7 +2089,9 @@ if(isset($_POST['apagar'])){
 		</div>
 	</section>
 	<?php 
+
 	break;
+
 	case "editaprojeto":
 
 	if(isset($_POST['carregar'])){
@@ -2349,6 +2352,7 @@ $mensagem = "Atualizado em ".exibirDataBr($msg[0]['atualizacao']);
 
 
 <?php 
+
 break;
 } // fim da switch p
 
