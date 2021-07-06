@@ -2,6 +2,8 @@
 //Imprime erros com o banco
 //mysqli_set_charset($con,"utf8");
 require_once("../../wp-load.php");
+
+$ano_base = date('Y');
 global $wpdb;
 $cod = $_GET['programa'];
 $cidades = array();
@@ -10,9 +12,11 @@ $sql = 'SELECT *
 FROM sc_tipo
 WHERE abreviatura = "projeto"
 AND publicado = "1"
-AND ano_base = '.date('Y').'
+AND ano_base = $ano_base 
 AND descricao LIKE "%'.addslashes($programa).'%" 
 ORDER BY tipo ASC';
+
+
 
 $res = $wpdb->get_results($sql);
 		//echo "<pre>";
