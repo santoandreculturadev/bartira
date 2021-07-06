@@ -1956,6 +1956,7 @@ if(isset($_POST['apagar'])){
 		$fim = (date("Y-m-d"));
 		$responsavel = "";
 		$descricao = "";
+		$ano_base = $_POST['ano-base'];
 		$json = array(
 			"programa" => "$programa",
 			"inicio" => "$inicio",
@@ -1965,7 +1966,7 @@ if(isset($_POST['apagar'])){
 		);
 		$des = json_encode($json);
 		$sql_upd = "INSERT INTO `sc_tipo` (`id_tipo`, `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`) 
-            VALUES (NULL, '$titulo', '$des', 'projeto', '1', '".date('Y')"')";
+            VALUES (NULL, '$titulo', '$des', 'projeto', '1', '$ano_base')";
 		$upd = $wpdb->query($sql_upd);
 		if($upd == 1){
 			$mensagem = alerta("Inserido com sucesso.","success");
@@ -2021,6 +2022,7 @@ if(isset($_POST['apagar'])){
 							
 							<th>Projeto</th>
 							<th>Programa</th>
+							<th>Ano-base</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -2036,6 +2038,9 @@ if(isset($_POST['apagar'])){
 										<option value='0'>Escolha uma opção</option>
 										<?php echo geraTipoOpcao("programa") ?>
 									</select>			
+								</td>
+								<td>
+									<input type="text" name="ano-base" class="form-control" id="inputSubject" />
 								</td>
 								<td>
 									
