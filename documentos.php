@@ -252,8 +252,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	
 		<br />
 
-        <p><justify>
-		Trata-se de contratação da empresa <?php echo $pedido['nome'] ?> representando o(a) <font color="#FF0000"> (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> em artes <font color="#FF0000">(inserir o nome artístico)</font> para apresentação artística no dia <?php echo $pedido['periodo'] ?>, no <?php echo $pedido['local'] ?> inserida na programação do  20° Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
+        <p><justify>Trata-se de contratação da empresa <?php echo $pedido['nome'] ?> representando o(a) <font color="#FF0000"> (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> em artes <font color="#FF0000">(inserir o nome artístico)</font> para apresentação artística no dia <?php echo $pedido['periodo'] ?>, no <?php echo $pedido['local'] ?> inserida na programação do  20° Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
         <p>
 		Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos, proporcionando ao público o contato com diversos estilos culturais.</p>
         <p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política governamental de difusão e fomento às diferentes manifestações culturais.</p>
@@ -265,9 +264,8 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
         <p>Breve release: <?php echo $pedido['release'] ?></p>
         <p>
 		<font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.
-        Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify>
- 
-        </center></p>
+        Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify></p>
+
 
 
   <!--      <p><justify>Trata-se de contratação da empresa <?php //echo $pedido['nome'] ?> representando o(a) <font color="#FF0000">
