@@ -1618,6 +1618,7 @@ function retornaCEP($cep){
 	$uf = "igsis_cep_".$campo01['uf'];
 	$sql02 = "SELECT * FROM $uf WHERE cep = '$cep'";
 	$campo02 = $wpdb->get_row($sql02,ARRAY_A);
+	$n_inscritos = (is_array($campo02) ? count($campo02) : 0);
 	$res = count($campo02);
 	if($res > 0){
 		$dados['sucesso'] = 1;
