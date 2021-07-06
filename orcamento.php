@@ -1965,7 +1965,7 @@ if(isset($_POST['apagar'])){
 		);
 		$des = json_encode($json);
 		$sql_upd = "INSERT INTO `sc_tipo` (`id_tipo`, `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`) 
-            VALUES (NULL, '$titulo', '$des', 'projeto', '1', '2020')";
+            VALUES (NULL, '$titulo', '$des', 'projeto', '1', '".date('Y')"')";
 		$upd = $wpdb->query($sql_upd);
 		if($upd == 1){
 			$mensagem = alerta("Inserido com sucesso.","success");
