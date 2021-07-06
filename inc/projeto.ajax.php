@@ -12,7 +12,7 @@ $sql = 'SELECT *
 FROM sc_tipo
 WHERE abreviatura = "projeto"
 AND publicado = "1"
-AND ano_base = $ano_base 
+AND ano_base = '.$ano_base.' 
 AND descricao LIKE "%'.addslashes($programa).'%" 
 ORDER BY tipo ASC';
 
