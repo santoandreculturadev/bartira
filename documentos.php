@@ -638,7 +638,8 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 				</tr>
 				<tr>
 
-					<td colspan="2" width='33%' height="100px" style="vertical-align:top; text-align: center;">Responsável pela Área<br />C.R. Requisitante</td>
+					<td colspan="2" width='33%' height="100px" style="vertical-align:top; text-align: center;">Responsável pela Área<br />CR. Requisitante<br /><b><?php echo $pedido['cr']; ?></b></td>
+
 					<td width='33%' height="100px" style="vertical-align:top; text-align: center;">Diretor(a) da Área<br />C.R. Requisitante</td>
 					<td height="100px" style="vertical-align:top; text-align: center;">Secretário(a) da Área <br />C.R. Requisitante</td>
 
@@ -704,7 +705,9 @@ $file_name='folha_os_fip.doc';
 
 <table  width="100%" border="1">
 	<tr>
-		<td rowspan="5" width="12%"><center><img src="images/logo.png" /></center></td>
+
+		<td rowspan="5" width="12%"><center><img src="images/logo.png"/></center></td>
+
 	</tr>
 	<tr>
 		<td colspan="3"><center><b>Prefeitura Municipal de Santo André</b></center></td>
@@ -719,7 +722,7 @@ $file_name='folha_os_fip.doc';
 	</tr>
 	<tr>
 		<td colspan="3"><center><b>Nome da área requisitante: Departamento de Planejamento e Projetos Especiais</b></center></td>
-		<tr/>	
+		</tr>	
 
 	</table>
 	<table  width="100%" border="1">
