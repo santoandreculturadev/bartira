@@ -586,8 +586,8 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 		</tr>
 		<tr>
-			<td colspan="3"><center><b>Nome da área requisitante: Secretaria de Cultura - <?php echo $pedido['periodo'] ?></b></center></td>
-			<tr/>	
+			<td colspan="3"><center><b>Nome da área requisitante: Secretaria de Cultura - <br/><?php echo $pedido['periodo'] ?></b></center></td>
+			</tr>	
 		</table>
 		<table border="1">
 			<tr>
@@ -754,7 +754,7 @@ $file_name='folha_os_fip.doc';
 			<td colspan="4">Local de aplicação do serviço ou evento:<br /><?php echo $pedido['local']; ?></td>
 		</tr>
 		<tr>
-			<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
+			<td colspan="4"><p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
 			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
                     realização de apresentação artística, inserida na programação do aniversário da Cidade de <!-- XIX Festival de Inverno de Paranapiacaba
                     em -->Santo André 2021.</p>
