@@ -794,8 +794,10 @@ $file_name='folha_os_fip.doc';
 
 
 					<tr>
-						<td colspan="4"><center><b>1ª via - Processo          2ª via - Requisitante</b></center></td>
-					</tr>
+							<td colspan="4"><center><b>1ª via - Processo          2ª via - Requisitante</b></center></td>
+						</tr>
+						<tr>	
+						</table>
 
 					
 	<?php 
