@@ -511,7 +511,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 			</tr>
 
 			<tr>
-				<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando a(s) apresentação(ões) do(s) seguinte(s) artista(s) <b><?php  echo $pedido['integrantes'] ?></b> para  realização de <?php echo $pedido['objeto']; ?> em <?php echo $pedido['local']; ?> no(s) dia(s)  <?php echo $pedido['periodo']; ?> </b></p>
+				<td colspan="4"><p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando a(s) apresentação(ões) do(s) seguinte(s) artista(s) <b><?php  echo $pedido['integrantes'] ?></b> para  realização de <?php echo $pedido['objeto']; ?> em <?php echo $pedido['local']; ?> no(s) dia(s)  <?php echo $pedido['periodo']; ?> </b></p>
 					<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 						CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 						Endereço: <?php echo $pedido['end']  ?><br />
@@ -682,7 +682,7 @@ $file_name='folha_os_fip.doc';
 
 <html>
     <link rel="stylesheet" type="text/css" href="print.css" media="print" />
-	
+
 	<body>
 		<style type='text/css'>
 		.style_01 {
@@ -707,7 +707,7 @@ $file_name='folha_os_fip.doc';
 <table  width="100%" border="1">
 	<tr>
 
-		<td rowspan="5" width="12%"><center><img src="images/logo.png"/></center></td>
+		<td rowspan="5" width="15%"><center><img src="images/logo.png"/></center></td>
 
 	</tr>
 	<tr>
