@@ -681,28 +681,8 @@ $file_name='folha_os_fip.doc';
 ?>
 
 <html>
+
     <link rel="stylesheet" type="text/css" href="print.css" media="print" />
-
-	<body>
-		<style type='text/css'>
-		.style_01 {
-			font-size: 12px;
-
-		}
-		.paragrafo{
-			text-indent:4em
-		}
-		p{
-			font-size: 12px;
-		}
-		
-		.rodape{
-			text-align: center;
-			font-size: 12px;
-			padding: -10px;
-			
-		}
-	</style>
 
 <table  width="100%" border="1">
 
