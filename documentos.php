@@ -756,7 +756,7 @@ $file_name='folha_os_fip.doc';
 		<tr>
 			<td colspan="4"><p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
 			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
-                    realização de apresentação artística, inserida na programação do aniversário da Cidade de <!-- XIX Festival de Inverno de Paranapiacaba
+                    realização de apresentação artística, inserida na programação do 20º Festival de Inverno de Paranapiacaba - Edição Digital <!-- XIX Festival de Inverno de Paranapiacaba
                     em -->Santo André 2021.</p>
 				<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 					CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
