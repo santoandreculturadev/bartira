@@ -705,10 +705,9 @@ $file_name='folha_os_fip.doc';
 	</style>
 
 <table  width="100%" border="1">
+
 	<tr>
-
 		<td rowspan="5" width="15%"><center><img src="images/logo.png"/></center></td>
-
 	</tr>
 	<tr>
 		<td colspan="3"><center><b>Prefeitura Municipal de Santo André</b></center></td>
