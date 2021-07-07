@@ -801,14 +801,16 @@ $file_name='folha_os_fip.doc';
 
 					
 	<?php 
-	echo '<pre>';
-	var_dump($pedido);
-	echo '</pre>';
+
 	
-		echo '<pre>';
-	$metausuario = opcaoDados("usuario",1);
-	var_dump($metausuario);
-	echo '</pre>';
+	//echo '<pre>';
+	//var_dump($pedido);
+	//echo '</pre>';
+	
+	//	echo '<pre>';
+	//$metausuario = opcaoDados("usuario",1);
+	//var_dump($metausuario);
+	//echo '</pre>';
 	
 	?>
 	
