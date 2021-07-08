@@ -543,6 +543,7 @@ case "mov_inserir":
 		});
 	});
 </script>
+
 <section id="inserir" class="home-section bg-white">
 	<div class="container">
 		<div class="row">
@@ -611,11 +612,11 @@ case "mov_inserir":
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-2">
-							<label>Data *</label>
-							<input type="text" name="dia" class="form-control calendario"  />
+							<label>Data da movimentação *</label>
+							<input type="text"  class="form-control calendario" name="data_x" id="inputSubject" />
 						</div>
 					</div>					
-					
+						
 					
 					<div class="form-group">
 						<div class="col-md-offset-2">
@@ -651,10 +652,10 @@ if(isset($_POST['mov_inserir']) OR isset($_POST['mov_editar']) ){
 	$tipo = $_POST["tipo"];
 	$dotacao = $_POST["dotacao"];
 	$valor = dinheiroDeBr($_POST["valor"]);
-	if($_POST["dia"] = '' OR $_POST["dia"] = '0000-00-00'){
+	if($_POST["data_x"] == '' OR $_POST["data_x"] == '0000-00-00'){
 		$data = date('Y-m-d');
 	}else{
-		$data = exibirDataMysql($_POST["data"]);	
+		$data = exibirDataMysql($_POST["data_x"]);	
 	}
 	$descricao = addslashes($_POST["descricao"]);
 }
@@ -707,7 +708,8 @@ if(isset($_POST['mov_editar'])){
 <script src="js/maskMoney.js"></script> 
 <script>
 	$(function() {
-		$( ".calendario" ).datepicker();
+		$( "#calendario" ).datepicker({showButtonPanel:true});
+		$( ".calendario2" ).datepicker();
 		$( ".hora" ).mask("99:99");
 		$( ".min" ).mask("999");
 		$( ".valor" ).maskMoney({prefix:'', thousands:'.', decimal:',', affixesStay: true});
@@ -716,6 +718,7 @@ if(isset($_POST['mov_editar'])){
 
 
 </script>
+<!--
 <script type="application/javascript">
 	$(function()
 	{
@@ -743,9 +746,10 @@ if(isset($_POST['mov_editar'])){
 		});
 	});
 </script>
+-->
 
 
-</script>
+
 <section id="inserir" class="home-section bg-white">
 	<div class="container">
 		<div class="row">
@@ -784,9 +788,7 @@ if(isset($_POST['mov_editar'])){
 							
 							$anobase = anoOrcamento();
 							$dota = retornaDot($mov['dotacao']);
-							 var_dump($dota);
-							
-							
+
 							
 							?>
 								<option>Escolha uma opção</option>
@@ -828,12 +830,15 @@ if(isset($_POST['mov_editar'])){
 							<input type="text" name="valor" class="form-control valor" id="inputSubject"  value="<?php echo dinheiroParaBr($mov['valor']) ?>" />
 						</div>
 					</div>
+
 					<div class="form-group">
 						<div class="col-md-offset-2">
-							<label>Data *</label>
-							<input type="text" name="dia" class="form-control calendario"   value="<?php echo exibirDataBr($mov['data']) ?>"/>
+							<label>Data da movimentação *</label>
+							<input name="data_x" class="form-control calendario2" value="<?php echo exibirDataBr($mov['data']) ?>" />
 						</div>
-					</div>					
+					</div>		
+
+			
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Descrição / Observação*</label>
