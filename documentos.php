@@ -194,7 +194,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	
 	case 101: //Justificativa FIP
 
-	$file_name='justificativa_FIP.doc';
+	$file_name='justificativa_aniver_20.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -252,52 +252,23 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	
 		<br />
 
-        <p><justify>
-		Trata-se de contratação da empresa <?php echo $pedido['nome'] ?> representando o(a) <font color="#FF0000"> (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> em artes <font color="#FF0000">(inserir o nome artístico)</font> para apresentação artística no dia <?php echo $pedido['periodo'] ?>, no <?php echo $pedido['local'] ?> inserida na programação do  20° Festival de Inverno de Paranapiacaba em Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
-        <p>
-		Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos, proporcionando ao público o contato com diversos estilos culturais.</p>
-        <p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política governamental de difusão e fomento às diferentes manifestações culturais.</p>
-        <p>A Prefeitura pretende proporcionar à população o contato com os mais variados movimentos e correntes artísticas, não se limitando a determinada manifestação cultural ou artística.</p>
-        <p>Desta forma, pretende estimular a fruição e diversidade, a fim de que a população possa usufruir de estilos variados de cultura, lazer e entretenimento, o que proporciona o desenvolvimento humano pleno no que diz respeito à dignidade e à consciência humana e, ao mesmo tempo, aproxima o público das manifestações e linguagens. </p>
-
-        <p>Quando for Grupo/Banda/Cia:<\p>
-		<p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
-        <p>Breve release: <?php echo $pedido['release'] ?></p>
-        <p>
-		<font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.
-        Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify>
+        <p><justify>Trata-se de contratação da empresa <?php echo $pedido['nome'] ?>, representando o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?>, em artes <font color="#FF0000">(inserir o nome artístico)</font>, para apresentação artística no(s) dia(s) 31/07/2021 e 01/08/2021 inserida na programação do 20° Festival de Inverno de Paranapiacaba – Edição Digital. Para isso o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> produzirá vídeo autoral inédito de <font color="#FF0000">(minutos)</font> no formato FULL HD, com medidas 1902x1080 PIXELS, de sua atividade artística.</p>
+<p>O Festival de Inverno de Paranapiacaba se consagrou ao longo dos últimos anos com uma data extremamente importante no município mobilizando todo o governo municipal e contemplando um conjunto de programações diferenciadas. Em virtude da pandemia – Covid-19, a Secretaria de Cultura, especialmente, dedica grande parte de seus esforços à construção de uma grade de programação digital atendendo diversos gostos artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
+<p>Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar ações, proporcionando ao público o contato com diversos estilos culturais.</p>
+<p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política governamental de difusão e fomento às diferentes manifestações culturais.</p>
+<p>A Prefeitura pretende proporcionar à população o contato com os mais variados movimentos e correntes artísticas, não se limitando a determinada manifestação cultural ou artística.</p>
+<p>Desta forma, pretende estimular a fruição e diversidade, a fim de que a população possa usufruir de estilos variados de cultura, lazer e entretenimento, o que proporciona o desenvolvimento humano pleno no que diz respeito à dignidade e à consciência humana e, ao mesmo tempo, aproxima o público das manifestações e linguagens.</p>
  
-        </center></p>
+<p>Quando for Grupo/Banda/Cia:</p>
+<p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
+<p>Breve release: <?php echo $pedido['release'] ?></p>
+        
+<p><font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.</p>
 
+<p>Atesto que o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify></p>
+ 
+       <P></center></p>
 
-  <!--      <p><justify>Trata-se de contratação da empresa <?php //echo $pedido['nome'] ?> representando o(a) <font color="#FF0000">
-                    (artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?> em artes <font color="#FF0000">
-                    (inserir o nome artístico)</font> para apresentação artística no dia <?php //echo $pedido['periodo'] ?>,
-                no <?php //echo $pedido['local'] ?> inserida na programação do  XIX Festival de Inverno de Paranapiacaba em
-                Santo André visando suprir a existência da demanda de um público que frequenta a Vila de Paranapiacaba por
-                ser um local histórico na cidade com ambiente propício para Festival de Inverno, atendendo diversos gostos
-                artísticos e que contemple este público com um momento de entretenimento e aprimoramento cultural.</p>
-        <p>Tal contratação justifica-se por tratar-se de um(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font>
-            que desenvolve um trabalho de qualidade, e se enquadra na proposta da Secretaria, que visa realizar eventos,
-            proporcionando ao público o contato com diversos estilos culturais.</p>
-        <p>Ressaltamos que a referida contratação atende às necessidades públicas de acesso à cultura popular e à política
-            governamental de difusão e fomento às diferentes manifestações culturais.</p>
-        <p>A Prefeitura pretende proporcionar à população o contato com os mais variados movimentos e correntes artísticas,
-            não se limitando a determinada manifestação cultural ou artística.</p>
-        <p>Desta forma, pretende estimular a fruição e diversidade, a fim de que a população possa usufruir de estilos variados
-            de cultura, lazer e entretenimento, o que proporciona o desenvolvimento humano pleno no que diz respeito à dignidade
-            e à consciência humana e, ao mesmo tempo, aproxima o público das manifestações e linguagens.</p>
-
-        <p>Quando for Grupo/Banda/Cia:</p>
-        <p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?>
-        será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
-        <p>Breve release: <?php// echo $pedido['release'] ?></p>
-
-        <p>
-            <font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.
-            Atesto que o(a)<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php //echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify></p>
--->
-		</center></p>
 		
 		<br /><br />
 		
@@ -322,6 +293,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 		
 		<?php 
 		break;	
+
 	case 563: // Folha de Rosto	FIP
 	
 	$file_name='folha_abertura_processo_aniver_20.doc';
@@ -638,8 +610,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 				</tr>
 				<tr>
 
-					<td colspan="2" width='33%' height="100px" style="vertical-align:top; text-align: center;">Responsável pela Área<br />CR. Requisitante<br /><b><?php echo $pedido['cr']; ?></b></td>
-
+					<td colspan="2" width='33%' height="100px" style="vertical-align:top; text-align: center;">Responsável pela Área<br />C.R. Requisitante</td>
 					<td width='33%' height="100px" style="vertical-align:top; text-align: center;">Diretor(a) da Área<br />C.R. Requisitante</td>
 					<td height="100px" style="vertical-align:top; text-align: center;">Secretário(a) da Área <br />C.R. Requisitante</td>
 
@@ -668,7 +639,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 case 549: // OS para FIP
 
-$file_name='folha_os_fip.doc';
+/*$file_name='folha_os_fip.doc';
 	header('Pragma: public');
 	header('Expires: 0');
 	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -676,7 +647,7 @@ $file_name='folha_os_fip.doc';
 	header('Content-type: application/vnd.ms-word');
 	header('Content-Type: application/download');
 	header('Content-Disposition: attachment;filename='.$file_name);
-	header('Content-Transfer-Encoding: binary ');
+	header('Content-Transfer-Encoding: binary ');*/
 
 ?>
 
@@ -705,9 +676,7 @@ $file_name='folha_os_fip.doc';
 
 <table  width="100%" border="1">
 	<tr>
-
-		<td rowspan="5" width="12%"><center><img src="images/logo.png"/></center></td>
-
+		<td rowspan="5" width="12%"><center><img src="images/logo.png" /></center></td>
 	</tr>
 	<tr>
 		<td colspan="3"><center><b>Prefeitura Municipal de Santo André</b></center></td>
@@ -733,7 +702,7 @@ $file_name='folha_os_fip.doc';
 
 		<tr>
 			<td>Cód. Dotação:<br /><b><?php echo resumoDotacao($pedido['cod_dotacao']); ?></b></td>
-			<td>Projeto:<br /><b><?php echo $pedido['projeto']; ?><b/></td>
+			<td>Projeto:<br /><b><?php echo $pedido['projeto']; ?></b></td>
 				<td>Ficha: <br /> <b><?php echo $pedido['ficha']; ?></b></td>
 				<td>Sub-elemento despesa: <br /><center>22</center></td>	
 			</tr>
@@ -743,25 +712,27 @@ $file_name='folha_os_fip.doc';
 			<td>Fonte de Recursos: <br /><center>  <?php echo $pedido['fonte']; ?></center></td>
 		</tr>
 		<tr>
-			<td colspan="3">Nome do Contato <br />Paulo Augusto Ferreira Vitor</td>
-			<td>Telefone Contato<br />(11) 4433-0785</td>
+		<td colspan="3">Nome do Contato <br /><b><?php echo $pedido['usuario']; ?></b></td>
+        <td>Telefone Contato<br />(11) 4433-0785</td>
+
 		</tr>
 		<tr><td colspan="4">Conta corrente (cód.Reduzido)/DB<br /><center>252</center></td></tr>	
 		<tr>
 			<td colspan="4">Data Período do evento: <br /><?php echo $pedido['periodo']; ?></td>
 		</tr>	
 		<tr>
-			<td colspan="4">Local de aplicação do serviço ou evento:<br /><?php echo $pedido['local']; ?></td>
+			<td colspan="4">Local de aplicação do serviço ou evento:<br /><b> Evento online </b>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
 			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
-                    realização de apresentação artística, inserida na programação do aniversário da Cidade de <!-- XIX Festival de Inverno de Paranapiacaba
-                    em -->Santo André 2021.</p>
+                    realização de apresentação artística,  inserida na programação do 20º Festival de Inverno de Paranapiacaba - Edição Digital Santo André 2021.</p>
 				<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 					CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 					Endereço: <?php echo $pedido['end']  ?>
-					Telefone: <?php echo $pedido['telefone']; ?> Email: <?php echo $pedido['email'];?>   <br />
+					Telefone: <?php echo $pedido['telefone']; ?> 
+					Email: <?php echo $pedido['email'];?>   <br />
 					<p><strong>Valor total:</strong> R$<?php echo $pedido['valor'];?> (<?php echo $pedido['valor_extenso']; ?>)</p>
 					
 					<p>
@@ -791,6 +762,7 @@ $file_name='folha_os_fip.doc';
 					<td colspan="2" width='33%' height="35px" style="vertical-align:top; text-align: center;">Código Serviço/Material<br /><br /></td>
 					<td width='33%' height="35px" style="vertical-align:top; text-align: center;">Almoxarifado</td>
 					<td height="35px" style="vertical-align:top; text-align: center;">Nº SC/OS(SICOM)</td>
+				</tr>	
 
 
 					<tr>
@@ -799,6 +771,7 @@ $file_name='folha_os_fip.doc';
 
 					
 	<?php 
+	/*
 	echo '<pre>';
 	var_dump($pedido);
 	echo '</pre>';
@@ -807,7 +780,7 @@ $file_name='folha_os_fip.doc';
 	$metausuario = opcaoDados("usuario",1);
 	var_dump($metausuario);
 	echo '</pre>';
-	
+	*/
 	?>
 	
 	
