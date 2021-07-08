@@ -484,7 +484,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 			</tr>
 
 			<tr>
-				<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando a(s) apresentação(ões) do(s) seguinte(s) artista(s) <b><?php  echo $pedido['integrantes'] ?></b> para  realização de <?php echo $pedido['objeto']; ?> em <?php echo $pedido['local']; ?> no(s) dia(s)  <?php echo $pedido['periodo']; ?> </b></p>
+				<td colspan="4"><p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando a(s) apresentação(ões) do(s) seguinte(s) artista(s) <b><?php  echo $pedido['integrantes'] ?></b> para  realização de <?php echo $pedido['objeto']; ?> em <?php echo $pedido['local']; ?> no(s) dia(s)  <?php echo $pedido['periodo']; ?> </b></p>
 					<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 						CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 						Endereço: <?php echo $pedido['end']  ?><br />
@@ -559,8 +559,8 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 		</tr>
 		<tr>
-			<td colspan="3"><center><b>Nome da área requisitante: Secretaria de Cultura - <?php echo $pedido['periodo'] ?></b></center></td>
-			<tr/>	
+			<td colspan="3"><center><b>Nome da área requisitante: Secretaria de Cultura - <br/><?php echo $pedido['periodo'] ?></b></center></td>
+			</tr>	
 		</table>
 		<table border="1">
 			<tr>
@@ -652,6 +652,7 @@ $file_name='folha_os_fip.doc';
 	header('Content-Transfer-Encoding: binary ');
 
 ?>
+<<<<<<< HEAD
 <!--
 <html>
 	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8">
@@ -678,12 +679,17 @@ $file_name='folha_os_fip.doc';
 
 
 	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+=======
+
+
+>>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
+
+ <link rel="stylesheet" type="text/css" href="print.css" media="print" />
 
 <table  width="100%" border="1">
+
 	<tr>
-
-		<td rowspan="5" width="12%"><center><img src="images/logo.png"/></center></td>
-
+		<td rowspan="5" width="15%"><center><img src="images/logo.png"/></center></td>
 	</tr>
 	<tr>
 		<td colspan="2"><center><b>Prefeitura Municipal de Santo André</b></center></td>
@@ -732,7 +738,14 @@ $file_name='folha_os_fip.doc';
 			<td colspan="4">Local de aplicação do serviço ou evento:<br /><?php echo $pedido['local']; ?></td>
 		</tr>
 		<tr>
+<<<<<<< HEAD
 		<td colspan="4">    <p>Contratação de <?php echo $pedido['tipoPessoa']; ?> <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando a(s) apresentação(ões) do(s) seguinte(s) artista(s) <b><?php  echo $pedido['integrantes'] ?></b> para  realização de <?php echo $pedido['objeto']; ?> em <?php echo $pedido['local']; ?> no(s) dia(s)  <?php echo $pedido['periodo']; ?> </b></p>
+=======
+			<td colspan="4"><p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
+			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
+                    realização de apresentação artística, inserida na programação do 20º Festival de Inverno de Paranapiacaba - Edição Digital <!-- XIX Festival de Inverno de Paranapiacaba
+                    em -->Santo André 2021.</p>
+>>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 				<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 					CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 					Endereço: <?php echo $pedido['end']  ?>
@@ -769,19 +782,31 @@ $file_name='folha_os_fip.doc';
 
 
 					<tr>
-						<td colspan="4"><center><b>1ª via - Processo          2ª via - Requisitante</b></center></td>
-					</tr>
+							<td colspan="4"><center><b>1ª via - Processo          2ª via - Requisitante</b></center></td>
+						</tr>
+						<tr>	
+						</table>
 
 					
 	<?php 
+<<<<<<< HEAD
 	// echo '<pre>';
+=======
+
+	
+	//echo '<pre>';
+>>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 	//var_dump($pedido);
 	//echo '</pre>';
 	
 	//	echo '<pre>';
 	//$metausuario = opcaoDados("usuario",1);
 	//var_dump($metausuario);
+<<<<<<< HEAD
 	//echo '</pre>'; -->
+=======
+	//echo '</pre>';
+>>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 	
 	?>
 	
