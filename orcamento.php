@@ -505,6 +505,7 @@ case "mov_inserir":
 <script src="js/mask.js"></script>
 <script src="js/maskMoney.js"></script> 
 <script>
+
 	$(function() {
 		$( ".calendario" ).datepicker();
 		$( ".hora" ).mask("99:99");
@@ -832,7 +833,7 @@ if(isset($_POST['mov_editar'])){
 						<div class="col-md-offset-2">
 							<label>Data *</label>
 							<input type="text" name="dia" class="form-control calendario"   value="<?php echo exibirDataBr($mov['data']) ?>"/>
-						</div>
+						</div>                                                             
 					</div>					
 					<div class="form-group">
 						<div class="col-md-offset-2">
@@ -855,6 +856,7 @@ if(isset($_POST['mov_editar'])){
 </section>
 <?php 
 break;
+
 case "mov_listar":
 if(isset($_POST['deletar'])){
 	$mensagem = "Teste 123";
