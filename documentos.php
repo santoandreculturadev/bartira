@@ -713,10 +713,8 @@ case 549: // OS para FIP
 		</tr>
 		<tr>
 		<td colspan="3">Nome do Contato <br /><b><?php echo $pedido['usuario']; ?></b></td>
-        <td>Telefone Contato<br /><b><?php echo $pedido['telefone']; ?></b></td>
+        <td>Telefone Contato<br />(11) 4433-0711</td>
 
-			<!--<td colspan="3">Nome do Contato <br />Rodrigo Fernando da Silva</td>
-			<td>Telefone Contato<br />(11) 4433-0711</td> -->
 		</tr>
 		<tr><td colspan="4">Conta corrente (cód.Reduzido)/DB<br /><center>252</center></td></tr>	
 		<tr>
@@ -771,7 +769,8 @@ case 549: // OS para FIP
 					</tr>
 
 					
-	<?php /*
+	<?php 
+	/*
 	echo '<pre>';
 	var_dump($pedido);
 	echo '</pre>';
