@@ -713,7 +713,7 @@ case 549: // OS para FIP
 		</tr>
 		<tr>
 		<td colspan="3">Nome do Contato <br /><b><?php echo $pedido['usuario']; ?></b></td>
-        <td>Telefone Contato<br />(11) 4433-0711</td>
+        <td>Telefone Contato<br />(11) 4433-0785</td>
 
 		</tr>
 		<tr><td colspan="4">Conta corrente (cód.Reduzido)/DB<br /><center>252</center></td></tr>	
@@ -721,7 +721,8 @@ case 549: // OS para FIP
 			<td colspan="4">Data Período do evento: <br /><?php echo $pedido['periodo']; ?></td>
 		</tr>	
 		<tr>
-			<td colspan="4">Local de aplicação do serviço ou evento:<br /><?php echo $pedido['local']; ?></td>
+			<td colspan="4">Local de aplicação do serviço ou evento:<br /><b> Evento online </b>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4">	<p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
