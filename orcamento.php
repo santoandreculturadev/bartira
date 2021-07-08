@@ -612,7 +612,7 @@ case "mov_inserir":
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Data *</label>
-							<input type="text" name="data" class="form-control calendario"  />
+							<input type="text" name="dia" class="form-control calendario"  />
 						</div>
 					</div>					
 					
@@ -651,7 +651,7 @@ if(isset($_POST['mov_inserir']) OR isset($_POST['mov_editar']) ){
 	$tipo = $_POST["tipo"];
 	$dotacao = $_POST["dotacao"];
 	$valor = dinheiroDeBr($_POST["valor"]);
-	if($_POST["data"] = '' OR $_POST["data"] = '0000-00-00'){
+	if($_POST["dia"] = '' OR $_POST["dia"] = '0000-00-00'){
 		$data = date('Y-m-d');
 	}else{
 		$data = exibirDataMysql($_POST["data"]);	
@@ -831,7 +831,7 @@ if(isset($_POST['mov_editar'])){
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Data *</label>
-							<input type="text" name="data" class="form-control calendario"   value="<?php echo exibirDataBr($mov['data']) ?>"/>
+							<input type="text" name="dia" class="form-control calendario"   value="<?php echo exibirDataBr($mov['data']) ?>"/>
 						</div>
 					</div>					
 					<div class="form-group">
