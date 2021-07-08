@@ -262,14 +262,14 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
  
 
 
-        <p>Quando for Grupo/Banda/Cia:<\p>
+        <p>Quando for Grupo/Banda/Cia:</p>
 		<p>Para essa apresentação o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> será formado por: <?php echo $pedido['ficha_tecnica'] ?>.</p>
         <p>Breve release: <?php echo $pedido['release'] ?></p>
         <p><font color="#FF0000">O(A) (artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> atende às expectativas da Secretaria, neste momento.</p>
 
         <p>Atesto que o(a) <font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> <?php echo $pedido['titulo'] ?> é consagrado(a) pela crítica especializada e pela opinião pública. Não existem parâmetros nem tabelas que comprovem os valores solicitados pelos artistas, estando avaliado em consonância com a economicidade.  Atesto ainda que é inviável a competição pela singularidade da atração. A futura contratação atingirá os fins e objetivos públicos.</justify></p>
  
-        </center></p>
+       <p></center></p>
 
 
 		<br /><br />
@@ -396,7 +396,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 	header('Content-Disposition: attachment;filename='.$file_name);
 	header('Content-Transfer-Encoding: binary ');*/
 	
-	?>
+	/*?>
 	<!-- CSS para impressão -->
 
 	<!-- <html>
@@ -436,7 +436,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 		</tr>	
 
 		<tr>
-			<td><center>Data da Emissão<br /><b><?php echo date("d/m/Y")?></b></center></td>
+			<td><center>Data da Emissão<br /><b><?php echo date("d/m/Y")?></b></center></td> \\
 			<td><center>CR Requisitante<br /><b><font color="#FF0000">INSIRA SEU CR AQUI</font></b></center></td>
 		</tr>
 
@@ -491,7 +491,8 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 						Email: <?php echo $pedido['email'];?> - Telefone: <?php echo $pedido['telefone'];?>  <br />
 						<p>Valor total: R$<?php echo $pedido['valor'];?> (<?php echo $pedido['valor_extenso']; ?>)</p>
 						
-						<p><b>Forma de pagamento:</b> <?php echo $pedido['forma_pagamento'];?> </p>
+						<p><b>Forma de pagamento:</b>
+						<?php echo $pedido['forma_pagamento'];?> </p>
 						<p><?php echo $pedido['banco'];?> </p>		
 
 					</td>
@@ -519,7 +520,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 					<tr>
 						<td colspan="4"><center><b>1ª via - Processo          2ª via - Requisitante</b></center></td>
-					</tr>  --> 
+					</tr>  --> */
 						
 						<?php 
 						break;
@@ -570,7 +571,7 @@ if(!isset($_GET['id']) OR !isset($_GET['modelo'])){
 
 			<tr>
 				<td>Cód. Dotação:<br /><b><?php echo resumoDotacao($pedido['cod_dotacao']); ?></b></td>
-				<td>Projeto:<br /><b><?php echo $pedido['projeto']; ?><b/></td>
+				<td>Projeto:<br /><b><?php echo $pedido['projeto']; ?></b></td>
 					<td>Ficha: <br /> <b><?php echo $pedido['ficha']; ?></b></td>
 					<td>Sub-elemente Despesa: <br /><center>22</center></td>	
 				</tr>
@@ -709,10 +710,10 @@ $file_name='folha_os_fip.doc';
 		</tr>
 
 		<tr>
-			<td><br>Cód. Dotação:<br /><b><?php echo resumoDotacao($pedido['cod_dotacao']); ?></b></td>
-			<td><br>Projeto:<br /><b><?php echo $pedido['projeto']; ?><br/></td>
-			<td><br>Ficha: <br /> <b><?php echo $pedido['ficha']; ?></b></td>
-			<td><br>Sub-elemento despesa: <br /><center>22</center></td>	
+			<td>Cód. Dotação:<br /><b><?php echo resumoDotacao($pedido['cod_dotacao']); ?></b></td>
+			<td>Projeto:<br /><b><?php echo $pedido['projeto']; ?></b></td>
+			<td>Ficha: <br /> <b><?php echo $pedido['ficha']; ?></b></td>
+			<td>Sub-elemento despesa: <br /><center>22</center></td>	
 			</tr>
 		</tr>
 		<tr>
