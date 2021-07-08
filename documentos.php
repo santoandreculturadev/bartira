@@ -652,7 +652,6 @@ $file_name='folha_os_fip.doc';
 	header('Content-Transfer-Encoding: binary ');
 
 ?>
-<<<<<<< HEAD
 <!--
 <html>
 	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8">
@@ -679,10 +678,6 @@ $file_name='folha_os_fip.doc';
 
 
 	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
-=======
-
-
->>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 
  <link rel="stylesheet" type="text/css" href="print.css" media="print" />
 
@@ -738,14 +733,7 @@ $file_name='folha_os_fip.doc';
 			<td colspan="4">Local de aplicação do serviço ou evento:<br /><?php echo $pedido['local']; ?></td>
 		</tr>
 		<tr>
-<<<<<<< HEAD
 		<td colspan="4">    <p>Contratação de <?php echo $pedido['tipoPessoa']; ?> <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando a(s) apresentação(ões) do(s) seguinte(s) artista(s) <b><?php  echo $pedido['integrantes'] ?></b> para  realização de <?php echo $pedido['objeto']; ?> em <?php echo $pedido['local']; ?> no(s) dia(s)  <?php echo $pedido['periodo']; ?> </b></p>
-=======
-			<td colspan="4"><p>Contratação da empresa <b><?php echo $pedido['nome_razaosocial']  ?></b>, representando
-			<!--<font color="#FF0000">(artista/cia/banda/grupo/dupla)</font> --><?php echo $pedido['titulo'] ?> para
-                    realização de apresentação artística, inserida na programação do 20º Festival de Inverno de Paranapiacaba - Edição Digital <!-- XIX Festival de Inverno de Paranapiacaba
-                    em -->Santo André 2021.</p>
->>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 				<p>Empresa: <?php echo $pedido['nome_razaosocial']  ?><br />
 					CNPJ: <?php echo $pedido['cpf_cnpj']  ?><br />
 					Endereço: <?php echo $pedido['end']  ?>
@@ -789,24 +777,14 @@ $file_name='folha_os_fip.doc';
 
 					
 	<?php 
-<<<<<<< HEAD
 	// echo '<pre>';
-=======
-
-	
-	//echo '<pre>';
->>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 	//var_dump($pedido);
 	//echo '</pre>';
 	
 	//	echo '<pre>';
 	//$metausuario = opcaoDados("usuario",1);
 	//var_dump($metausuario);
-<<<<<<< HEAD
 	//echo '</pre>'; -->
-=======
-	//echo '</pre>';
->>>>>>> 9d51e03cb34598868acaa9c3604fc90ff5caf020
 	
 	?>
 	
