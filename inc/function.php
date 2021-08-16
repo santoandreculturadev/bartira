@@ -118,6 +118,9 @@ function nSemana($date){
 	return date("w", strtotime($date)); 
 }
 
+//retira menu wp-admin
+add_filter( 'show_admin_bar', '__return_false' );
+
 //soma(+) ou substrai(-) dias de um date(a-m-d)
 function somarDatas($data,$dias){ 
 	$data_final = date('Y-m-d', strtotime("$dias days",strtotime($data)));	
