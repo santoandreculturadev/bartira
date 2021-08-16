@@ -119,6 +119,8 @@ function nSemana($date){
 }
 
 //retira menu wp-admin
+	
+remove_action('init', 'wp_admin_bar_init');
 add_action('after_setup_theme', 'remove_admin_bar');
  
 function remove_admin_bar() {
