@@ -119,7 +119,10 @@ function nSemana($date){
 }
 
 //retira menu wp-admin
-add_filter( 'show_admin_bar', '__return_false' );
+function my_function_admin_bar($content) {
+	return ( current_user_can("administrator") ) ? $content : false;
+	}
+
 
 //soma(+) ou substrai(-) dias de um date(a-m-d)
 function somarDatas($data,$dias){ 
