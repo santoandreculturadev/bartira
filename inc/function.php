@@ -119,9 +119,13 @@ function nSemana($date){
 }
 
 //retira menu wp-admin
-function my_function_admin_bar($content) {
-	return ( current_user_can("administrator") ) ? $content : false;
-	}
+add_action('after_setup_theme', 'remove_admin_bar');
+ 
+function remove_admin_bar() {
+if (!current_user_can('administrator') &amp;&amp; !is_admin()) {
+show_admin_bar(false);
+}
+  }
 
 
 //soma(+) ou substrai(-) dias de um date(a-m-d)
