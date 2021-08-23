@@ -5,7 +5,7 @@
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } else {
-    $p = 'inicio';
+    $p = 'listar_evento_sem_indicador';
 }
 //session_start(); // carrega a sessão
 
@@ -103,9 +103,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario')  AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -118,7 +118,18 @@ ini_set(“display_errors”, 0);
                                 <select class="form-control" name="idEvento" id="idEvento" required>
                                     <option value=''>Escolha uma opção</option>
                                     <?php for ($i = 0; $i < count($eventos); $i++) { ?>
-                                        <option value='<?php echo $eventos[$i]['idEvento']; ?>'><?php echo $eventos[$i]['nomeEvento']; ?></option>
+                                        <option value='<?php echo $eventos[$i]['idEvento'];?>.' 
+										<?php 
+										if(isset($_GET['evento']) AND $_GET['evento'] == $eventos[$i]['idEvento']){
+											echo " selected";
+													
+										}
+										
+										?>
+										>
+										
+										
+										<?php echo $eventos[$i]['nomeEvento']." (".$eventos[$i]['idEvento'].")"; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -7705,9 +7716,9 @@ ini_set(“display_errors”, 0);
                                                         $age_dezembro = $wpdb->get_results($sql_age_dezembro, ARRAY_A);
                                                         echo "<td>" . $age_dezembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_dezembro = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_dezembro = "SELECT SUM(santo_andre) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_dezembro = $wpdb->get_results($sql_num_age_dezembro, ARRAY_A);
-                                                        echo "<td>" . $num_age_dezembro[0]['SUM(dezembro_sa)'] . "</td>";
+                                                        echo "<td>" . $num_age_dezembro[0]['SUM(santo_andre)'] . "</td>";
 
                                                         $sql_num_bairros_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_dezembro = $wpdb->get_results($sql_num_bairros_dezembro, ARRAY_A);
@@ -13785,7 +13796,7 @@ ini_set(“display_errors”, 0);
                                                 <th>Responsável</th>
                                                 <th>Suplente</th>
                                                 <th>Quem cadastrou</th>
-
+												<th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -13812,11 +13823,17 @@ ini_set(“display_errors”, 0);
                                                 $usuario = retornaUsuario($evento[$i]['idUsuario']);
                                                 ?>
                                                 <td><?php echo $usuario['display_name'] ?></td>
-
+												<td>
+												<form method="POST" action="?p=inserirevento&evento=<?php echo $evento[$i]['idEvento'] ?>" class="form-horizontal" role="form">
+												
+												<button type="submit" class="btn btn-theme btn-lg btn-block">Inserir</button>
+												</form>
+												</td>
                                                 <?php
                                                 }
                                                 ?>
 
+												
                                                 <?php
                                                 break;
 

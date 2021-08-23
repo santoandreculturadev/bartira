@@ -499,6 +499,8 @@ $_SESSION['entidade'] = 'orcamento';
 <?php 
 break;
 case "mov_inserir":
+// ano_base -> dotação projeto/ficha
+
 ?>
 <link href="css/jquery-ui.css" rel="stylesheet">
 <script src="js/jquery-ui.js"></script>
