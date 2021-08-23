@@ -124,7 +124,7 @@ remove_action('init', 'wp_admin_bar_init');
 add_action('after_setup_theme', 'remove_admin_bar');
  
 function remove_admin_bar() {
-if (!current_user_can('administrator') &amp;&amp; !is_admin()) {
+if (!current_user_can('administrator') AND !is_admin()) {
 show_admin_bar(false);
 }
   }
