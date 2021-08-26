@@ -399,12 +399,12 @@ if(isset($_SESSION['id'])){
 			{
 				$('#projeto').hide();
 				$('.carregando').show();
-				$.getJSON('inc/projeto.ajax.php?programa=',{programa: $(this).val(), ajax: 'true'}, function(j)
+				$.getJSON('inc/projeto.ajax.php?ano_base=all&',{programa: $(this).val(), ajax: 'true'}, function(j)
 				{
 					var options = '<option value="0"></option>';	
 					for (var i = 0; i < j.length; i++)
 					{
-						options += '<option value="' + j[i].id + '">' + j[i].projeto + '</option>';
+						options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>';
 					}	
 					$('#projeto').html(options).show();
 					$('.carregando').hide();
@@ -734,12 +734,12 @@ if(isset($_POST['atualizar'])){
 			{
 				$('#projeto').hide();
 				$('.carregando').show();
-				$.getJSON('inc/projeto.ajax.php?programa=',{programa: $(this).val(), ajax: 'true'}, function(j)
+				$.getJSON('inc/projeto.ajax.php?ano_base=all&',{programa: $(this).val(), ajax: 'true'}, function(j)
 				{
 					var options = '<option value="0"></option>';	
 					for (var i = 0; i < j.length; i++)
 					{
-						options += '<option value="' + j[i].id + '">' + j[i].projeto + '</option>';
+						options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>';
 					}	
 					$('#projeto').html(options).show();
 					$('.carregando').hide();

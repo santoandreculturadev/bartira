@@ -453,9 +453,16 @@ function diasemanaint($data)
 		$query = $wpdb->get_results($sql,ARRAY_A);
 		for($i = 0; $i < count($query); $i++){
 			if($select == $query[$i]['id_tipo']){
-				echo "<option value='".$query[$i]['id_tipo']."' selected >".$query[$i]['tipo']."</option>";
+				if($query[$i]['ano_base'] != NULL){
+					$ano_base = " (".$query[$i]['ano_base'].")";
+				}else{
+					$ano_base = "";
+				}
+				
+				
+				echo "<option value='".$query[$i]['id_tipo']."' selected >".$query[$i]['tipo'].$ano_base."</option>";
 			}else{
-				echo "<option value='".$query[$i]['id_tipo']."' >".$query[$i]['tipo']."</option>";
+				echo "<option value='".$query[$i]['id_tipo']."' >".$query[$i]['tipo'].$ano_base."</option>";
 			}
 		}		
 
