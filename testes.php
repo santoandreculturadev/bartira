@@ -13,7 +13,7 @@
 		echo "</pre>";
 		*/
 		
-		indResumo("eventos","2018")
+		var_dump(anoBaseIndicadores("sc_ind_biblioteca"));
 		
 
 		?>

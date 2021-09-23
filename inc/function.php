@@ -2818,3 +2818,22 @@ function indResumo($tipo,$ano){
 function dotacao($id){
 	
 }
+
+function anoBaseIndicadores($tabela,$ano_base = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT ano_base FROM $tabela ORDER BY ano_base DESC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	
+	for($i = 0; $i < count($res); $i++){
+		if($ano_base != NULL AND $res[$i]['ano_base'] == $ano_base){
+			echo "<option value='".$res[$i]['ano_base']."' selected>".$res[$i]['ano_base']."</option>";
+		}else{
+			echo "<option value='".$res[$i]['ano_base']."'>".$res[$i]['ano_base']."</option>";
+			
+		}
+
+	}
+	
+	return $res;
+	
+}

@@ -26,6 +26,8 @@ ini_set(“display_errors”, 0);
 <?php include "menu/me_indicadores.php"; ?>
 
     <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+
         <?php
         switch ($p){
         case "inicio": ?>
@@ -14521,7 +14523,7 @@ ini_set(“display_errors”, 0);
                                         }
 
                                         echo "Total de agentes: " . count($k) . "<br />";
-                                        echo "Total de agentes: " . sizeof($k) . "<br />";
+                                        echo "Total de Ft: " . sizeof($k) . "<br />";
 
                                         ?>
 
