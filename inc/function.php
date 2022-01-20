@@ -2837,3 +2837,39 @@ function anoBaseIndicadores($tabela,$ano_base = NULL){
 	return $res;
 	
 }
+
+
+
+function geraOpcaoMeta($meta = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT meta FROM sc_plano_municipal ORDER BY meta ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($meta == $res[$i]['meta']){
+			echo "<option value='".$res[$i]['meta']."' selected>Meta ".$res[$i]['meta']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['meta']."'>Meta ".$res[$i]['meta']."</option>";				
+		}
+	}
+	
+}
+
+function opcaoAnoBase($ano_base = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT ano_base FROM sc_tipo ORDER BY ano_base DESC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	for($i = 0; $i < count($res); $i++){
+		if($ano_base == $res[$i]['ano_base']){
+			echo "<option value='".$res[$i]['ano_base']."' selected>".$res[$i]['ano_base']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['ano_base']."'>".$res[$i]['ano_base']."</option>";				
+		}
+	
+
+	
+	}
+	
+	
+}

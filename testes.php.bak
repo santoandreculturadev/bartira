@@ -7,7 +7,7 @@
 	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 		<h1>Ambiente teste / Importar Plano Municipal</h1>
 		<?php 
-/*
+
 		$sql_lista_temp = "SELECT * FROM metas_temp";
 		$result = $wpdb->get_results($sql_lista_temp,ARRAY_A);
 	//echo "<pre>";
@@ -30,13 +30,7 @@
 		}
 		
 	}
-*/
 
-	$teste = geraOpcaoMeta();
-
-	echo "<pre>";
-	var_dump($teste);
-	echo "</pre>";
 	
 		?>
 	</main>
