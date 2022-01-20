@@ -2862,9 +2862,9 @@ function opcaoAnoBase($ano_base = NULL){
 	$res = $wpdb->get_results($sql,ARRAY_A);
 	for($i = 0; $i < count($res); $i++){
 		if($ano_base == $res[$i]['ano_base']){
-			echo "<option value='".$res[$i]['meta']."' selected>".$res[$i]['ano_base']."</option>";		
+			echo "<option value='".$res[$i]['ano_base']."' selected>".$res[$i]['ano_base']."</option>";		
 		}else{
-			echo "<option value='".$res[$i]['meta']."'>".$res[$i]['ano_base']."</option>";				
+			echo "<option value='".$res[$i]['ano_base']."'>".$res[$i]['ano_base']."</option>";				
 		}
 	
 
@@ -2872,4 +2872,18 @@ function opcaoAnoBase($ano_base = NULL){
 	}
 	
 	
+}
+
+function orderMeta(){
+	global $wpdb;
+	$meta_valida = "";
+	$sql = "SELECT DISTINCT meta FROM sc_plano_municipal ORDER BY meta ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	for($i = 0; $i < count($res); $i++){
+		$meta = $res[$i]['meta'];
+		$sql_meta = "SELECT * FROM sc_plano_municipal WHERE meta = '$meta'  ORDER BY data DESC LIMIT 0,1";
+		$res_meta = $wpdb->get_results($sql_meta,ARRAY_A);
+		$meta_valida .= $res_meta[0]['id'].",";
+	}
+	return substr($meta_valida,0,-1);
 }
