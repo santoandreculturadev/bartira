@@ -1745,6 +1745,7 @@ $historico = orcamento($id_hist);
 		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
             VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase')";
 		$ins = $wpdb->query($sql_ins);
+		atualizaMetaOrcamento();
 		if($ins == 1){
 			$mensagem = alerta("Planejamento atualizado.","success");	
 
@@ -1993,6 +1994,8 @@ if(isset($_POST['apagar'])){
 		}else{
 			$mensagem = alerta("Não inserido. Tente novamente.","warning");
 		}
+
+	atualizaMetaOrcamento();
 	}
 
 	if(isset($_POST['deleta'])){
@@ -2004,6 +2007,7 @@ if(isset($_POST['apagar'])){
 		}else{
 			$mensagem = alerta("Não deletado Tente novamente. $sql","info");
 		}	
+	//gatilho
 	}
 
 	?>
@@ -2165,8 +2169,10 @@ if(isset($_POST['apagar'])){
 		WHERE id_tipo = '$id';	
 		";
 		$upd = $wpdb->query($sql_upd);
+		atualizaMetaOrcamento();
 		if($upd == 1){
 			$mensagem = alerta("Atualizado com sucesso.","success");
+			atualizaMetaOrcamento();
 		}else{
 			$mensagem = alerta("Não atualizado. Tente novamente.","alert");
 		}

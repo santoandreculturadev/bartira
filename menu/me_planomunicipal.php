@@ -18,11 +18,9 @@
           <li class="nav-item">
             <a class="nav-link" href="planomunicipal.php?p=listarmetas">Listar Metas</a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="planomunicipal.php?p=inserir">Atualização da Meta</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="planomunicipal.php?p=inserir">Visualização</a>
+            <a class="nav-link" href="planomunicipal.php?p=inserir_relatorio">Inserir Relatório/Progressão</a>
           </li>
         </ul>
 

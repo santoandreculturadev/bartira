@@ -7,8 +7,8 @@
 	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 		<h1>Ambiente teste / Importar Plano Municipal</h1>
 		<?php 
-/*
-		$sql_lista_temp = "SELECT * FROM metas_temp";
+
+/*		$sql_lista_temp = "SELECT * FROM meta_temp";
 		$result = $wpdb->get_results($sql_lista_temp,ARRAY_A);
 	//echo "<pre>";
 	//var_dump($result);
@@ -27,10 +27,13 @@
 		
 			$insert = "INSERT INTO `sc_plano_municipal` (`id`, `objetivos`, `objetivos_descricao`, `meta`, `meta_descricao`, `data`, `revisado`, `publicado`) VALUES (NULL, '$objetivos', '$objetivos_descricao', '$meta', '$meta_descricao', '', '', '$publicado')";
 			$ins = $wpdb->query($insert);
+			echo $insert."<br />";
+			var_dump($ins);
+			
 		}
 		
 	}
-*/
+
 
 	$teste = geraOpcaoMeta();
 
@@ -38,6 +41,11 @@
 	var_dump($teste);
 	echo "</pre>";
 	
+*/
+
+	//atualizaMetaOrcamento(10);
+	//metaOrcamento(21);
+	var_dump(orcamentoPai(1017));
 		?>
 	</main>
 

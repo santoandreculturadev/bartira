@@ -2881,9 +2881,114 @@ function orderMeta(){
 	$res = $wpdb->get_results($sql,ARRAY_A);
 	for($i = 0; $i < count($res); $i++){
 		$meta = $res[$i]['meta'];
-		$sql_meta = "SELECT * FROM sc_plano_municipal WHERE meta = '$meta'  ORDER BY data DESC LIMIT 0,1";
+		$sql_meta = "SELECT * FROM sc_plano_municipal WHERE meta = '$meta'  ORDER BY id DESC LIMIT 0,1";
 		$res_meta = $wpdb->get_results($sql_meta,ARRAY_A);
 		$meta_valida .= $res_meta[0]['id'].",";
 	}
 	return substr($meta_valida,0,-1);
+}
+
+function statusPlano($meta){
+	global $wpdb;
+	$x = array();
+	$sql = "SELECT * FROM sc_plano_municipal_progressao WHERE meta = '$meta' AND publicado = '1' ORDER BY id DESC LIMIT 0,1";
+	$res = $wpdb->get_row($sql,ARRAY_A);
+
+	if($res == NULL){
+		$x['execucao'] = 0;
+		$x['status'] = "S/N";
+		$x['data'] = "S/N";
+		$x['relatorio'] = "S/N";
+		$x['forum'] = "S/N";
+	}else{
+		$x['execucao'] = $res['execucao'];
+		$t = retornaTipo($res['status']);
+		$x['status'] = $t['tipo'];
+		$x['data'] = exibirDataBr($res['insert_date']);
+		$x['relatorio'] = nl2Br($res['relatorio']);
+		$x['forum'] = nl2br($res['analise_foruns']);
+
+	}
+	
+	return $x;
+}
+
+function metaOrcamento($meta,$exibir = NULL){
+	
+	global $wpdb;
+	$sql = "SELECT * FROM sc_orcamento WHERE meta = '$meta' AND publicado = '1'"; //planejamentos
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$ano = anoOrcamento();		
+	$r = array();
+
+	if($exibir == NULL){
+		
+		
+	
+
+	for($i = 0; $i < count($res); $i++){
+		if($ano[$i] != 0){
+			if(isset($r[$res[$i]['ano_base']])){	
+				$r[$res[$i]['ano_base']] = $r[$res[$i]['ano_base']] + $res[$i]['valor'];
+			}else{
+				$r[$res[$i]['ano_base']] = $res[$i]['valor'];
+			}
+		}
+	}
+
+
+	}else{
+		
+	for($i = 0; $i < count($res); $i++){
+		if($ano[$i] != 0){
+			$pai = orcamentoPai($res[$i]['idPai']);
+			
+			$r[$i] = array(
+			'valor' => $res[$i]['valor'];
+			'projeto' => $pai['projeto'];
+			'ficha' => $pai['ficha'];
+			'ano_base' => $pai['ano_base'];
+			);
+			
+		}
+	}	
+		
+		
+		
+		
+	}
+
+	
+
+	return $r;
+
+
+	
+	
+	
+}
+
+function orcamentoPai($idPai){
+	return recuperaDados("sc_orcamento",$idPai,"id");
+	
+}
+
+
+function atualizaMetaOrcamento(){
+	global $wpdb;
+	$sql = "SELECT * FROM sc_tipo WHERE abreviatura = 'projeto' AND publicado = '1'";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	for($i = 0; $i < count($res); $i++){
+		$json = json_decode($res[$i]['descricao'],true);
+		if(isset($json['meta'])){
+			$sql_atualiza = "UPDATE sc_orcamento SET meta = '".$json['meta']."' WHERE planejamento = '".$res[$i]['id_tipo']."'";
+			$wpdb->query($sql_atualiza);
+		}
+		
+	//echo 	$res[$i]['id_tipo']."<br />";
+	//echo "<pre>";
+	//var_dump($json);
+	//echo "</pre>";
+	}
+	
 }
