@@ -11,68 +11,142 @@ endif;
 //Carrega os arquivos de funções
 require "inc/function.php";
 
-if(isset($_GET['usuario'])){
-	?>
-	<table border='1'>
-		<thead>
-			<tr>
-				<th width="10%">CulturAZ</th>
-				<th>Título</th>
-				<th>Proponente</th>
-				<th>Cat</th>
-				<th>Área</th>
-				<th>Valor</th>
-				<th width="10%">Nota</th>
-				<th width="35%">Anotações</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php 
-			global $wpdb;
-			$tipo = 'usuario';
-			$id = $_GET['usuario'];
-			$x = opcaoDados($tipo,$id);
-			$g = $x['edital'][1];
-			
-			$edital =  editais("",19);
-
-			
-			$sql_sel_ins = "SELECT avaliadores FROM ava_edital WHERE id_mapas = '273'";
-			$sel = $wpdb->get_row($sql_sel_ins,ARRAY_A);
-
-			$res = json_decode($sel['avaliadores'],true);
-			$inscritos = $res[$g];
-				//var_dump($res);
-			for($i = 0; $i < count($res[$g]); $i++){
-				$id_insc = $res[$g][$i];
-				$sel = "SELECT descricao,inscricao FROM ava_inscricao WHERE inscricao = '$id_insc'";	
-				$json = $wpdb->get_row($sel,ARRAY_A);	
-				$res_json = json_decode($json['descricao'],true);
-
-
-				?>	
-				<tr>
-					<td><a href="http://culturaz.santoandre.sp.gov.br/inscricao/<?php echo substr($json['inscricao'],3); ?>" target="_blank" ><?php echo $json['inscricao']; ?> </a></td>
-
-					<td><?php echo $res_json['3.1 - Título']; ?></td>
-					<td><?php echo $res_json['Agente responsável pela inscrição']; ?></td>
-					<td><?php echo str_replace("CATEGORIA","",$res_json['3.2 - Categoria']); ?></td>
-					<td><?php echo $res_json['3.3 - Determine a área principal de enquadramento da proposta']; ?></td>
-					<td><?php echo $res_json['3.11 - Valor (em Reais)']; ?></td>
-					<td><?php echo somaNotas($json['inscricao'],$_GET['usuario'],273); ?></td>
-					<td>
-						<?php $anot = retornaAnotacao($json['inscricao'],$_GET['usuario'],273); echo $anot; ?>
-					</td>
-				</tr>
-				<?php 
-
-			} ?>	
-
-
-		</tbody>
-	</table>	
-	<?php
+if(isset($_GET['pag'])){
+	$pag = $_GET['pag'];
 }else{
-	echo "Erro";
-	
+	$pag = "inicio";
 }
+
+
+switch($pag){
+	
+	case "inicio":
+	
+		echo "<h1>Relatórios para impressão</h1>";
+	
+	break;
+
+	case "metas":
+
+?>
+<style>
+.desc_meta{
+	font-size: 10px;
+}
+
+
+</style>
+<section id="contact" class="home-section bg-white">
+	<div class="container">
+		<div class="row">    
+			<div class="col-md-offset-2 col-md-8">
+				<h1>Plano Municipal de Cultura - Santo André</h1>
+				<h2></h2>
+				<p><?php if(isset($mensagem)){ echo $mensagem; }?></p>
+			</div>
+		</div>
+		<?php 
+		$m = orderMeta();
+		$sql_contatos = "SELECT * FROM sc_plano_municipal WHERE id IN ($m) ORDER BY meta ASC";
+		$peds = $wpdb->get_results($sql_contatos,ARRAY_A);
+		if(count($peds) > 0){
+			?>
+			
+			<section id="contact" class="home-section bg-white">
+				<div class="container">
+					<div class="row">    
+					</div>
+					<div >
+						<table border="1px">
+							<thead>
+								<tr>
+									<th>Objetivo</th>
+									<th width='20%'>Meta</th>
+									<th>Versão</th>
+									<th>P %</th>
+									<th>Status</th>
+									<th>Data Rel</th>
+									<th width='20%'>Relatório</th>
+									<th width='20%'>Fórum</th>
+									<th>Valor Previsto</th>
+									<th>Valor/Projeto/Ficha/Ano</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<?php 
+								for($i = 0; $i < count($peds); $i++){
+									$status = statusPlano($peds[$i]['meta']);
+									$orc = metaOrcamento($peds[$i]['meta']);
+									$orcp = metaOrcamento($peds[$i]['meta'],true);
+									?>
+									<tr>
+										<td><p class="desc_meta"><?php echo $peds[$i]['objetivos']; ?></p></td>
+										<td><p class="desc_meta"><?php echo $peds[$i]['meta_descricao']; ?></p></td>
+										<td><?php echo exibirDataBr($peds[$i]['data']); ?></td>
+										<td><?php echo $status['execucao']."%"; ?></td>										
+										<td><?php echo $status['status']; ?></td>										
+										<td><?php echo $status['data']; ?></td>		
+										<td><p class="desc_meta"><?php echo $status['relatorio']; ?></p></td>
+										<td><p class="desc_meta"><?php echo $status['forum']; ?></p></td>
+										<td>
+										<?php 
+										foreach ($orc as $chave => $valor) {
+											echo dinheiroParaBr($valor)." (".$chave."),  ";
+											// Na variável $chave vai ter a chave da iteração atual (cpf, titular ou saldo)
+											// Na variável $valor você vai ter o valor referente à chave atual
+										}
+										
+										?>
+										
+										
+										</td>
+										<td>
+										<?php
+											for($j = 0; $j < count($orcp); $j++){
+												echo dinheiroparaBr($orcp[$j]['valor'])."/".$orcp[$j]['projeto']."/".$orcp[$j]['ficha']."/".$orcp[$j]['ano_base']."<br />";
+											}
+
+										?>
+										
+										</td>
+										
+										</tr>
+									<?php } // fim do for?>	
+									
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</section>		
+				<?php 
+		// se não existir, exibir
+			}else{
+				?>
+				<div class="row">    
+					<div class="col-md-offset-2 col-md-8">
+						<center><h3>Não há metas.</h3></center>
+						
+					</div>
+				</div>
+				
+
+				<?php 
+		// fim do if existir pedido
+			}
+			?>
+			
+			
+			
+		</div>
+	</section>
+
+
+<?php 
+break;
+
+?>
+
+
+<?php } //fim da switch pag ?>

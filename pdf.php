@@ -13,7 +13,7 @@ endif;
 require "inc/function.php";
 
 // Carrega o MPDF
-include("inc/pdf/mpdf60/mpdf.php");
+include("inc/pdf/mpdf70/src/Mpdf.php");
 if(isset($_GET['id'])){
 	$evento = evento($_GET['id']);
 	$event = recuperaDados("sc_evento",$_GET['id'],"idEvento");

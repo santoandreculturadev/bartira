@@ -26,6 +26,11 @@
           <li class="nav-item">
             <a class="nav-link" href="planomunicipal.php?p=inserir_relatorio">Inserir Relatório/Progressão</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="print.php?pag=metas" target="_blank">Visão Geral/Impressão</a>
+          </li>		  
+		  
+		
         </ul>
 
 
