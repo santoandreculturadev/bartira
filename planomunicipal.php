@@ -685,7 +685,13 @@ if(isset($_POST['versao'])){
 
 ?>
 
+<script>
 
+$(document).ready(function () {
+    $(".table-responsive").floatingScroll();
+});
+
+</script>
 <section id="contact" class="home-section bg-white">
 	<div class="container">
 		<div class="row">    
@@ -706,8 +712,8 @@ if(isset($_POST['versao'])){
 				<div class="container">
 					<div class="row">    
 					</div>
-					<div class="table-responsive">
-						<table class="table table-striped">
+					<div class="table-responsive fl-scrolls-body" data-fl-scrolls fl-scrolls-hoverable>
+						<table class="table table-striped fl-scrolls-body" data-fl-scrolls fl-scrolls-hoverable>
 							<thead>
 								<tr>
 									<th>Objetivo</th>

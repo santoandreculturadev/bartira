@@ -447,6 +447,22 @@ function diasemanaint($data)
 
 	}
 
+	function retornaModulo($descricao){
+		global $wpdb;
+		$descricao = trim($descricao);	
+
+		$sql = "SELECT * FROM sc_tipo WHERE descricao LIKE '$descricao' AND abreviatura = 'modulo'  AND publicado = '1' LIMIT 0,1";
+		$res = $wpdb->get_row($sql,ARRAY_A);
+		if($res == NULL){
+			return NULL;
+		}else{
+			return $res;
+		}
+	}
+
+
+
+
 	function geraTipoOpcao($abreviatura,$select = 0){
 		global $wpdb;
 		$sql = "SELECT * FROM sc_tipo WHERE abreviatura = '$abreviatura' AND publicado = 1 ORDER BY tipo ASC";

@@ -33,6 +33,6 @@ require "inc/function.php";
 	<!-- Custom styles for this template -->
 	<link href="css/dashboard.css" rel="stylesheet">
 	<script src="js/jquery-3.2.1.js"></script>
-	<link href="dist/jquery.floatingscroll.css" rel="stylesheet" type="text/css">
-<script src="dist/jquery.floatingscroll.min.js"></script>	
+	<link href="css/jquery.floatingscroll.css" rel="stylesheet" type="text/css">
+
 </head>

@@ -16,6 +16,10 @@
         <ul class="nav nav-pills flex-column">
 
           <li class="nav-item">
+            <a class="nav-link" href="planomunicipal.php?p=visaogeral">Visão Geral</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="planomunicipal.php?p=listarmetas">Listar Metas</a>
           </li>
 
