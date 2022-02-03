@@ -603,6 +603,8 @@ function evento($id){
 	$etaria = tipo($res['faixaEtaria']);
 	$periodo = periodo($res['idEvento']);
 	
+	$nomEvento = $res['nomeEvento'];
+	
 	switch($res['status']){
 		case 1:
 		$status = "Rascunho";
@@ -622,6 +624,7 @@ function evento($id){
 		
 		case 5:
 		$status = "Cancelado";
+		$nomeEvento = "[Cancelado] ".$nomeEvento;
 		break;
 
 		default:
@@ -638,7 +641,7 @@ function evento($id){
 	
 	
 	$evento = array(
-		'titulo' => $res['nomeEvento'],
+		'titulo' => $nomeEvento,
 		'idTipo' => $res['idTipo'],
 		'programa' => $programa['tipo'],
 		'projeto' => $projeto['tipo'],
@@ -1663,7 +1666,7 @@ function editaOpcoes($id_entidade,$entidade,$descricao){
 		$desc_json = json_encode($descricao);
 		$sql = "INSERT INTO `sc_opcoes` (`id`, `entidade`, `id_entidade`, `opcao`) VALUES (NULL, '$entidade', '$id_entidade', '$desc_json')";
 	}
-	$wdpb->query($sql);
+	$wpdb->query($sql);
 	
 }
 

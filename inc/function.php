@@ -603,6 +603,8 @@ function evento($id){
 	$etaria = tipo($res['faixaEtaria']);
 	$periodo = periodo($res['idEvento']);
 	
+	$nomeEvento = $res['nomeEvento'];
+	
 	switch($res['status']){
 		case 1:
 		$status = "Rascunho";
@@ -622,6 +624,7 @@ function evento($id){
 		
 		case 5:
 		$status = "Cancelado";
+		$nomeEvento = "[Cancelado] ".$nomeEvento;
 		break;
 
 		default:
@@ -638,7 +641,7 @@ function evento($id){
 	
 	
 	$evento = array(
-		'titulo' => $res['nomeEvento'],
+		'titulo' => $nomeEvento,
 		'idTipo' => $res['idTipo'],
 		'programa' => $programa['tipo'],
 		'projeto' => $projeto['tipo'],
