@@ -37,6 +37,54 @@ if(isset($_POST['enviar'])){  // envia
 	
 }
 
+
+if(isset($_POST['idEventoCancelado'])){  // envia
+	// muda status de dataEnvio para hoje
+	// atualiza a agenda
+	$idEvento = $_POST['idEventoCancelado'];
+	$hoje = date("Y-m-d H:i:s");
+	global $wpdb;
+	$sql_enviar = "UPDATE sc_evento SET dataEnvio = '$hoje', status = '5' WHERE idEvento = '$idEvento'";
+	$upd = $wpdb->query($sql_enviar);
+	if($upd == 1){
+		atualizarAgenda($idEvento);
+		$mensagem = alerta("Evento enviado com sucesso.","success");
+		$descricao = array(
+			'cancelamento' => array(
+				'data' => $hoje,
+				'id_usuario' => $user->ID,
+				'relatorio' => addslashes($_POST['relatorio'])
+		
+			)
+		);
+		editaOpcoes($idEvento,'evento',$descricao);
+		gravarLog($sql_enviar, $user->ID);
+	}else{
+		$mensagem = alerta("Erro. Tente novamente.","warning");
+		gravarLog($sql_enviar, $user->ID);
+	}
+	
+}
+
+if(isset($_POST['aprovar'])){
+	$mensagem = "";
+	foreach($_POST as $x=>$y){
+		if(is_int($x)){
+			$update = "UPDATE sc_evento SET status = '3' WHERE idEvento = '".$x."'";
+			$w = $wpdb->query($update);
+			if($w == 1){
+				$e = evento($x);
+				$mensagem .= alerta("O status do evento ".$e['titulo']." foi atualizado com sucesso.","success");
+			}else{
+				$mensagem .= alerta("Erro","warning");
+			}	
+		}
+
+
+		
+	}
+}
+
 if(isset($_POST['aprovar'])){
 	$mensagem = "";
 	foreach($_POST as $x=>$y){
@@ -236,8 +284,136 @@ if(isset($_GET['order'])){
 							
 							<td><?php echo $evento['periodo']['legivel']; ?></td>
 							<td><?php echo $evento['status']; ?></td>
-							<td>	
+							<td>	<form method="POST" action="?p=cancelar" class="form-horizontal" role="form">
+								<input type="hidden" name="carregar" value="<?php echo $res[$i]['idEvento']; ?>" />
+								<input type="submit" class="btn btn-theme btn-sm btn-block" value="Cancelar o evento">
+							</form>
+						</td>
+						</tr>
+					<?php } // fim do for?>	
+					
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</section>
+
+<?php 
+break;
+case "cancelados": 
+if(isset($_POST['enviar'])){  // envia
+	// muda status de dataEnvio para hoje
+	// atualiza a agenda
+	$idEvento = $_POST['idEvento'];
+	$hoje = date("Y-m-d H:i:s");
+	global $wpdb;
+	$sql_enviar = "UPDATE sc_evento SET dataEnvio = '$hoje', status = '5' WHERE idEvento = '$idEvento'";
+	$upd = $wpdb->query($sql_enviar);
+	if($upd == 1){
+		atualizarAgenda($idEvento);
+		$mensagem = alerta("Evento enviado com sucesso.","success");
+		gravarLog($sql_enviar, $user->ID);
+	}else{
+		$mensagem = alerta("Erro. Tente novamente.","warning");
+		gravarLog($sql_enviar, $user->ID);
+	}
+	
+}
+
+if(isset($_POST['aprovar'])){
+	$mensagem = "";
+	foreach($_POST as $x=>$y){
+		if(is_int($x)){
+			$update = "UPDATE sc_evento SET status = '3' WHERE idEvento = '".$x."'";
+			$w = $wpdb->query($update);
+			if($w == 1){
+				$e = evento($x);
+				$mensagem .= alerta("O status do evento ".$e['titulo']." foi atualizado com sucesso.","success");
+			}else{
+				$mensagem .= alerta("Erro","warning");
+			}	
+		}
+		
+	}
+}
+
+
+if(isset($_SESSION['id'])){
+	unset($_SESSION['id']);
+}
+
+if(isset($_GET['order'])){
+	$order = ' ORDER BY nomeEvento ASC ';
+}else{
+	$order = ' ORDER BY idEvento DESC ';
+}
+
+?>
+<section id="contact" class="home-section bg-white">
+	<div class="container">
+		<div class="row">    
+			<div class="col-md-offset-2 col-md-8">
+				<h1>Meus Eventos Cancelados</h1>
+				<?php if(isset($mensagem)){echo $mensagem;}?>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th><a href="?<?php if(isset($_GET['order'])){ echo "";}else{ echo "order"; } ?>">Título</a></th>
+						<th>Data do evento</th>
+						<th>Data do cancelamento</th>
+						<th>Justificativa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php 
+					global $wpdb;
+					if($user->ID == 1){
+						$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' AND status = '5'  $order";
+						
+					}else{				
+						
+						$sql_list =  "SELECT idEvento FROM sc_evento WHERE publicado = '1' AND status = '5' AND idRespAprovacao = '".$user->ID."' $order";
+					}					
+
+
+					$res = $wpdb->get_results($sql_list,ARRAY_A);
+					for($i = 0; $i < count($res); $i++){
+						$evento = evento($res[$i]['idEvento']);
+						$rel =  opcoes($res[$i]['idEvento'],'evento');
+						
+						
+						?>
+						<tr>
+							<td><?php echo $res[$i]['idEvento']; ?></td>
+							<td>
+								
+								<a href="busca.php?p=view&tipo=evento&id=<?php echo $res[$i]['idEvento'] ?>" target=_blank>
+									
+									<?php echo $evento['titulo']; ?>
+									
+								</a>
+								
 							</td>
+
+							
+							<td><?php echo $evento['periodo']['legivel']; ?></td>
+							<td><?php if($rel != NULL){ echo exibirDataBr($rel['cancelamento']['data']);} ?></td>
+							<td><?php if($rel != NULL){ echo $rel['cancelamento']['relatorio'];}
+								
+							?>	
+							
+							
+							
+							<!--<form method="POST" action="?p=cancelar" class="form-horizontal" role="form">
+								<input type="hidden" name="carregar" value="<?php echo $res[$i]['idEvento']; ?>" />
+								<input type="submit" class="btn btn-theme btn-sm btn-block" value="Cancelar o evento">
+							</form>-->
+						</td>
 						</tr>
 					<?php } // fim do for?>	
 					
@@ -673,6 +849,9 @@ case "editar":
 						
 						
 						<form action="aprovacao.php" method="POST" class="form-horizontal">
+
+						
+						
 							<input type="hidden" name="idEvento" value="<?php echo $_POST['carregar']; ?>">
 							<input type="submit" class="btn btn-theme btn-lg btn-block" name="enviar" value="Mudar Status do evento para 'Aprovado'" />
 						</form>	
@@ -721,6 +900,304 @@ case "editar":
 		
 	</div>
 </section>
+
+<?php
+break ;
+case "cancelar":
+
+?>
+<link href="css/jquery-ui.css" rel="stylesheet">
+<script src="js/jquery-ui.js"></script>
+<script src="js/mask.js"></script>
+<script src="js/maskMoney.js"></script> 
+<script>
+	$(function() {
+		$( ".calendario" ).datepicker();
+		$( ".hora" ).mask("99:99");
+		$( ".min" ).mask("999");
+		$( ".valor" ).maskMoney({prefix:'', thousands:'.', decimal:',', affixesStay: true});
+	});
+
+
+
+</script>
+
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<?php 
+	$evento = evento($_POST['carregar']);
+	?>
+
+	<section id="contact" class="home-section bg-white">
+		<div class="container">
+			<div class="row">    
+				<div class="col-md-offset-2 col-md-8">
+					<h3>Status </h3>
+					<h1><?php echo $evento['objeto'];?></h1>
+					<h2><?php if(isset($mensagem)){echo $mensagem;} ?></h2>
+					<p>O evento está com status de Rascunho. Para que o responsável pela aprovação analise seu evento é preciso mudar o status para "Planejado" clicando no botão abaixo. Caso esteja disponível é porque algum campo obrigatório não foi completado.</p>
+				</div>
+			</div>
+			<div class="row">    
+				<div class="col-md-offset-2 col-md-8">
+
+
+				</ul>
+				<p>Se houver alguma pendência, o sistema não permitirá o envio.</p>
+			</div>
+		</div>
+		<br /><br />
+		
+		
+		
+		<?php 
+		if(isset($_SESSION['entidade'])){
+		//verifica se todos os campos obrigatórios foram atualizados
+			switch($_SESSION['entidade']){
+				case 'evento':
+				
+				$evento = evento($_POST['carregar']);
+				?>
+				<hr>			
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<h3>Dados do Evento</h3>
+						<br />
+						<p>Programa: <?php echo $evento['programa']; ?></p>
+						<p>Projeto: <?php echo $evento['projeto']; ?></p>
+						<p>Linguagem principal: <?php echo $evento['linguagem']; ?></p>
+						<p>Responsável: <?php echo $evento['responsavel']; ?></p>
+						<p>Autor/Artista: <?php echo $evento['autor']; ?></p>
+						<p>Ficha técnica: <?php echo $evento['grupo']; ?></p>
+						<p>Classificação etária: <?php echo $evento['faixa_etaria']; ?></p>
+						<p>Sinopse: <br /><?php echo $evento['sinopse']; ?></p>
+						<p>Release: <br /><?php echo $evento['release']; ?></p>
+						<p>Links: <?php //echo $evento['links']; ?></p>
+						<p>Ocorrências:<br /> <?php
+						$sql_lista_ocorrencia = "SELECT idOcorrencia FROM sc_ocorrencia WHERE idEvento = '".$_POST['carregar']."' AND publicado = '1'";
+						$res = $wpdb->get_results($sql_lista_ocorrencia,ARRAY_A);
+						if(count($res)){
+							for($i = 0; $i < count($res); $i++){
+								$ocorrencia = ocorrencia($res[$i]['idOcorrencia']);
+								echo $ocorrencia['tipo']."<br />";
+								echo $ocorrencia['data']."<br />";
+								echo $ocorrencia['local']."<br /><br />";
+								
+							}
+							
+						}else{
+							echo "Não há ocorrências cadastradas.";
+							
+						}
+			
+			//echo $evento['']; ?></p>
+			<hr>
+			<h3>Pedidos de Contratação</h3>
+			<?php 
+			$ped = listaPedidos($_POST['carregar'],'evento');
+		//var_dump($ped);
+			for($i = 0; $i < count($ped); $i++){
+				$pedido = retornaPedido($ped[$i]['idPedidoContratacao']);
+				?>
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<p><br />
+							<li><b>Tipo:</b> <?php echo $ped[$i]['tipo'] ?>  / <b>Nome/Razão Social:</b> <a href="busca.php?p=view&tipo=pj&id=<?php echo $ped[$i]['idPessoa']?>" ><?php echo $ped[$i]['nome'] ?> </a>/ <b>Projeto/Ficha:</b> <?php echo $pedido['projeto'] ?>/<?php echo $pedido['ficha'] ?>  / <b>Valor: </b><a style="text-decoration: underline;"><?php echo $pedido['valor'] ?></a>  
+								<?php 
+								$cont = retornaContabil($pedido['nProcesso']);
+								if(count($cont > 0)){
+									for($k = 0; $k < count($cont);$k++){
+										?>
+										/ <b>Processo: </b><?php echo $cont[$k]['nProcesso']; ?>/ <b>Número da Liberação:  </b> <?php echo $pedido['nLiberacao'] ?>/ <b>Número do Empenho: </b><?php echo $cont[$k]['empenho']; ?> / <b>Ordem de Pagamento: </b><?php echo dinheiroParaBr($cont[$k]['v_op_baixado']); ?><br />
+										
+										<?php 
+									}
+								}
+								
+								?>
+								
+								
+							</li>
+							
+							
+							<?php //var_dump($ped); ?>	
+						<?php } ?>
+						
+						<hr>
+						<h3>Infraestrutura ATA</h3>
+						<?php 
+
+						if(retornaInfra($_POST['carregar']) != NULL){
+							echo retornaInfra($_POST['carregar']);
+							echo "</p>";
+
+						}
+
+						$valor = infraAta($_POST['carregar']);
+
+						?>
+						<br />
+						<?php 
+						for($i = 0; $i < count($valor) - 1; $i++){
+							?>
+							<?php if($valor[$i]['total'] != 0){ ?>
+								<p><?php echo $valor[$i]['razao_social']?> : <?php echo dinheiroParaBr($valor[$i]['total']); ?> </p>
+							<?php } ?>
+
+							<?php	
+						}
+						?>	
+						Total:<a style="text-decoration: underline;"><?php echo dinheiroParaBr($valor['total']);?> </a>
+						<hr>
+						<h3>Produção</h3>
+
+						<?php 
+						$x = producao($_POST['carregar']);
+						for($i = 0; $i < count($x); $i++){
+							
+							$y = retornaProducao($x[$i]['id_lista_producao']);
+							if($y != false){					
+								if($y['tipo'] == "infra"){
+									if($x[$i]['valor'] != ""){	
+										echo "<li>".$y['titulo']." : ".$x[$i]['valor']."</li>";
+									}
+								}
+							}
+							
+						}
+						
+						
+						?>
+						
+						<hr>
+						<h3>Comunicação</h3>
+						<?php 
+						$x = producao($_POST['carregar']);
+						for($i = 0; $i < count($x); $i++){
+							
+							$y = retornaProducao($x[$i]['id_lista_producao']);
+							if($y != false){					
+								if($y['tipo'] == "com"){
+									if($x[$i]['valor'] != ""){	
+										echo "<li>".$y['titulo']." : ".$x[$i]['valor']."</li>";
+									}
+								}
+							}
+							
+						}
+						
+						
+						?>
+						<hr>
+						<h3>Apoio</h3>
+						<?php 
+						$x = producao($_POST['carregar']);
+						for($i = 0; $i < count($x); $i++){
+							
+							$y = retornaProducao($x[$i]['id_lista_producao']);
+							if($y != false){					
+								if($y['tipo'] == "apoio"){
+									if($x[$i]['valor'] != ""){	
+										echo "<li>".$y['titulo']." : ".$x[$i]['valor']."</li>";
+									}
+								}
+							}
+							
+						}
+						
+						
+						?>
+						
+						<hr>
+						<h3>Arquivos</h3>
+						<br /> <?php $arquivo = listaArquivos("evento",$_POST['carregar']); 
+						
+						for($i = 0; $i < count($arquivo); $i++){
+							echo "<a href='upload/".$arquivo[$i]['arquivo']."' target='_blank' >".$arquivo[$i]['arquivo']."</a><br />";	
+							
+						}
+						
+						
+						
+						?></p>
+						
+					</div>
+				</div>  
+				
+
+				<hr>
+				<br /><br />
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<h3>Pendências</h3>
+						<?php $pendencia = verificaEvento($_POST['carregar']);
+						if($pendencia['erros'] == 0){
+							echo "<p>Não há pendencias.</p>";
+						}else{
+							echo "<p>".$pendencia['relatorio']."</p>";		
+						}
+						
+						
+						?>
+						<br /><br />
+						<h3> Cancelamento </h3>
+						
+						<form action="aprovacao.php" method="POST" class="form-horizontal">
+											
+							<div class="col-12">
+								<label>Relatório / Justificativa</label>
+								<textarea name="relatorio" class="form-control" rows="10" ></textarea>					
+							</div>
+					
+						
+							<input type="hidden" name="idEventoCancelado" value="<?php echo $_POST['carregar']; ?>">
+							<input type="submit" class="btn btn-theme btn-lg btn-block" name="enviar_cancelamento" value="Mudar Status do evento para 'Cancelado'" />
+						</form>	
+						
+						<?php 
+						
+						
+						
+
+						?>
+
+					</div>
+				</div>  		
+
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<?php if($evento['planejamento'] == 1){ ?>
+							<form action="?" method="POST" class="form-horizontal">
+								<input type="submit" class="btn btn-theme btn-lg btn-block" name="agenda" value="Atualizar Agenda" />
+							</form>
+
+						<?php } ?>
+					</div>
+				</div>  
+				
+				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<?php if($evento['planejamento'] == 1){ ?>
+							<form action="?" method="POST" class="form-horizontal">
+								<input type="submit" class="btn btn-theme btn-lg btn-block" name="agenda" value="Atualizar Agenda" />
+							</form>
+
+						<?php } ?>
+					</div>
+				</div>  
+				
+				
+				<?php
+				break;
+			}
+			?>
+
+			<?php
+		}
+		?>
+		
+	</div>
+</section>
+
 
 <?php 
 break;

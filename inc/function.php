@@ -1,5 +1,15 @@
 ﻿<?php
 // funcoes sistema avaliacao sc.psa
+/* 
+status dos eventos:
+1 > Rascunho
+2 > Planejado
+3 > Aprovado
+4 > Publicado Comunicação / Mapas
+5 > Cancelado
+
+*/		
+
 
 ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
@@ -503,8 +513,12 @@ function diasemanaint($data)
 		global $wpdb;
 		$sql = "SELECT * FROM sc_tipo WHERE id_tipo = '$id'";
 		$res = $wpdb->get_row($sql,ARRAY_A);
-		return $res;
-
+		if($res == NULL){
+			$res['tipo'] = "";
+			return $res;
+		}else{	
+			return $res;
+		}
 	}
 
 	function retornaDot($id){
@@ -554,10 +568,24 @@ function evento($id){
 
 	*/
 	$programa = tipo($res['idPrograma']);
+	if(!is_array($programa)){
+		$programa['tipo'] = "";
+	}
 	
 	$projeto = tipo($res['idProjeto']);
+	if(!is_array($projeto)){
+		$projeto['tipo'] = "";
+	}
 	$linguagem = tipo($res['idLinguagem']);
+	if(!is_array($linguagem)){
+		$linguagem['tipo'] = "";
+	}
+
 	$tipo_evento = tipo($res["idTipo"]);
+	if(!is_array($tipo_evento)){
+		$tipo_evento['tipo'] = "";
+	}
+
 	$usuario = get_userdata($res['idResponsavel']);
 	if($usuario != NULL){
 		$usercon = $usuario->first_name." ".$usuario->last_name;
@@ -1411,7 +1439,11 @@ function opcaoDados($tipo,$id){
 	global $wpdb;
 	$sql = "SELECT opcao FROM sc_opcoes WHERE entidade = '$tipo' AND id_entidade = '$id'";
 	$res = $wpdb->get_row($sql,ARRAY_A);
-	return json_decode($res['opcao'],true);
+	if(is_array($res)){
+		return json_decode($res['opcao'],true);
+	}else{
+		return NULL;
+	}
 	
 }
 
@@ -1612,8 +1644,27 @@ function opcoes($id,$entidade){
 	global $wpdb;
 	$sql = "SELECT * FROM sc_opcoes WHERE entidade = '$entidade' AND id_entidade = '$id'";
 	$res = $wpdb->get_row($sql,ARRAY_A);
-	$json = json_decode($res['opcao'],true);
+	if(is_array($res)){
+		$json = json_decode($res['opcao'],true);
+	}else{
+		$json = NULL;	
+	}
 	return $json;
+}
+
+function editaOpcoes($id_entidade,$entidade,$descricao){
+	global $wpdb;
+	$ex = opcoes($id_entidade,$entidade);
+
+	if($ex != NULL){
+		$desc_json = json_encode($descricao);
+		$sql = "UPDATE sc_opcoes SET opcao = '$descricao' WHERE entidade = '$entidade' AND id_entidade = '$id_entidade'";
+	}else{
+		$desc_json = json_encode($descricao);
+		$sql = "INSERT INTO `sc_opcoes` (`id`, `entidade`, `id_entidade`, `opcao`) VALUES (NULL, '$entidade', '$id_entidade', '$desc_json')";
+	}
+	$wpdb->query($sql);
+	
 }
 
 function retornaUsuario($idUsuario){

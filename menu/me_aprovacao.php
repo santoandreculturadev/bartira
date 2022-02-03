@@ -23,6 +23,10 @@
           <a class="nav-link" href="aprovacao.php">Listar Meus Eventos</a>
         </li>
         <li>
+		        <li>
+          <a class="nav-link" href="aprovacao.php?p=cancelados">Listar Eventos Cancelados</a>
+        </li>
+        <li>
           <a class="nav-link" href="aprovacao.php?p=serie">Aprovação em Série</a>
         </li>
         <?php 
