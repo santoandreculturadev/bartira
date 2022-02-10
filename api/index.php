@@ -18,19 +18,19 @@
 function retornaMes($data){
 	
 	$m = date("m", strtotime($data));
-	switch ($m) {
-        case "01":    $mes = 'Jan';     break;
+	switch ($data) {
+        case "01":    $mes = 'Jan';   break;
         case "02":    $mes = 'Fev';   break;
-        case "03":    $mes = 'Mar';       break;
-        case "04":    $mes = 'Abr';       break;
-        case "05":    $mes = 'Mai';        break;
-        case "06":    $mes = 'Jun';       break;
-        case "07":    $mes = 'Jul';       break;
-        case "08":    $mes = 'Ago';      break;
-        case "09":    $mes = 'Set';    break;
-        case "10":    $mes = 'Out';     break;
-        case "11":    $mes = 'Nov';    break;
-        case "12":    $mes = 'Dez';    break; 
+        case "03":    $mes = 'Mar';   break;
+        case "04":    $mes = 'Abr';   break;
+        case "05":    $mes = 'Mai';   break;
+        case "06":    $mes = 'Jun';   break;
+        case "07":    $mes = 'Jul';   break;
+        case "08":    $mes = 'Ago';   break;
+        case "09":    $mes = 'Set';   break;
+        case "10":    $mes = 'Out';   break;
+        case "11":    $mes = 'Nov';   break;
+        case "12":    $mes = 'Dez';   break; 
  }
  
  return $mes;
@@ -42,7 +42,7 @@ function retornaMes($data){
 // carrega as funções do wordpress
 
 require_once("../../wp-load.php");
-//require_once("../inc/function.php"); //o function.php dá algum pau para saída para os gráficos
+require_once("../inc/function.php"); //o function.php dá algum pau para saída para os gráficos
 
 switch($_GET['src']){
 
@@ -159,12 +159,96 @@ switch($_GET['src']){
 	/*
 	Mensal
 	Pizza: Disponível e Comprometido
-	Barra horizontal: Comprometido, Disponibilizado, Orçado
+	Barra horizontal: Comprometido, Disponibilizado, Orçado 
+	
 	*/
 	
 	
 	case "orcamento":
-	echo '';
+	
+	
+	
+	$sql_orcado = "SELECT SUM(valor) AS 'total' FROM sc_orcamento WHERE ano_base = '".$_GET['ano']."' AND publicado = '1' AND planejamento = '0' AND idPai = '0'";
+	$query_orcado = $wpdb->get_row($sql_orcado,ARRAY_A);
+
+	$sql_ids = "SELECT id FROM sc_orcamento WHERE ano_base = '".$_GET['ano']."' AND publicado = '1' AND planejamento = '0' AND idPai = '0'";
+	$query_ids = $wpdb->get_results($sql_ids,ARRAY_A);
+
+
+
+if(isset($_GET['mes'])){
+	$json = "[";
+	$primeiro_dia = $_GET['ano']."-01-01";
+	$ultimo_dia = $_GET['ano']."-".$_GET['mes']."-".ultimoDiaMes($_GET['ano'],$_GET['mes']);
+		$comprometido = 0;
+		$revisado = 0;
+		for($i = 0; $i < count($query_ids); $i++){
+			$orc = orcamento($query_ids[$i]['id'],$ultimo_dia,$primeiro_dia);
+			//echo "<pre>";
+			//var_dump($orc);
+			//echo "</pre>";
+			$comprometido = $comprometido + $orc['total_liberado_data'];
+			$revisado = $revisado + $orc['revisado'];
+	}
+	$liberado = $revisado - $comprometido;
+	
+		$json .= '{"orcado":"'.$query_orcado["total"].'","comprometido":"'.$comprometido.'","liberado":"'.$liberado.'"}]';
+	
+}else{
+
+	$json = "";
+}
+	for($j = 1; $j <= 12; $j++){
+
+	$primeiro_dia = $_GET['ano']."-01-01";
+	$ultimo_dia = $_GET['ano']."-".$j."-".ultimoDiaMes($_GET['ano'],$j);
+		$comprometido = 0;
+		$revisado = 0;
+		for($i = 0; $i < count($query_ids); $i++){
+			$orc = orcamento($query_ids[$i]['id'],$ultimo_dia,$primeiro_dia);
+			//echo "<pre>";
+			//var_dump($orc);
+			//echo "</pre>";
+			$comprometido = $comprometido + $orc['total_liberado_data'];
+			$revisado = $revisado + $orc['revisado'];
+		}		
+		$liberado = $revisado - $comprometido;
+		$retorno[$j] = array(
+		'mes' => sprintf("%02d", $j)."/".$_GET['ano'],
+		'orcado' => dinheiroParaBr($query_orcado['total']),
+		'comprometido' => dinheiroParaBr($comprometido),
+		'liberado' => dinheiroParaBr($liberado)
+		);
+	
+		
+	
+	}
+		var_dump($retorno);
+		$json = json_encode($retorno);
+	
+	
+	//var_dump($query_ids);
+
+//echo $primeiro_dia ." / ". $ultimo_dia;
+
+
+
+	
+	
+	//echo "<pre>";
+	//var_dump($retorno);
+	//echo "</pre>";
+
+ ob_end_clean(); 
+ echo $json;
+	
+	
+	
+
+	
+	
+	
+	
 	
 	
 	break;

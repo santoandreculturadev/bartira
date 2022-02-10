@@ -603,7 +603,7 @@ function evento($id){
 	$etaria = tipo($res['faixaEtaria']);
 	$periodo = periodo($res['idEvento']);
 	
-	$nomEvento = $res['nomeEvento'];
+	$nomeEvento = $res['nomeEvento'];
 	
 	switch($res['status']){
 		case 1:
@@ -1066,6 +1066,10 @@ function diasEfetivos($id){ //01
 
 function orcamento($id,$fim = NULL,$inicio = NULL){
 
+	if($fim == NULL AND $inicio == NULL){
+		$inicio = date('y')."-01-01";
+		$fim = date('y')."-12-".ultimoDiaMes(date('y'),12);
+	}
 	
 	
 	global $wpdb;
@@ -1116,6 +1120,14 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	// Histórico
 	$sel_hist = "SELECT id, titulo,valor, descricao, tipo, idUsuario,data,idPedidoContratacao FROM sc_mov_orc WHERE dotacao = '$id' AND publicado = '1' ORDER BY id ASC ";
 	$hist = $wpdb->get_results($sel_hist,ARRAY_A);
+	
+	// Histórico de Contratação com Data
+	$sel_hist_data = "SELECT id, titulo,valor, descricao, tipo, idUsuario,data,idPedidoContratacao FROM sc_mov_orc WHERE dotacao = '$id' AND publicado = '1' AND data BETWEEN '$inicio' AND '$fim' AND tipo = '311' ORDER BY id ASC ";
+	$hist_data = $wpdb->get_results($sel_hist_data,ARRAY_A);
+	$total_liberado_data_data = 0;
+	for($k = 0; $k < count($hist_data); $k++){
+		$total_liberado_data = $total_liberado_data + $hist_data[$k]['valor'];
+	}
 	
 	
 	
@@ -1180,6 +1192,8 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 		'descontigenciado' => $valor_desc,
 		'suplementado' => $valor_supl,
 		'historico' => $hist,
+		'historico_contratacao' => $hist_data,
+		'total_liberado_data' => $total_liberado_data,
 	'visualizacao' => $val['projeto']."/".$val['ficha'], //colocar natureza (importar de novo)
 	'natureza' => $val['natureza']."/".$val['fonte'],	
 	'liberado' => $valor_lib,

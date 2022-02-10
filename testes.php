@@ -45,7 +45,8 @@
 
 	//atualizaMetaOrcamento(10);
 	//metaOrcamento(21);
-	var_dump(orcamentoPai(1017));
+	//var_dump(orcamentoPai(1017));
+
 		?>
 	</main>
 
