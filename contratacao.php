@@ -180,10 +180,10 @@ if(isset($_POST['insere_pedido_outros'])){
 		$id_pessoa = $_POST['insere_pedido_outros'];
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-			VALUES ('$evento', '3', '8', '1','2020')";
+			VALUES ('$evento', '3', '8', '1','".date('Y')."')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`) 
-			VALUES ('$evento', '3', '8', '1', '2020')";
+			VALUES ('$evento', '3', '8', '1', '".date('Y')."')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
