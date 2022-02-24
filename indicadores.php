@@ -105,7 +105,7 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario')  AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario')  AND (dataEnvio IS NOT NULL) AND status IN (3,4) ORDER BY nomeEvento ASC";
                 } else {
                     $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL ORDER BY nomeEvento ASC";
 
@@ -13781,6 +13781,7 @@ ini_set(“display_errors”, 0);
                                                     break;
                                                     case "listar_evento_sem_indicador":
 
+                                                    $sql = "SELECT idEvento,nomeEvento,idUsuario,idResponsavel,idSuplente FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND idEvento NOT IN (SELECT DISTINCT idEvento FROM sc_ind_continuadas) AND idEvento NOT IN (664,667,676,692,693,695,844) AND publicado = '1' AND dataEnvio IS NOT NULL AND status NOT IN (5)";
                                                     $sql = "SELECT idEvento,nomeEvento,idUsuario,idResponsavel,idSuplente FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND idEvento NOT IN (SELECT DISTINCT idEvento FROM sc_ind_continuadas) AND idEvento NOT IN (664,667,676,692,693,695,844) AND publicado = '1' AND dataEnvio IS NOT NULL AND status NOT IN (5)";
                                                     $evento = $wpdb->get_results($sql,ARRAY_A);
                                                     echo "<h1>".count($evento)." eventos sem informação de público.</h1><br />";

@@ -148,6 +148,58 @@ switch($_GET['src']){
 
 	// Eventos
 	case "eventos":
+	/*
+	if(isset($_GET['ano']) AND $_GET['ano'] != ""){
+		$ano =" AND YEAR(periodo_inicio) = ".$_GET['ano'];
+	}else{
+		$ano = "";
+	}
+	*/
+	$primeiro_dia = $_GET['ano']."-".$_GET['mes']."-01";
+	$ultimo_dia = $_GET['ano']."-".$_GET['mes']."-".ultimoDiaMes($_GET['ano'],$_GET['mes']);
+	
+	
+	// eventos data única
+	$sql_data_unica_locais = "SELECT DISTINCT local FROM sc_ocorrencia WHERE dataFinal <> '0000-00-00' AND dataInicio >= '$primeiro_dia' AND dataInicio <= '$ultimo_dia' AND publicado = '1'";  
+	$locais = $wpdb->get_results($sql_data_unica_locais, ARRAY_A);
+
+
+	
+
+	$bairros_array = array();
+	$centro = 0;
+
+	for($i = 0; $i < count($locais); $i++){
+		$tipo = tipo($locais[$i]['local']);
+		var_dump($tipo);
+		$desc = json_decode($tipo['descricao'],true);
+		
+		if($desc['bairro'] == 578){
+			$centro = 1;
+		}else{	
+			if(!in_array($desc['bairro'],$bairros_array)){
+				array_push($bairros_array,$locais[$i]['local']);
+			}
+		}
+	}
+
+// Publico
+	echo "<h1>Publico Evento`Único</h1>";
+	$sql_data_unica =  "SELECT SUM(valor) AS publico FROM sc_indicadores WHERE periodoFim <> '0000-00-00' AND periodoInicio >= '$primeiro_dia' AND periodoInicio <= '$ultimo_dia' AND publicado = '1'";		
+	$result_data_unica = $wpdb->get_row($sql_data_unica,ARRAY_A);
+	var_dump($result_data_unica);
+
+	echo "<h1>Publico Evento`Único</h1>";	
+	
+	
+	
+
+	
+	
+	echo "<pre>";
+	var_dump($bairros_array);
+	echo "</pre>";
+	
 	
 	break;
 	// Disciplinas, Cursos, Incentivo à Criação

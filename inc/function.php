@@ -3076,3 +3076,11 @@ function atualizaMetaOrcamento(){
 	}
 	
 }
+
+function local($local,$id = NULL){
+	global $wpdb;
+	
+	
+	
+	
+}

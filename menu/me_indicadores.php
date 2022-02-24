@@ -303,13 +303,7 @@
       <?php } ?>
       <?php ?>
 
-      <?php
-      $peruser = array(1,60);
-      if(in_array($user->ID,$peruser)){ ?>   
-        <li class="nav-item">
-          <a class="nav-link" href="indicadores.php?p=inserirorcamento">+ Inserir Relatório Orçamento</a>
-        </li>
-      <?php } ?>
+
       <?php ?>
 
 
