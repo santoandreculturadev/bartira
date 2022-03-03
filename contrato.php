@@ -211,7 +211,16 @@ if((isset($numero_pj))){
 
 
 ?>
-
+		<?php 
+		// se existe pedido, listar
+		if(isset($_GET['ano_base'])){
+			$ano_base = $_GET['ano_base'];
+		}else{
+			$ano_base = date('Y');
+		}
+		
+		
+		?>
 <section id="contact" class="home-section bg-white">
 	<div class="container">
 		<div class="row">    
@@ -220,16 +229,25 @@ if((isset($numero_pj))){
 				<p><?php if(isset($mensagem)){ echo $mensagem; }?></p>
 			</div>
 		</div>
+				<div class="row">  
+		<div class="col-md-offset-1 col-md-10">
+				<form method="GET" action="contrato.php" class="form-horizontal" role="form">
+				<select class="form-control" name="ano_base" id="inputSubject" >
+				<option value='0'>Escolha uma opção</option>
+				<?php echo opcaoAnoBase($ano_base); ?>
+				</select>
+				<input type="submit" class="btn btn-theme btn-sm btn-block" value="Filtrar">
+				</form>
+			</div>	
+		</div>
+		<br />
 		<div class="row">    
 			<div class="col-md-offset-2 col-md-8">
 				<p>Filtro: <a href="?" >Todos os pedidos</a> | <a href="?f=liberacao" >Pedidos sem Número de Liberação ou Data de Pedido de Liberação</a></p>
 			</div>
 		</div>
 
-		<?php 
-		// se existe pedido, listar
-		
-		?>
+
 		
 		<div class="container">
 			<div class="row">    
@@ -253,7 +271,7 @@ if((isset($numero_pj))){
 					<tbody>
 						<?php 
 						if(isset($_GET['f'])){
-							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '2020' AND (liberado = '0000-00-00' OR nLiberacao = '') 
+							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '$ano_base' AND (liberado = '0000-00-00' OR nLiberacao = '') 
                             AND (idEvento IN (SELECT idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (status = '3' OR status = '4') 
                             AND cancelamento = '0') OR idAtividade <> '0') AND (valor <> '0' AND valor IS NOT NULL) 
                             AND (dotacao IS NOT NULL AND dotacao <> '0')  ORDER BY nLiberacao DESC";
@@ -261,7 +279,7 @@ if((isset($numero_pj))){
 						}
 						else
 						{
-							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '2020' 
+							$sql_seleciona = "SELECT * FROM sc_contratacao WHERE publicado = '1' AND ano_base = '$ano_base' 
                             AND (liberado != '0000-00-00' OR nLiberacao != '') AND (idEvento IN (SELECT idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL 
                             AND (status = '3' OR status = '4') AND cancelamento = '0') OR idAtividade <> '0') AND (valor <> '0' AND valor IS NOT NULL) 
                             AND (dotacao IS NOT NULL AND dotacao <> '0')  ORDER BY nLiberacao DESC";
@@ -295,17 +313,17 @@ if((isset($numero_pj))){
 								</form>
 								<?php 
 
-								?></td>
-								<td>	
+								?><!--</td>
+								<td>-->	
 									<form method="POST" action="?p=inicio" class="form-horizontal" role="form">
 										<input type="hidden" name="reabrir_pedido" value="<?php echo $peds[$i]['idPedidoContratacao']; ?>" />
 										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Reabrir Pedido">
 									</form>
 									<?php 
 
-									?></td>
+									?><!--</td>
 
-									<td>	
+									<td>-->	
 									<form method="POST" action="?p=inicio" class="form-horizontal" role="form">
 										<input type="hidden" name="apaga_pedido" value="<?php echo $peds[$i]['idPedidoContratacao']; ?>" />
 										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Cancelar Pedido">
