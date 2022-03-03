@@ -1,5 +1,7 @@
 <?php include "header.php"; ?>
 <?php 
+session_start();
+
 if(isset($_GET['p'])){
 	$p = $_GET['p'];
 }else{
