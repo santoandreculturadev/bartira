@@ -674,6 +674,7 @@ function evento($id){
 		'descricao' => $res['descricao'],
 		'url' => $res['url'],
 		'online' => $res['online'],
+		'edital' => $res['convocatoria_edital']
 
 	);
 
@@ -3078,6 +3079,9 @@ function atualizaMetaOrcamento(){
 }
 
 function local($local,$id = NULL){
+	global $wpdb;
+	
+	
 	
 	
 }

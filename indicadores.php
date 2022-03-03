@@ -45,8 +45,6 @@ ini_set(“display_errors”, 0);
 
                 </div>
             </section>
-
-
             <?php
             break;
         case "inserirevento":
@@ -336,9 +334,207 @@ ini_set(“display_errors”, 0);
 
             </section>
 
+
             <?php
             break;
-        case "inserircontinuadas":
+        case "inserirevento_dataunica":
+            ?>
+
+            <link href="css/jquery-ui.css" rel="stylesheet">
+            <script src="js/jquery-ui.js"></script>
+            <script src="js/mask.js"></script>
+            <script src="js/maskMoney.js"></script>
+            <script>
+                $(function () {
+                    $(".calendario").datepicker();
+                    $(".hora").mask("99:99");
+                    $(".min").mask("999");
+                    $(".valor").maskMoney({prefix: '', thousands: '.', decimal: ',', affixesStay: true});
+                });
+
+
+            </script>
+
+            <script type="application/javascript">
+                $(function () {
+                    $('#idEvento').change(function () {
+                        if ($(this).val()) {
+                            $('#idOcorrencia').hide();
+                            $('.carregando').show();
+                            $.getJSON('inc/ind.ocor.ajax.php?', {idEvento: $(this).val(), ajax: 'true'}, function (j) {
+                                var options = '<option value="0"></option>';
+                                for (var i = 0; i < j.length; i++) {
+                                    options += '<option value="' + j[i].idOcorrencia + '">' + j[i].data + '</option>';
+                                }
+                                $('#idOcorrencia').html(options).show();
+                                $('.carregando').hide();
+                            });
+                        } else {
+                            $('#idOcorrencia').html('<option value="">-- Escolha um projeto --</option>');
+                        }
+                    });
+                });
+            </script>
+
+            <section id="contact" class="home-section bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-8">
+                            <h2>Relatórios de Público - Inserir</h2>
+                            <?php
+                            // listar o evento;
+                            ?>
+                            <br/><Br/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <?php
+                $idUsuario = $user->ID;
+                if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario')  AND (dataEnvio IS NOT NULL) AND status IN (3,4) ORDER BY nomeEvento ASC";
+                } else {
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL ORDER BY nomeEvento ASC";
+
+                }
+                $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
+                ?>
+                <div class="row">
+                    <form class="formocor" action="?p=listarevento" method="POST" role="form">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Nome do Evento *</label>
+                                <select class="form-control" name="idEvento" id="idEvento" required>
+                                    <option value=''>Escolha uma opção</option>
+                                    <?php for ($i = 0; $i < count($eventos); $i++) { ?>
+                                        <option value='<?php echo $eventos[$i]['idEvento'];?>.' 
+										<?php 
+										if(isset($_GET['evento']) AND $_GET['evento'] == $eventos[$i]['idEvento']){
+											echo " selected";
+													
+										}
+										
+										?>
+										>
+										
+										
+										<?php echo $eventos[$i]['nomeEvento']." (".$eventos[$i]['idEvento'].")"; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Data de Início do Relatório:</label>
+                                <input type='text' class="form-control calendario" name="periodoInicio"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Data de Encerramento do Relatório (se for data única, não preencher):</label>
+                                <input type='text' class="form-control calendario" name="periodoFim"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Dias úteis do período (se for data única, não preencher)</label>
+                                <input type="text" name="ndias" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Tipo de Contagem</label>
+                                <select class="form-control" name="contagem" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="1" selected>Número total (absoluto)</option>
+                                    <option value="2">Média Geral (por dia)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Público (Número de Espectadores)</label>
+                                <input type="text" name="valor" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Tipo de Público</label>
+                                <select class="form-control" name="tipo" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="1" selected>Geral</option>
+                                    <option value="2">Específico</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Ação contou com artistas/profissionais da cidade?</label>
+                                <select class="form-control" name="prof_sa" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="0" selected>Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Se sim, quantos indivíduos?</label>
+                                <input type="text" name="quantidade_prof_sa" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Ação realizada em parceria?</label>
+                                <select class="form-control" name="acao_parceria" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="0" selected>Não</option>
+                                    <option value="1">Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Nome do parceiro</label>
+                                <input type="text" name="nome_parceiro" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Gastos com contratação de pessoal para esta ação específica</label>
+                                <input type="text" name="gastos_pessoal" class="form-control valor" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Gastos com estrutura para esta ação específica</label>
+                                <input type="text" name="gastos_estrutura" class="form-control valor" value=""/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Relato</label>
+                                <textarea name="relato" class="form-control" rows="10"
+                                          placeholder="Relato de incidentes, impressões, avaliações e críticas."><?php //echo $campo["sinopse"]
+                                    ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="hidden" name="inserir" value="1"/>
+                                <button type="submit" class="btn btn-theme btn-lg btn-block">Enviar Relatório</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+
+            <?php
+            break;
+			case "inserircontinuadas":
             ?>
 
             <link href="css/jquery-ui.css" rel="stylesheet">

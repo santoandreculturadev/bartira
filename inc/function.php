@@ -674,6 +674,7 @@ function evento($id){
 		'descricao' => $res['descricao'],
 		'url' => $res['url'],
 		'online' => $res['online'],
+		'convocatoria_edital' => $res['convocatoria_edital']
 
 	);
 

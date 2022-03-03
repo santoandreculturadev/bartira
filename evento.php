@@ -523,6 +523,16 @@ if(isset($_SESSION['id'])){
 							<input type="text" name="inscricao" class="form-control" maxlength="100" id="inputSubject" placeholder="" value=""/>
 						</div> 
 					</div>
+                     <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Edital/Convocatoria</label>
+                                <select class="form-control" name="nome_convocatoria" id="nome_convocatoria">
+                                    <option>Escolha uma opção</option>
+                                    <?php geraTipoOpcao("convocatoria",$evento['edital']) ?>
+                                </select>
+                            </div>
+                        </div>
+					
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Público Previsto</label>
@@ -636,6 +646,7 @@ if(isset($_POST['atualizar']) OR isset($_POST['inserir'])){
 	$previsto = $_POST['previsto'];		
 	$online = $_POST['online'];
 	$urlonline = addslashes($_POST['urlonline']);
+	$edital = $_POST['nome_convocatoria'];
 	
 
 	if(isset($_POST['subEvento'])){
@@ -658,8 +669,8 @@ $idUser = $user->ID;
 
 	// Inserir evento
 if(isset($_POST['inserir'])){
-	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url` ) 
-	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2021','$online','$urlonline')";
+	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `convocatoria_edital` ,`pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url` ) 
+	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2021','$online','$urlonline')";
 	$ins = $wpdb->query($sql);
 	if($ins){
 		$mensagem = "Inserido com sucesso";
@@ -698,6 +709,8 @@ if(isset($_POST['atualizar'])){
 	`pInterno` = '$p_interno',
 	`idRespAprovacao` = '$id_aprovacao',
 	`inscricao` = '$inscricao',
+	`convocatoria_edital` = '$edital',
+		
 	`descricao` = '$descricao',
 
 	`previsto` = '$previsto',
@@ -863,6 +876,16 @@ if(isset($_POST['atualizar'])){
 							<input type="text" name="inscricao" class="form-control" maxlength="100" id="inputSubject" placeholder="" value="<?php echo $evento['inscricao']; ?>"/>
 						</div> 
 					</div>
+					
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Edital/Convocatoria</label>
+                                <select class="form-control" name="nome_convocatoria" id="nome_convocatoria">
+                                    <option>Escolha uma opção</option>
+                                    <?php geraTipoOpcao("convocatoria",$evento['convocatoria_edital']) ?>
+                                </select>
+                            </div>
+                        </div>
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Público Previsto</label>
