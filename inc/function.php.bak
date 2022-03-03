@@ -515,6 +515,7 @@ function diasemanaint($data)
 		$res = $wpdb->get_row($sql,ARRAY_A);
 		if($res == NULL){
 			$res['tipo'] = "";
+			$res['descricao'] = "";
 			return $res;
 		}else{	
 			return $res;
@@ -674,7 +675,7 @@ function evento($id){
 		'descricao' => $res['descricao'],
 		'url' => $res['url'],
 		'online' => $res['online'],
-		'edital' => $res['convocatoria_edital']
+		'convocatoria_edital' => $res['convocatoria_edital']
 
 	);
 
@@ -1314,7 +1315,7 @@ function retornaPessoa($id,$tipo){
 	global $wpdb;
 	$x = array();
 	if($tipo == 1){
-		$sql = "SELECT Nome, CPF, Email, codBanco, agencia, conta, Telefone1 FROM sc_pf WHERE Id_PessoaFisica = '$id'";
+		$sql = "SELECT * FROM sc_pf WHERE Id_PessoaFisica = '$id'";
 		$res = $wpdb->get_row($sql,ARRAY_A);	
 		$b = tipo($res['codBanco']);
 		$codBanco = json_decode($b['descricao'],true);
@@ -1323,11 +1324,16 @@ function retornaPessoa($id,$tipo){
 		$x['cpf_cnpj'] = $res['CPF'];
 		$x['tipoPessoa'] = "Pessoa Física";
 		$x['email'] = $res['Email'];
+		if($b['tipo'] != ""){
 		$x['banco'] = "Banco: ".$b['tipo']." (".$codBanco['codBanco'].") / Agência: ".$res['agencia']." / Conta Corrente: ".$res['conta'];
+		}else{
+			$x['banco'] = "";
+		}
+
 		$x['telefone'] = $res['Telefone1'];
-		
+		//var_dump($res);
 	}elseif($tipo == 2){
-		$sql = "SELECT RazaoSocial, CNPJ, Email, codBanco, agencia, conta, Telefone1 FROM sc_pj WHERE Id_PessoaJuridica = '$id'";
+		$sql = "SELECT * FROM sc_pj WHERE Id_PessoaJuridica = '$id'";
 		$res = $wpdb->get_row($sql,ARRAY_A);	
 		$b = tipo($res['codBanco']);
 		$codBanco = json_decode($b['descricao'],true);
@@ -1335,9 +1341,14 @@ function retornaPessoa($id,$tipo){
 		$x['cpf_cnpj'] = $res['CNPJ'];
 		$x['tipoPessoa'] = "Pessoa Jurídica";
 		$x['email'] = $res['Email'];
+		if($b['tipo'] != ""){
 		$x['banco'] = "Banco: ".$b['tipo']." (".$codBanco['codBanco'].") / Agência: ".$res['agencia']." / Conta Corrente: ".$res['conta'];
+		}else{
+			$x['banco'] = "";
+		}
+		
 		$x['telefone'] = $res['Telefone1'];
-
+	//var_dump($res);
 	}
 	else{
 	}

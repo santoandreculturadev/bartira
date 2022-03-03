@@ -469,38 +469,7 @@ ini_set(“display_errors”, 0);
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Ação contou com artistas/profissionais da cidade?</label>
-                                <select class="form-control" name="prof_sa" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="0" selected>Não</option>
-                                    <option value="1">Sim</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Se sim, quantos indivíduos?</label>
-                                <input type="text" name="quantidade_prof_sa" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Ação realizada em parceria?</label>
-                                <select class="form-control" name="acao_parceria" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="0" selected>Não</option>
-                                    <option value="1">Sim</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Nome do parceiro</label>
-                                <input type="text" name="nome_parceiro" class="form-control"/>
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Gastos com contratação de pessoal para esta ação específica</label>
