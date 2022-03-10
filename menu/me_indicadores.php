@@ -214,7 +214,14 @@
           $peruser = array(1,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,160);
           if(in_array($user->ID,$peruser)){ ?>       
             <li class="nav-item">
-              <a class="nav-link" href="indicadores.php?p=inserirevento">+ Inserir Relatório Eventos</a>
+              <a class="nav-link" href="indicadores.php?p=inserirevento_dataunica">+ Inserir Relatório Eventos Data Única</a>
+            </li>
+          <?php } ?>
+		            <?php
+          $peruser = array(1,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,160);
+          if(in_array($user->ID,$peruser)){ ?>       
+            <li class="nav-item">
+              <a class="nav-link" href="indicadores.php?p=inserirevento_longaduracao">+ Inserir Relatório Eventos Longa Duração</a>
             </li>
           <?php } ?>
           <?php ?>

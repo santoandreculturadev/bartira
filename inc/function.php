@@ -107,6 +107,14 @@ function exibeHoje(){
 }
 
 
+function stringMesAno($data){
+	
+	$timestamp = strtotime($data); 
+	return date('m/Y', $timestamp);
+
+}
+
+
 function saudacao(){ 
 	$hora = date('H');
 	if(($hora > 12) AND ($hora <= 18)){
@@ -3092,6 +3100,69 @@ function atualizaMetaOrcamento(){
 function local($local,$id = NULL){
 	global $wpdb;
 	
+	
+	
+	
+}
+
+function geraMesOcorrencia($idEvento){
+	global $wpdb;
+	
+	$sql = "SELECT * FROM sc_ocorrencia WHERE idEvento = '$idEvento' AND dataFinal <> '0000-00-00' AND publicado = '1'";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	for($i = 0; $i < count($res); $i++){
+		$inicio = $res[$i]['dataInicio'];
+		$fim = $res[$i]['dataFinal'];
+		
+		if(isset($dataInicio)){
+			if(strtotime($dataInicio) > strtotime($inicio)){
+				$dataInicio = $inicio;
+			}
+			
+		}else{
+			$dataInicio = $inicio;
+			
+		}
+
+		if(isset($dataFinal)){
+			if(strtotime($dataFinal) > strtotime($fim)){
+				$dataFinal = $fim;
+			}
+			
+		}else{
+			$dataFinal = $fim;
+			
+		}
+
+
+	}
+	
+	$dateStart 		=  exibirDataBr($dataInicio);
+	$dateStart 		= implode('-', array_reverse(explode('/', substr($dateStart, 0, 10)))).substr($dateStart, 10);
+	$dateStart 		= new DateTime($dateStart);
+
+	//End date
+	$dateEnd 		= exibirDataBr($dataFinal);
+	$dateEnd 		= implode('-', array_reverse(explode('/', substr($dateEnd, 0, 10)))).substr($dateEnd, 10);
+	$dateEnd 		= new DateTime($dateEnd);
+
+	//Prints days according to the interval
+	$dateRange = array();
+	while($dateStart <= $dateEnd){
+		$dateRange[] = $dateStart->format('Y-m-d');
+		$dateStart = $dateStart->modify('+1day');
+	}
+	
+	$string_mes = [];	
+
+	for($i = 0; $i < count($dateRange); $i++){
+		if(!in_array(stringMesAno($dateRange[$i]),$string_mes)){
+			array_push($string_mes,stringMesAno($dateRange[$i]));
+		}
+		
+	}
+	
+	return $string_mes;
 	
 	
 	
