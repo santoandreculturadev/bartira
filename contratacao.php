@@ -46,6 +46,8 @@ ini_set(“display_errors”, 0 );
 		switch($p){
 case "inicio": //Lista as contratações
 
+$ano_base = date('Y');
+
 if(isset($_SESSION['idPessoa'])){
 	unset($_SESSION['idPessoa']);
 	unset($_SESSION['tipo']);
@@ -111,10 +113,10 @@ if(isset($_POST['inserir_pf'])){
 		$pessoa = 1;
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$numero','1','2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$numero','1','$ano_base','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$numero','1','2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$numero','1','$ano_base','30 dias após a execução do serviço.')";
 			
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
@@ -135,10 +137,10 @@ if(isset($_POST['insere_pedido_pf'])){
 		$id_pessoa = $_POST['insere_pedido_pf'];
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$id_pessoa', '1','2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$id_pessoa', '1','$ano_base','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '1', '$id_pessoa', '1', '2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '1', '$id_pessoa', '1', '$ano_base','30 dias após a execução do serviço.')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
@@ -157,10 +159,10 @@ if(isset($_POST['insere_pedido_pj'])){
 		$id_pessoa = $_POST['insere_pedido_pj'];
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$id_pessoa', '1', '2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$id_pessoa', '1', '$ano_base','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$id_pessoa', '1', '2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$id_pessoa', '1', '$ano_base','30 dias após a execução do serviço.')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id > 0){
@@ -252,10 +254,10 @@ if(isset($_POST['inserir_pj'])){
 		$pessoa = 1;
 		if($_SESSION['entidade'] == 'evento'){
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idEvento`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$numero_pj','1', '2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$numero_pj','1', '$ano_base','30 dias após a execução do serviço.')";
 		}else{
 			$sql_insere_pedido = "INSERT INTO `sc_contratacao` (`idAtividade`, `tipoPessoa`, `idPessoa`,  `publicado`, `ano_base`,`formaPagamento`) 
-			VALUES ('$evento', '2', '$numero_pj','1', '2020','30 dias após a execução do serviço.')";
+			VALUES ('$evento', '2', '$numero_pj','1', '$ano_base','30 dias após a execução do serviço.')";
 		}
 		$query_pedido = $wpdb->query($sql_insere_pedido);
 		if($wpdb->insert_id){
