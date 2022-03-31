@@ -680,6 +680,8 @@ function evento($id){
 		'previsto' => $res['previsto'],
 		'artista_local' => $res['artista_local'],
 		'cidade' => $res['cidade'],
+		'n_agentes' => $res['n_agentes'],
+		'n_agentes_abc' => $res['n_agentes_abc'],
 		'descricao' => $res['descricao'],
 		'url' => $res['url'],
 		'online' => $res['online'],

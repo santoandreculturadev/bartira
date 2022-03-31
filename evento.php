@@ -517,6 +517,36 @@ if(isset($_SESSION['id'])){
 							<input type="text" name="nomeGrupo" class="form-control" maxlength="100" id="inputSubject" placeholder="Nome do coletivo, grupo teatral, etc." value=""/>
 						</div> 
 					</div>
+
+                     <div class="form-group">
+                            <div class="col-md-offset-2">
+                                <label>Artista Local</label>
+                                <select class="form-control" name="artista_local" id="nome_convocatoria">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Cidade do Artista</label>
+							<input type="text" name="cidade" class="form-control" maxlength="100" id="inputSubject" placeholder="" value=""/>
+						</div> 
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Número de Agentes</label>
+							<input type="text" name="n_agentes" class="form-control" maxlength="100" id="inputSubject" placeholder="" value=""/>
+						</div> 
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Número de Agentes Locais</label>
+							<input type="text" name="n_agentes_abc" class="form-control" maxlength="100" id="inputSubject" placeholder="" value=""/>
+						</div> 
+					</div>
+
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Número de Inscrição CulturAZ (caso tenha sido selecionado via plataforma)</label>
@@ -524,7 +554,7 @@ if(isset($_SESSION['id'])){
 						</div> 
 					</div>
                      <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
+                            <div class="col-md-offset-2">
                                 <label>Edital/Convocatoria</label>
                                 <select class="form-control" name="nome_convocatoria" id="nome_convocatoria">
                                     <option>Escolha uma opção</option>
@@ -647,7 +677,10 @@ if(isset($_POST['atualizar']) OR isset($_POST['inserir'])){
 	$online = $_POST['online'];
 	$urlonline = addslashes($_POST['urlonline']);
 	$edital = $_POST['nome_convocatoria'];
-	
+	$cidade = $_POST['cidade'];
+	$artista_local = $_POST['artista_local'];
+	$n_agentes = $_POST['n_agentes'];
+	$n_agentes_abc = $_POST['n_agentes_abc'];
 
 	if(isset($_POST['subEvento'])){
 		$subEvento = $_POST['subEvento'];
@@ -669,8 +702,8 @@ $idUser = $user->ID;
 
 	// Inserir evento
 if(isset($_POST['inserir'])){
-	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `convocatoria_edital` ,`pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url` ) 
-	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2021','$online','$urlonline')";
+	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `convocatoria_edital` ,`pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url`, `artista_local`, `cidade`, `n_agentes`,  `n_agentes_abc` ) 
+	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2021','$online','$urlonline','$artista_local','$cidade','$n_agentes','$n_agentes_abc')";
 	$ins = $wpdb->query($sql);
 	if($ins){
 		$mensagem = "Inserido com sucesso";
@@ -715,9 +748,11 @@ if(isset($_POST['atualizar'])){
 
 	`previsto` = '$previsto',
 	`online` = '$online',
-	`url` = '$urlonline'
-	
-	
+	`url` = '$urlonline',
+	`artista_local` = '$artista_local',
+	`cidade` = '$cidade',
+	`n_agentes` = '$n_agentes',
+	`n_agentes_abc` = '$n_agentes_abc'
 	WHERE `idEvento` = '$atualizar';
 	";
 	$atual = $wpdb->query($sql_atualizar);
@@ -869,7 +904,37 @@ if(isset($_POST['atualizar'])){
 							<label>Nome do Artista/Cia/Banda/Grupo/Dupla</label>
 							<input type="text" name="nomeGrupo" class="form-control" maxlength="100" id="inputSubject" placeholder="Nome do coletivo, grupo teatral, etc." value="<?php echo stripslashes($evento['nomeGrupo']); ?>"/>
 						</div> 
-					</div>		
+					</div>
+
+ <div class="form-group">
+                            <div class="col-md-offset-2">
+                                <label>Artista Local</label>
+                                <select class="form-control" name="artista_local" id="nome_convocatoria">
+                                    <option value="1" <?php if($evento['artista_local'] == 1){ echo "selected"; } ?> >Sim</option>
+                                    <option value="0" <?php if($evento['artista_local'] == 0){ echo "selected"; } ?>>Não</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Cidade do Artista</label>
+							<input type="text" name="cidade" class="form-control" maxlength="100" id="inputSubject" placeholder="" value="<?php echo stripslashes($evento['cidade']); ?>"/>
+						</div> 
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Número de Agentes</label>
+							<input type="text" name="n_agentes" class="form-control" maxlength="100" id="inputSubject" placeholder="" value="<?php echo stripslashes($evento['n_agentes']); ?>"/>
+						</div> 
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Número de Agentes Locais</label>
+							<input type="text" name="n_agentes_abc" class="form-control" maxlength="100" id="inputSubject" placeholder="" value="<?php echo stripslashes($evento['n_agentes_abc']); ?>"/>
+						</div> 
+					</div>
+					
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Número de Inscrição CulturAZ (caso tenha sido selecionado via plataforma)</label>
@@ -878,7 +943,7 @@ if(isset($_POST['atualizar'])){
 					</div>
 					
                         <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
+                            <div class="col-md-offset-2 ">
                                 <label>Edital/Convocatoria</label>
                                 <select class="form-control" name="nome_convocatoria" id="nome_convocatoria">
                                     <option>Escolha uma opção</option>
