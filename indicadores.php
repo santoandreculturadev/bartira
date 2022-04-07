@@ -4538,6 +4538,170 @@ for($i = 0; $i < count($ano_orcamento); $i++){
 <?php }// fim do loop do ano ?>
 
 			   <br /><br />
+<?php
+            break;
+        case "tabelaeventolazer":
+?>
+        ?>
+
+           <div class="form-group">
+                <div class="col-md-offset-2">
+                    <h1>Resumo dos Eventos - Lazer</h1>
+                </div>
+            </div>
+
+        <br/><br/>
+<?php 
+
+$ano_orcamento = anoOrcamento(true);
+
+for($i = 0; $i < count($ano_orcamento); $i++){
+
+	$indica = indicadores($ano_orcamento[$i]['ano_base'],"evento",NULL,1194 );
+
+?>
+
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <label><h2><?php echo $ano_orcamento[$i]['ano_base']; ?> - Geral</h2></label>
+                <tr>
+                    <th>Período</th>
+                    <th>Público</th>
+                    <th>Nº Atividades</th>
+                    <th>Nº Atividades com Agentes Locais</th>
+                    <th>Nº Agentes Culturais Locais Envolvidos</th>
+                    <th>Nº Bairros</th>
+                    <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
+                    <th>Nº Bairros Descentralizados</th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                </tr>
+                </thead>
+                <tbody>
+			<?php 
+				for($j = 1; $j <= count($indica['mes']); $j++){
+			?>
+				<tr>
+				<td><?php echo retornaMes($j); ?></td>
+				<td><?php echo $indica['mes'][$j]['publico']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_atividades']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_atividades_locais']; ?></td>
+				<td><?php echo $indica['mes'][$j]['agentes_locais']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_bairros']; ?></td>
+				<td><?php echo $indica['mes'][$j]['bairros_atendidos']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_bairros_descentralizados']; ?></td>
+				<td></td>
+				<td></td>
+				</tr>
+
+				<?php } ?>
+				<tr>
+				<td>Total do ano</td>
+				<td><?php echo $indica['ano']['publico']; ?></td>
+				<td><?php echo $indica['ano']['n_atividades']; ?></td>
+				<td><?php echo $indica['ano']['n_atividades_locais']; ?></td>
+				<td><?php echo $indica['ano']['agentes_locais']; ?></td>
+				<td><?php echo $indica['ano']['n_bairros']; ?></td>
+				<td><?php echo $indica['ano']['bairros_atendidos']; ?></td>
+				<td><?php echo $indica['ano']['n_bairros_descentralizados']; ?></td>
+				<td></td>
+				<td></td>
+				</tr>
+
+
+
+                </tbody>
+</table>
+               </div>
+			   <hr>
+<?php }// fim do loop do ano ?>
+
+			   <br /><br />
+
+<?php
+            break;
+        case "tabelaeventoorquestra":
+?>
+        ?>
+
+           <div class="form-group">
+                <div class="col-md-offset-2">
+                    <h1>Resumo dos Eventos - Orquestra</h1>
+                </div>
+            </div>
+
+        <br/><br/>
+<?php 
+
+$ano_orcamento = anoOrcamento(true);
+
+for($i = 0; $i < count($ano_orcamento); $i++){
+
+	$indica = indicadores($ano_orcamento[$i]['ano_base'],"evento","346,347,348,349,755,769,771,772" );
+
+?>
+
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <label><h2><?php echo $ano_orcamento[$i]['ano_base']; ?> - Geral</h2></label>
+                <tr>
+                    <th>Período</th>
+                    <th>Público</th>
+                    <th>Nº Atividades</th>
+                    <th>Nº Atividades com Agentes Locais</th>
+                    <th>Nº Agentes Culturais Locais Envolvidos</th>
+                    <th>Nº Bairros</th>
+                    <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
+                    <th>Nº Bairros Descentralizados</th>
+                    <th width="10%"></th>
+                    <th width="10%"></th>
+                </tr>
+                </thead>
+                <tbody>
+			<?php 
+				for($j = 1; $j <= count($indica['mes']); $j++){
+			?>
+				<tr>
+				<td><?php echo retornaMes($j); ?></td>
+				<td><?php echo $indica['mes'][$j]['publico']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_atividades']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_atividades_locais']; ?></td>
+				<td><?php echo $indica['mes'][$j]['agentes_locais']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_bairros']; ?></td>
+				<td><?php echo $indica['mes'][$j]['bairros_atendidos']; ?></td>
+				<td><?php echo $indica['mes'][$j]['n_bairros_descentralizados']; ?></td>
+				<td></td>
+				<td></td>
+				</tr>
+
+				<?php } ?>
+				<tr>
+				<td>Total do ano</td>
+				<td><?php echo $indica['ano']['publico']; ?></td>
+				<td><?php echo $indica['ano']['n_atividades']; ?></td>
+				<td><?php echo $indica['ano']['n_atividades_locais']; ?></td>
+				<td><?php echo $indica['ano']['agentes_locais']; ?></td>
+				<td><?php echo $indica['ano']['n_bairros']; ?></td>
+				<td><?php echo $indica['ano']['bairros_atendidos']; ?></td>
+				<td><?php echo $indica['ano']['n_bairros_descentralizados']; ?></td>
+				<td></td>
+				<td></td>
+				</tr>
+
+
+
+                </tbody>
+</table>
+               </div>
+			   <hr>
+<?php }// fim do loop do ano ?>
+
+			   <br /><br />
+
 
                                                 <?php
                                                 break;
@@ -5382,21 +5546,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
 
                                                 ?>
 
-                                                <form method="POST" action="?p=tabelaincentivo" class="form-horizontal"
-                                                      role="form">
                                                     <div class="form-group">
                                                         <div class="col-md-offset-2">
                                                             <h1>Resumo das Ações de Incentivo</h1>
 
                                                         </div>
                                                     </div>
-                                                </form>
                                                 <br/><br/>
+<?php
+$ano = anoOrcamento(true);
+
+for($i = 0; $i < count($ano); $i++){
+	$ano_base = $ano[$i]['ano_base'];
+
+	?>
+	
+
 
                                                 <div class="table-responsive">
                                                     <table class="table table-striped">
                                                         <thead>
-                                                        <label><h2>2019</h2></label>
+                                                        <label><h2><?php echo $ano_base; ?></h2></label>
                                                         <tr>
                                                             <th>Período</th>
                                                             <th>Público Geral</th>
@@ -5418,35 +5588,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>DEZ</strong></td>";
 
-                                                        $sql_pub_dezembro = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_dezembro = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_dezembro = $wpdb->get_results($sql_pub_dezembro, ARRAY_A);
                                                         echo "<td>" . $pub_dezembro[0]['SUM(dezembro)'] . "</td>";
 
-                                                        $sql_pub_sa_dezembro = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_dezembro = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_dezembro = $wpdb->get_results($sql_pub_sa_dezembro, ARRAY_A);
                                                         echo "<td>" . $pub_sa_dezembro[0]['SUM(dezembro_sa)'] . "</td>";
 
-                                                        $sql_ativ_dezembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND dezembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_dezembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND dezembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_dezembro = $wpdb->get_results($sql_ativ_dezembro, ARRAY_A);
                                                         echo "<td>" . $ativ_dezembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_dezembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND dezembro_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_dezembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND dezembro_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_dezembro = $wpdb->get_results($sql_age_dezembro, ARRAY_A);
                                                         echo "<td>" . $age_dezembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_dezembro = "SELECT SUM(santo_andre) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_dezembro = "SELECT SUM(santo_andre) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_dezembro = $wpdb->get_results($sql_num_age_dezembro, ARRAY_A);
                                                         echo "<td>" . $num_age_dezembro[0]['SUM(santo_andre)'] . "</td>";
 
-                                                        $sql_num_bairros_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_dezembro = $wpdb->get_results($sql_num_bairros_dezembro, ARRAY_A);
                                                         echo "<td>" . $num_bairros_dezembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_dezembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/105,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_dezembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/105,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_dezembro = $wpdb->get_results($sql_per_bairros_dezembro, ARRAY_A);
                                                         echo "<td>" . $per_bairros_dezembro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_dezembro = $wpdb->get_results($sql_num_desc_dezembro, ARRAY_A);
                                                         echo "<td>" . $num_desc_dezembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5454,35 +5624,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>NOV</strong></td>";
 
-                                                        $sql_pub_novembro = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_novembro = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_novembro = $wpdb->get_results($sql_pub_novembro, ARRAY_A);
                                                         echo "<td>" . $pub_novembro[0]['SUM(novembro)'] . "</td>";
 
-                                                        $sql_pub_sa_novembro = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_novembro = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_novembro = $wpdb->get_results($sql_pub_sa_novembro, ARRAY_A);
                                                         echo "<td>" . $pub_sa_novembro[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                        $sql_ativ_novembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND novembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_novembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND novembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_novembro = $wpdb->get_results($sql_ativ_novembro, ARRAY_A);
                                                         echo "<td>" . $ativ_novembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_novembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND novembro_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_novembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND novembro_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_novembro = $wpdb->get_results($sql_age_novembro, ARRAY_A);
                                                         echo "<td>" . $age_novembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_novembro = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_novembro = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_novembro = $wpdb->get_results($sql_num_age_novembro, ARRAY_A);
                                                         echo "<td>" . $num_age_novembro[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_novembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_novembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_novembro = $wpdb->get_results($sql_num_bairros_novembro, ARRAY_A);
                                                         echo "<td>" . $num_bairros_novembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_novembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_novembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_novembro = $wpdb->get_results($sql_per_bairros_novembro, ARRAY_A);
                                                         echo "<td>" . $per_bairros_novembro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_novembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_novembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_novembro = $wpdb->get_results($sql_num_desc_novembro, ARRAY_A);
                                                         echo "<td>" . $num_desc_novembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5490,35 +5660,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>OUT</strong></td>";
 
-                                                        $sql_pub_outubro = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_outubro = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_outubro = $wpdb->get_results($sql_pub_outubro, ARRAY_A);
                                                         echo "<td>" . $pub_outubro[0]['SUM(outubro)'] . "</td>";
 
-                                                        $sql_pub_sa_outubro = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_outubro = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_outubro = $wpdb->get_results($sql_pub_sa_outubro, ARRAY_A);
                                                         echo "<td>" . $pub_sa_outubro[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                        $sql_ativ_outubro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND outubro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_outubro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND outubro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_outubro = $wpdb->get_results($sql_ativ_outubro, ARRAY_A);
                                                         echo "<td>" . $ativ_outubro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_outubro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND outubro_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_outubro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND outubro_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_outubro = $wpdb->get_results($sql_age_outubro, ARRAY_A);
                                                         echo "<td>" . $age_outubro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_outubro = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_outubro = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_outubro = $wpdb->get_results($sql_num_age_outubro, ARRAY_A);
                                                         echo "<td>" . $num_age_outubro[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_outubro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_outubro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_outubro = $wpdb->get_results($sql_num_bairros_outubro, ARRAY_A);
                                                         echo "<td>" . $num_bairros_outubro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_outubro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_outubro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_outubro = $wpdb->get_results($sql_per_bairros_outubro, ARRAY_A);
                                                         echo "<td>" . $per_bairros_outubro[0]['ROUND(COUNT(DISTINCT(bairro))*100/105,2)'] . "</td>";
 
-                                                        $sql_num_desc_outubro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_outubro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_outubro = $wpdb->get_results($sql_num_desc_outubro, ARRAY_A);
                                                         echo "<td>" . $num_desc_outubro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5526,35 +5696,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>SET</strong></td>";
 
-                                                        $sql_pub_setembro = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_setembro = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_setembro = $wpdb->get_results($sql_pub_setembro, ARRAY_A);
                                                         echo "<td>" . $pub_setembro[0]['SUM(setembro)'] . "</td>";
 
-                                                        $sql_pub_sa_setembro = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_setembro = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_setembro = $wpdb->get_results($sql_pub_sa_setembro, ARRAY_A);
                                                         echo "<td>" . $pub_sa_setembro[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                        $sql_ativ_setembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND setembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_setembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND setembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_setembro = $wpdb->get_results($sql_ativ_setembro, ARRAY_A);
                                                         echo "<td>" . $ativ_setembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_setembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND setembro_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_setembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND setembro_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_setembro = $wpdb->get_results($sql_age_setembro, ARRAY_A);
                                                         echo "<td>" . $age_setembro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_setembro = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_setembro = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_setembro = $wpdb->get_results($sql_num_age_setembro, ARRAY_A);
                                                         echo "<td>" . $num_age_setembro[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_setembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_setembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_setembro = $wpdb->get_results($sql_num_bairros_setembro, ARRAY_A);
                                                         echo "<td>" . $num_bairros_setembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_setembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_setembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_setembro = $wpdb->get_results($sql_per_bairros_setembro, ARRAY_A);
                                                         echo "<td>" . $per_bairros_setembro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_setembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_setembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_setembro = $wpdb->get_results($sql_num_desc_setembro, ARRAY_A);
                                                         echo "<td>" . $num_desc_setembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5562,35 +5732,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>AGO</strong></td>";
 
-                                                        $sql_pub_agosto = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_agosto = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_agosto = $wpdb->get_results($sql_pub_agosto, ARRAY_A);
                                                         echo "<td>" . $pub_agosto[0]['SUM(agosto)'] . "</td>";
 
-                                                        $sql_pub_sa_agosto = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_agosto = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_agosto = $wpdb->get_results($sql_pub_sa_agosto, ARRAY_A);
                                                         echo "<td>" . $pub_sa_agosto[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                        $sql_ativ_agosto = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND agosto > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_agosto = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND agosto > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_agosto = $wpdb->get_results($sql_ativ_agosto, ARRAY_A);
                                                         echo "<td>" . $ativ_agosto[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_agosto = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND agosto_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_agosto = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND agosto_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_agosto = $wpdb->get_results($sql_age_agosto, ARRAY_A);
                                                         echo "<td>" . $age_agosto[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_agosto = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_agosto = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_agosto = $wpdb->get_results($sql_num_age_agosto, ARRAY_A);
                                                         echo "<td>" . $num_age_agosto[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_agosto = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_agosto = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_agosto = $wpdb->get_results($sql_num_bairros_agosto, ARRAY_A);
                                                         echo "<td>" . $num_bairros_agosto[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_agosto = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_agosto = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_agosto = $wpdb->get_results($sql_per_bairros_agosto, ARRAY_A);
                                                         echo "<td>" . $per_bairros_agosto[0]['ROUND(COUNT(DISTINCT(bairro))*100/105,2)'] . "</td>";
 
-                                                        $sql_num_desc_agosto = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_agosto = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_agosto = $wpdb->get_results($sql_num_desc_agosto, ARRAY_A);
                                                         echo "<td>" . $num_desc_agosto[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5598,35 +5768,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>JUL</strong></td>";
 
-                                                        $sql_pub_julho = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_julho = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_julho = $wpdb->get_results($sql_pub_julho, ARRAY_A);
                                                         echo "<td>" . $pub_julho[0]['SUM(julho)'] . "</td>";
 
-                                                        $sql_pub_sa_julho = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_julho = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_julho = $wpdb->get_results($sql_pub_sa_julho, ARRAY_A);
                                                         echo "<td>" . $pub_sa_julho[0]['SUM(julho_sa)'] . "</td>";
 
-                                                        $sql_ativ_julho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND julho > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_julho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND julho > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_julho = $wpdb->get_results($sql_ativ_julho, ARRAY_A);
                                                         echo "<td>" . $ativ_julho[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_julho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND julho_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_julho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND julho_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_julho = $wpdb->get_results($sql_age_julho, ARRAY_A);
                                                         echo "<td>" . $age_julho[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_julho = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_julho = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_julho = $wpdb->get_results($sql_num_age_julho, ARRAY_A);
                                                         echo "<td>" . $num_age_julho[0]['SUM(julho_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_julho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_julho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_julho = $wpdb->get_results($sql_num_bairros_julho, ARRAY_A);
                                                         echo "<td>" . $num_bairros_julho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_julho = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_julho = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_julho = $wpdb->get_results($sql_per_bairros_julho, ARRAY_A);
                                                         echo "<td>" . $per_bairros_julho[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_julho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_julho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_julho = $wpdb->get_results($sql_num_desc_julho, ARRAY_A);
                                                         echo "<td>" . $num_desc_julho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5634,35 +5804,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>JUN</strong></td>";
 
-                                                        $sql_pub_junho = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_junho = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_junho = $wpdb->get_results($sql_pub_junho, ARRAY_A);
                                                         echo "<td>" . $pub_junho[0]['SUM(junho)'] . "</td>";
 
-                                                        $sql_pub_sa_junho = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_junho = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_junho = $wpdb->get_results($sql_pub_sa_junho, ARRAY_A);
                                                         echo "<td>" . $pub_sa_junho[0]['SUM(junho_sa)'] . "</td>";
 
-                                                        $sql_ativ_junho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND junho > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_junho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND junho > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_junho = $wpdb->get_results($sql_ativ_junho, ARRAY_A);
                                                         echo "<td>" . $ativ_junho[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_junho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND junho_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_junho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND junho_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_junho = $wpdb->get_results($sql_age_junho, ARRAY_A);
                                                         echo "<td>" . $age_junho[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_junho = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_junho = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_junho = $wpdb->get_results($sql_num_age_junho, ARRAY_A);
                                                         echo "<td>" . $num_age_junho[0]['SUM(junho_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_junho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_junho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_junho = $wpdb->get_results($sql_num_bairros_junho, ARRAY_A);
                                                         echo "<td>" . $num_bairros_junho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_junho = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_junho = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_junho = $wpdb->get_results($sql_per_bairros_junho, ARRAY_A);
                                                         echo "<td>" . $per_bairros_junho[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_junho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_junho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_junho = $wpdb->get_results($sql_num_desc_junho, ARRAY_A);
                                                         echo "<td>" . $num_desc_junho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5670,35 +5840,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>MAI</strong></td>";
 
-                                                        $sql_pub_maio = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_maio = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_maio = $wpdb->get_results($sql_pub_maio, ARRAY_A);
                                                         echo "<td>" . $pub_maio[0]['SUM(maio)'] . "</td>";
 
-                                                        $sql_pub_sa_maio = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_maio = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_maio = $wpdb->get_results($sql_pub_sa_maio, ARRAY_A);
                                                         echo "<td>" . $pub_sa_maio[0]['SUM(maio_sa)'] . "</td>";
 
-                                                        $sql_ativ_maio = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND maio > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_maio = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND maio > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_maio = $wpdb->get_results($sql_ativ_maio, ARRAY_A);
                                                         echo "<td>" . $ativ_maio[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_maio = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND maio_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_maio = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND maio_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_maio = $wpdb->get_results($sql_age_maio, ARRAY_A);
                                                         echo "<td>" . $age_maio[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_maio = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_maio = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_maio = $wpdb->get_results($sql_num_age_maio, ARRAY_A);
                                                         echo "<td>" . $num_age_maio[0]['SUM(maio_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_maio = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_maio = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_maio = $wpdb->get_results($sql_num_bairros_maio, ARRAY_A);
                                                         echo "<td>" . $num_bairros_maio[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_maio = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_maio = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_maio = $wpdb->get_results($sql_per_bairros_maio, ARRAY_A);
                                                         echo "<td>" . $per_bairros_maio[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_maio = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_maio = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_maio = $wpdb->get_results($sql_num_desc_maio, ARRAY_A);
                                                         echo "<td>" . $num_desc_maio[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5706,35 +5876,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>ABR</strong></td>";
 
-                                                        $sql_pub_abril = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_abril = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_abril = $wpdb->get_results($sql_pub_abril, ARRAY_A);
                                                         echo "<td>" . $pub_abril[0]['SUM(abril)'] . "</td>";
 
-                                                        $sql_pub_sa_abril = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_abril = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_abril = $wpdb->get_results($sql_pub_sa_abril, ARRAY_A);
                                                         echo "<td>" . $pub_sa_abril[0]['SUM(abril_sa)'] . "</td>";
 
-                                                        $sql_ativ_abril = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND abril > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_abril = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND abril > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_abril = $wpdb->get_results($sql_ativ_abril, ARRAY_A);
                                                         echo "<td>" . $ativ_abril[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_abril = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND abril_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_abril = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND abril_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_abril = $wpdb->get_results($sql_age_abril, ARRAY_A);
                                                         echo "<td>" . $age_abril[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_abril = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_abril = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_abril = $wpdb->get_results($sql_num_age_abril, ARRAY_A);
                                                         echo "<td>" . $num_age_abril[0]['SUM(abril_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_abril = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_abril = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_abril = $wpdb->get_results($sql_num_bairros_abril, ARRAY_A);
                                                         echo "<td>" . $num_bairros_abril[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_abril = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_abril = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_abril = $wpdb->get_results($sql_per_bairros_abril, ARRAY_A);
                                                         echo "<td>" . $per_bairros_abril[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_abril = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_abril = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_abril = $wpdb->get_results($sql_num_desc_abril, ARRAY_A);
                                                         echo "<td>" . $num_desc_abril[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5742,35 +5912,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>MAR</strong></td>";
 
-                                                        $sql_pub_marco = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_marco = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_marco = $wpdb->get_results($sql_pub_marco, ARRAY_A);
                                                         echo "<td>" . $pub_marco[0]['SUM(marco)'] . "</td>";
 
-                                                        $sql_pub_sa_marco = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_marco = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_marco = $wpdb->get_results($sql_pub_sa_marco, ARRAY_A);
                                                         echo "<td>" . $pub_sa_marco[0]['SUM(marco_sa)'] . "</td>";
 
-                                                        $sql_ativ_marco = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND marco > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_marco = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND marco > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_marco = $wpdb->get_results($sql_ativ_marco, ARRAY_A);
                                                         echo "<td>" . $ativ_marco[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_marco = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND marco_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_marco = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND marco_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_marco = $wpdb->get_results($sql_age_marco, ARRAY_A);
                                                         echo "<td>" . $age_marco[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_marco = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_marco = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_marco = $wpdb->get_results($sql_num_age_marco, ARRAY_A);
                                                         echo "<td>" . $num_age_marco[0]['SUM(marco_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_marco = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_marco = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_marco = $wpdb->get_results($sql_num_bairros_marco, ARRAY_A);
                                                         echo "<td>" . $num_bairros_marco[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_marco = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_marco = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_marco = $wpdb->get_results($sql_per_bairros_marco, ARRAY_A);
                                                         echo "<td>" . $per_bairros_marco[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_marco = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_marco = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_marco = $wpdb->get_results($sql_num_desc_marco, ARRAY_A);
                                                         echo "<td>" . $num_desc_marco[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5778,35 +5948,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>FEV</strong></td>";
 
-                                                        $sql_pub_fevereiro = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_fevereiro = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_fevereiro = $wpdb->get_results($sql_pub_fevereiro, ARRAY_A);
                                                         echo "<td>" . $pub_fevereiro[0]['SUM(fevereiro)'] . "</td>";
 
-                                                        $sql_pub_sa_fevereiro = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_fevereiro = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_fevereiro = $wpdb->get_results($sql_pub_sa_fevereiro, ARRAY_A);
                                                         echo "<td>" . $pub_sa_fevereiro[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                        $sql_ativ_fevereiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND fevereiro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_fevereiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND fevereiro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_fevereiro = $wpdb->get_results($sql_ativ_fevereiro, ARRAY_A);
                                                         echo "<td>" . $ativ_fevereiro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_fevereiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND fevereiro_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_fevereiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND fevereiro_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_fevereiro = $wpdb->get_results($sql_age_fevereiro, ARRAY_A);
                                                         echo "<td>" . $age_fevereiro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_fevereiro = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_fevereiro = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_fevereiro = $wpdb->get_results($sql_num_age_fevereiro, ARRAY_A);
                                                         echo "<td>" . $num_age_fevereiro[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_fevereiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_fevereiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_fevereiro = $wpdb->get_results($sql_num_bairros_fevereiro, ARRAY_A);
                                                         echo "<td>" . $num_bairros_fevereiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_fevereiro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_fevereiro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_fevereiro = $wpdb->get_results($sql_per_bairros_fevereiro, ARRAY_A);
                                                         echo "<td>" . $per_bairros_fevereiro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_fevereiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_fevereiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_fevereiro = $wpdb->get_results($sql_num_desc_fevereiro, ARRAY_A);
                                                         echo "<td>" . $num_desc_fevereiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5814,35 +5984,35 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                         echo "<tr>";
                                                         echo "<td><strong>JAN</strong></td>";
 
-                                                        $sql_pub_janeiro = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_janeiro = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_janeiro = $wpdb->get_results($sql_pub_janeiro, ARRAY_A);
                                                         echo "<td>" . $pub_janeiro[0]['SUM(janeiro)'] . "</td>";
 
-                                                        $sql_pub_sa_janeiro = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_pub_sa_janeiro = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $pub_sa_janeiro = $wpdb->get_results($sql_pub_sa_janeiro, ARRAY_A);
                                                         echo "<td>" . $pub_sa_janeiro[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                        $sql_ativ_janeiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND janeiro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_ativ_janeiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND janeiro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $ativ_janeiro = $wpdb->get_results($sql_ativ_janeiro, ARRAY_A);
                                                         echo "<td>" . $ativ_janeiro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_age_janeiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND janeiro_sa > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_age_janeiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND janeiro_sa > '0' AND projeto NOT IN (378,723)";
                                                         $age_janeiro = $wpdb->get_results($sql_age_janeiro, ARRAY_A);
                                                         echo "<td>" . $age_janeiro[0]['COUNT(id)'] . "</td>";
 
-                                                        $sql_num_age_janeiro = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                        $sql_num_age_janeiro = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                         $num_age_janeiro = $wpdb->get_results($sql_num_age_janeiro, ARRAY_A);
                                                         echo "<td>" . $num_age_janeiro[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                        $sql_num_bairros_janeiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_bairros_janeiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
                                                         $num_bairros_janeiro = $wpdb->get_results($sql_num_bairros_janeiro, ARRAY_A);
                                                         echo "<td>" . $num_bairros_janeiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
 
-                                                        $sql_per_bairros_janeiro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_per_bairros_janeiro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
                                                         $per_bairros_janeiro = $wpdb->get_results($sql_per_bairros_janeiro, ARRAY_A);
                                                         echo "<td>" . $per_bairros_janeiro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
 
-                                                        $sql_num_desc_janeiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2019-01-01' AND '2019-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
+                                                        $sql_num_desc_janeiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
                                                         $num_desc_janeiro = $wpdb->get_results($sql_num_desc_janeiro, ARRAY_A);
                                                         echo "<td>" . $num_desc_janeiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
                                                         echo "</tr>";
@@ -5854,7 +6024,7 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                             <table class="table table-striped">
                                                                 <thead>
                                                                 <br>
-                                                                <label><h2>2019 - Por Espaço</h2></label>
+                                                                <label><h2><?php echo $ano_base; ?> - Por Espaço</h2></label>
                                                                 <tr>
                                                                     <th>Período</th>
                                                                     <th>CEU Ana Maria</th>
@@ -5876,27 +6046,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>DEZ - GERAL</strong></td>";
 
-                                                                $sql_dez_marek = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_marek = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_marek = $wpdb->get_results($sql_dez_marek, ARRAY_A);
                                                                 echo "<td>" . $dez_marek[0]['SUM(dezembro)'] . "</td>";
 
-                                                                $sql_dez_emia = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_emia = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_emia = $wpdb->get_results($sql_dez_emia, ARRAY_A);
                                                                 echo "<td>" . $dez_emia[0]['SUM(dezembro)'] . "</td>";
 
-                                                                $sql_dez_elcv = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_elcv = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_elcv = $wpdb->get_results($sql_dez_elcv, ARRAY_A);
                                                                 echo "<td>" . $dez_elcv[0]['SUM(dezembro)'] . "</td>";
 
-                                                                $sql_dez_eld = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_eld = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_eld = $wpdb->get_results($sql_dez_eld, ARRAY_A);
                                                                 echo "<td>" . $dez_eld[0]['SUM(dezembro)'] . "</td>";
 
-                                                                $sql_dez_elt = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_elt = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_elt = $wpdb->get_results($sql_dez_elt, ARRAY_A);
                                                                 echo "<td>" . $dez_elt[0]['SUM(dezembro)'] . "</td>";
 
-                                                                $sql_dez_territoriosc = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_territoriosc = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_territoriosc = $wpdb->get_results($sql_dez_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $dez_territoriosc[0]['SUM(dezembro)'] . "</td>";
                                                                 echo "</tr>";
@@ -5904,27 +6074,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>DEZ - SA</strong></td>";
 
-                                                                $sql_dez_sa_marek = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_sa_marek = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_sa_marek = $wpdb->get_results($sql_dez_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $dez_sa_marek[0]['SUM(dezembro_sa)'] . "</td>";
 
-                                                                $sql_dez_sa_emia = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_sa_emia = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_sa_emia = $wpdb->get_results($sql_dez_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $dez_sa_emia[0]['SUM(dezembro_sa)'] . "</td>";
 
-                                                                $sql_dez_sa_elcv = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_sa_elcv = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_sa_elcv = $wpdb->get_results($sql_dez_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $dez_sa_elcv[0]['SUM(dezembro_sa)'] . "</td>";
 
-                                                                $sql_dez_sa_eld = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_sa_eld = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_sa_eld = $wpdb->get_results($sql_dez_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $dez_sa_eld[0]['SUM(dezembro_sa)'] . "</td>";
 
-                                                                $sql_dez_sa_elt = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_sa_elt = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_sa_elt = $wpdb->get_results($sql_dez_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $dez_sa_elt[0]['SUM(dezembro_sa)'] . "</td>";
 
-                                                                $sql_dez_sa_territoriosc = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_dez_sa_territoriosc = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $dez_sa_territoriosc = $wpdb->get_results($sql_dez_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $dez_sa_territoriosc[0]['SUM(dezembro_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -5932,27 +6102,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>NOV - GERAL</strong></td>";
 
-                                                                $sql_nov_marek = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_marek = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_marek = $wpdb->get_results($sql_nov_marek, ARRAY_A);
                                                                 echo "<td>" . $nov_marek[0]['SUM(novembro)'] . "</td>";
 
-                                                                $sql_nov_emia = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_emia = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_emia = $wpdb->get_results($sql_nov_emia, ARRAY_A);
                                                                 echo "<td>" . $nov_emia[0]['SUM(novembro)'] . "</td>";
 
-                                                                $sql_nov_elcv = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_elcv = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_elcv = $wpdb->get_results($sql_nov_elcv, ARRAY_A);
                                                                 echo "<td>" . $nov_elcv[0]['SUM(novembro)'] . "</td>";
 
-                                                                $sql_nov_eld = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_eld = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_eld = $wpdb->get_results($sql_nov_eld, ARRAY_A);
                                                                 echo "<td>" . $nov_eld[0]['SUM(novembro)'] . "</td>";
 
-                                                                $sql_nov_elt = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_elt = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_elt = $wpdb->get_results($sql_nov_elt, ARRAY_A);
                                                                 echo "<td>" . $nov_elt[0]['SUM(novembro)'] . "</td>";
 
-                                                                $sql_nov_territoriosc = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_territoriosc = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_territoriosc = $wpdb->get_results($sql_nov_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $nov_territoriosc[0]['SUM(novembro)'] . "</td>";
                                                                 echo "</tr>";
@@ -5960,27 +6130,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>NOV - SA</strong></td>";
 
-                                                                $sql_nov_sa_marek = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_sa_marek = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_sa_marek = $wpdb->get_results($sql_nov_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $nov_sa_marek[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                                $sql_nov_sa_emia = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_sa_emia = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_sa_emia = $wpdb->get_results($sql_nov_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $nov_sa_emia[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                                $sql_nov_sa_elcv = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_sa_elcv = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_sa_elcv = $wpdb->get_results($sql_nov_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $nov_sa_elcv[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                                $sql_nov_sa_eld = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_sa_eld = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_sa_eld = $wpdb->get_results($sql_nov_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $nov_sa_eld[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                                $sql_nov_sa_elt = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_sa_elt = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_sa_elt = $wpdb->get_results($sql_nov_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $nov_sa_elt[0]['SUM(novembro_sa)'] . "</td>";
 
-                                                                $sql_nov_sa_territoriosc = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_nov_sa_territoriosc = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $nov_sa_territoriosc = $wpdb->get_results($sql_nov_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $nov_sa_territoriosc[0]['SUM(novembro_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -5988,27 +6158,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>OUT - GERAl</strong></td>";
 
-                                                                $sql_out_marek = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_marek = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_marek = $wpdb->get_results($sql_out_marek, ARRAY_A);
                                                                 echo "<td>" . $out_marek[0]['SUM(outubro)'] . "</td>";
 
-                                                                $sql_out_emia = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_emia = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_emia = $wpdb->get_results($sql_out_emia, ARRAY_A);
                                                                 echo "<td>" . $out_emia[0]['SUM(outubro)'] . "</td>";
 
-                                                                $sql_out_elcv = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_elcv = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_elcv = $wpdb->get_results($sql_out_elcv, ARRAY_A);
                                                                 echo "<td>" . $out_elcv[0]['SUM(outubro)'] . "</td>";
 
-                                                                $sql_out_eld = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_eld = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_eld = $wpdb->get_results($sql_out_eld, ARRAY_A);
                                                                 echo "<td>" . $out_eld[0]['SUM(outubro)'] . "</td>";
 
-                                                                $sql_out_elt = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_elt = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_elt = $wpdb->get_results($sql_out_elt, ARRAY_A);
                                                                 echo "<td>" . $out_elt[0]['SUM(outubro)'] . "</td>";
 
-                                                                $sql_out_territoriosc = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_territoriosc = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_territoriosc = $wpdb->get_results($sql_out_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $out_territoriosc[0]['SUM(outubro)'] . "</td>";
                                                                 echo "</tr>";
@@ -6016,27 +6186,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>OUT - SA</strong></td>";
 
-                                                                $sql_out_sa_marek = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_sa_marek = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_sa_marek = $wpdb->get_results($sql_out_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $out_sa_marek[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                                $sql_out_sa_emia = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_sa_emia = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_sa_emia = $wpdb->get_results($sql_out_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $out_sa_emia[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                                $sql_out_sa_elcv = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_sa_elcv = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_sa_elcv = $wpdb->get_results($sql_out_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $out_sa_elcv[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                                $sql_out_sa_eld = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_sa_eld = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_sa_eld = $wpdb->get_results($sql_out_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $out_sa_eld[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                                $sql_out_sa_elt = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_sa_elt = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_sa_elt = $wpdb->get_results($sql_out_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $out_sa_elt[0]['SUM(outubro_sa)'] . "</td>";
 
-                                                                $sql_out_sa_territoriosc = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_out_sa_territoriosc = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $out_sa_territoriosc = $wpdb->get_results($sql_out_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $out_sa_territoriosc[0]['SUM(outubro_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6044,27 +6214,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>SET - GERAL</strong></td>";
 
-                                                                $sql_set_marek = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_marek = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_marek = $wpdb->get_results($sql_set_marek, ARRAY_A);
                                                                 echo "<td>" . $set_marek[0]['SUM(setembro)'] . "</td>";
 
-                                                                $sql_set_emia = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_emia = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_emia = $wpdb->get_results($sql_set_emia, ARRAY_A);
                                                                 echo "<td>" . $set_emia[0]['SUM(setembro)'] . "</td>";
 
-                                                                $sql_set_elcv = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_elcv = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_elcv = $wpdb->get_results($sql_set_elcv, ARRAY_A);
                                                                 echo "<td>" . $set_elcv[0]['SUM(setembro)'] . "</td>";
 
-                                                                $sql_set_eld = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_eld = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_eld = $wpdb->get_results($sql_set_eld, ARRAY_A);
                                                                 echo "<td>" . $set_eld[0]['SUM(setembro)'] . "</td>";
 
-                                                                $sql_set_elt = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_elt = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_elt = $wpdb->get_results($sql_set_elt, ARRAY_A);
                                                                 echo "<td>" . $set_elt[0]['SUM(setembro)'] . "</td>";
 
-                                                                $sql_set_territoriosc = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_territoriosc = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_territoriosc = $wpdb->get_results($sql_set_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $set_territoriosc[0]['SUM(setembro)'] . "</td>";
                                                                 echo "</tr>";
@@ -6072,27 +6242,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>SET - SA</strong></td>";
 
-                                                                $sql_set_sa_marek = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_sa_marek = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_sa_marek = $wpdb->get_results($sql_set_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $set_sa_marek[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                                $sql_set_sa_emia = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_sa_emia = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_sa_emia = $wpdb->get_results($sql_set_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $set_sa_emia[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                                $sql_set_sa_elcv = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_sa_elcv = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_sa_elcv = $wpdb->get_results($sql_set_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $set_sa_elcv[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                                $sql_set_sa_eld = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_sa_eld = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_sa_eld = $wpdb->get_results($sql_set_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $set_sa_eld[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                                $sql_set_sa_elt = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_sa_elt = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_sa_elt = $wpdb->get_results($sql_set_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $set_sa_elt[0]['SUM(setembro_sa)'] . "</td>";
 
-                                                                $sql_set_sa_territoriosc = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_set_sa_territoriosc = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $set_sa_territoriosc = $wpdb->get_results($sql_set_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $set_sa_territoriosc[0]['SUM(setembro_sa)'] . "</td>";
 
@@ -6101,27 +6271,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>AGO - GERAL</strong></td>";
 
-                                                                $sql_ago_marek = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_marek = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_marek = $wpdb->get_results($sql_ago_marek, ARRAY_A);
                                                                 echo "<td>" . $ago_marek[0]['SUM(agosto)'] . "</td>";
 
-                                                                $sql_ago_emia = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_emia = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_emia = $wpdb->get_results($sql_ago_emia, ARRAY_A);
                                                                 echo "<td>" . $ago_emia[0]['SUM(agosto)'] . "</td>";
 
-                                                                $sql_ago_elcv = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_elcv = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_elcv = $wpdb->get_results($sql_ago_elcv, ARRAY_A);
                                                                 echo "<td>" . $ago_elcv[0]['SUM(agosto)'] . "</td>";
 
-                                                                $sql_ago_eld = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '204' AND 		ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_eld = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '204' AND 		ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_eld = $wpdb->get_results($sql_ago_eld, ARRAY_A);
                                                                 echo "<td>" . $ago_eld[0]['SUM(agosto)'] . "</td>";
 
-                                                                $sql_ago_elt = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_elt = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_elt = $wpdb->get_results($sql_ago_elt, ARRAY_A);
                                                                 echo "<td>" . $ago_elt[0]['SUM(agosto)'] . "</td>";
 
-                                                                $sql_ago_territoriosc = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_territoriosc = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_territoriosc = $wpdb->get_results($sql_ago_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $ago_territoriosc[0]['SUM(agosto)'] . "</td>";
                                                                 echo "</tr>";
@@ -6129,27 +6299,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>AGO - SA</strong></td>";
 
-                                                                $sql_ago_sa_marek = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_sa_marek = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_sa_marek = $wpdb->get_results($sql_ago_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $ago_sa_marek[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                                $sql_ago_sa_emia = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_sa_emia = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_sa_emia = $wpdb->get_results($sql_ago_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $ago_sa_emia[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                                $sql_ago_sa_elcv = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_sa_elcv = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_sa_elcv = $wpdb->get_results($sql_ago_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $ago_sa_elcv[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                                $sql_ago_sa_eld = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_sa_eld = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_sa_eld = $wpdb->get_results($sql_ago_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $ago_sa_eld[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                                $sql_ago_sa_elt = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_sa_elt = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_sa_elt = $wpdb->get_results($sql_ago_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $ago_sa_elt[0]['SUM(agosto_sa)'] . "</td>";
 
-                                                                $sql_ago_sa_territoriosc = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_ago_sa_territoriosc = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $ago_sa_territoriosc = $wpdb->get_results($sql_ago_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $ago_sa_territoriosc[0]['SUM(agosto_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6157,27 +6327,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>JUL - GERAL </strong></td>";
 
-                                                                $sql_jul_marek = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_marek = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_marek = $wpdb->get_results($sql_jul_marek, ARRAY_A);
                                                                 echo "<td>" . $jul_marek[0]['SUM(julho)'] . "</td>";
 
-                                                                $sql_jul_emia = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_emia = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_emia = $wpdb->get_results($sql_jul_emia, ARRAY_A);
                                                                 echo "<td>" . $jul_emia[0]['SUM(julho)'] . "</td>";
 
-                                                                $sql_jul_elcv = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_elcv = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_elcv = $wpdb->get_results($sql_jul_elcv, ARRAY_A);
                                                                 echo "<td>" . $jul_elcv[0]['SUM(julho)'] . "</td>";
 
-                                                                $sql_jul_eld = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_eld = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_eld = $wpdb->get_results($sql_jul_eld, ARRAY_A);
                                                                 echo "<td>" . $jul_eld[0]['SUM(julho)'] . "</td>";
 
-                                                                $sql_jul_elt = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_elt = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_elt = $wpdb->get_results($sql_jul_elt, ARRAY_A);
                                                                 echo "<td>" . $jul_elt[0]['SUM(julho)'] . "</td>";
 
-                                                                $sql_jul_territoriosc = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_territoriosc = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_territoriosc = $wpdb->get_results($sql_jul_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $jul_territoriosc[0]['SUM(julho)'] . "</td>";
                                                                 echo "</tr>";
@@ -6185,27 +6355,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>JUL - SA</strong></td>";
 
-                                                                $sql_jul_sa_marek = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_sa_marek = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_sa_marek = $wpdb->get_results($sql_jul_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $jul_sa_marek[0]['SUM(julho_sa)'] . "</td>";
 
-                                                                $sql_jul_sa_emia = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_sa_emia = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_sa_emia = $wpdb->get_results($sql_jul_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $jul_sa_emia[0]['SUM(julho_sa)'] . "</td>";
 
-                                                                $sql_jul_sa_elcv = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_sa_elcv = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_sa_elcv = $wpdb->get_results($sql_jul_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $jul_sa_elcv[0]['SUM(julho_sa)'] . "</td>";
 
-                                                                $sql_jul_sa_eld = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_sa_eld = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_sa_eld = $wpdb->get_results($sql_jul_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $jul_sa_eld[0]['SUM(julho_sa)'] . "</td>";
 
-                                                                $sql_jul_sa_elt = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_sa_elt = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_sa_elt = $wpdb->get_results($sql_jul_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $jul_sa_elt[0]['SUM(julho_sa)'] . "</td>";
 
-                                                                $sql_jul_sa_territoriosc = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jul_sa_territoriosc = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jul_sa_territoriosc = $wpdb->get_results($sql_jul_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $jul_sa_territoriosc[0]['SUM(julho_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6213,27 +6383,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>JUN - GERAL</strong></td>";
 
-                                                                $sql_jun_marek = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_marek = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_marek = $wpdb->get_results($sql_jun_marek, ARRAY_A);
                                                                 echo "<td>" . $jun_marek[0]['SUM(junho)'] . "</td>";
 
-                                                                $sql_jun_emia = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_emia = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_emia = $wpdb->get_results($sql_jun_emia, ARRAY_A);
                                                                 echo "<td>" . $jun_emia[0]['SUM(junho)'] . "</td>";
 
-                                                                $sql_jun_elcv = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_elcv = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_elcv = $wpdb->get_results($sql_jun_elcv, ARRAY_A);
                                                                 echo "<td>" . $jun_elcv[0]['SUM(junho)'] . "</td>";
 
-                                                                $sql_jun_eld = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_eld = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_eld = $wpdb->get_results($sql_jun_eld, ARRAY_A);
                                                                 echo "<td>" . $jun_eld[0]['SUM(junho)'] . "</td>";
 
-                                                                $sql_jun_elt = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_elt = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_elt = $wpdb->get_results($sql_jun_elt, ARRAY_A);
                                                                 echo "<td>" . $jun_elt[0]['SUM(junho)'] . "</td>";
 
-                                                                $sql_jun_territoriosc = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_territoriosc = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_territoriosc = $wpdb->get_results($sql_jun_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $jun_territoriosc[0]['SUM(junho)'] . "</td>";
                                                                 echo "</tr>";
@@ -6241,27 +6411,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>JUN - SA</strong></td>";
 
-                                                                $sql_jun_sa_marek = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_sa_marek = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_sa_marek = $wpdb->get_results($sql_jun_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $jun_sa_marek[0]['SUM(junho_sa)'] . "</td>";
 
-                                                                $sql_jun_sa_emia = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_sa_emia = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_sa_emia = $wpdb->get_results($sql_jun_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $jun_sa_emia[0]['SUM(junho_sa)'] . "</td>";
 
-                                                                $sql_jun_sa_elcv = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_sa_elcv = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_sa_elcv = $wpdb->get_results($sql_jun_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $jun_sa_elcv[0]['SUM(junho_sa)'] . "</td>";
 
-                                                                $sql_jun_sa_eld = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_sa_eld = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_sa_eld = $wpdb->get_results($sql_jun_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $jun_sa_eld[0]['SUM(junho_sa)'] . "</td>";
 
-                                                                $sql_jun_sa_elt = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_sa_elt = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_sa_elt = $wpdb->get_results($sql_jun_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $jun_sa_elt[0]['SUM(junho_sa)'] . "</td>";
 
-                                                                $sql_jun_sa_territoriosc = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jun_sa_territoriosc = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jun_sa_territoriosc = $wpdb->get_results($sql_jun_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $jun_sa_territoriosc[0]['SUM(junho_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6270,27 +6440,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>MAI - GERAL</strong></td>";
 
-                                                                $sql_mai_marek = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_marek = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_marek = $wpdb->get_results($sql_mai_marek, ARRAY_A);
                                                                 echo "<td>" . $mai_marek[0]['SUM(maio)'] . "</td>";
 
-                                                                $sql_mai_emia = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_emia = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_emia = $wpdb->get_results($sql_mai_emia, ARRAY_A);
                                                                 echo "<td>" . $mai_emia[0]['SUM(maio)'] . "</td>";
 
-                                                                $sql_mai_elcv = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_elcv = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_elcv = $wpdb->get_results($sql_mai_elcv, ARRAY_A);
                                                                 echo "<td>" . $mai_elcv[0]['SUM(maio)'] . "</td>";
 
-                                                                $sql_mai_eld = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_eld = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_eld = $wpdb->get_results($sql_mai_eld, ARRAY_A);
                                                                 echo "<td>" . $mai_eld[0]['SUM(maio)'] . "</td>";
 
-                                                                $sql_mai_elt = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_elt = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_elt = $wpdb->get_results($sql_mai_elt, ARRAY_A);
                                                                 echo "<td>" . $mai_elt[0]['SUM(maio)'] . "</td>";
 
-                                                                $sql_mai_territoriosc = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_territoriosc = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_territoriosc = $wpdb->get_results($sql_mai_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $mai_territoriosc[0]['SUM(maio)'] . "</td>";
                                                                 echo "</tr>";
@@ -6298,27 +6468,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>MAI - SA</strong></td>";
 
-                                                                $sql_mai_sa_marek = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_sa_marek = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_sa_marek = $wpdb->get_results($sql_mai_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $mai_sa_marek[0]['SUM(maio_sa)'] . "</td>";
 
-                                                                $sql_mai_sa_emia = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_sa_emia = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_sa_emia = $wpdb->get_results($sql_mai_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $mai_sa_emia[0]['SUM(maio_sa)'] . "</td>";
 
-                                                                $sql_mai_sa_elcv = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_sa_elcv = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_sa_elcv = $wpdb->get_results($sql_mai_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $mai_sa_elcv[0]['SUM(maio_sa)'] . "</td>";
 
-                                                                $sql_mai_sa_eld = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_sa_eld = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_sa_eld = $wpdb->get_results($sql_mai_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $mai_sa_eld[0]['SUM(maio_sa)'] . "</td>";
 
-                                                                $sql_mai_sa_elt = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_sa_elt = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_sa_elt = $wpdb->get_results($sql_mai_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $mai_sa_elt[0]['SUM(maio_sa)'] . "</td>";
 
-                                                                $sql_mai_sa_territoriosc = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mai_sa_territoriosc = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mai_sa_territoriosc = $wpdb->get_results($sql_mai_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $mai_sa_territoriosc[0]['SUM(maio_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6326,27 +6496,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>ABR - GERAL</strong></td>";
 
-                                                                $sql_abr_marek = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_marek = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_marek = $wpdb->get_results($sql_abr_marek, ARRAY_A);
                                                                 echo "<td>" . $abr_marek[0]['SUM(abril)'] . "</td>";
 
-                                                                $sql_abr_emia = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_emia = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_emia = $wpdb->get_results($sql_abr_emia, ARRAY_A);
                                                                 echo "<td>" . $abr_emia[0]['SUM(abril)'] . "</td>";
 
-                                                                $sql_abr_elcv = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_elcv = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_elcv = $wpdb->get_results($sql_abr_elcv, ARRAY_A);
                                                                 echo "<td>" . $abr_elcv[0]['SUM(abril)'] . "</td>";
 
-                                                                $sql_abr_eld = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_eld = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_eld = $wpdb->get_results($sql_abr_eld, ARRAY_A);
                                                                 echo "<td>" . $abr_eld[0]['SUM(abril)'] . "</td>";
 
-                                                                $sql_abr_elt = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_elt = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_elt = $wpdb->get_results($sql_abr_elt, ARRAY_A);
                                                                 echo "<td>" . $abr_elt[0]['SUM(abril)'] . "</td>";
 
-                                                                $sql_abr_territoriosc = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_territoriosc = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_territoriosc = $wpdb->get_results($sql_abr_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $abr_territoriosc[0]['SUM(abril)'] . "</td>";
                                                                 echo "</tr>";
@@ -6354,27 +6524,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>ABR - SA</strong></td>";
 
-                                                                $sql_abr_sa_marek = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_sa_marek = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_sa_marek = $wpdb->get_results($sql_abr_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $abr_sa_marek[0]['SUM(abril_sa)'] . "</td>";
 
-                                                                $sql_abr_sa_emia = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_sa_emia = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_sa_emia = $wpdb->get_results($sql_abr_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $abr_sa_emia[0]['SUM(abril_sa)'] . "</td>";
 
-                                                                $sql_abr_sa_elcv = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_sa_elcv = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_sa_elcv = $wpdb->get_results($sql_abr_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $abr_sa_elcv[0]['SUM(abril_sa)'] . "</td>";
 
-                                                                $sql_abr_sa_eld = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_sa_eld = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_sa_eld = $wpdb->get_results($sql_abr_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $abr_sa_eld[0]['SUM(abril_sa)'] . "</td>";
 
-                                                                $sql_abr_sa_elt = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_sa_elt = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_sa_elt = $wpdb->get_results($sql_abr_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $abr_sa_elt[0]['SUM(abril_sa)'] . "</td>";
 
-                                                                $sql_abr_sa_territoriosc = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_abr_sa_territoriosc = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $abr_sa_territoriosc = $wpdb->get_results($sql_abr_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $abr_sa_territoriosc[0]['SUM(abril_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6382,27 +6552,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>MAR - GERAL</strong></td>";
 
-                                                                $sql_mar_marek = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_marek = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_marek = $wpdb->get_results($sql_mar_marek, ARRAY_A);
                                                                 echo "<td>" . $mar_marek[0]['SUM(marco)'] . "</td>";
 
-                                                                $sql_mar_emia = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_emia = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_emia = $wpdb->get_results($sql_mar_emia, ARRAY_A);
                                                                 echo "<td>" . $mar_emia[0]['SUM(marco)'] . "</td>";
 
-                                                                $sql_mar_elcv = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_elcv = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_elcv = $wpdb->get_results($sql_mar_elcv, ARRAY_A);
                                                                 echo "<td>" . $mar_elcv[0]['SUM(marco)'] . "</td>";
 
-                                                                $sql_mar_eld = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_eld = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_eld = $wpdb->get_results($sql_mar_eld, ARRAY_A);
                                                                 echo "<td>" . $mar_eld[0]['SUM(marco)'] . "</td>";
 
-                                                                $sql_mar_elt = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_elt = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_elt = $wpdb->get_results($sql_mar_elt, ARRAY_A);
                                                                 echo "<td>" . $mar_elt[0]['SUM(marco)'] . "</td>";
 
-                                                                $sql_mar_territoriosc = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_territoriosc = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_territoriosc = $wpdb->get_results($sql_mar_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $mar_territoriosc[0]['SUM(marco)'] . "</td>";
                                                                 echo "</tr>";
@@ -6410,27 +6580,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>MAR - SA</strong></td>";
 
-                                                                $sql_mar_sa_marek = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_sa_marek = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_sa_marek = $wpdb->get_results($sql_mar_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $mar_sa_marek[0]['SUM(marco_sa)'] . "</td>";
 
-                                                                $sql_mar_sa_emia = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_sa_emia = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_sa_emia = $wpdb->get_results($sql_mar_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $mar_sa_emia[0]['SUM(marco_sa)'] . "</td>";
 
-                                                                $sql_mar_sa_elcv = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_sa_elcv = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_sa_elcv = $wpdb->get_results($sql_mar_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $mar_sa_elcv[0]['SUM(marco_sa)'] . "</td>";
 
-                                                                $sql_mar_sa_eld = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_sa_eld = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_sa_eld = $wpdb->get_results($sql_mar_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $mar_sa_eld[0]['SUM(marco_sa)'] . "</td>";
 
-                                                                $sql_mar_sa_elt = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_sa_elt = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_sa_elt = $wpdb->get_results($sql_mar_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $mar_sa_elt[0]['SUM(marco_sa)'] . "</td>";
 
-                                                                $sql_mar_sa_territoriosc = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_mar_sa_territoriosc = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $mar_sa_territoriosc = $wpdb->get_results($sql_mar_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $mar_sa_territoriosc[0]['SUM(marco_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6438,27 +6608,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>FEV - Geral</strong></td>";
 
-                                                                $sql_fev_marek = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_marek = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_marek = $wpdb->get_results($sql_fev_marek, ARRAY_A);
                                                                 echo "<td>" . $fev_marek[0]['SUM(fevereiro)'] . "</td>";
 
-                                                                $sql_fev_emia = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_emia = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_emia = $wpdb->get_results($sql_fev_emia, ARRAY_A);
                                                                 echo "<td>" . $fev_emia[0]['SUM(fevereiro)'] . "</td>";
 
-                                                                $sql_fev_elcv = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_elcv = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_elcv = $wpdb->get_results($sql_fev_elcv, ARRAY_A);
                                                                 echo "<td>" . $fev_elcv[0]['SUM(fevereiro)'] . "</td>";
 
-                                                                $sql_fev_eld = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_eld = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_eld = $wpdb->get_results($sql_fev_eld, ARRAY_A);
                                                                 echo "<td>" . $fev_eld[0]['SUM(fevereiro)'] . "</td>";
 
-                                                                $sql_fev_elt = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_elt = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_elt = $wpdb->get_results($sql_fev_elt, ARRAY_A);
                                                                 echo "<td>" . $fev_elt[0]['SUM(fevereiro)'] . "</td>";
 
-                                                                $sql_fev_territoriosc = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_territoriosc = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_territoriosc = $wpdb->get_results($sql_fev_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $fev_territoriosc[0]['SUM(fevereiro)'] . "</td>";
                                                                 echo "</tr>";
@@ -6466,27 +6636,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>FEV - SA</strong></td>";
 
-                                                                $sql_fev_sa_marek = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_sa_marek = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_sa_marek = $wpdb->get_results($sql_fev_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $fev_sa_marek[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                                $sql_fev_sa_emia = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_sa_emia = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_sa_emia = $wpdb->get_results($sql_fev_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $fev_sa_emia[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                                $sql_fev_sa_elcv = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_sa_elcv = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_sa_elcv = $wpdb->get_results($sql_fev_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $fev_sa_elcv[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                                $sql_fev_sa_eld = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_sa_eld = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_sa_eld = $wpdb->get_results($sql_fev_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $fev_sa_eld[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                                $sql_fev_sa_elt = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_sa_elt = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_sa_elt = $wpdb->get_results($sql_fev_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $fev_sa_elt[0]['SUM(fevereiro_sa)'] . "</td>";
 
-                                                                $sql_fev_sa_territoriosc = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_fev_sa_territoriosc = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $fev_sa_territoriosc = $wpdb->get_results($sql_fev_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $fev_sa_territoriosc[0]['SUM(fevereiro_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6495,27 +6665,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>JAN - Geral</strong></td>";
 
-                                                                $sql_jan_marek = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_marek = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_marek = $wpdb->get_results($sql_jan_marek, ARRAY_A);
                                                                 echo "<td>" . $jan_marek[0]['SUM(janeiro)'] . "</td>";
 
-                                                                $sql_jan_emia = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_emia = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_emia = $wpdb->get_results($sql_jan_emia, ARRAY_A);
                                                                 echo "<td>" . $jan_emia[0]['SUM(janeiro)'] . "</td>";
 
-                                                                $sql_jan_elcv = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_elcv = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_elcv = $wpdb->get_results($sql_jan_elcv, ARRAY_A);
                                                                 echo "<td>" . $jan_elcv[0]['SUM(janeiro)'] . "</td>";
 
-                                                                $sql_jan_eld = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_eld = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_eld = $wpdb->get_results($sql_jan_eld, ARRAY_A);
                                                                 echo "<td>" . $jan_eld[0]['SUM(janeiro)'] . "</td>";
 
-                                                                $sql_jan_elt = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_elt = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_elt = $wpdb->get_results($sql_jan_elt, ARRAY_A);
                                                                 echo "<td>" . $jan_elt[0]['SUM(janeiro)'] . "</td>";
 
-                                                                $sql_jan_territoriosc = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_territoriosc = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_territoriosc = $wpdb->get_results($sql_jan_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $jan_territoriosc[0]['SUM(janeiro)'] . "</td>";
                                                                 echo "</tr>";
@@ -6523,27 +6693,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>JAN - SA</strong></td>";
 
-                                                                $sql_jan_sa_marek = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_sa_marek = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_sa_marek = $wpdb->get_results($sql_jan_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $jan_sa_marek[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                                $sql_jan_sa_emia = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_sa_emia = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_sa_emia = $wpdb->get_results($sql_jan_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $jan_sa_emia[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                                $sql_jan_sa_elcv = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_sa_elcv = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_sa_elcv = $wpdb->get_results($sql_jan_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $jan_sa_elcv[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                                $sql_jan_sa_eld = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_sa_eld = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_sa_eld = $wpdb->get_results($sql_jan_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $jan_sa_eld[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                                $sql_jan_sa_elt = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_sa_elt = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_sa_elt = $wpdb->get_results($sql_jan_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $jan_sa_elt[0]['SUM(janeiro_sa)'] . "</td>";
 
-                                                                $sql_jan_sa_territoriosc = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_jan_sa_territoriosc = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $jan_sa_territoriosc = $wpdb->get_results($sql_jan_sa_territoriosc, ARRAY_A);
                                                                 echo "<td>" . $jan_sa_territoriosc[0]['SUM(janeiro_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6551,27 +6721,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>TOTAL -Atendidos ao longo da ação</strong></td>";
 
-                                                                $sql_total_marek = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_total_marek = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $total_marek = $wpdb->get_results($sql_total_marek, ARRAY_A);
                                                                 echo "<td>" . $total_marek[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
 
-                                                                $sql_total_emia = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_total_emia = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $total_emia = $wpdb->get_results($sql_total_emia, ARRAY_A);
                                                                 echo "<td>" . $total_emia[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
 
-                                                                $sql_total_elcv = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_total_elcv = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $total_elcv = $wpdb->get_results($sql_total_elcv, ARRAY_A);
                                                                 echo "<td>" . $total_elcv[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
 
-                                                                $sql_total_eld = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_total_eld = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $total_eld = $wpdb->get_results($sql_total_eld, ARRAY_A);
                                                                 echo "<td>" . $total_eld[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
 
-                                                                $sql_total_elt = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_total_elt = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $total_elt = $wpdb->get_results($sql_total_elt, ARRAY_A);
                                                                 echo "<td>" . $total_elt[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
 
-                                                                $sql_total_elt = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                $sql_total_elt = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                 $total_elt = $wpdb->get_results($sql_total_elt, ARRAY_A);
                                                                 echo "<td>" . $total_elt[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
                                                                 echo "</tr>";
@@ -6579,27 +6749,27 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                 echo "<tr>";
                                                                 echo "<td><strong>TOTAL - Atendidos que são moradores de Santo André</strong></td>";
 
-                                                                $sql_sa_marek = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2019%' AND publicado = '1';";
+                                                                $sql_sa_marek = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1';";
                                                                 $sa_marek = $wpdb->get_results($sql_sa_marek, ARRAY_A);
                                                                 echo "<td>" . $sa_marek[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
 
-                                                                $sql_sa_emia = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2019%' AND publicado = '1';";
+                                                                $sql_sa_emia = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1';";
                                                                 $sa_emia = $wpdb->get_results($sql_sa_emia, ARRAY_A);
                                                                 echo "<td>" . $sa_emia[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
 
-                                                                $sql_sa_elcv = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2019%' AND publicado = '1';";
+                                                                $sql_sa_elcv = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1';";
                                                                 $sa_elcv = $wpdb->get_results($sql_sa_elcv, ARRAY_A);
                                                                 echo "<td>" . $sa_elcv[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
 
-                                                                $sql_sa_eld = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2019%' AND publicado = '1';";
+                                                                $sql_sa_eld = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1';";
                                                                 $sa_eld = $wpdb->get_results($sql_sa_eld, ARRAY_A);
                                                                 echo "<td>" . $sa_eld[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
 
-                                                                $sql_sa_elt = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2019%' AND publicado = '1';";
+                                                                $sql_sa_elt = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1';";
                                                                 $sa_elt = $wpdb->get_results($sql_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $sa_elt[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
 
-                                                                $sql_sa_elt = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND publicado = '1';";
+                                                                $sql_sa_elt = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND publicado = '1';";
                                                                 $sa_elt = $wpdb->get_results($sql_sa_elt, ARRAY_A);
                                                                 echo "<td>" . $sa_elt[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
                                                                 echo "</tr>";
@@ -6612,7 +6782,7 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                     <table class="table table-striped">
                                                                         <thead>
                                                                         <br>
-                                                                        <label><h2>2019 - Por Projeto (Qtde. de
+                                                                        <label><h2><?php echo $ano_base; ?> - Por Projeto (Qtde. de
                                                                                 ações)</h2></label>
                                                                         <tr>
                                                                             <th>Período</th>
@@ -6625,84 +6795,84 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                         echo "<tr>";
                                                                         echo "<td><strong>DEZ</strong></td>";
 
-                                                                        $sql_dez_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND dezembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_dez_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND dezembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $dez_territorios = $wpdb->get_results($sql_dez_territorios, ARRAY_A);
                                                                         echo "<td>" . $dez_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>NOV</strong></td>";
-                                                                        $sql_nov_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND novembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_nov_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND novembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $nov_territorios = $wpdb->get_results($sql_nov_territorios, ARRAY_A);
                                                                         echo "<td>" . $nov_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>OUT</strong></td>";
-                                                                        $sql_out_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND outubro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_out_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND outubro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $out_territorios = $wpdb->get_results($sql_out_territorios, ARRAY_A);
                                                                         echo "<td>" . $out_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>SET</strong></td>";
-                                                                        $sql_set_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND setembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_set_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND setembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $set_territorios = $wpdb->get_results($sql_set_territorios, ARRAY_A);
                                                                         echo "<td>" . $set_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>AGO</strong></td>";
-                                                                        $sql_ago_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND agosto != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_ago_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND agosto != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $ago_territorios = $wpdb->get_results($sql_ago_territorios, ARRAY_A);
                                                                         echo "<td>" . $ago_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>JUL</strong></td>";
-                                                                        $sql_jul_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND julho != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_jul_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND julho != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $jul_territorios = $wpdb->get_results($sql_jul_territorios, ARRAY_A);
                                                                         echo "<td>" . $jul_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>JUN</strong></td>";
-                                                                        $sql_jun_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND junho != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_jun_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND junho != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $jun_territorios = $wpdb->get_results($sql_jun_territorios, ARRAY_A);
                                                                         echo "<td>" . $jun_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>MAI</strong></td>";
-                                                                        $sql_mai_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND maio != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_mai_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND maio != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $mai_territorios = $wpdb->get_results($sql_mai_territorios, ARRAY_A);
                                                                         echo "<td>" . $mai_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>ABR</strong></td>";
-                                                                        $sql_abr_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND abril != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_abr_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND abril != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $abr_territorios = $wpdb->get_results($sql_abr_territorios, ARRAY_A);
                                                                         echo "<td>" . $abr_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>MAR</strong></td>";
-                                                                        $sql_mar_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND marco != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_mar_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND marco != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $mar_territorios = $wpdb->get_results($sql_mar_territorios, ARRAY_A);
                                                                         echo "<td>" . $mar_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>FEV</strong></td>";
-                                                                        $sql_fev_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND fevereiro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_fev_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND fevereiro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $fev_territorios = $wpdb->get_results($sql_fev_territorios, ARRAY_A);
                                                                         echo "<td>" . $fev_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
 
                                                                         echo "<tr>";
                                                                         echo "<td><strong>JAN</strong></td>";
-                                                                        $sql_jan_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2019%' AND janeiro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
+                                                                        $sql_jan_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%$ano_base%' AND janeiro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
                                                                         $jan_territorios = $wpdb->get_results($sql_jan_territorios, ARRAY_A);
                                                                         echo "<td>" . $jan_territorios[0]['COUNT(id)'] . "</td>";
                                                                         echo "</tr>";
@@ -6711,1348 +6881,12 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                                         echo "</tr>";
 
                                                                         ?>
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-striped">
-                                                                                <thead>
-                                                                                <br>
-                                                                                <label><h2>2018</h2></label>
-                                                                                <tr>
-                                                                                    <th>Período</th>
-                                                                                    <th>Público Geral</th>
-                                                                                    <th>Público Santo André</th>
-                                                                                    <th>Nº Atividades</th>
-                                                                                    <th>Nº Atividades com Agentes
-                                                                                        Locais
-                                                                                    </th>
-                                                                                    <th>Nº Agentes Culturais Locais
-                                                                                        Envolvidos
-                                                                                    </th>
-                                                                                    <th>Nº Bairros</th>
-                                                                                    <th>% Bairros da Cidade Atendidos
-                                                                                        (Ref. 112 bairros)
-                                                                                    </th>
-                                                                                    <th>Nº Bairros Descentralizados</th>
-                                                                                    <th width="10%"></th>
-                                                                                    <th width="10%"></th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
+																		
+	<hr>
+	
+<?php 	} // final loop ano ?>
 
-                                                                                <?php
 
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>DEZ</strong></td>";
-
-                                                                                $sql_pub_dezembro = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_dezembro = $wpdb->get_results($sql_pub_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $pub_dezembro[0]['SUM(dezembro)'] . "</td>";
-
-                                                                                $sql_pub_sa_dezembro = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_dezembro = $wpdb->get_results($sql_pub_sa_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_dezembro[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                $sql_ativ_dezembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND dezembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_dezembro = $wpdb->get_results($sql_ativ_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $ativ_dezembro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_dezembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND dezembro_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_dezembro = $wpdb->get_results($sql_age_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $age_dezembro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_dezembro = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_dezembro = $wpdb->get_results($sql_num_age_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $num_age_dezembro[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_dezembro = $wpdb->get_results($sql_num_bairros_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_dezembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_dezembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/105,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_dezembro = $wpdb->get_results($sql_per_bairros_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_dezembro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_dezembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND dezembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_dezembro = $wpdb->get_results($sql_num_desc_dezembro, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_dezembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>NOV</strong></td>";
-
-                                                                                $sql_pub_novembro = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_novembro = $wpdb->get_results($sql_pub_novembro, ARRAY_A);
-                                                                                echo "<td>" . $pub_novembro[0]['SUM(novembro)'] . "</td>";
-
-                                                                                $sql_pub_sa_novembro = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_novembro = $wpdb->get_results($sql_pub_sa_novembro, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_novembro[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                $sql_ativ_novembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND novembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_novembro = $wpdb->get_results($sql_ativ_novembro, ARRAY_A);
-                                                                                echo "<td>" . $ativ_novembro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_novembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND novembro_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_novembro = $wpdb->get_results($sql_age_novembro, ARRAY_A);
-                                                                                echo "<td>" . $age_novembro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_novembro = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_novembro = $wpdb->get_results($sql_num_age_novembro, ARRAY_A);
-                                                                                echo "<td>" . $num_age_novembro[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_novembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_novembro = $wpdb->get_results($sql_num_bairros_novembro, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_novembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_novembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_novembro = $wpdb->get_results($sql_per_bairros_novembro, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_novembro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_novembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND novembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_novembro = $wpdb->get_results($sql_num_desc_novembro, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_novembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>OUT</strong></td>";
-
-                                                                                $sql_pub_outubro = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_outubro = $wpdb->get_results($sql_pub_outubro, ARRAY_A);
-                                                                                echo "<td>" . $pub_outubro[0]['SUM(outubro)'] . "</td>";
-
-                                                                                $sql_pub_sa_outubro = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_outubro = $wpdb->get_results($sql_pub_sa_outubro, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_outubro[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                $sql_ativ_outubro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND outubro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_outubro = $wpdb->get_results($sql_ativ_outubro, ARRAY_A);
-                                                                                echo "<td>" . $ativ_outubro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_outubro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND outubro_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_outubro = $wpdb->get_results($sql_age_outubro, ARRAY_A);
-                                                                                echo "<td>" . $age_outubro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_outubro = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_outubro = $wpdb->get_results($sql_num_age_outubro, ARRAY_A);
-                                                                                echo "<td>" . $num_age_outubro[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_outubro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_outubro = $wpdb->get_results($sql_num_bairros_outubro, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_outubro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_outubro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_outubro = $wpdb->get_results($sql_per_bairros_outubro, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_outubro[0]['ROUND(COUNT(DISTINCT(bairro))*100/105,2)'] . "</td>";
-
-                                                                                $sql_num_desc_outubro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND outubro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_outubro = $wpdb->get_results($sql_num_desc_outubro, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_outubro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>SET</strong></td>";
-
-                                                                                $sql_pub_setembro = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_setembro = $wpdb->get_results($sql_pub_setembro, ARRAY_A);
-                                                                                echo "<td>" . $pub_setembro[0]['SUM(setembro)'] . "</td>";
-
-                                                                                $sql_pub_sa_setembro = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_setembro = $wpdb->get_results($sql_pub_sa_setembro, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_setembro[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                $sql_ativ_setembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND setembro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_setembro = $wpdb->get_results($sql_ativ_setembro, ARRAY_A);
-                                                                                echo "<td>" . $ativ_setembro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_setembro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND setembro_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_setembro = $wpdb->get_results($sql_age_setembro, ARRAY_A);
-                                                                                echo "<td>" . $age_setembro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_setembro = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_setembro = $wpdb->get_results($sql_num_age_setembro, ARRAY_A);
-                                                                                echo "<td>" . $num_age_setembro[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_setembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_setembro = $wpdb->get_results($sql_num_bairros_setembro, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_setembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_setembro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_setembro = $wpdb->get_results($sql_per_bairros_setembro, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_setembro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_setembro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND setembro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_setembro = $wpdb->get_results($sql_num_desc_setembro, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_setembro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>AGO</strong></td>";
-
-                                                                                $sql_pub_agosto = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_agosto = $wpdb->get_results($sql_pub_agosto, ARRAY_A);
-                                                                                echo "<td>" . $pub_agosto[0]['SUM(agosto)'] . "</td>";
-
-                                                                                $sql_pub_sa_agosto = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_agosto = $wpdb->get_results($sql_pub_sa_agosto, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_agosto[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                $sql_ativ_agosto = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND agosto > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_agosto = $wpdb->get_results($sql_ativ_agosto, ARRAY_A);
-                                                                                echo "<td>" . $ativ_agosto[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_agosto = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND agosto_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_agosto = $wpdb->get_results($sql_age_agosto, ARRAY_A);
-                                                                                echo "<td>" . $age_agosto[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_agosto = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_agosto = $wpdb->get_results($sql_num_age_agosto, ARRAY_A);
-                                                                                echo "<td>" . $num_age_agosto[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_agosto = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_agosto = $wpdb->get_results($sql_num_bairros_agosto, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_agosto[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_agosto = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_agosto = $wpdb->get_results($sql_per_bairros_agosto, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_agosto[0]['ROUND(COUNT(DISTINCT(bairro))*100/105,2)'] . "</td>";
-
-                                                                                $sql_num_desc_agosto = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND agosto > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_agosto = $wpdb->get_results($sql_num_desc_agosto, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_agosto[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>JUL</strong></td>";
-
-                                                                                $sql_pub_julho = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_julho = $wpdb->get_results($sql_pub_julho, ARRAY_A);
-                                                                                echo "<td>" . $pub_julho[0]['SUM(julho)'] . "</td>";
-
-                                                                                $sql_pub_sa_julho = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_julho = $wpdb->get_results($sql_pub_sa_julho, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_julho[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                $sql_ativ_julho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND julho > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_julho = $wpdb->get_results($sql_ativ_julho, ARRAY_A);
-                                                                                echo "<td>" . $ativ_julho[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_julho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND julho_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_julho = $wpdb->get_results($sql_age_julho, ARRAY_A);
-                                                                                echo "<td>" . $age_julho[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_julho = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_julho = $wpdb->get_results($sql_num_age_julho, ARRAY_A);
-                                                                                echo "<td>" . $num_age_julho[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_julho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_julho = $wpdb->get_results($sql_num_bairros_julho, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_julho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_julho = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_julho = $wpdb->get_results($sql_per_bairros_julho, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_julho[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_julho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND julho > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_julho = $wpdb->get_results($sql_num_desc_julho, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_julho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>JUN</strong></td>";
-
-                                                                                $sql_pub_junho = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_junho = $wpdb->get_results($sql_pub_junho, ARRAY_A);
-                                                                                echo "<td>" . $pub_junho[0]['SUM(junho)'] . "</td>";
-
-                                                                                $sql_pub_sa_junho = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_junho = $wpdb->get_results($sql_pub_sa_junho, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_junho[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                $sql_ativ_junho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND junho > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_junho = $wpdb->get_results($sql_ativ_junho, ARRAY_A);
-                                                                                echo "<td>" . $ativ_junho[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_junho = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND junho_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_junho = $wpdb->get_results($sql_age_junho, ARRAY_A);
-                                                                                echo "<td>" . $age_junho[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_junho = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_junho = $wpdb->get_results($sql_num_age_junho, ARRAY_A);
-                                                                                echo "<td>" . $num_age_junho[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_junho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_junho = $wpdb->get_results($sql_num_bairros_junho, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_junho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_junho = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_junho = $wpdb->get_results($sql_per_bairros_junho, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_junho[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_junho = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND junho > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_junho = $wpdb->get_results($sql_num_desc_junho, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_junho[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>MAI</strong></td>";
-
-                                                                                $sql_pub_maio = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_maio = $wpdb->get_results($sql_pub_maio, ARRAY_A);
-                                                                                echo "<td>" . $pub_maio[0]['SUM(maio)'] . "</td>";
-
-                                                                                $sql_pub_sa_maio = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_maio = $wpdb->get_results($sql_pub_sa_maio, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_maio[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                $sql_ativ_maio = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND maio > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_maio = $wpdb->get_results($sql_ativ_maio, ARRAY_A);
-                                                                                echo "<td>" . $ativ_maio[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_maio = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND maio_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_maio = $wpdb->get_results($sql_age_maio, ARRAY_A);
-                                                                                echo "<td>" . $age_maio[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_maio = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_maio = $wpdb->get_results($sql_num_age_maio, ARRAY_A);
-                                                                                echo "<td>" . $num_age_maio[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_maio = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_maio = $wpdb->get_results($sql_num_bairros_maio, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_maio[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_maio = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_maio = $wpdb->get_results($sql_per_bairros_maio, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_maio[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_maio = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND maio > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_maio = $wpdb->get_results($sql_num_desc_maio, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_maio[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>ABR</strong></td>";
-
-                                                                                $sql_pub_abril = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_abril = $wpdb->get_results($sql_pub_abril, ARRAY_A);
-                                                                                echo "<td>" . $pub_abril[0]['SUM(abril)'] . "</td>";
-
-                                                                                $sql_pub_sa_abril = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_abril = $wpdb->get_results($sql_pub_sa_abril, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_abril[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                $sql_ativ_abril = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND abril > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_abril = $wpdb->get_results($sql_ativ_abril, ARRAY_A);
-                                                                                echo "<td>" . $ativ_abril[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_abril = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND abril_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_abril = $wpdb->get_results($sql_age_abril, ARRAY_A);
-                                                                                echo "<td>" . $age_abril[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_abril = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_abril = $wpdb->get_results($sql_num_age_abril, ARRAY_A);
-                                                                                echo "<td>" . $num_age_abril[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_abril = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_abril = $wpdb->get_results($sql_num_bairros_abril, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_abril[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_abril = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_abril = $wpdb->get_results($sql_per_bairros_abril, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_abril[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_abril = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND abril > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_abril = $wpdb->get_results($sql_num_desc_abril, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_abril[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>MAR</strong></td>";
-
-                                                                                $sql_pub_marco = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_marco = $wpdb->get_results($sql_pub_marco, ARRAY_A);
-                                                                                echo "<td>" . $pub_marco[0]['SUM(marco)'] . "</td>";
-
-                                                                                $sql_pub_sa_marco = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_marco = $wpdb->get_results($sql_pub_sa_marco, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_marco[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                $sql_ativ_marco = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND marco > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_marco = $wpdb->get_results($sql_ativ_marco, ARRAY_A);
-                                                                                echo "<td>" . $ativ_marco[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_marco = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND marco_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_marco = $wpdb->get_results($sql_age_marco, ARRAY_A);
-                                                                                echo "<td>" . $age_marco[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_marco = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_marco = $wpdb->get_results($sql_num_age_marco, ARRAY_A);
-                                                                                echo "<td>" . $num_age_marco[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_marco = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_marco = $wpdb->get_results($sql_num_bairros_marco, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_marco[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_marco = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_marco = $wpdb->get_results($sql_per_bairros_marco, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_marco[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_marco = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND marco > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_marco = $wpdb->get_results($sql_num_desc_marco, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_marco[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>FEV</strong></td>";
-
-                                                                                $sql_pub_fevereiro = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_fevereiro = $wpdb->get_results($sql_pub_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $pub_fevereiro[0]['SUM(fevereiro)'] . "</td>";
-
-                                                                                $sql_pub_sa_fevereiro = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_fevereiro = $wpdb->get_results($sql_pub_sa_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_fevereiro[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                $sql_ativ_fevereiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND fevereiro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_fevereiro = $wpdb->get_results($sql_ativ_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $ativ_fevereiro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_fevereiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND fevereiro_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_fevereiro = $wpdb->get_results($sql_age_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $age_fevereiro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_fevereiro = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_fevereiro = $wpdb->get_results($sql_num_age_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $num_age_fevereiro[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_fevereiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_fevereiro = $wpdb->get_results($sql_num_bairros_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_fevereiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_fevereiro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_fevereiro = $wpdb->get_results($sql_per_bairros_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_fevereiro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_fevereiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND fevereiro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_fevereiro = $wpdb->get_results($sql_num_desc_fevereiro, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_fevereiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-
-                                                                                echo "<tr>";
-                                                                                echo "<td><strong>JAN</strong></td>";
-
-                                                                                $sql_pub_janeiro = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_janeiro = $wpdb->get_results($sql_pub_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $pub_janeiro[0]['SUM(janeiro)'] . "</td>";
-
-                                                                                $sql_pub_sa_janeiro = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $pub_sa_janeiro = $wpdb->get_results($sql_pub_sa_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $pub_sa_janeiro[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                $sql_ativ_janeiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND janeiro > '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $ativ_janeiro = $wpdb->get_results($sql_ativ_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $ativ_janeiro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_age_janeiro = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND janeiro_sa > '0' AND projeto NOT IN (378,723)";
-                                                                                $age_janeiro = $wpdb->get_results($sql_age_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $age_janeiro[0]['COUNT(id)'] . "</td>";
-
-                                                                                $sql_num_age_janeiro = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                $num_age_janeiro = $wpdb->get_results($sql_num_age_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $num_age_janeiro[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                $sql_num_bairros_janeiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_bairros_janeiro = $wpdb->get_results($sql_num_bairros_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $num_bairros_janeiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-
-                                                                                $sql_per_bairros_janeiro = "SELECT ROUND(COUNT(DISTINCT(bairro))*100/112,2) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
-                                                                                $per_bairros_janeiro = $wpdb->get_results($sql_per_bairros_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $per_bairros_janeiro[0]['ROUND(COUNT(DISTINCT(bairro))*100/112,2)'] . "</td>";
-
-                                                                                $sql_num_desc_janeiro = "SELECT COUNT(DISTINCT(bairro)) FROM sc_ind_incentivo WHERE  ocor_inicio BETWEEN '2018-01-01' AND '2018-12-31' AND bairro NOT IN (574,583,648,660,578,651,576,587,652,649) AND publicado = '1' AND janeiro > '0' AND projeto NOT IN (378,723)";
-                                                                                $num_desc_janeiro = $wpdb->get_results($sql_num_desc_janeiro, ARRAY_A);
-                                                                                echo "<td>" . $num_desc_janeiro[0]['COUNT(DISTINCT(bairro))'] . "</td>";
-                                                                                echo "</tr>";
-                                                                                echo "</tr>";
-
-                                                                                ?>
-
-                                                                                <div class="table-responsive">
-                                                                                    <table class="table table-striped">
-                                                                                        <thead>
-                                                                                        <br>
-                                                                                        <label><h2>2018 - Por
-                                                                                                Espaço</h2></label>
-                                                                                        <tr>
-                                                                                            <th>Período</th>
-                                                                                            <th>CEU Ana Maria</th>
-                                                                                            <th>CEU Marek</th>
-                                                                                            <th>EMIA - Escola Municipal
-                                                                                                de Iniciação Artística
-                                                                                                Jaçatuba
-                                                                                            </th>
-                                                                                            <th>ELCV - Escola livre de
-                                                                                                Cinema e Vídeo
-                                                                                            </th>
-                                                                                            <th>ELD - Escola Livre de
-                                                                                                Dança
-                                                                                            </th>
-                                                                                            <th>ELT - Escola Livre de
-                                                                                                Teatro
-                                                                                            </th>
-                                                                                            <th>Territórios de Cultura
-                                                                                            </th>
-                                                                                            <th width="10%"></th>
-                                                                                            <th width="10%"></th>
-                                                                                        </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                        <?php
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>DEZ - GERAL</strong></td>";
-
-                                                                                        $sql_dez_marek = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_marek = $wpdb->get_results($sql_dez_marek, ARRAY_A);
-                                                                                        echo "<td>" . $dez_marek[0]['SUM(dezembro)'] . "</td>";
-
-                                                                                        $sql_dez_emia = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_emia = $wpdb->get_results($sql_dez_emia, ARRAY_A);
-                                                                                        echo "<td>" . $dez_emia[0]['SUM(dezembro)'] . "</td>";
-
-                                                                                        $sql_dez_elcv = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_elcv = $wpdb->get_results($sql_dez_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $dez_elcv[0]['SUM(dezembro)'] . "</td>";
-
-                                                                                        $sql_dez_eld = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_eld = $wpdb->get_results($sql_dez_eld, ARRAY_A);
-                                                                                        echo "<td>" . $dez_eld[0]['SUM(dezembro)'] . "</td>";
-
-                                                                                        $sql_dez_elt = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_elt = $wpdb->get_results($sql_dez_elt, ARRAY_A);
-                                                                                        echo "<td>" . $dez_elt[0]['SUM(dezembro)'] . "</td>";
-
-                                                                                        $sql_dez_territoriosc = "SELECT SUM(dezembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_territoriosc = $wpdb->get_results($sql_dez_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $dez_territoriosc[0]['SUM(dezembro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>DEZ - SA</strong></td>";
-
-                                                                                        $sql_dez_sa_marek = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_sa_marek = $wpdb->get_results($sql_dez_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $dez_sa_marek[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_dez_sa_emia = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_sa_emia = $wpdb->get_results($sql_dez_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $dez_sa_emia[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_dez_sa_elcv = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_sa_elcv = $wpdb->get_results($sql_dez_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $dez_sa_elcv[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_dez_sa_eld = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_sa_eld = $wpdb->get_results($sql_dez_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $dez_sa_eld[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_dez_sa_elt = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_sa_elt = $wpdb->get_results($sql_dez_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $dez_sa_elt[0]['SUM(dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_dez_sa_territoriosc = "SELECT SUM(dezembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $dez_sa_territoriosc = $wpdb->get_results($sql_dez_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $dez_sa_territoriosc[0]['SUM(dezembro_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>NOV - GERAL</strong></td>";
-
-                                                                                        $sql_nov_marek = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_marek = $wpdb->get_results($sql_nov_marek, ARRAY_A);
-                                                                                        echo "<td>" . $nov_marek[0]['SUM(novembro)'] . "</td>";
-
-                                                                                        $sql_nov_emia = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_emia = $wpdb->get_results($sql_nov_emia, ARRAY_A);
-                                                                                        echo "<td>" . $nov_emia[0]['SUM(novembro)'] . "</td>";
-
-                                                                                        $sql_nov_elcv = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_elcv = $wpdb->get_results($sql_nov_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $nov_elcv[0]['SUM(novembro)'] . "</td>";
-
-                                                                                        $sql_nov_eld = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_eld = $wpdb->get_results($sql_nov_eld, ARRAY_A);
-                                                                                        echo "<td>" . $nov_eld[0]['SUM(novembro)'] . "</td>";
-
-                                                                                        $sql_nov_elt = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_elt = $wpdb->get_results($sql_nov_elt, ARRAY_A);
-                                                                                        echo "<td>" . $nov_elt[0]['SUM(novembro)'] . "</td>";
-
-                                                                                        $sql_nov_territoriosc = "SELECT SUM(novembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_territoriosc = $wpdb->get_results($sql_nov_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $nov_territoriosc[0]['SUM(novembro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>NOV - SA</strong></td>";
-
-                                                                                        $sql_nov_sa_marek = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_sa_marek = $wpdb->get_results($sql_nov_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $nov_sa_marek[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                        $sql_nov_sa_emia = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_sa_emia = $wpdb->get_results($sql_nov_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $nov_sa_emia[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                        $sql_nov_sa_elcv = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_sa_elcv = $wpdb->get_results($sql_nov_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $nov_sa_elcv[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                        $sql_nov_sa_eld = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_sa_eld = $wpdb->get_results($sql_nov_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $nov_sa_eld[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                        $sql_nov_sa_elt = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_sa_elt = $wpdb->get_results($sql_nov_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $nov_sa_elt[0]['SUM(novembro_sa)'] . "</td>";
-
-                                                                                        $sql_nov_sa_territoriosc = "SELECT SUM(novembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $nov_sa_territoriosc = $wpdb->get_results($sql_nov_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $nov_sa_territoriosc[0]['SUM(novembro_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>OUT - GERAl</strong></td>";
-
-                                                                                        $sql_out_marek = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_marek = $wpdb->get_results($sql_out_marek, ARRAY_A);
-                                                                                        echo "<td>" . $out_marek[0]['SUM(outubro)'] . "</td>";
-
-                                                                                        $sql_out_emia = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_emia = $wpdb->get_results($sql_out_emia, ARRAY_A);
-                                                                                        echo "<td>" . $out_emia[0]['SUM(outubro)'] . "</td>";
-
-                                                                                        $sql_out_elcv = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_elcv = $wpdb->get_results($sql_out_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $out_elcv[0]['SUM(outubro)'] . "</td>";
-
-                                                                                        $sql_out_eld = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_eld = $wpdb->get_results($sql_out_eld, ARRAY_A);
-                                                                                        echo "<td>" . $out_eld[0]['SUM(outubro)'] . "</td>";
-
-                                                                                        $sql_out_elt = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_elt = $wpdb->get_results($sql_out_elt, ARRAY_A);
-                                                                                        echo "<td>" . $out_elt[0]['SUM(outubro)'] . "</td>";
-
-                                                                                        $sql_out_territoriosc = "SELECT SUM(outubro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_territoriosc = $wpdb->get_results($sql_out_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $out_territoriosc[0]['SUM(outubro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>OUT - SA</strong></td>";
-
-                                                                                        $sql_out_sa_marek = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_sa_marek = $wpdb->get_results($sql_out_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $out_sa_marek[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                        $sql_out_sa_emia = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_sa_emia = $wpdb->get_results($sql_out_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $out_sa_emia[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                        $sql_out_sa_elcv = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_sa_elcv = $wpdb->get_results($sql_out_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $out_sa_elcv[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                        $sql_out_sa_eld = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_sa_eld = $wpdb->get_results($sql_out_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $out_sa_eld[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                        $sql_out_sa_elt = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_sa_elt = $wpdb->get_results($sql_out_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $out_sa_elt[0]['SUM(outubro_sa)'] . "</td>";
-
-                                                                                        $sql_out_sa_territoriosc = "SELECT SUM(outubro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $out_sa_territoriosc = $wpdb->get_results($sql_out_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $out_sa_territoriosc[0]['SUM(outubro_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>SET - GERAL</strong></td>";
-
-                                                                                        $sql_set_marek = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_marek = $wpdb->get_results($sql_set_marek, ARRAY_A);
-                                                                                        echo "<td>" . $set_marek[0]['SUM(setembro)'] . "</td>";
-
-                                                                                        $sql_set_emia = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_emia = $wpdb->get_results($sql_set_emia, ARRAY_A);
-                                                                                        echo "<td>" . $set_emia[0]['SUM(setembro)'] . "</td>";
-
-                                                                                        $sql_set_elcv = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_elcv = $wpdb->get_results($sql_set_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $set_elcv[0]['SUM(setembro)'] . "</td>";
-
-                                                                                        $sql_set_eld = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_eld = $wpdb->get_results($sql_set_eld, ARRAY_A);
-                                                                                        echo "<td>" . $set_eld[0]['SUM(setembro)'] . "</td>";
-
-                                                                                        $sql_set_elt = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_elt = $wpdb->get_results($sql_set_elt, ARRAY_A);
-                                                                                        echo "<td>" . $set_elt[0]['SUM(setembro)'] . "</td>";
-
-                                                                                        $sql_set_territoriosc = "SELECT SUM(setembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_territoriosc = $wpdb->get_results($sql_set_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $set_territoriosc[0]['SUM(setembro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>SET - SA</strong></td>";
-
-                                                                                        $sql_set_sa_marek = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_sa_marek = $wpdb->get_results($sql_set_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $set_sa_marek[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                        $sql_set_sa_emia = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_sa_emia = $wpdb->get_results($sql_set_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $set_sa_emia[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                        $sql_set_sa_elcv = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_sa_elcv = $wpdb->get_results($sql_set_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $set_sa_elcv[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                        $sql_set_sa_eld = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_sa_eld = $wpdb->get_results($sql_set_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $set_sa_eld[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                        $sql_set_sa_elt = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_sa_elt = $wpdb->get_results($sql_set_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $set_sa_elt[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                        $sql_set_sa_territoriosc = "SELECT SUM(setembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $set_sa_territoriosc = $wpdb->get_results($sql_set_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $set_sa_territoriosc[0]['SUM(setembro_sa)'] . "</td>";
-
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>AGO - GERAL</strong></td>";
-
-                                                                                        $sql_ago_marek = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_marek = $wpdb->get_results($sql_ago_marek, ARRAY_A);
-                                                                                        echo "<td>" . $ago_marek[0]['SUM(agosto)'] . "</td>";
-
-                                                                                        $sql_ago_emia = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_emia = $wpdb->get_results($sql_ago_emia, ARRAY_A);
-                                                                                        echo "<td>" . $ago_emia[0]['SUM(agosto)'] . "</td>";
-
-                                                                                        $sql_ago_elcv = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_elcv = $wpdb->get_results($sql_ago_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $ago_elcv[0]['SUM(agosto)'] . "</td>";
-
-                                                                                        $sql_ago_eld = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '204' AND 		ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_eld = $wpdb->get_results($sql_ago_eld, ARRAY_A);
-                                                                                        echo "<td>" . $ago_eld[0]['SUM(agosto)'] . "</td>";
-
-                                                                                        $sql_ago_elt = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_elt = $wpdb->get_results($sql_ago_elt, ARRAY_A);
-                                                                                        echo "<td>" . $ago_elt[0]['SUM(agosto)'] . "</td>";
-
-                                                                                        $sql_ago_territoriosc = "SELECT SUM(agosto) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_territoriosc = $wpdb->get_results($sql_ago_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $ago_territoriosc[0]['SUM(agosto)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>AGO - SA</strong></td>";
-
-                                                                                        $sql_ago_sa_marek = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_sa_marek = $wpdb->get_results($sql_ago_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $ago_sa_marek[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                        $sql_ago_sa_emia = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_sa_emia = $wpdb->get_results($sql_ago_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $ago_sa_emia[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                        $sql_ago_sa_elcv = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_sa_elcv = $wpdb->get_results($sql_ago_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $ago_sa_elcv[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                        $sql_ago_sa_eld = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_sa_eld = $wpdb->get_results($sql_ago_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $ago_sa_eld[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                        $sql_ago_sa_elt = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_sa_elt = $wpdb->get_results($sql_ago_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $ago_sa_elt[0]['SUM(agosto_sa)'] . "</td>";
-
-                                                                                        $sql_ago_sa_territoriosc = "SELECT SUM(agosto_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $ago_sa_territoriosc = $wpdb->get_results($sql_ago_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $ago_sa_territoriosc[0]['SUM(agosto_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>JUL - GERAL </strong></td>";
-
-                                                                                        $sql_jul_marek = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_marek = $wpdb->get_results($sql_jul_marek, ARRAY_A);
-                                                                                        echo "<td>" . $jul_marek[0]['SUM(julho)'] . "</td>";
-
-                                                                                        $sql_jul_emia = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_emia = $wpdb->get_results($sql_jul_emia, ARRAY_A);
-                                                                                        echo "<td>" . $jul_emia[0]['SUM(julho)'] . "</td>";
-
-                                                                                        $sql_jul_elcv = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_elcv = $wpdb->get_results($sql_jul_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $jul_elcv[0]['SUM(julho)'] . "</td>";
-
-                                                                                        $sql_jul_eld = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_eld = $wpdb->get_results($sql_jul_eld, ARRAY_A);
-                                                                                        echo "<td>" . $jul_eld[0]['SUM(julho)'] . "</td>";
-
-                                                                                        $sql_jul_elt = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_elt = $wpdb->get_results($sql_jul_elt, ARRAY_A);
-                                                                                        echo "<td>" . $jul_elt[0]['SUM(julho)'] . "</td>";
-
-                                                                                        $sql_jul_territoriosc = "SELECT SUM(julho) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_territoriosc = $wpdb->get_results($sql_jul_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $jul_territoriosc[0]['SUM(julho)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>JUL - SA</strong></td>";
-
-                                                                                        $sql_jul_sa_marek = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_sa_marek = $wpdb->get_results($sql_jul_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $jul_sa_marek[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                        $sql_jul_sa_emia = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_sa_emia = $wpdb->get_results($sql_jul_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $jul_sa_emia[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                        $sql_jul_sa_elcv = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_sa_elcv = $wpdb->get_results($sql_jul_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $jul_sa_elcv[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                        $sql_jul_sa_eld = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_sa_eld = $wpdb->get_results($sql_jul_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $jul_sa_eld[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                        $sql_jul_sa_elt = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_sa_elt = $wpdb->get_results($sql_jul_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $jul_sa_elt[0]['SUM(julho_sa)'] . "</td>";
-
-                                                                                        $sql_jul_sa_territoriosc = "SELECT SUM(julho_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jul_sa_territoriosc = $wpdb->get_results($sql_jul_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $jul_sa_territoriosc[0]['SUM(julho_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>JUN - GERAL</strong></td>";
-
-                                                                                        $sql_jun_marek = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_marek = $wpdb->get_results($sql_jun_marek, ARRAY_A);
-                                                                                        echo "<td>" . $jun_marek[0]['SUM(junho)'] . "</td>";
-
-                                                                                        $sql_jun_emia = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_emia = $wpdb->get_results($sql_jun_emia, ARRAY_A);
-                                                                                        echo "<td>" . $jun_emia[0]['SUM(junho)'] . "</td>";
-
-                                                                                        $sql_jun_elcv = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_elcv = $wpdb->get_results($sql_jun_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $jun_elcv[0]['SUM(junho)'] . "</td>";
-
-                                                                                        $sql_jun_eld = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_eld = $wpdb->get_results($sql_jun_eld, ARRAY_A);
-                                                                                        echo "<td>" . $jun_eld[0]['SUM(junho)'] . "</td>";
-
-                                                                                        $sql_jun_elt = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_elt = $wpdb->get_results($sql_jun_elt, ARRAY_A);
-                                                                                        echo "<td>" . $jun_elt[0]['SUM(junho)'] . "</td>";
-
-                                                                                        $sql_jun_territoriosc = "SELECT SUM(junho) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_territoriosc = $wpdb->get_results($sql_jun_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $jun_territoriosc[0]['SUM(junho)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>JUN - SA</strong></td>";
-
-                                                                                        $sql_jun_sa_marek = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_sa_marek = $wpdb->get_results($sql_jun_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $jun_sa_marek[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                        $sql_jun_sa_emia = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_sa_emia = $wpdb->get_results($sql_jun_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $jun_sa_emia[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                        $sql_jun_sa_elcv = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_sa_elcv = $wpdb->get_results($sql_jun_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $jun_sa_elcv[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                        $sql_jun_sa_eld = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_sa_eld = $wpdb->get_results($sql_jun_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $jun_sa_eld[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                        $sql_jun_sa_elt = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_sa_elt = $wpdb->get_results($sql_jun_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $jun_sa_elt[0]['SUM(junho_sa)'] . "</td>";
-
-                                                                                        $sql_jun_sa_territoriosc = "SELECT SUM(junho_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jun_sa_territoriosc = $wpdb->get_results($sql_jun_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $jun_sa_territoriosc[0]['SUM(junho_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>MAI - GERAL</strong></td>";
-
-                                                                                        $sql_mai_marek = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_marek = $wpdb->get_results($sql_mai_marek, ARRAY_A);
-                                                                                        echo "<td>" . $mai_marek[0]['SUM(maio)'] . "</td>";
-
-                                                                                        $sql_mai_emia = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_emia = $wpdb->get_results($sql_mai_emia, ARRAY_A);
-                                                                                        echo "<td>" . $mai_emia[0]['SUM(maio)'] . "</td>";
-
-                                                                                        $sql_mai_elcv = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_elcv = $wpdb->get_results($sql_mai_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $mai_elcv[0]['SUM(maio)'] . "</td>";
-
-                                                                                        $sql_mai_eld = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_eld = $wpdb->get_results($sql_mai_eld, ARRAY_A);
-                                                                                        echo "<td>" . $mai_eld[0]['SUM(maio)'] . "</td>";
-
-                                                                                        $sql_mai_elt = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_elt = $wpdb->get_results($sql_mai_elt, ARRAY_A);
-                                                                                        echo "<td>" . $mai_elt[0]['SUM(maio)'] . "</td>";
-
-                                                                                        $sql_mai_territoriosc = "SELECT SUM(maio) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_territoriosc = $wpdb->get_results($sql_mai_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $mai_territoriosc[0]['SUM(maio)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>MAI - SA</strong></td>";
-
-                                                                                        $sql_mai_sa_marek = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_sa_marek = $wpdb->get_results($sql_mai_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $mai_sa_marek[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                        $sql_mai_sa_emia = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_sa_emia = $wpdb->get_results($sql_mai_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $mai_sa_emia[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                        $sql_mai_sa_elcv = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_sa_elcv = $wpdb->get_results($sql_mai_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $mai_sa_elcv[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                        $sql_mai_sa_eld = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_sa_eld = $wpdb->get_results($sql_mai_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $mai_sa_eld[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                        $sql_mai_sa_elt = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_sa_elt = $wpdb->get_results($sql_mai_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $mai_sa_elt[0]['SUM(maio_sa)'] . "</td>";
-
-                                                                                        $sql_mai_sa_territoriosc = "SELECT SUM(maio_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mai_sa_territoriosc = $wpdb->get_results($sql_mai_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $mai_sa_territoriosc[0]['SUM(maio_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>ABR - GERAL</strong></td>";
-
-                                                                                        $sql_abr_marek = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_marek = $wpdb->get_results($sql_abr_marek, ARRAY_A);
-                                                                                        echo "<td>" . $abr_marek[0]['SUM(abril)'] . "</td>";
-
-                                                                                        $sql_abr_emia = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_emia = $wpdb->get_results($sql_abr_emia, ARRAY_A);
-                                                                                        echo "<td>" . $abr_emia[0]['SUM(abril)'] . "</td>";
-
-                                                                                        $sql_abr_elcv = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_elcv = $wpdb->get_results($sql_abr_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $abr_elcv[0]['SUM(abril)'] . "</td>";
-
-                                                                                        $sql_abr_eld = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_eld = $wpdb->get_results($sql_abr_eld, ARRAY_A);
-                                                                                        echo "<td>" . $abr_eld[0]['SUM(abril)'] . "</td>";
-
-                                                                                        $sql_abr_elt = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_elt = $wpdb->get_results($sql_abr_elt, ARRAY_A);
-                                                                                        echo "<td>" . $abr_elt[0]['SUM(abril)'] . "</td>";
-
-                                                                                        $sql_abr_territoriosc = "SELECT SUM(abril) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_territoriosc = $wpdb->get_results($sql_abr_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $abr_territoriosc[0]['SUM(abril)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>ABR - SA</strong></td>";
-
-                                                                                        $sql_abr_sa_marek = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_sa_marek = $wpdb->get_results($sql_abr_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $abr_sa_marek[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                        $sql_abr_sa_emia = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_sa_emia = $wpdb->get_results($sql_abr_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $abr_sa_emia[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                        $sql_abr_sa_elcv = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_sa_elcv = $wpdb->get_results($sql_abr_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $abr_sa_elcv[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                        $sql_abr_sa_eld = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_sa_eld = $wpdb->get_results($sql_abr_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $abr_sa_eld[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                        $sql_abr_sa_elt = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_sa_elt = $wpdb->get_results($sql_abr_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $abr_sa_elt[0]['SUM(abril_sa)'] . "</td>";
-
-                                                                                        $sql_abr_sa_territoriosc = "SELECT SUM(abril_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $abr_sa_territoriosc = $wpdb->get_results($sql_abr_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $abr_sa_territoriosc[0]['SUM(abril_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>MAR - GERAL</strong></td>";
-
-                                                                                        $sql_mar_marek = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_marek = $wpdb->get_results($sql_mar_marek, ARRAY_A);
-                                                                                        echo "<td>" . $mar_marek[0]['SUM(marco)'] . "</td>";
-
-                                                                                        $sql_mar_emia = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_emia = $wpdb->get_results($sql_mar_emia, ARRAY_A);
-                                                                                        echo "<td>" . $mar_emia[0]['SUM(marco)'] . "</td>";
-
-                                                                                        $sql_mar_elcv = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_elcv = $wpdb->get_results($sql_mar_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $mar_elcv[0]['SUM(marco)'] . "</td>";
-
-                                                                                        $sql_mar_eld = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_eld = $wpdb->get_results($sql_mar_eld, ARRAY_A);
-                                                                                        echo "<td>" . $mar_eld[0]['SUM(marco)'] . "</td>";
-
-                                                                                        $sql_mar_elt = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_elt = $wpdb->get_results($sql_mar_elt, ARRAY_A);
-                                                                                        echo "<td>" . $mar_elt[0]['SUM(marco)'] . "</td>";
-
-                                                                                        $sql_mar_territoriosc = "SELECT SUM(marco) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_territoriosc = $wpdb->get_results($sql_mar_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $mar_territoriosc[0]['SUM(marco)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>MAR - SA</strong></td>";
-
-                                                                                        $sql_mar_sa_marek = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_sa_marek = $wpdb->get_results($sql_mar_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $mar_sa_marek[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                        $sql_mar_sa_emia = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_sa_emia = $wpdb->get_results($sql_mar_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $mar_sa_emia[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                        $sql_mar_sa_elcv = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_sa_elcv = $wpdb->get_results($sql_mar_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $mar_sa_elcv[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                        $sql_mar_sa_eld = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_sa_eld = $wpdb->get_results($sql_mar_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $mar_sa_eld[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                        $sql_mar_sa_elt = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_sa_elt = $wpdb->get_results($sql_mar_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $mar_sa_elt[0]['SUM(marco_sa)'] . "</td>";
-
-                                                                                        $sql_mar_sa_territoriosc = "SELECT SUM(marco_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $mar_sa_territoriosc = $wpdb->get_results($sql_mar_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $mar_sa_territoriosc[0]['SUM(marco_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>FEV - Geral</strong></td>";
-
-                                                                                        $sql_fev_marek = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_marek = $wpdb->get_results($sql_fev_marek, ARRAY_A);
-                                                                                        echo "<td>" . $fev_marek[0]['SUM(fevereiro)'] . "</td>";
-
-                                                                                        $sql_fev_emia = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_emia = $wpdb->get_results($sql_fev_emia, ARRAY_A);
-                                                                                        echo "<td>" . $fev_emia[0]['SUM(fevereiro)'] . "</td>";
-
-                                                                                        $sql_fev_elcv = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_elcv = $wpdb->get_results($sql_fev_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $fev_elcv[0]['SUM(fevereiro)'] . "</td>";
-
-                                                                                        $sql_fev_eld = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_eld = $wpdb->get_results($sql_fev_eld, ARRAY_A);
-                                                                                        echo "<td>" . $fev_eld[0]['SUM(fevereiro)'] . "</td>";
-
-                                                                                        $sql_fev_elt = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_elt = $wpdb->get_results($sql_fev_elt, ARRAY_A);
-                                                                                        echo "<td>" . $fev_elt[0]['SUM(fevereiro)'] . "</td>";
-
-                                                                                        $sql_fev_territoriosc = "SELECT SUM(fevereiro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_territoriosc = $wpdb->get_results($sql_fev_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $fev_territoriosc[0]['SUM(fevereiro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>FEV - SA</strong></td>";
-
-                                                                                        $sql_fev_sa_marek = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_sa_marek = $wpdb->get_results($sql_fev_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $fev_sa_marek[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                        $sql_fev_sa_emia = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_sa_emia = $wpdb->get_results($sql_fev_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $fev_sa_emia[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                        $sql_fev_sa_elcv = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_sa_elcv = $wpdb->get_results($sql_fev_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $fev_sa_elcv[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                        $sql_fev_sa_eld = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_sa_eld = $wpdb->get_results($sql_fev_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $fev_sa_eld[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                        $sql_fev_sa_elt = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_sa_elt = $wpdb->get_results($sql_fev_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $fev_sa_elt[0]['SUM(fevereiro_sa)'] . "</td>";
-
-                                                                                        $sql_fev_sa_territoriosc = "SELECT SUM(fevereiro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $fev_sa_territoriosc = $wpdb->get_results($sql_fev_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $fev_sa_territoriosc[0]['SUM(fevereiro_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>JAN - Geral</strong></td>";
-
-                                                                                        $sql_jan_marek = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_marek = $wpdb->get_results($sql_jan_marek, ARRAY_A);
-                                                                                        echo "<td>" . $jan_marek[0]['SUM(janeiro)'] . "</td>";
-
-                                                                                        $sql_jan_emia = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_emia = $wpdb->get_results($sql_jan_emia, ARRAY_A);
-                                                                                        echo "<td>" . $jan_emia[0]['SUM(janeiro)'] . "</td>";
-
-                                                                                        $sql_jan_elcv = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_elcv = $wpdb->get_results($sql_jan_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $jan_elcv[0]['SUM(janeiro)'] . "</td>";
-
-                                                                                        $sql_jan_eld = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_eld = $wpdb->get_results($sql_jan_eld, ARRAY_A);
-                                                                                        echo "<td>" . $jan_eld[0]['SUM(janeiro)'] . "</td>";
-
-                                                                                        $sql_jan_elt = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_elt = $wpdb->get_results($sql_jan_elt, ARRAY_A);
-                                                                                        echo "<td>" . $jan_elt[0]['SUM(janeiro)'] . "</td>";
-
-                                                                                        $sql_jan_territoriosc = "SELECT SUM(janeiro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_territoriosc = $wpdb->get_results($sql_jan_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $jan_territoriosc[0]['SUM(janeiro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>JAN - SA</strong></td>";
-
-                                                                                        $sql_jan_sa_marek = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_sa_marek = $wpdb->get_results($sql_jan_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $jan_sa_marek[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                        $sql_jan_sa_emia = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_sa_emia = $wpdb->get_results($sql_jan_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $jan_sa_emia[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                        $sql_jan_sa_elcv = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_sa_elcv = $wpdb->get_results($sql_jan_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $jan_sa_elcv[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                        $sql_jan_sa_eld = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_sa_eld = $wpdb->get_results($sql_jan_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $jan_sa_eld[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                        $sql_jan_sa_elt = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_sa_elt = $wpdb->get_results($sql_jan_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $jan_sa_elt[0]['SUM(janeiro_sa)'] . "</td>";
-
-                                                                                        $sql_jan_sa_territoriosc = "SELECT SUM(janeiro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $jan_sa_territoriosc = $wpdb->get_results($sql_jan_sa_territoriosc, ARRAY_A);
-                                                                                        echo "<td>" . $jan_sa_territoriosc[0]['SUM(janeiro_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>TOTAL -Atendidos ao longo da ação</strong></td>";
-
-                                                                                        $sql_total_marek = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $total_marek = $wpdb->get_results($sql_total_marek, ARRAY_A);
-                                                                                        echo "<td>" . $total_marek[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
-
-                                                                                        $sql_total_emia = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $total_emia = $wpdb->get_results($sql_total_emia, ARRAY_A);
-                                                                                        echo "<td>" . $total_emia[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
-
-                                                                                        $sql_total_elcv = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $total_elcv = $wpdb->get_results($sql_total_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $total_elcv[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
-
-                                                                                        $sql_total_eld = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $total_eld = $wpdb->get_results($sql_total_eld, ARRAY_A);
-                                                                                        echo "<td>" . $total_eld[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
-
-                                                                                        $sql_total_elt = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $total_elt = $wpdb->get_results($sql_total_elt, ARRAY_A);
-                                                                                        echo "<td>" . $total_elt[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
-
-                                                                                        $sql_total_elt = "SELECT SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                        $total_elt = $wpdb->get_results($sql_total_elt, ARRAY_A);
-                                                                                        echo "<td>" . $total_elt[0]['SUM(janeiro+fevereiro+marco+abril+maio+junho+julho+agosto+setembro+outubro+novembro+dezembro)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "<tr>";
-                                                                                        echo "<td><strong>TOTAL - Atendidos que são moradores de Santo André</strong></td>";
-
-                                                                                        $sql_sa_marek = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '271' AND ocor_inicio LIKE '%2018%' AND publicado = '1';";
-                                                                                        $sa_marek = $wpdb->get_results($sql_sa_marek, ARRAY_A);
-                                                                                        echo "<td>" . $sa_marek[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_sa_emia = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '205' AND ocor_inicio LIKE '%2018%' AND publicado = '1';";
-                                                                                        $sa_emia = $wpdb->get_results($sql_sa_emia, ARRAY_A);
-                                                                                        echo "<td>" . $sa_emia[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_sa_elcv = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '206' AND ocor_inicio LIKE '%2018%' AND publicado = '1';";
-                                                                                        $sa_elcv = $wpdb->get_results($sql_sa_elcv, ARRAY_A);
-                                                                                        echo "<td>" . $sa_elcv[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_sa_eld = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '204' AND ocor_inicio LIKE '%2018%' AND publicado = '1';";
-                                                                                        $sa_eld = $wpdb->get_results($sql_sa_eld, ARRAY_A);
-                                                                                        echo "<td>" . $sa_eld[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_sa_elt = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE equipamento = '283' AND ocor_inicio LIKE '%2018%' AND publicado = '1';";
-                                                                                        $sa_elt = $wpdb->get_results($sql_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $sa_elt[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
-
-                                                                                        $sql_sa_elt = "SELECT SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND publicado = '1';";
-                                                                                        $sa_elt = $wpdb->get_results($sql_sa_elt, ARRAY_A);
-                                                                                        echo "<td>" . $sa_elt[0]['SUM(janeiro_sa+fevereiro_sa+marco_sa+abril_sa+maio_sa+junho_sa+julho_sa+agosto_sa+setembro_sa+outubro_sa+novembro_sa+dezembro_sa)'] . "</td>";
-                                                                                        echo "</tr>";
-
-                                                                                        echo "</tr>";
-
-                                                                                        ?>
-
-                                                                                        <div class="table-responsive">
-                                                                                            <table class="table table-striped">
-                                                                                                <thead>
-                                                                                                <br>
-                                                                                                <label><h2>2018 - Por
-                                                                                                        Projeto (Qtde.
-                                                                                                        de ações)</h2>
-                                                                                                </label>
-                                                                                                <tr>
-                                                                                                    <th>Período</th>
-                                                                                                    <th>Projeto
-                                                                                                        Territórios de
-                                                                                                        Cultura
-                                                                                                    </th>
-                                                                                                </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                <?php
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>DEZ</strong></td>";
-
-                                                                                                $sql_dez_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND dezembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $dez_territorios = $wpdb->get_results($sql_dez_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $dez_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>NOV</strong></td>";
-                                                                                                $sql_nov_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND novembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $nov_territorios = $wpdb->get_results($sql_nov_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $nov_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>OUT</strong></td>";
-                                                                                                $sql_out_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND outubro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $out_territorios = $wpdb->get_results($sql_out_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $out_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>SET</strong></td>";
-                                                                                                $sql_set_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND setembro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $set_territorios = $wpdb->get_results($sql_set_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $set_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>AGO</strong></td>";
-                                                                                                $sql_ago_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND agosto != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $ago_territorios = $wpdb->get_results($sql_ago_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $ago_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>JUL</strong></td>";
-                                                                                                $sql_jul_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND julho != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $jul_territorios = $wpdb->get_results($sql_jul_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $jul_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>JUN</strong></td>";
-                                                                                                $sql_jun_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND junho != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $jun_territorios = $wpdb->get_results($sql_jun_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $jun_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>MAI</strong></td>";
-                                                                                                $sql_mai_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND maio != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $mai_territorios = $wpdb->get_results($sql_mai_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $mai_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>ABR</strong></td>";
-                                                                                                $sql_abr_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND abril != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $abr_territorios = $wpdb->get_results($sql_abr_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $abr_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>MAR</strong></td>";
-                                                                                                $sql_mar_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND marco != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $mar_territorios = $wpdb->get_results($sql_mar_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $mar_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>FEV</strong></td>";
-                                                                                                $sql_fev_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND fevereiro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $fev_territorios = $wpdb->get_results($sql_fev_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $fev_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "<tr>";
-                                                                                                echo "<td><strong>JAN</strong></td>";
-                                                                                                $sql_jan_territorios = "SELECT COUNT(id) FROM sc_ind_incentivo WHERE projeto = '792' AND ocor_inicio LIKE '%2018%' AND janeiro != '0' AND publicado = '1' AND projeto NOT IN (378,723)";
-                                                                                                $jan_territorios = $wpdb->get_results($sql_jan_territorios, ARRAY_A);
-                                                                                                echo "<td>" . $jan_territorios[0]['COUNT(id)'] . "</td>";
-                                                                                                echo "</tr>";
-                                                                                                echo "</tr>";
-
-                                                                                                echo "</tr>";
-
-                                                                                                ?>
-
-
-                                                                                                </tbody>
 
                                                                                                 <?php
                                                                                                 break;

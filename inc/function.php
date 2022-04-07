@@ -2982,7 +2982,7 @@ function indResumo($tipo,$ano){
 	
 }
 
-function indicadores($ano_base,$tipo,$projeto = NULL){
+function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 	global $wpdb;
 
 	$x = array();
@@ -2996,8 +2996,9 @@ function indicadores($ano_base,$tipo,$projeto = NULL){
 			$publico_ano = 0;
 			// por projeto
 			$sql_concatena_projetos = "";
+
 			if($projeto != NULL){
-				$sql_projetos = "SELECT idEvento FROM sc_evento WHERE idProjeto = '$projeto' AND ano_base = '$ano_base' AND publicado = '1'";
+				$sql_projetos = "SELECT idEvento FROM sc_evento WHERE idProjeto IN('$projeto') AND ano_base = '$ano_base' AND publicado = '1'";
 				$res_projetos = $wpdb->get_results($sql_projetos,ARRAY_A);
 				$projetos_string = "";
 				for($i = 0; $i < count($res_projetos); $i++){
@@ -3010,9 +3011,24 @@ function indicadores($ano_base,$tipo,$projeto = NULL){
 					$sql_concatena_projetos = " AND idEvento IN($projetos_string) ";
 				}
 			}
+			$sql_concatena_programas = "";
+			if($programa != NULL){
+				$sql_programas = "SELECT idEvento FROM sc_evento WHERE idPrograma IN('$programa') AND ano_base = '$ano_base' AND publicado = '1'";
+				$res_programas = $wpdb->get_results($sql_programas,ARRAY_A);
+				$programas_string = "";
+				for($i = 0; $i < count($res_programas); $i++){
+					$programas_string .= $res_programas[$i]['idEvento'].",";
+				}
+				if(count($res_programas) == 0){
+					$sql_concatena_programas = "";
+				}else{
+					$programas_string = substr($programas_string, 0, -1);
+					$sql_concatena_programas = " AND idEvento IN($programas_string) ";
+				}
+			}
 		
 
-			$sql_lista = "SELECT idEvento, valor, contagem, ndias FROM sc_indicadores WHERE ano_base = '$ano_base' AND publicado = '1' $sql_concatena_projetos";
+			$sql_lista = "SELECT idEvento, valor, contagem, ndias FROM sc_indicadores WHERE ano_base = '$ano_base' AND publicado = '1' $sql_concatena_projetos $sql_concatena_programas";
 			$res = $wpdb->get_results($sql_lista);	
 
 			// por mês
