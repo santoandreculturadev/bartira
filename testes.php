@@ -7,8 +7,12 @@
 	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 		<h1>Ambiente teste / Importar Plano Municipal</h1>
 		<?php 
-		geraMesOcorrencia(2539);
-
+		 //indicadores('2019','evento','769');
+		$n =  indicadores('2019','evento');
+		echo "<pre>";
+		var_dump($n);
+		echo "</pre>";
+	
 		?>
 	</main>
 

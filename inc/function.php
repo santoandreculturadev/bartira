@@ -106,6 +106,62 @@ function exibeHoje(){
 	
 }
 
+function retornaMes($m){
+
+	switch($m){
+		case '1':
+		$mes = "Janeiro";
+		break;
+		case '2':
+		$mes = "Fevereiro";
+		
+		break;
+		case '3':
+		$mes = "Março";
+		
+		break;
+		case '4':
+		$mes = "Abril";
+		
+		break;
+		case '5':
+		$mes = "Maio";
+		
+		break;
+		case '6':
+		$mes = "Junho";
+		
+		break;
+		case '7':
+		$mes = "Julho";
+		
+		break;
+		case '8':
+		$mes = "Agosto";
+		
+		break;
+		case '9':
+		$mes = "Setembro";
+		
+		break;
+		case '10':
+		$mes = "Outubro";
+		
+		break;
+		case '11':
+		$mes = "Novembro";
+		
+		break;
+		case '12':
+		$mes = "Dezembro";
+		
+		break;
+	}
+	return $mes;
+		
+
+}
+
 
 function stringMesAno($data){
 	
@@ -154,6 +210,7 @@ function somarDatas($data,$dias){
 	return $data_final;
 }
 
+// só devolve o dia sem ano e mês
 function ultimoDiaMes($ano,$mes){
 	return date("t", mktime(0,0,0,$mes,'01',$ano));
 }
@@ -2442,9 +2499,16 @@ function retornaInscricao($inscricao){
 
 /* Planejamento */
 
-function anoOrcamento(){
+function anoOrcamento($ordem = NULL){
+	
 	global $wpdb;
-	$sql = "SELECT DISTINCT ano_base FROM sc_orcamento ORDER BY ano_base ASC";
+	if($ordem != NULL){
+		$ordem = " ORDER BY ano_base DESC";
+	}else{
+		$ordem = " ORDER BY ano_base ASC";
+	}
+	
+	$sql = "SELECT DISTINCT ano_base FROM sc_orcamento WHERE ano_base <> '0' $ordem ";
 	$res_ava = $wpdb->get_results($sql,ARRAY_A);
 	return $res_ava;
 }
@@ -2870,10 +2934,10 @@ function projeto600($ano){
 retorna número dos indicadores inseridos
 os tipos são: 
 	acervos // sc_ind_acervos
-                    <th>Período</th>
-                    <th>Público</th>
-                    <th>Nº Atividades</th>
-                    <th>Nº Atividades com Agentes Locais</th>
+                    <th>Período</th> ok
+                    <th>Público</th> ok 
+                    <th>Nº Atividades</th> ok 
+                    <th>Nº Atividades com Agentes Locais</th> ok
                     <th>Nº Agentes Culturais Locais Envolvidos</th>
                     <th>Nº Bairros</th>
                     <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
@@ -2912,14 +2976,257 @@ function indResumo($tipo,$ano){
 		
 			}
 		break;
-		
-		
-		
-		
+
 	}
 	
 	
 }
+
+function indicadores($ano_base,$tipo,$projeto = NULL){
+	global $wpdb;
+
+	$x = array();
+	switch($tipo){
+		
+		
+		//$dados = [];
+		
+		case "evento":
+		
+			$publico_ano = 0;
+			// por projeto
+			$sql_concatena_projetos = "";
+			if($projeto != NULL){
+				$sql_projetos = "SELECT idEvento FROM sc_evento WHERE idProjeto = '$projeto' AND ano_base = '$ano_base' AND publicado = '1'";
+				$res_projetos = $wpdb->get_results($sql_projetos,ARRAY_A);
+				$projetos_string = "";
+				for($i = 0; $i < count($res_projetos); $i++){
+					$projetos_string .= $res_projetos[$i]['idEvento'].",";
+				}
+				if(count($res_projetos) == 0){
+					$sql_concatena_projetos = "";
+				}else{
+					$projetos_string = substr($projetos_string, 0, -1);
+					$sql_concatena_projetos = " AND idEvento IN($projetos_string) ";
+				}
+			}
+		
+
+			$sql_lista = "SELECT idEvento, valor, contagem, ndias FROM sc_indicadores WHERE ano_base = '$ano_base' AND publicado = '1' $sql_concatena_projetos";
+			$res = $wpdb->get_results($sql_lista);	
+
+			// por mês
+
+			for($m = 1; $m < 13; $m++){
+			// Público
+			$sql_lista = "SELECT idEvento, valor, contagem, ndias FROM sc_indicadores WHERE ano_base = '$ano_base' AND publicado = '1' $sql_concatena_projetos";
+				$data_inicial = $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT)."-01";
+				$ultimo_dia = ultimoDiaMes($ano_base,$m);
+				$data_final = $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT)."-".$ultimo_dia;
+				$sql_data = " AND periodoInicio BETWEEN '$data_inicial' AND '$data_final' ";	
+				$sql_lista = $sql_lista.$sql_data;
+				$res_mes = $wpdb->get_results($sql_lista,ARRAY_A);
+				$publico = 0;
+				for($j = 0; $j < count($res_mes); $j++){
+					if($res_mes[$j]['contagem'] == '2'){
+						$total_parcial = $res_mes[$j]['ndias']*$res_mes[$j]['ndias'];
+						$publico = $publico + $total_parcial;
+						$publico_ano = $publico_ano + $total_parcial;
+					}else{
+						$publico = $publico + $res_mes[$j]['valor'];
+						$publico_ano = $publico_ano + $res_mes[$j]['valor'];
+					}
+				}
+
+			$sql_ocorrencia = "SELECT idEvento, artista_local, n_agentes_abc FROM sc_evento WHERE idEvento IN (SELECT DISTINCT idEvento FROM sc_ocorrencia WHERE
+			(dataInicio >= '$data_inicial' AND dataFinal = '0000-00-00' AND dataInicio <= '$data_final')
+			OR
+			(dataInicio <= '$data_inicial' AND dataFinal >= '$data_final') OR
+			(dataInicio <=	'$data_inicial' AND dataFinal <= '$data_final' AND dataFinal > '$data_inicial' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal >= '$data_final' AND dataInicio < '$data_final' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal <= '$data_final'  AND dataInicio > '$data_final' AND dataFinal < '$data_inicial' AND dataFinal <> '0000-00-00')   AND publicado = '1' $sql_concatena_projetos) AND status IN(3,4)";
+			$res_eventos = $wpdb->get_results($sql_ocorrencia,ARRAY_A);	
+			$n_atividades = count($res_eventos);
+			
+			$evento_agentes_locais = 0;
+			$agentes_culturais_locais = 0;
+			
+			
+			for ($k = 0; $k < count($res_eventos); $k++){
+				//agentes locais 
+				if($res_eventos[$k]['artista_local'] != 0 OR $res_eventos[$k]['n_agentes_abc'] != 0 ){
+					$evento_agentes_locais ++;
+				}
+			
+				$agentes_culturais_locais = $agentes_culturais_locais + $res_eventos[$k]['n_agentes_abc'];	
+			}
+			
+			$sql_bairros = "SELECT DISTINCT local FROM sc_ocorrencia WHERE
+			(dataInicio >= '$data_inicial' AND dataFinal = '0000-00-00' AND dataInicio <= '$data_final')
+			OR
+			(dataInicio <= '$data_inicial' AND dataFinal >= '$data_final') OR
+			(dataInicio <=	'$data_inicial' AND dataFinal <= '$data_final' AND dataFinal > '$data_inicial' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal >= '$data_final' AND dataInicio < '$data_final' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal <= '$data_final'  AND dataInicio > '$data_final' AND dataFinal < '$data_inicial' AND dataFinal <> '0000-00-00') AND publicado = '1' $sql_concatena_projetos";
+			//echo $sql_bairros."<br />";
+
+			$res_local = $wpdb->get_results($sql_bairros,ARRAY_A);
+			
+			$n_bairros = array();
+			$n_bairros_descentralizados = 0;
+			for($k = 0;$k < count($res_local); $k++){
+				$tipo = tipo($res_local[$k]['local']);
+				$local = json_decode($tipo['descricao'],true);
+				if(isset($local['bairro'])){
+					$bairro = $local['bairro'];
+					if(!in_array($bairro,$n_bairros) AND $bairro != NULL){
+						array_push($n_bairros,$bairro);
+					}
+				}
+
+			}
+
+			$numero_bairros = count($n_bairros);
+			if(in_array(578,$n_bairros)){
+				$numero_bairros_descentralizados = count($n_bairros) - 1;
+			}
+			
+			$porcentagem = round(($numero_bairros/112)*100,2);
+			
+				/*	
+			echo "Período : $m <br />
+                  Público: $publico<br /> 
+                  Nº Atividades: $n_atividades<br /> 
+                  Nº Atividades com Agentes Locais: $evento_agentes_locais <br />
+                  Nº Agentes Culturais Locais Envolvidos: $agentes_culturais_locais <br />
+                  Nº Bairros: $numero_bairros <br />
+                  Bairros da Cidade Atendidos (Ref. 112 bairros) :$porcentagem <br />
+                  Nº Bairros Descentralizados: $numero_bairros_descentralizados
+				<br />
+				  <br />
+			
+
+			";
+	*/
+
+			$x['mes'][$m] = array(
+				'publico' => $publico,
+				'n_atividades' => $n_atividades,
+				'n_atividades_locais' => $evento_agentes_locais,
+				'agentes_locais' => $agentes_culturais_locais,
+				'n_bairros' => $numero_bairros,
+				'bairros_atendidos' => $porcentagem,
+				'n_bairros_descentralizados' => $numero_bairros_descentralizados
+				
+			
+			
+			);
+			
+			
+			}// final do mês
+
+		
+			// por ano
+			
+	
+
+			$data_inicial = $ano_base."-01-01";
+			$data_final = $ano_base."-12-31";
+
+			$sql_ocorrencia = "SELECT idEvento, artista_local, n_agentes_abc FROM sc_evento WHERE idEvento IN (SELECT DISTINCT idEvento FROM sc_ocorrencia WHERE
+			(dataInicio >= '$data_inicial' AND dataFinal = '0000-00-00' AND dataInicio <= '$data_final')
+			OR
+			(dataInicio <= '$data_inicial' AND dataFinal >= '$data_final') OR
+			(dataInicio <=	'$data_inicial' AND dataFinal <= '$data_final' AND dataFinal > '$data_inicial' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal >= '$data_final' AND dataInicio < '$data_final' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal <= '$data_final'  AND dataInicio > '$data_final' AND dataFinal < '$data_inicial' AND dataFinal <> '0000-00-00')   AND publicado = '1' $sql_concatena_projetos) AND status IN(3,4)";
+			
+			$res_total = $wpdb->get_results($sql_ocorrencia,ARRAY_A);
+		
+			$total_evento = array();
+			$evento_agentes_locais = 0;
+			$agentes_culturais_locais = 0;
+
+			for($k = 0; $k < count($res_total); $k++){
+				$idEvento = $res_total[$k]['idEvento'];
+						
+				if(!in_array($idEvento,$total_evento)){
+						array_push($total_evento,$idEvento);
+					}		
+
+			if($res_total[$k]['artista_local'] != 0 OR $res_total[$k]['n_agentes_abc'] != 0 ){
+					$evento_agentes_locais ++;
+				}					
+	
+			$agentes_culturais_locais = $agentes_culturais_locais + $res_total[$k]['n_agentes_abc'];	
+	
+			}
+			
+			$n_atividades = count($total_evento);
+			
+			$sql_bairros = "SELECT DISTINCT local FROM sc_ocorrencia WHERE
+			(dataInicio >= '$data_inicial' AND dataFinal = '0000-00-00' AND dataInicio <= '$data_final')
+			OR
+			(dataInicio <= '$data_inicial' AND dataFinal >= '$data_final') OR
+			(dataInicio <=	'$data_inicial' AND dataFinal <= '$data_final' AND dataFinal > '$data_inicial' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal >= '$data_final' AND dataInicio < '$data_final' AND dataFinal <> '0000-00-00') OR
+			(dataInicio >= '$data_inicial' AND dataFinal <= '$data_final'  AND dataInicio > '$data_final' AND dataFinal < '$data_inicial' AND dataFinal <> '0000-00-00') AND publicado = '1' $sql_concatena_projetos";
+			//echo $sql_bairros."<br />";
+
+			$res_local = $wpdb->get_results($sql_bairros,ARRAY_A);
+			
+			$n_bairros = array();
+			$n_bairros_descentralizados = 0;
+			for($k = 0;$k < count($res_local); $k++){
+				$tipo = tipo($res_local[$k]['local']);
+				$local = json_decode($tipo['descricao'],true);
+				if(isset($local['bairro'])){
+					$bairro = $local['bairro'];
+					if(!in_array($bairro,$n_bairros) AND $bairro != NULL){
+						array_push($n_bairros,$bairro);
+					}
+				}
+
+			}
+
+			$numero_bairros = count($n_bairros);
+			if(in_array(578,$n_bairros)){
+				$numero_bairros_descentralizados = count($n_bairros) - 1;
+			}
+			
+			$porcentagem = round(($numero_bairros/112)*100,2);
+			
+
+
+
+	$x['ano'] = array(
+				'publico' => $publico_ano,
+				'n_atividades' => $n_atividades,
+				'n_atividades_locais' => $evento_agentes_locais,
+				'agentes_locais' => $agentes_culturais_locais,
+				'n_bairros' => $numero_bairros,
+				'bairros_atendidos' => $porcentagem,
+				'n_bairros_descentralizados' => $numero_bairros_descentralizados
+				
+			
+			
+			);
+	
+			
+
+		break;
+	
+
+
+	}
+	
+	
+		return $x;
+	
+	
+} 
+
+
 
 function dotacao($id){
 	

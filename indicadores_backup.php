@@ -45,8 +45,6 @@ ini_set(“display_errors”, 0);
 
                 </div>
             </section>
-
-
             <?php
             break;
         case "inserirevento":
@@ -338,7 +336,412 @@ ini_set(“display_errors”, 0);
 
             <?php
             break;
-        case "inserircontinuadas":
+        case "inserirevento_longaduracao":
+            ?>
+
+            <link href="css/jquery-ui.css" rel="stylesheet">
+            <script src="js/jquery-ui.js"></script>
+            <script src="js/mask.js"></script>
+            <script src="js/maskMoney.js"></script>
+            <script>
+                $(function () {
+                    $(".calendario").datepicker();
+                    $(".hora").mask("99:99");
+                    $(".min").mask("999");
+                    $(".valor").maskMoney({prefix: '', thousands: '.', decimal: ',', affixesStay: true});
+                });
+
+
+            </script>
+
+            <script type="application/javascript">
+                $(function () {
+                    $('#ano_base').change(function () {
+                        if ($(this).val()) {
+                            $('#idEvento').hide();
+                            $('.carregando').show();
+                            $.getJSON('inc/ind.evento.longa.ajax.php?', {ano: $(this).val(), ajax: 'true'}, function (j) {
+                                var options = '<option value="0"></option>';
+                                for (var i = 0; i < j.length; i++) {
+                                    options += '<option value="' + j[i].idEvento + '">' + j[i].nomeEvento + '</option>';
+                                }
+                                $('#idEvento').html(options).show();
+                                $('.carregando').hide();
+                            });
+                        } else {
+                            $('#idEvento').html('<option value="">-- Escolha um Evento --</option>');
+                        }
+                    });
+                });
+            </script>
+
+            <script type="application/javascript">
+                $(function () {
+                    $('#idEvento').change(function () {
+                        if ($(this).val()) {
+							$('#enviar_id').val($(this).val());
+                        } 
+                    });
+                });
+            </script>
+
+            <script type="application/javascript">
+                $(function () {
+                    $('#idEvento').change(function () {
+                        if ($(this).val()) {
+                            $('#mes_ano').hide();
+                            $('.carregando').show();
+                            $.getJSON('inc/ind.mes.ajax.php?', {idEvento: $(this).val(), ajax: 'true'}, function (j) {
+                                var options = '<option value="0"></option>';
+                                for (var i = 0; i < j.length; i++) {
+                                    options += '<option value="' + j[i].dia + '">' + j[i].mes + '</option>';
+                                }
+                                $('#mes_ano').html(options).show();
+                                $('.carregando').hide();
+                            });
+                        } else {
+                            $('#mes_ano').html('<option value="">-- Escolha um Evento --</option>');
+                        }
+                    });
+                });
+            </script>
+ <script type="application/javascript">
+	$(function()
+	{
+		$('#idEvento').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#idOcorrencia').hide();
+				$('.carregando').show();
+				$.getJSON('inc/ind.ocor.ajax.php?',{idEvento: $(this).val(), ajax: 'true'}, function(j)
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].idOcorrencia + '">' + j[i].data + '</option>';
+					}	
+					$('#idOcorrencia').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#idOcorrencia').html('<option value="">-- Escolha um projeto --</option>');
+			}
+		});
+	});
+</script>
+
+
+            <section id="contact" class="home-section bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-8">
+                            <h2>Relatórios de Público / Longa Duração- Inserir</h2>
+                            <?php
+                            // listar o evento;
+                            ?>
+                            <br/><Br/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <?php
+               
+                ?>
+                <div class="row">
+                    <form class="formocor" action="?p=listarevento" method="POST" role="form">
+					<div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Ano Base</label>
+                                <select class="form-control" name="tipo" id="ano_base">
+                                    <option>Selecione</option>
+									<?php opcaoAnoBase(); ?>
+                                </select>
+                            </div>
+                        </div>    
+					
+					
+					
+					
+					
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Nome do Evento *</label>
+                                <select class="form-control" name="idEvento" id="idEvento" required>
+                                    <option value=''>Escolha uma opção (<?php echo count($eventos); ?> )</option>
+                                    <?php for ($i = 0; $i < count($eventos); $i++) { ?>
+                                        <option value='<?php echo $eventos[$i]['idEvento'];?>.' 
+										<?php 
+										if(isset($_GET['evento']) AND $_GET['evento'] == $eventos[$i]['idEvento']){
+											echo " selected";
+													
+										}
+										
+										?>
+										>
+										
+										
+										<?php echo $eventos[$i]['nomeEvento']." (".$eventos[$i]['idEvento'].")"; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+						<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+							<label>Local</label>
+							<select class="form-control" name="idOcorrencia" id="idOcorrencia" >
+
+							</select>
+						</div>
+					</div>
+						
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Relatório do mês</label>
+                                <select class="form-control" name="mes_ano" id="mes_ano">
+                                    <option>Selecione</option>
+									<?php $mes_ano = geraMesOcorrencia($idEvento); 
+									for ($i = 0; $i < count($mes_ano); $i++){
+									
+									?>
+                                    <option value="01/<?php echo $mes_ano[$i];?>" ><?php echo $mes_ano[$i];?></option>
+
+									<?php } ?>
+                                </select>
+                            </div>
+                        </div>                     
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Dias úteis do período (se for data única, não preencher)</label>
+                                <input type="text" name="ndias" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Tipo de Contagem</label>
+                                <select class="form-control" name="contagem" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="1" selected>Número total (absoluto)</option>
+                                    <option value="2">Média Geral (por dia)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Público (Número de Espectadores)</label>
+                                <input type="text" name="valor" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Tipo de Público</label>
+                                <select class="form-control" name="tipo" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="1" selected>Geral</option>
+                                    <option value="2">Específico</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Relato</label>
+                                <textarea name="relato" class="form-control" rows="10"
+                                          placeholder="Relato de incidentes, impressões, avaliações e críticas."><?php //echo $campo["sinopse"]
+                                    ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="hidden" name="inserir" id="enviar_id" value="1"/>
+								<input type="hidden" name="tipo_relatorio" value="longaduracao" />
+                                <button type="submit" class="btn btn-theme btn-lg btn-block">Enviar Relatório</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+
+
+            <?php
+            break;
+        case "inserirevento_dataunica":
+            ?>
+
+            <link href="css/jquery-ui.css" rel="stylesheet">
+            <script src="js/jquery-ui.js"></script>
+            <script src="js/mask.js"></script>
+            <script src="js/maskMoney.js"></script>
+            <script>
+                $(function () {
+                    $(".calendario").datepicker();
+                    $(".hora").mask("99:99");
+                    $(".min").mask("999");
+                    $(".valor").maskMoney({prefix: '', thousands: '.', decimal: ',', affixesStay: true});
+                });
+
+
+            </script>
+			
+			         <script type="application/javascript">
+                $(function () {
+                    $('#ano_base').change(function () {
+                        if ($(this).val()) {
+                            $('#idEvento').hide();
+                            $('.carregando').show();
+                            $.getJSON('inc/ind.evento.unica.ajax.php?', {ano: $(this).val(), ajax: 'true'}, function (j) {
+                                var options = '<option value="0"></option>';
+                                for (var i = 0; i < j.length; i++) {
+                                    options += '<option value="' + j[i].idEvento + '">' + j[i].nomeEvento + '</option>';
+                                }
+                                $('#idEvento').html(options).show();
+                                $('.carregando').hide();
+                            });
+                        } else {
+                            $('#idEvento').html('<option value="">-- Escolha um Evento --</option>');
+                        }
+                    });
+                });
+            </script>
+			
+
+            <script type="application/javascript">
+                $(function () {
+                    $('#idEvento').change(function () {
+                        if ($(this).val()) {
+							$('#enviar_id').val($(this).val());
+                        } 
+                    });
+                });
+            </script>
+
+ <script type="application/javascript">
+	$(function()
+	{
+		$('#idEvento').change(function()
+		{
+			if( $(this).val() )
+			{
+				$('#idOcorrencia').hide();
+				$('.carregando').show();
+				$.getJSON('inc/ind.ocor.ajax.php?',{idEvento: $(this).val(), ajax: 'true'}, function(j)
+				{
+					var options = '<option value="0"></option>';	
+					for (var i = 0; i < j.length; i++)
+					{
+						options += '<option value="' + j[i].idOcorrencia + '">' + j[i].data + '</option>';
+					}	
+					$('#idOcorrencia').html(options).show();
+					$('.carregando').hide();
+				});
+			}
+			else
+			{
+				$('#idOcorrencia').html('<option value="">-- Escolha um projeto --</option>');
+			}
+		});
+	});
+</script>
+
+            <section id="contact" class="home-section bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-8">
+                            <h2>Relatórios de Público - Inserir</h2>
+                            <?php
+                            // listar o evento;
+                            ?>
+                            <br/><Br/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <?php
+
+                ?>
+                <div class="row">
+                    <form class="formocor" action="?p=listarevento" method="POST" role="form">
+                        					<div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Ano Base</label>
+                                <select class="form-control" name="tipo" id="ano_base">
+                                    <option>Selecione</option>
+									<?php opcaoAnoBase(); ?>
+                                </select>
+                            </div>
+                        </div>    
+					
+					
+					
+					
+					
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Nome do Evento *</label>
+                                <select class="form-control" name="idEvento" id="idEvento" required>
+                                    <option value=''>Escolha uma opção </option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+						<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+							<label>Local</label>
+							<select class="form-control" name="idOcorrencia" id="idOcorrencia" >
+
+							</select>
+						</div>
+					</div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Data do Evento:</label>
+                                <input type='text' class="form-control calendario" name="mes_ano"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Público (Número de Espectadores)</label>
+                                <input type="text" name="valor" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Tipo de Público</label>
+                                <select class="form-control" name="tipo" id="inputSubject">
+                                    <option>Selecione</option>
+                                    <option value="1" selected>Geral</option>
+                                    <option value="2">Específico</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <label>Relato</label>
+                                <textarea name="relato" class="form-control" rows="10"
+                                          placeholder="Relato de incidentes, impressões, avaliações e críticas."><?php //echo $campo["sinopse"]
+                                    ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="hidden" name="inserir" id="enviar_id" value="1"/>
+								<input type="hidden" name="tipo_relatorio" value="dataunica" />
+                                <button type="submit" class="btn btn-theme btn-lg btn-block">Enviar Relatório</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+
+            <?php
+            break;
+			case "inserircontinuadas":
             ?>
 
             <link href="css/jquery-ui.css" rel="stylesheet">
@@ -6814,9 +7217,6 @@ ini_set(“display_errors”, 0);
 
                                                         ?>
 
-                                                        </tr>
-                                                        </tbody>
-                                                        ?>
 
                                                         </tr>
                                                         </tbody>
@@ -10869,44 +11269,31 @@ ini_set(“display_errors”, 0);
                                                                                                             }
                                                                                                         }
 
-
+						
                                                                                                         if (isset($_POST['inserir'])) {
 
 
                                                                                                             $idEvento = $_POST['idEvento'];
-                                                                                                            $tipo = $_POST['tipo'];
-                                                                                                            $idOcorrencia = $_POST['idOcorrencia'];
-                                                                                                            $periodoInicio = exibirDataMysql($_POST['periodoInicio']);
-                                                                                                            if ($_POST['periodoFim'] != '') {
-                                                                                                                $periodoFim = exibirDataMysql($_POST['periodoFim']);
-                                                                                                            } else {
-                                                                                                                $periodoFim = '0000-00-00';
+                                                                                                            //'0000-00-00'
+                                                                                                            $periodoInicio = exibirDataMysql($_POST['mes_ano']);
+																											if($_POST['tipo_relatorio'] == 'longaduracao'){
+																												$ano = substr($periodoInicio,0, 4);
+																												$mes = substr($periodoInicio,5, 2);
+																												$periodoFim = $ano."-".$mes."-".ultimoDiaMes($mes,$ano);
+																												$contagem = $_POST['contagem'];
+																											}else{
 
+																												$periodoFim = '0000-00-00';
+																												$contagem = 1;
                                                                                                             }
                                                                                                             $ndias = $_POST['ndias'];
-                                                                                                            $contagem = $_POST['contagem'];
+                                                                                                            
                                                                                                             $valor = $_POST['valor'];
                                                                                                             $relato = $_POST['relato'];
-                                                                                                            $hora = $_POST["hora"];
-                                                                                                            $outros_locais = $_POST["outros_locais"];
-                                                                                                            $bairro = $_POST["bairro"];
-                                                                                                            $projeto = $_POST["projeto"];
-                                                                                                            $atracao_principal = $_POST["atracao_principal"];
-                                                                                                            $linguagem = $_POST["linguagem"];
-                                                                                                            $tipo_evento = $_POST["tipo_evento"];
-                                                                                                            $numero_agentes = $_POST["numero_agentes"];
-                                                                                                            $convocatoria_edital = $_POST["convocatoria_edital"];
-                                                                                                            $nome_convocatoria = $_POST["nome_convocatoria"];
-                                                                                                            $prof_sa = $_POST["prof_sa"];
-                                                                                                            $quantidade_prof_sa = $_POST["quantidade_prof_sa"];
-                                                                                                            $acao_parceria = $_POST["acao_parceria"];
-                                                                                                            $nome_parceiro = $_POST["nome_parceiro"];
-                                                                                                            $gastos_pessoal = dinheiroDeBr($_POST["gastos_pessoal"]);
-                                                                                                            $gastos_estrutura = dinheiroDeBr($_POST["gastos_estrutura"]);
-                                                                                                            $ano_base = $_POST["ano_base"];
+                                                                                                            $idOcorrencia = $_POST['idOcorrencia'];
                                                                                                             $idUsuario = $user->ID;
 
-                                                                                                            $sql_inserir = "INSERT INTO `sc_indicadores` (`id`, `idEvento`, `valor`, `contagem`, `tipo`, `periodoInicio`, `periodoFim`, `ndias`, `idUsuario`, `relato`, `hora`, `outros_locais`, `bairro`, `projeto`, `atracao_principal`, `linguagem`, `tipo_evento`, `numero_agentes`, `convocatoria_edital`, `nome_convocatoria`, `prof_sa`, `quantidade_prof_sa`, `acao_parceria`, `nome_parceiro`, `gastos_pessoal`, `gastos_estrutura`, `ano_base`, `publicado`, `idOcorrencia`) VALUES (NULL, '$idEvento','$valor','$contagem', '$tipo','$periodoInicio', '$periodoFim', '$ndias', '$idUsuario', '$relato', '$hora', '$outros_locais', '$bairro', '$projeto', '$atracao_principal', '$linguagem', '$tipo_evento', '$numero_agentes', '$convocatoria_edital', '$nome_convocatoria', '$prof_sa', '$quantidade_prof_sa', '$acao_parceria', '$nome_parceiro', '$gastos_pessoal', '$gastos_estrutura', '$ano_base', '1','$idOcorrencia')";
+                                                                                                            $sql_inserir = "INSERT INTO `sc_indicadores` (`id`, `idEvento`,`idOcorrencia`, `valor`, `contagem`, `tipo`, `periodoInicio`, `periodoFim`, `ndias`, `idUsuario`, `relato`, `publicado`) VALUES (NULL, '$idEvento', '$idOcorrencia', '$valor','$contagem', '$tipo','$periodoInicio', '$periodoFim', '$ndias', '$idUsuario', '$relato', '1')";
                                                                                                             $ex = $wpdb->query($sql_inserir);
                                                                                                             if ($ex == 1) {
                                                                                                                 $mensagem = alerta("Relatório inserido com sucesso.", "success");
@@ -10917,7 +11304,7 @@ ini_set(“display_errors”, 0);
                                                                                                         if (isset($_GET['filter'])) {
                                                                                                             $order = ' ORDER BY "' . $_GET['filter'] . '" ' . $_GET['order'];
                                                                                                         } else {
-                                                                                                            $order = ' ORDER BY periodoInicio DESC ';
+                                                                                                            $order = ' ORDER BY id DESC ';
                                                                                                         }
 
                                                                                                         $total = 0;
@@ -10943,9 +11330,9 @@ ini_set(“display_errors”, 0);
 
                                                                                                         <?php
                                                                                                         if ($user->ID != 1 AND $user->ID != 5 AND $user->ID != 17 AND $user->ID != 68) {
-                                                                                                            $sel = "SELECT * FROM sc_indicadores WHERE publicado = '1' AND idUsuario = '" . $user->ID . "' $order";
+                                                                                                            $sel = "SELECT * FROM sc_indicadores WHERE publicado = '1' AND idUsuario = '" . $user->ID . "' $order LIMIT 0,100" ;
                                                                                                         } else {
-                                                                                                            $sel = "SELECT * FROM sc_indicadores WHERE publicado = '1' $order";
+                                                                                                            $sel = "SELECT * FROM sc_indicadores WHERE publicado = '1' $order  LIMIT 0,100";
 
                                                                                                         }
                                                                                                         $ocor = $wpdb->get_results($sel, ARRAY_A);
@@ -11002,17 +11389,7 @@ ini_set(“display_errors”, 0);
 
                                                                                                                         </td>
                                                                                                                         <td>
-                                                                                                                            <form method="POST"
-                                                                                                                                  action="?p=editarevento"
-                                                                                                                                  class="form-horizontal"
-                                                                                                                                  role="form">
-                                                                                                                                <input type="hidden"
-                                                                                                                                       name="editar"
-                                                                                                                                       value="<?php echo $ocor[$i]['id']; ?>"/>
-                                                                                                                                <input type="submit"
-                                                                                                                                       class="btn btn-theme btn-sm btn-block"
-                                                                                                                                       value="Carregar">
-                                                                                                                            </form>
+                                                                                                                            
                                                                                                                         </td>
                                                                                                                         <td>
                                                                                                                             <form method="POST"
