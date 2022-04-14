@@ -3232,6 +3232,107 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 
 		break;
 	
+		case "biblioteca": //$ano_base,$tipo,$projeto = NULL, $programa = NULL
+
+		$x = array();
+		
+		$total_publico_central = 0;
+		$total_publico_descentral = 0;
+		$total_emprestimo_central = 0;
+		$total_emprestimo_descentral = 0;	
+		$total_socios_central = 0;
+		$total_socios_descentral = 0;
+		$total_itens_central = 0;
+		$total_itens_descentral = 0;
+		$total_novas_central = 0;
+		$total_novas_descentral = 0;
+		$total_nova_digital = 0;
+		$total_downloads = 0;	
+		$total_itens_digital = 0;
+		// mes 
+
+		for($m = 1; $m < 13; $m++){
+				$data_inicial = $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT)."-01";
+				$ultimo_dia = ultimoDiaMes($ano_base,$m);
+				$data_final = $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT)."-".$ultimo_dia;			
+				$sql_biblio = "SELECT * FROM sc_ind_biblioteca WHERE ano_base = '$ano_base' AND publicado = '1' AND periodo_inicio BETWEEN '$data_inicial' AND '$data_final'";
+				$res = $wpdb->get_row($sql_biblio,ARRAY_A);
+
+				if($res != NULL){
+
+				$x["mes"][$m] = array(
+					"periodo" => $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT),
+					"Público - Biblioteca Central"  => $res['pub_central'],
+					"Público - Biblioteca Descentralizada" => $res['pub_ramais'] ,
+					"Empréstimos - Biblioteca Central" => $res['emp_central']  ,
+					"Empréstimos - Biblioteca Descentralizada" => $res['emp_ramais'],
+					"Sócios - Biblioteca Central" =>  $res['soc_central'] ,
+					"Sócios - Biblioteca Descentralizada" =>  $res['soc_ramais'] ,
+					"Itens Acervo - Biblioteca Central" => $res['acervo_central'] ,
+					"Itens Acervo - Biblioteca Descentralizada" => $res['acervo_ramais'] ,
+					"Itens Acervo - Biblioteca Digital" =>  $res['acervo_digital'],
+					"Novas Incorporações - Biblioteca Central" =>  $res['incorporacoes_central'],
+					"Novas Incorporações - Biblioteca Descentralizada" =>  $res['incorporacoes_ramais'],
+					"Novas Incorporações - Biblioteca Digital" => $res['incorporacoes_digital'] ,
+					"Downloads - Digital" =>  $res['downloads']	
+
+		);
+		$total_publico_central = $total_publico_central + $res['pub_central'];
+		$total_publico_descentral = $total_publico_descentral + $res['pub_ramais'];
+		$total_emprestimo_central = $total_emprestimo_central + $res['emp_central'];
+		$total_emprestimo_descentral = $total_emprestimo_descentral + $res['emp_ramais'];	
+		$total_socios_central = $res['soc_central'];
+		$total_socios_descentral = $res['soc_ramais'];
+		$total_itens_central = $res['acervo_central'];
+		$total_itens_descentral = $res['acervo_ramais'];
+		$total_itens_digital = $res['acervo_digital'];
+		$total_novas_central = $total_novas_central + $res['incorporacoes_central'];
+		$total_novas_descentral = $total_novas_descentral +$res['incorporacoes_ramais'];
+		$total_nova_digital = $total_nova_digital + $res['incorporacoes_digital'];
+		$total_downloads = $total_downloads + $res['downloads'];	
+				}		
+		} // for do mês
+
+		$x['ano'] = array(
+			"periodo" => $ano_base,
+			"Público - Biblioteca Central"  => $total_publico_central,
+			"Público - Biblioteca Descentralizada" => $total_publico_descentral ,
+			"Empréstimos - Biblioteca Central" => $total_emprestimo_central  ,
+			"Empréstimos - Biblioteca Descentralizada" => $total_emprestimo_descentral,
+			"Sócios - Biblioteca Central" =>  $total_socios_central ,
+			"Sócios - Biblioteca Descentralizada" =>  $total_socios_descentral ,
+			"Itens Acervo - Biblioteca Central" => $total_itens_central ,
+			"Itens Acervo - Biblioteca Descentralizada" => $total_itens_descentral ,
+			"Itens Acervo - Biblioteca Digital" =>  $total_itens_digital,
+			"Novas Incorporações - Biblioteca Central" =>  $total_novas_central ,
+			"Novas Incorporações - Biblioteca Descentralizada" =>  $total_novas_descentral,
+			"Novas Incorporações - Biblioteca Digital" => $total_nova_digital ,
+			"Downloads - Digital" =>  $total_downloads
+
+		
+		
+		);
+			
+			
+			
+			
+			
+			
+			
+		
+		
+		
+		
+		
+		
+
+			
+			
+		
+		
+		
+		
+		break;
 
 
 	}

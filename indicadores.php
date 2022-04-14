@@ -1133,28 +1133,30 @@ ini_set(“display_errors”, 0);
                 <div class="row">
 
                     <form class="formocor" action="?p=listarbiblioteca" method="POST" role="form">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Período de Avaliação - Início *</label>
-                                <input type='text' class="form-control calendario" name="periodo_inicio" required
-                                       value="<?php //echo exibirDataBr($ocor['dataInicio']);
-                                       ?>"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Período de Avaliação - Fim *</label>
-                                <input type='text' class="form-control calendario" name="periodo_fim" required
-                                       value="<?php //if($ocor['dataFinal'] != '0000-00-00'){ echo exibirDataBr($ocor['dataFinal']);}
-                                       ?>"/>
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="<?php echo date('Y'); ?>"/>
                             </div>
                         </div>
+						                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+							  <label>Mês</label>
+                                <select class="form-control" name="mes" id="mes">
+                                    <option>Escolha uma opção</option>
+                                    <?php 
+									for($m = 1; $m < 13; $m++){
+										echo '<option value="'.$m.'">'.$m.'</option>';
+									}
+									
+									?>
+									
+									
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Público Biblioteca Central (só número, sem pontuação)</label>
@@ -1265,8 +1267,8 @@ ini_set(“display_errors”, 0);
             $editar = 0;
 
             if (isset($_POST["biblioteca"])) {
-                $periodo_inicio = exibirDataMysql($_POST["periodo_inicio"]);
-                $periodo_fim = exibirDataMysql($_POST["periodo_fim"]);
+	
+
                 $pub_central = $_POST["pub_central"];
                 $pub_ramais = $_POST["pub_ramais"];
                 $emp_central = $_POST["emp_central"];
@@ -1286,8 +1288,7 @@ ini_set(“display_errors”, 0);
                 $idUsuario = $user->ID;
 
                 $sql_update = "UPDATE sc_ind_biblioteca SET
-						periodo_inicio = '$periodo_inicio',
-						periodo_fim = '$periodo_fim',
+
 						pub_central = '$pub_central',
 						pub_ramais = '$pub_ramais',
 						emp_central = '$emp_central',
@@ -1309,7 +1310,11 @@ ini_set(“display_errors”, 0);
                 $ind = recuperaDados("sc_ind_biblioteca", $_POST['biblioteca'], "id");
 
             }
-
+			
+			
+			$timestamp = strtotime($ind['periodo_inicio']); 
+			$m = date('m', $timestamp);
+			$ano_base = date('Y', $timestamp);
             ?>
 
             <link href="css/jquery-ui.css" rel="stylesheet">
@@ -1332,10 +1337,13 @@ ini_set(“display_errors”, 0);
                 <div class="container">
                     <div class="row">
                         <div class="col-md-offset-2 col-md-8">
-                            <h3>Biblioteca - Editar</h3>
+                            <h3>Biblioteca - Editar - <?php echo $m."/".$ano_base; ?></h3>
                             <p><?php if ($editar == 1) {
-                                    echo alerta("Disciplina/Curso atualizado.", "success");
-                                }; ?></p>
+                                    echo alerta("Relatório atualizado.", "success");
+                                }else{
+									echo alerta("Erro ao atualizar ou nenhum dado a atualizar.", "danger");
+									
+								} ?></p>
                         </div>
                     </div>
 
@@ -1343,29 +1351,7 @@ ini_set(“display_errors”, 0);
                 <div class="row">
 
                     <form class="formocor" action="?p=editarbiblioteca" method="POST" role="form">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Período de Avaliação - Início *</label>
-                                <input type='text' class="form-control calendario" name="periodo_inicio" required
-                                       value="<?php echo exibirDataBr($ind['periodo_inicio']); ?>"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Período de Avaliação - Fim *</label>
-                                <input type='text' class="form-control calendario" name="periodo_fim" required
-                                       value="<?php if ($ind['periodo_fim'] != '0000-00-00') {
-                                           echo exibirDataBr($ind['periodo_fim']);
-                                       } ?>"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control"
-                                       value="<?php echo $ind['ano_base']; ?>"/>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Público Biblioteca Central (só número, sem pontuação)</label>
@@ -2358,8 +2344,11 @@ ini_set(“display_errors”, 0);
 
             if (isset($_POST['inserir'])) {
                 $mensagem = alerta("Erro.", "");
-                $periodo_inicio = exibirDataMysql($_POST["periodo_inicio"]);
-                $periodo_fim = exibirDataMysql($_POST["periodo_fim"]);
+                $ano_base = $_POST["ano_base"];
+				$m = $_POST['mes'];
+				$periodo_inicio = $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT)."-01";
+				$ultimo_dia = ultimoDiaMes($ano_base,$m);
+				$periodo_fim = $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT)."-".$ultimo_dia;		
                 $pub_central = $_POST["pub_central"];
                 $pub_ramais = $_POST["pub_ramais"];
                 $emp_central = $_POST["emp_central"];
@@ -2372,16 +2361,32 @@ ini_set(“display_errors”, 0);
                 $incorporacoes_central = $_POST["incorporacoes_central"];
                 $incorporacoes_ramais = $_POST["incorporacoes_ramais"];
                 $incorporacoes_digital = $_POST["incorporacoes_digital"];
-                $ano_base = $_POST["ano_base"];
+
                 $downloads = $_POST["downloads"];
                 $obs = $_POST["obs"];
 
+
+				// controle de inserção
+				$sql_verifica = "SELECT id FROM sc_ind_biblioteca WHERE periodo_inicio = '$periodo_inicio' AND publicado ='1'";
+				$res_verifica = $wpdb->get_results($sql_verifica,ARRAY_A);
+				//var_dump($sql_verifica);
+				if(count($res_verifica) > 0){
+					$mensagem = alerta("Dado já inserido. Edite se for necessário.", "danger");
+				}else{
                 $sql_inserir = "INSERT INTO `sc_ind_biblioteca` (`id`, `periodo_inicio`, `periodo_fim`, `pub_central`, `pub_ramais`, `emp_central`, `emp_ramais`, `soc_central`, `soc_ramais`, `acervo_central`, `acervo_ramais`, `acervo_digital`, `incorporacoes_central`, `incorporacoes_ramais`, `incorporacoes_digital`, `ano_base`, `downloads`, `obs`, `idUsuario`, `atualizacao`, `publicado`) VALUES (NULL, '$periodo_inicio', '$periodo_fim', '$pub_central', '$pub_ramais', '$emp_central', '$emp_ramais', '$soc_central', '$soc_ramais', '$acervo_central', '$acervo_ramais', '$acervo_digital', '$incorporacoes_central','$incorporacoes_ramais', '$incorporacoes_digital','$ano_base','$downloads', '$obs', '" . $user->ID . "', '" . date("Y-m-d") . "','1')";
                 //echo $sql_inserir;
                 $ins = $wpdb->query($sql_inserir);
                 if ($ins == 1) {
                     $mensagem = alerta("Relatório inserido com sucesso.", "success");
                 }
+					
+					
+				}
+
+
+
+
+
             }
 
 

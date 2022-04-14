@@ -8,7 +8,7 @@
 		<h1>Ambiente teste / Importar Plano Municipal</h1>
 		<?php 
 		 //indicadores('2019','evento','769');
-		$n =  indicadores('2019','evento');
+		$n =  indicadores('2022','biblioteca');
 		echo "<pre>";
 		var_dump($n);
 		echo "</pre>";

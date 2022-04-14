@@ -14,28 +14,6 @@
 
 */
 
-// Funções
-function retornaMes($data){
-	
-	$m = date("m", strtotime($data));
-	switch ($data) {
-        case "01":    $mes = 'Jan';   break;
-        case "02":    $mes = 'Fev';   break;
-        case "03":    $mes = 'Mar';   break;
-        case "04":    $mes = 'Abr';   break;
-        case "05":    $mes = 'Mai';   break;
-        case "06":    $mes = 'Jun';   break;
-        case "07":    $mes = 'Jul';   break;
-        case "08":    $mes = 'Ago';   break;
-        case "09":    $mes = 'Set';   break;
-        case "10":    $mes = 'Out';   break;
-        case "11":    $mes = 'Nov';   break;
-        case "12":    $mes = 'Dez';   break; 
- }
- 
- return $mes;
-	
-}
 
 
 
@@ -85,60 +63,116 @@ switch($_GET['src']){
 
 	case "biblioteca": // por mês tb
 	
-	if(isset($_GET['ano']) AND $_GET['ano'] != ""){
-		$ano =" AND YEAR(periodo_inicio) = ".$_GET['ano'];
+	if(isset($_GET['ano'])){
+		$ano_base = $_GET['ano'];
 	}else{
-		$ano = "";
+		$ano_base = date('Y');
 	}
 	
+
+	//echo $ano_base;
+
+	//echo "<pre>";
+	//var_dump($ind);
+	//echo "</pre>";
 	
 	$json = "[";
-	$json_array = array();
-	$sel = "SELECT * FROM sc_ind_biblioteca WHERE publicado = '1' $ano ORDER BY periodo_inicio ASC";
-	$ocor = $wpdb->get_results($sel,ARRAY_A);
-	if(count($ocor) > 0){
-		for($i = 0; $i < count($ocor); $i++){
-		$json .=  '{
-			"periodo": "'.date("m/Y", strtotime($ocor[$i]['periodo_inicio'])).'",
-			"Público - Biblioteca Central" : "'.$ocor[$i]['pub_central'].'",
-			"Público - Biblioteca Descentralizada" : "'.$ocor[$i]['pub_ramais'].'",
-			"Empréstimos - Biblioteca Central" : "'. $ocor[$i]['emp_central'].'",
-			"Empréstimos - Biblioteca Descentralizada" : "'.$ocor[$i]['emp_ramais'].'",
-			"Sócios - Biblioteca Central" : "'. $ocor[$i]['soc_ramais'].'",
-			"Sócios - Biblioteca Descentralizada" : "'. $ocor[$i]['acervo_central'].'",
-			"Itens Acervo - Biblioteca Central" : "'.$ocor[$i]['acervo_central'].'",
-			"Itens Acervo - Biblioteca Descentralizada" : "'.$ocor[$i]['acervo_ramais'].'",
-			"Itens Acervo - Biblioteca Digital" : "'.$ocor[$i]['acervo_digital'].'",
-			"Novas Incorporações - Biblioteca Central" : "'.$ocor[$i]['incorporacoes_central'].'",
-			"Novas Incorporações - Biblioteca Descentralizada" : "'.$ocor[$i]['incorporacoes_ramais'].'",
-			"Novas Incorporações - Biblioteca Digital" : "'.$ocor[$i]['incorporacoes_digital'].'",
-			"Downloads - Digital" : "'.$ocor[$i]['downloads'].'"
+
+
+	if($ano_base == "ano"){
+		$anos = anoOrcamento();
+		//echo "<pre>";
+		//var_dump($anos);
+		//echo "</pre>";
+		for($i = 0; $i < count($anos); $i++){
+			$ind = indicadores($anos[$i]['ano_base'],'biblioteca');
+			
+			$json .=  '{
+			"periodo": "'.$ind['ano']['periodo'].'",
+			"Público - Biblioteca Central" : "'.$ind['ano']['Público - Biblioteca Central'].'",
+			"Público - Biblioteca Descentralizada" : "'.$ind['ano']['Público - Biblioteca Descentralizada'].'",
+			"Empréstimos - Biblioteca Central" : "'. $ind['ano']['Empréstimos - Biblioteca Central'].'",
+			"Empréstimos - Biblioteca Descentralizada" : "'.$ind['ano']['Empréstimos - Biblioteca Descentralizada'].'",
+			"Sócios - Biblioteca Central" : "'. $ind['ano']['Sócios - Biblioteca Central'].'",
+			"Sócios - Biblioteca Descentralizada" : "'. $ind['ano']['Sócios - Biblioteca Descentralizada'].'",
+			"Itens Acervo - Biblioteca Central" : "'.$ind['ano']['Itens Acervo - Biblioteca Central'].'",
+			"Itens Acervo - Biblioteca Descentralizada" : "'.$ind['ano']['Itens Acervo - Biblioteca Descentralizada'].'",
+			"Itens Acervo - Biblioteca Digital" : "'.$ind['ano']['Itens Acervo - Biblioteca Digital'].'",
+			"Novas Incorporações - Biblioteca Central" : "'.$ind['ano']['Novas Incorporações - Biblioteca Central'].'",
+			"Novas Incorporações - Biblioteca Descentralizada" : "'.$ind['ano']['Novas Incorporações - Biblioteca Descentralizada'].'",
+			"Novas Incorporações - Biblioteca Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'",
+			"Downloads - Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'"
 			},';
+			
+			
+			
+		}
 		
-		$json_array[$i] = array(
-			"periodo" => $ocor[$i]['periodo_inicio'],
-			"Público - Biblioteca Central"  => $ocor[$i]['pub_central'],
-			"Público - Biblioteca Descentralizada" => $ocor[$i]['pub_ramais'],
-			"Empréstimos - Biblioteca Central" =>  $ocor[$i]['emp_central'],
-			"Empréstimos - Biblioteca Descentralizada" => $ocor[$i]['emp_ramais'],
-			"Sócios - Biblioteca Central" =>  $ocor[$i]['soc_ramais'],
-			"Sócios - Biblioteca Descentralizada" =>  $ocor[$i]['acervo_central'],
-			"Itens Acervo - Biblioteca Central" => $ocor[$i]['acervo_central'],
-			"Itens Acervo - Biblioteca Descentralizada" => $ocor[$i]['acervo_ramais'],
-			"Itens Acervo - Biblioteca Digital" => $ocor[$i]['acervo_digital'],
-			"Novas Incorporações - Biblioteca Central" => $ocor[$i]['incorporacoes_central'],
-			"Novas Incorporações - Biblioteca Descentralizada" => $ocor[$i]['incorporacoes_ramais'],
-			"Novas Incorporações - Biblioteca Digital" => $ocor[$i]['incorporacoes_digital'],
-			"Downloads - Digital" => $ocor[$i]['downloads']
-		);
+		
+		
+	}else{
+	$ind = indicadores($ano_base,'biblioteca');
+
+		if(!isset($_GET['total'])){
+
+		for($i = 1; $i <= count($ind['mes']); $i++){
+		$json .=  '{
+			"periodo": "'.$ind['mes'][$i]['periodo'].'",
+			"Público - Biblioteca Central" : "'.$ind['mes'][$i]['Público - Biblioteca Central'].'",
+			"Público - Biblioteca Descentralizada" : "'.$ind['mes'][$i]['Público - Biblioteca Descentralizada'].'",
+			"Empréstimos - Biblioteca Central" : "'. $ind['mes'][$i]['Empréstimos - Biblioteca Central'].'",
+			"Empréstimos - Biblioteca Descentralizada" : "'.$ind['mes'][$i]['Empréstimos - Biblioteca Descentralizada'].'",
+			"Sócios - Biblioteca Central" : "'. $ind['mes'][$i]['Sócios - Biblioteca Central'].'",
+			"Sócios - Biblioteca Descentralizada" : "'. $ind['mes'][$i]['Sócios - Biblioteca Descentralizada'].'",
+			"Itens Acervo - Biblioteca Central" : "'.$ind['mes'][$i]['Itens Acervo - Biblioteca Central'].'",
+			"Itens Acervo - Biblioteca Descentralizada" : "'.$ind['mes'][$i]['Itens Acervo - Biblioteca Descentralizada'].'",
+			"Itens Acervo - Biblioteca Digital" : "'.$ind['mes'][$i]['Itens Acervo - Biblioteca Digital'].'",
+			"Novas Incorporações - Biblioteca Central" : "'.$ind['mes'][$i]['Novas Incorporações - Biblioteca Central'].'",
+			"Novas Incorporações - Biblioteca Descentralizada" : "'.$ind['mes'][$i]['Novas Incorporações - Biblioteca Descentralizada'].'",
+			"Novas Incorporações - Biblioteca Digital" : "'.$ind['mes'][$i]['Novas Incorporações - Biblioteca Digital'].'",
+			"Downloads - Digital" : "'.$ind['mes'][$i]['Novas Incorporações - Biblioteca Digital'].'"
+			},';
+
+		
+		
+
 	}
-}
+		}else{
+	
+			$json .=  '{
+			"periodo": "'.$ind['ano']['periodo'].'",
+			"Público - Biblioteca Central" : "'.$ind['ano']['Público - Biblioteca Central'].'",
+			"Público - Biblioteca Descentralizada" : "'.$ind['ano']['Público - Biblioteca Descentralizada'].'",
+			"Empréstimos - Biblioteca Central" : "'. $ind['ano']['Empréstimos - Biblioteca Central'].'",
+			"Empréstimos - Biblioteca Descentralizada" : "'.$ind['ano']['Empréstimos - Biblioteca Descentralizada'].'",
+			"Sócios - Biblioteca Central" : "'. $ind['ano']['Sócios - Biblioteca Central'].'",
+			"Sócios - Biblioteca Descentralizada" : "'. $ind['ano']['Sócios - Biblioteca Descentralizada'].'",
+			"Itens Acervo - Biblioteca Central" : "'.$ind['ano']['Itens Acervo - Biblioteca Central'].'",
+			"Itens Acervo - Biblioteca Descentralizada" : "'.$ind['ano']['Itens Acervo - Biblioteca Descentralizada'].'",
+			"Itens Acervo - Biblioteca Digital" : "'.$ind['ano']['Itens Acervo - Biblioteca Digital'].'",
+			"Novas Incorporações - Biblioteca Central" : "'.$ind['ano']['Novas Incorporações - Biblioteca Central'].'",
+			"Novas Incorporações - Biblioteca Descentralizada" : "'.$ind['ano']['Novas Incorporações - Biblioteca Descentralizada'].'",
+			"Novas Incorporações - Biblioteca Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'",
+			"Downloads - Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'"
+			},';
+
+		}
+	}
+
 	$json = substr($json,0,-1);	
 	$json .= "]";
 	
+	
+	
+	
+	
+	
+ ob_end_clean(); 	
 	echo $json;
+
 	
 
+	
 	break;
 	
 	// Comunicação
@@ -160,7 +194,7 @@ switch($_GET['src']){
 	
 	
 	// eventos data única
-	$sql_data_unica_locais = "SELECT DISTINCT local FROM sc_ocorrencia WHERE dataFinal <> '0000-00-00' AND dataInicio >= '$primeiro_dia' AND dataInicio <= '$ultimo_dia' AND publicado = '1'";  
+	$sql_data_unica_locais = "SELECT DISTINCT local FROM sc_indrencia WHERE dataFinal <> '0000-00-00' AND dataInicio >= '$primeiro_dia' AND dataInicio <= '$ultimo_dia' AND publicado = '1'";  
 	$locais = $wpdb->get_results($sql_data_unica_locais, ARRAY_A);
 
 
