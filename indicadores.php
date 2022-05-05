@@ -661,7 +661,21 @@ ini_set(“display_errors”, 0);
                 </div>
 
                 <?php
+				$ano_base = NULL;
+				if(isset($_GET['evento'])){
+					$evento = evento($_GET['evento']);
+					$ano_base = $evento['ano_base'];
+					
+				 $idUsuario = $user->ID;
+                if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario')  AND (dataEnvio IS NOT NULL) AND status IN (3,4) ORDER BY nomeEvento ASC";
+                } else {
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL ORDER BY nomeEvento ASC";
 
+                }
+                $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
+					
+				} 
                 ?>
                 <div class="row">
                     <form class="formocor" action="?p=listarevento" method="POST" role="form">
@@ -670,7 +684,7 @@ ini_set(“display_errors”, 0);
                                 <label>Ano Base</label>
                                 <select class="form-control" name="tipo" id="ano_base">
                                     <option>Selecione</option>
-									<?php opcaoAnoBase(); ?>
+									<?php opcaoAnoBase($ano_base); ?>
                                 </select>
                             </div>
                         </div>    
@@ -684,7 +698,17 @@ ini_set(“display_errors”, 0);
                                 <label>Nome do Evento *</label>
                                 <select class="form-control" name="idEvento" id="idEvento" required>
                                     <option value=''>Escolha uma opção </option>
-                                    
+                                    <?php 
+									
+									if(isset($_GET['evento'])){
+											echo "<option value='".$_GET['evento']."' selected>".$evento['titulo']."</option>";
+													
+										}
+									
+									
+										
+									
+										?>
                                 </select>
                             </div>
                         </div>
@@ -692,7 +716,15 @@ ini_set(“display_errors”, 0);
 						<div class="col-md-offset-2 col-md-8">
 							<label>Local</label>
 							<select class="form-control" name="idOcorrencia" id="idOcorrencia" >
-
+								<?php if(isset($_GET['evento'])){
+										$ocor = listaLocaisOcorrencia($_GET['evento']);
+											for($k = 0; $k < count($ocor); $k++){
+												$local = tipo($ocor[$k]['local']);	
+												echo "<option value='".$ocor[$k]['local']."' selected>".$local['tipo']."</option>";
+													
+											}
+										}
+										?>
 							</select>
 						</div>
 					</div>
@@ -10359,7 +10391,7 @@ for($i = 0; $i < count($ano); $i++){
                                                 ?>
                                                 <td><?php echo $usuario['display_name'] ?></td>
 												<td>
-												<form method="POST" action="?p=inserirevento&evento=<?php echo $evento[$i]['idEvento'] ?>" class="form-horizontal" role="form">
+												<form method="POST" action="?p=inserirevento_dataunica&evento=<?php echo $evento[$i]['idEvento'] ?>" class="form-horizontal" role="form">
 												
 												<button type="submit" class="btn btn-theme btn-lg btn-block">Inserir</button>
 												</form>

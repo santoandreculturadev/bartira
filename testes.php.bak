@@ -8,10 +8,17 @@
 		<h1>Ambiente teste / Importar Plano Municipal</h1>
 		<?php 
 		 //indicadores('2019','evento','769');
-		$n =  indicadores('2018','biblioteca');
-		echo "<pre>";
-		var_dump($n);
-		echo "</pre>";
+		 
+	//echo sanitizeString('março');	 
+		 
+	$x = indicadores('2019','incentivo');
+	$y = tipo(271);
+	echo "<pre>";
+	var_dump($x);
+	echo "</pre>";
+	
+	echo "O total de atendimentos pela ELT em 2019 foi de ".$x[283]['valor'];
+	
 	
 		?>
 	</main>

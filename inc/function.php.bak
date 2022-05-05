@@ -742,7 +742,8 @@ function evento($id){
 		'descricao' => $res['descricao'],
 		'url' => $res['url'],
 		'online' => $res['online'],
-		'convocatoria_edital' => $res['convocatoria_edital']
+		'convocatoria_edital' => $res['convocatoria_edital'],
+		'ano_base' => $res['ano_base']
 
 	);
 
@@ -3258,6 +3259,8 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 				$sql_biblio = "SELECT * FROM sc_ind_biblioteca WHERE ano_base = '$ano_base' AND publicado = '1' AND periodo_inicio BETWEEN '$data_inicial' AND '$data_final'";
 				$res = $wpdb->get_row($sql_biblio,ARRAY_A);
 
+				if($res != NULL){
+
 				$x["mes"][$m] = array(
 					"periodo" => $ano_base."-".str_pad($m, 2, 0, STR_PAD_LEFT),
 					"Público - Biblioteca Central"  => $res['pub_central'],
@@ -3287,7 +3290,8 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 		$total_novas_central = $total_novas_central + $res['incorporacoes_central'];
 		$total_novas_descentral = $total_novas_descentral +$res['incorporacoes_ramais'];
 		$total_nova_digital = $total_nova_digital + $res['incorporacoes_digital'];
-		$total_downloads = $total_downloads + $res['downloads'];			
+		$total_downloads = $total_downloads + $res['downloads'];	
+				}		
 		} // for do mês
 
 		$x['ano'] = array(
@@ -3309,36 +3313,104 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 		
 		
 		);
-			
-			
-			
-			
-			
-			
-			
-		
-		
-		
-		
-		
-		
-
-			
-			
-		
-		
-		
-		
 		break;
 
 
+		case "incentivo": //$ano_base,$tipo,$projeto = NULL, $programa = NULL
+			
+			$sql_lista = "SELECT * FROM sc_ind_incentivo WHERE ano_base = '$ano_base' AND publicado = '1'";
+			$res_lista = $wpdb->get_results($sql_lista,ARRAY_A);
+
+								$x['total']['all'] = 0;
+								$x['sa']['all'] = 0;
+								$x['vagas'] = 0;
+								$x['atendidos'] = 0;
+			for($i = 0; $i < count($res_lista); $i++){
+				if(!isset($x['total'][$res_lista[$i]['equipamento']])){
+					$t = tipo($res_lista[$i]['equipamento']);
+					$x['total'][$res_lista[$i]['equipamento']] = array(
+					'nome' => $t['tipo'],
+					'valor' => 0
+					);
+				}
+				
+				if(!isset($x['sa'][$res_lista[$i]['equipamento']])){
+
+					$u = tipo($res_lista[$i]['equipamento']);
+					$x['sa'][$res_lista[$i]['equipamento']] = array(
+					'nome' => $u['tipo'],
+					'valor' => 0
+					);
+					}		
+
+				for($m = 1 ; $m < 13; $m++){
+					if(!isset($x[$m]['total']['all'])){$x[$m]['total']['all'] = 0;}
+					if(!isset($x[$m]['sa']['all'])){$x[$m]['sa']['all'] = 0;}					
+					if(!isset($x[$m]['total'][$res_lista[$i]['equipamento']])){
+						
+						$v = tipo($res_lista[$i]['equipamento']);
+						$x[$m]['total'][$res_lista[$i]['equipamento']] = array(
+						'nome' => $v['tipo'],
+						'valor' => 0
+						);
+						
+						}	
+					if(!isset($x[$m]['sa'][$res_lista[$i]['equipamento']]['valor'])){
+						$w = tipo($res_lista[$i]['equipamento']);
+						$x[$m]['sa'][$res_lista[$i]['equipamento']]= array(
+						'nome' => $w['tipo'],
+						'valor' => 0
+						);
+						
+						}
+					
+					$mes = campoMes($m);
+					$x[$m]['total']['all'] = $x[$m]['total']['all'] + $res_lista[$i][$mes];	
+					$x['total']['all'] += $res_lista[$i][$mes];		
+
+					$x[$m]['sa']['all'] = $x[$m]['sa']['all'] + $res_lista[$i][$mes."_sa"];	
+					$x['sa']['all'] += $res_lista[$i][$mes."_sa"];		
+
+					$x[$m]['total'][$res_lista[$i]['equipamento']]['valor'] += $res_lista[$i][$mes];	
+					$x['total'][$res_lista[$i]['equipamento']]['valor'] += $res_lista[$i][$mes];		
+
+					$x[$m]['sa'][$res_lista[$i]['equipamento']]['valor'] += $res_lista[$i][$mes."_sa"];	
+					$x['sa'][$res_lista[$i]['equipamento']]['valor'] += $res_lista[$i][$mes."_sa"];		
+					
+
+				}
+				$x['vagas'] += $res_lista[$i]['vagas'] + $res_lista[$i]['rematriculas'];
+				$x['atendidos'] += $res_lista[$i]['atendidos'];
+			}
+
+		break;
 	}
+		
+		$x['preenchimento_vagas'] = number_format((($x['atendidos']/$x['vagas'])*100),2,',','.')." %";
+
 	
 	
 		return $x;
 	
 	
 } 
+
+function sanitizeString($str)
+{
+    return preg_replace('{\W}', '', preg_replace('{ +}', '_', strtr(
+        utf8_decode(html_entity_decode($str)),
+        utf8_decode('ÀÁÃÂÉÊÍÓÕÔÚÜÇÑàáãâéêíóõôúüçñ'),
+        'AAAAEEIOOOUUCNaaaaeeiooouucn')));
+}
+
+function campoMes($mes){ //$mes é um int
+
+		setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
+		date_default_timezone_set('America/Sao_Paulo');
+		return sanitizeString(utf8_encode(strftime('%B', mktime(0, 0, 0, $mes, 10))));
+	
+	
+}
 
 
 
@@ -3589,4 +3661,24 @@ function geraMesOcorrencia($idEvento){
 	
 	
 	
+}
+
+function listaLocaisOcorrencia($idEvento){
+	global $wpdb;
+	$sql = 'SELECT *
+		FROM sc_ocorrencia
+		WHERE idEvento = "'.$cod.'" 
+		AND publicado = "1"';
+
+		$res = $wpdb->get_results($sql);
+		//echo "<pre>";
+		//var_dump($res);
+		//echo "</pre>";
+		//echo $sql;
+for($i = 0; $i < count($res); $i++){
+	$data = ocorrencia($res[$i]->idOcorrencia);
+	$k[] = array(	
+		'idOcorrencia'	=> $res[$i]->idOcorrencia,
+		'data'			=> $data['local'],
+	);
 }
