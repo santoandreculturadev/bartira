@@ -162,6 +162,14 @@ function retornaMes($m){
 
 }
 
+function nuloZero($n){
+	if($n == NULL){
+		return 0;
+	}else{
+		return $n;
+	}
+}
+
 
 function stringMesAno($data){
 	
@@ -585,6 +593,14 @@ function diasemanaint($data)
 		}else{	
 			return $res;
 		}
+	}
+
+	function tipoId($string){
+		global $wpdb;
+		$sql = "SELECT id_tipo FROM sc_tipo WHERE tipo LIKE '$string'";
+		//echo $sql;
+		$res = $wpdb->get_row($sql,ARRAY_A);
+		return $res['id_tipo'];
 	}
 
 	function retornaDot($id){
@@ -2983,7 +2999,10 @@ function indResumo($tipo,$ano){
 	
 }
 
-function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
+function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$programa = NULL, $in_programa = NULL){
+// in_projeto = NULL => IN ; in_projeto = TRUE => NOT IN 
+
+
 	global $wpdb;
 
 	$x = array();
@@ -3133,7 +3152,8 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 				'agentes_locais' => $agentes_culturais_locais,
 				'n_bairros' => $numero_bairros,
 				'bairros_atendidos' => $porcentagem,
-				'n_bairros_descentralizados' => $numero_bairros_descentralizados
+				'n_bairros_descentralizados' => $numero_bairros_descentralizados,
+				'id_bairros' => $n_bairros
 				
 			
 			
@@ -3223,7 +3243,8 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 				'agentes_locais' => $agentes_culturais_locais,
 				'n_bairros' => $numero_bairros,
 				'bairros_atendidos' => $porcentagem,
-				'n_bairros_descentralizados' => $numero_bairros_descentralizados
+				'n_bairros_descentralizados' => $numero_bairros_descentralizados,
+				'id_bairros' => $n_bairros
 				
 			
 			
@@ -3236,6 +3257,14 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 		case "biblioteca": //$ano_base,$tipo,$projeto = NULL, $programa = NULL
 
 		$x = array();
+			
+		// bairros
+		$bairros = tipo(tipoId("Bibliotecas"));	
+		$id_bairros = json_decode($bairros['descricao']);
+		//$locais = $ids['bairros'];
+		//var_dump($locais);
+		$loc = explode(",",$id_bairros->bairros);
+		
 		
 		$total_publico_central = 0;
 		$total_publico_descentral = 0;
@@ -3308,7 +3337,8 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 			"Novas Incorporações - Biblioteca Central" =>  $total_novas_central ,
 			"Novas Incorporações - Biblioteca Descentralizada" =>  $total_novas_descentral,
 			"Novas Incorporações - Biblioteca Digital" => $total_nova_digital ,
-			"Downloads - Digital" =>  $total_downloads
+			"Downloads - Digital" =>  $total_downloads,
+			"bairros" => $loc
 
 		
 		
@@ -3318,13 +3348,32 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 
 		case "incentivo": //$ano_base,$tipo,$projeto = NULL, $programa = NULL
 			
-			$sql_lista = "SELECT * FROM sc_ind_incentivo WHERE ano_base = '$ano_base' AND publicado = '1'";
+			if(isset($projeto) AND $in_projeto == NULL){
+				$sql_projeto = ' AND projeto IN ('.$projeto.') ';
+			}elseif(isset($projeto) AND $in_projeto != NULL){
+				$sql_projeto = ' AND projeto NOT IN ('.$projeto.') ';
+
+			}else{
+				$projeto = '';
+			}
+			
+			if(isset($programa)){
+				$sql_programa = ' AND programa IN ('.$programa.') ';
+			}else{
+				$sql_programa = '';
+			}
+			
+			$sql_lista = "SELECT * FROM sc_ind_incentivo WHERE ocor_inicio BETWEEN '$ano_base-01-01' AND '$ano_base-12-31' AND publicado = '1' ".$sql_projeto." ".$sql_programa;
 			$res_lista = $wpdb->get_results($sql_lista,ARRAY_A);
 
 								$x['total']['all'] = 0;
 								$x['sa']['all'] = 0;
 								$x['vagas'] = 0;
 								$x['atendidos'] = 0;
+								$x['atividades'] = count($res_lista);
+								$x['atividades_agentes_locais'] = 0;
+								$x['agentes_locais'] = 0;
+								$x['local'] = array();
 			for($i = 0; $i < count($res_lista); $i++){
 				if(!isset($x['total'][$res_lista[$i]['equipamento']])){
 					$t = tipo($res_lista[$i]['equipamento']);
@@ -3341,11 +3390,16 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 					'nome' => $u['tipo'],
 					'valor' => 0
 					);
-					}		
+				}		
 
 				for($m = 1 ; $m < 13; $m++){
+					if(!isset($x[$m]['atividades_agentes_locais'])){$x[$m]['atividades_agentes_locais'] = 0;}						
+					if(!isset($x[$m]['agentes_locais'])){$x[$m]['agentes_locais'] = 0;}	
+					if(!isset($x[$m]['atividades'])){$x[$m]['atividades'] = 0;}					
 					if(!isset($x[$m]['total']['all'])){$x[$m]['total']['all'] = 0;}
 					if(!isset($x[$m]['sa']['all'])){$x[$m]['sa']['all'] = 0;}					
+					if(!isset($x[$m]['locais'])){$x[$m]['locais'] = array();}	
+					if(!isset($x[$m]['bairros'])){$x[$m]['bairros'] = array();}	
 					if(!isset($x[$m]['total'][$res_lista[$i]['equipamento']])){
 						
 						$v = tipo($res_lista[$i]['equipamento']);
@@ -3354,7 +3408,9 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 						'valor' => 0
 						);
 						
-						}	
+					}	
+				
+
 					if(!isset($x[$m]['sa'][$res_lista[$i]['equipamento']]['valor'])){
 						$w = tipo($res_lista[$i]['equipamento']);
 						$x[$m]['sa'][$res_lista[$i]['equipamento']]= array(
@@ -3376,12 +3432,46 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $programa = NULL){
 
 					$x[$m]['sa'][$res_lista[$i]['equipamento']]['valor'] += $res_lista[$i][$mes."_sa"];	
 					$x['sa'][$res_lista[$i]['equipamento']]['valor'] += $res_lista[$i][$mes."_sa"];		
+						
+					if($res_lista[$i][$mes] != 0){
+						$x[$m]['atividades'] = $x[$m]['atividades'] + 1;
+						$x[$m]['agentes_locais'] = $x[$m]['agentes_locais'] + $res_lista[$i]['santo_andre'];						
+						array_push($x[$m]['locais'],$res_lista[$i]['equipamento']);	
+						$x[$m]['bairros'] = retornaBairros($x[$m]['locais']);
+						
+					}else{
+						$x[$m]['bairros'] = array(
+						'n_bairros' => 0,
+						'n_bairros_descentralizados' => 0,
+						'id_bairro' => 0
+						);
+					}
 					
-
-				}
+					if($res_lista[$i][$mes] != 0 AND $res_lista[$i]['santo_andre'] > 0){
+						$x[$m]['atividades_agentes_locais'] = $x[$m]['atividades_agentes_locais'] + 1;		
+					}
+					
+					
+				} // fim for do mês
 				$x['vagas'] += $res_lista[$i]['vagas'] + $res_lista[$i]['rematriculas'];
 				$x['atendidos'] += $res_lista[$i]['atendidos'];
+				$x['agentes_locais'] += $res_lista[$i]['santo_andre'];
+				if($res_lista[$i]['santo_andre'] > 0){
+					$x['atividades_agentes_locais']++;
+				}
+				
+				array_push($x['local'],$res_lista[$i]['equipamento']);	
+						$x['bairros'] = retornaBairros($x['local']);
 			}
+
+	
+
+			// atividades
+			
+			
+
+
+
 
 		break;
 	}
@@ -3502,6 +3592,7 @@ function statusPlano($meta){
 	}else{
 		$x['execucao'] = $res['execucao'];
 		$t = retornaTipo($res['status']);
+		$x['status'] = $t['tipo'];
 		$x['status'] = $t['tipo'];
 		$x['data'] = exibirDataBr($res['insert_date']);
 		$x['relatorio'] = nl2Br($res['relatorio']);
@@ -3683,4 +3774,48 @@ function listaLocaisOcorrencia($idEvento){
 		);
 	}
 	return $k;
+}
+
+
+function retornaBairros($locais){ // $bairros = array
+	
+			$n_bairros = array();
+			$n_bairros_descentralizados = 0;
+			for($k = 0;$k < count($locais); $k++){
+				$tipo = tipo($locais[$k]);
+				$local = json_decode($tipo['descricao'],true);
+				if(isset($local['bairro'])){
+					$bairro = $local['bairro'];
+					if(!in_array($bairro,$n_bairros) AND $bairro != NULL){
+						array_push($n_bairros,$bairro);
+					}
+				}
+
+			}
+			
+			$numero_bairros = count($n_bairros);
+			if(in_array(578,$n_bairros)){
+				$numero_bairros_descentralizados = count($n_bairros) - 1;
+			}else{
+				$numero_bairros_descentralizados = count($n_bairros);
+			}
+			 $x['n_bairros'] = count($n_bairros);
+			 $x['n_bairros_descentralizados'] = $numero_bairros_descentralizados;
+			$x['id_bairro'] = $n_bairros;
+			return $x;
+	
+}
+
+function contaBairros($bairro,$conta_bairro){ //bairro array
+	
+	
+	
+	foreach($bairro as $b){
+		if(!in_array($b,$conta_bairro)){
+			array_push($conta_bairro,$b);
+		}
+	}
+	
+	return $conta_bairro;	
+	
 }

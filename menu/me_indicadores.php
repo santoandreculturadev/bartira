@@ -236,24 +236,7 @@
           <?php ?>
 
 
-          <?php
-          $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
-          if(in_array($user->ID,$peruser)){ ?>
-            <li class="nav-item">
-              <a class="nav-link" href="indicadores_filtro_lazer.php"><strong>LAZER</strong></a>
-            </li>
-          <?php } ?>
-          <?php ?>
 
-         <?php
-         $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,106,156);
-          if(in_array($user->ID,$peruser)){ ?>
-         <ul class="nav nav-pills flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="indicadores.php?p=tabelaincentivolazer">+ Lazer - Resumo</a>
-          </li>
-        <?php } ?>
-        <?php ?>
 
           <?php
           $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
@@ -269,7 +252,7 @@
           if(in_array($user->ID,$peruser)){ ?>
          <ul class="nav nav-pills flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="indicadores.php?p=tabelaincentivo">+ Incentivo Geral - Resumo</a>
+            <a class="nav-link" href="indicadores.php?p=tabelaincentivo_novo">+ Incentivo Geral - Resumo</a>
           </li>
         <?php } ?>
         <?php ?>

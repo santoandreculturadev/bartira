@@ -6927,6 +6927,372 @@ for($i = 0; $i < count($ano); $i++){
 
                                                                                                 <?php
                                                                                                 break;
+																								
+                                                case "tabelaincentivo_novo":
+
+                                                ?>
+
+                                                    <div class="form-group">
+                                                        <div class="col-md-offset-2">
+                                                            <h1>Resumo das Ações de Incentivo</h1>
+
+                                                        </div>
+                                                    </div>
+                                                <br/><br/>
+<?php
+set_time_limit(0);
+$ano = anoOrcamento(true);
+
+for($i = 0; $i < count($ano); $i++){
+	$ano_base = $ano[$i]['ano_base'];
+	
+	$ind = indicadores($ano_base,"incentivo","378,723",TRUE);
+
+
+
+
+	?>
+	
+
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                        <label><h2><?php echo $ano_base; ?></h2></label>
+                                                        <tr>
+                                                            <th>Período</th>
+                                                            <th>Público Geral</th>
+                                                            <th>Público Santo André</th>
+                                                            <th>Nº Atividades</th>
+                                                            <th>Nº Atividades com Agentes Locais</th>
+                                                            <th>Nº Agentes Culturais Locais Envolvidos</th>
+                                                            <th>Nº Bairros</th>
+                                                            <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
+                                                            <th>Nº Bairros Descentralizados</th>
+                                                            <th width="10%"></th>
+                                                            <th width="10%"></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+	<?php 
+	for($m = 1; $m < 13; $m++){ // rodar os meses
+	?>
+			<tr>
+
+			<td><?php echo campoMes($m); ?></td>
+			<td><?php echo nuloZero($ind[$m]['total']['all']); ?></td>
+			<td><?php echo nuloZero($ind[$m]['sa']['all']); ?></td>
+			<td><?php echo nuloZero($ind[$m]['atividades']); ?></td>
+			<td><?php echo nuloZero($ind[$m]['atividades_agentes_locais']); ?></td>
+			<td><?php echo nuloZero($ind[$m]['agentes_locais']); ?></td>
+			<td><?php echo nuloZero($ind[$m]['bairros']['n_bairros']); ?></td>
+			<td><?php echo round(($ind[$m]['bairros']['n_bairros']/112)*100,2); ?></td>
+			<td><?php echo nuloZero($ind[$m]['bairros']['n_bairros_descentralizados']); ?></td>
+			<td></td>
+			<td></td>
+
+			</tr>	
+	<?php 	
+	} // fim do for do mês
+	
+	?>
+<tr>
+
+<td>Total</td>
+			<td><?php echo $ind['total']['all']; ?></td>
+			<td><?php echo $ind['sa']['all']; ?></td>
+			<td><?php echo $ind['atividades']; ?></td>
+			<td><?php echo $ind['atividades_agentes_locais']; ?></td>
+			<td><?php echo $ind['agentes_locais']; ?></td>
+			<td><?php echo $ind['bairros']['n_bairros']; ?></td>
+			<td><?php echo round(($ind['bairros']['n_bairros']/112)*100,2); ?></td>
+			<td><?php echo $ind['bairros']['n_bairros_descentralizados']; ?></td>
+			<td></td>
+			<td></td>
+
+</tr>
+
+</tbody>
+</table>
+<hr />
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <br>
+                                                                <label><h2><?php echo $ano_base; ?> - Por Espaço</h2></label>
+                                                                <tr>
+                                                                    <th  width="10%">Período</th>
+                                                                    <th>CEU Ana Maria</th>
+                                                                    <th>CEU Marek</th>
+                                                                    <th>EMIA - Escola Municipal de Iniciação Artística
+                                                                        Jaçatuba
+                                                                    </th>
+                                                                    <th>ELCV - Escola livre de Cinema e Vídeo</th>
+                                                                    <th>ELD - Escola Livre de Dança</th>
+                                                                    <th>ELT - Escola Livre de Teatro</th>
+                                                                    
+                                                                    <th width="10%"></th>
+                                                                    <th width="10%"></th>
+                                                                </tr>
+																
+								<?php 
+								$t_711 = 0;
+								$t_271 = 0;
+								$t_205 = 0;
+								$t_206 = 0;
+								$t_204 = 0;
+								$t_283 = 0;
+								$sa_711 = 0;
+								$sa_271 = 0;
+								$sa_205 = 0;
+								$sa_206 = 0;
+								$sa_204 = 0;
+								$sa_283 = 0;
+								
+								for($m = 1; $m < 13; $m++){ // rodar os meses
+								
+								
+								
+								
+								
+	?>
+			<tr>
+
+			<td><?php echo campoMes($m)." - Geral"; ?></td>
+			<td><?php echo nuloZero($ind[$m]["total"][711]["valor"]); $t_711 += $ind[$m]["total"][711]["valor"];  //Ceu Ana Maria 711 ?></td>
+			<td><?php echo nuloZero($ind[$m]["total"][271]["valor"]); $t_271 += $ind[$m]["total"][271]["valor"];// CEU Marek 271 ?></td>
+			<td><?php echo nuloZero($ind[$m]["total"][205]["valor"]); $t_205 += $ind[$m]["total"][205]["valor"];// EMIA 205 ?></td>
+			<td><?php echo nuloZero($ind[$m]["total"][206]["valor"]); $t_206 += $ind[$m]["total"][206]["valor"]; // ELCV 206 ?></td>
+			<td><?php echo nuloZero($ind[$m]["total"][204]["valor"]); $t_204 += $ind[$m]["total"][204]["valor"];// ELD 204 ?></td>
+			<td><?php echo nuloZero($ind[$m]["total"][283]["valor"]); $t_283 += $ind[$m]["total"][283]["valor"];//ELT 283 ?></td>
+
+			<td></td>
+			<td></td>
+
+			</tr>	
+
+			<tr>
+
+			<td><?php echo campoMes($m)." - SA"; ?></td>
+			<td><?php echo nuloZero($ind[$m]["sa"][711]["valor"]); $sa_711 += $ind[$m]["sa"][711]["valor"];  //Ceu Ana Maria 711 ?></td>
+			<td><?php echo nuloZero($ind[$m]["sa"][271]["valor"]); $sa_271 += $ind[$m]["sa"][271]["valor"];// CEU Marek 271 ?></td>
+			<td><?php echo nuloZero($ind[$m]["sa"][205]["valor"]); $sa_205 += $ind[$m]["sa"][205]["valor"];// EMIA 205 ?></td>
+			<td><?php echo nuloZero($ind[$m]["sa"][206]["valor"]); $sa_206 += $ind[$m]["sa"][206]["valor"]; // ELCV 206 ?></td>
+			<td><?php echo nuloZero($ind[$m]["sa"][204]["valor"]); $sa_204 += $ind[$m]["sa"][204]["valor"];// ELD 204 ?></td>
+			<td><?php echo nuloZero($ind[$m]["sa"][283]["valor"]); $sa_283 += $ind[$m]["sa"][283]["valor"];//ELT 283 ?></td>
+
+			<td></td>
+			<td></td>
+
+			</tr>			
+	<?php 	
+	} // fim do for do mês
+								
+								
+								?>								
+			<td>TOTAL -Atendimentos ao longo da ação</td>
+			<td><?php echo $t_711; //Ceu Ana Maria 711 ?></td>
+			<td><?php echo $t_271; // CEU Marek 271 ?></td>
+			<td><?php echo $t_205; // EMIA 205 ?></td>
+			<td><?php echo $t_206; // ELCV 206 ?></td>
+			<td><?php echo $t_204; // ELD 204 ?></td>
+			<td><?php echo $t_283; //ELT 283 ?></td>
+
+			<td></td>
+			<td></td>
+
+			</tr>	
+			<td>TOTAL - Atendimentos que são moradores de Santo André</td>
+			<td><?php echo $sa_711; //Ceu Ana Maria 711 ?></td>
+			<td><?php echo $sa_271; // CEU Marek 271 ?></td>
+			<td><?php echo $sa_205; // EMIA 205 ?></td>
+			<td><?php echo $sa_206; // ELCV 206 ?></td>
+			<td><?php echo $sa_204; // ELD 204 ?></td>
+			<td><?php echo $sa_283; //ELT 283 ?></td>
+
+			<td></td>
+			<td></td>
+
+			</tr>				
+																
+                                                                </thead>
+                                                                </tbody>
+
+			
+									</table>
+
+<?php 
+
+$t = tipo(tipoId("Indicadores por projeto"));
+//var_dump(tipoId("Indicadores por projeto"));
+$tipo = json_decode($t['descricao'],TRUE);
+
+
+
+
+
+?>
+
+											<table class="table table-striped">
+                                                                        <thead>
+                                                                        <br>
+                                                                        <label><h2><?php echo $ano_base; ?> - Por Projeto (Qtde. de
+                                                                                ações)</h2></label>
+                                                                        <tr>
+                                                                            <th>Período</th>
+                                                                  <?php    foreach($tipo as $key => $value){
+															echo "<th>".$key."<th />";
+															
+																  } ?>
+                                                                      <th width="10%"></th>
+                                                                    <th width="10%"></th>
+																			
+                                                                        </tr>
+                                                                        </thead>
+
+                                                                        <tbody>
+<?php 
+for($m = 1; $m < 13; $m++){
+
+?>
+<tr>
+<td><?php echo campoMes($m)?> </td>
+	<?php foreach ($tipo as $key => $value){
+		$indicador[$key] = indicadores($ano_base,"incentivo",$value);
+		echo "<td>".nuloZero($indicador[$key][$m]['total']['all'])."<td>";
+		?>
+	<?php } // fim do foreach?>
+<td></td>
+<td></td>
+</tr>					
+<?php } ?>
+<tr>
+<td>Total  </td>
+	<?php foreach ($tipo as $key => $value){
+		echo "<td>".nuloZero($indicador[$key]['total']['all'])."<td>";
+		?>
+	<?php } // fim do foreach?>
+<td></td>
+<td></td>
+</tr>	
+                                        </tbody>
+									</table>
+<?php 	
+	//echo "<pre>";
+	//var_dump($indicador);
+	//echo "</pre>";
+	
+	?>
+<?php } // fim do for do ano ?>
+
+<?php 
+break;
+
+case "tabelaatendimento":
+
+
+set_time_limit(0);
+$ano = anoOrcamento(true);
+
+for($i = 0; $i < count($ano); $i++){
+	$ano_base = $ano[$i]['ano_base'];
+
+$ind_evento = indicadores($ano_base,"evento");
+$ind_biblioteca = indicadores($ano_base,"biblioteca");
+$ind_incentivo = indicadores($ano_base,"incentivo");
+?>
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                        <label><h2><?php echo $ano_base; ?></h2></label>
+                                                        <tr>
+                                                            <th>Período</th>
+                                                            <th>Público Geral</th>
+                                                            
+                                                            <th>Nº Atividades</th>
+                                                            <th>Nº Atividades com Agentes Locais</th>
+                                                            <th>Nº Agentes Culturais Locais Envolvidos</th>
+                                                            <th>Nº Bairros</th>
+                                                            <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
+                                                            <th>Nº Bairros Descentralizados</th>
+                                                            <th width="10%"></th>
+                                                            <th width="10%"></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+<?php 
+for($m = 1; $m < 13; $m++){
+	?>
+	<tr>
+ <th><?php echo $m; ?></th>
+                                                            <th><?php echo ($ind_evento['mes'][$m]['publico'] + $ind_biblioteca['mes'][$m]['Público - Biblioteca Central'] + $ind_biblioteca['mes'][$m]['Público - Biblioteca Descentralizada'] + $ind_incentivo[$m]['total']['all']);   ?></th>
+                                                            
+                                                            <th><?php echo ($ind_evento['mes'][$m]['n_atividades'] +  $ind_incentivo[$m]['atividades']);   ?></th>
+                                                            <th><?php echo ($ind_evento['mes'][$m]['n_atividades_locais'] +  $ind_incentivo[$m]['atividades_agentes_locais']);   ?></th>
+                                                            <th><?php echo ($ind_evento['mes'][$m]['agentes_locais'] +  $ind_incentivo[$m]['agentes_locais']);   ?></th>
+                                                            <th>
+															<?php 
+															$conta_bairro = array();
+															$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
+															$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairro'],$conta_bairro);
+															
+															$t = tipo(tipoId("Bibliotecas"));
+															$tipo = json_decode($t['descricao'],TRUE);
+															$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
+															echo count($conta_bairro);
+															?>
+															
+															
+															</th>
+                                                            <th><?php echo  round((count($conta_bairro)/112)*100,2) ?></th>
+                                                            <th><?php echo count($conta_bairro) - 1;?></th>
+                                                            <th width="10%"></th>
+                                                            <th width="10%"></th>	
+															</tr>
+	<?php 
+} // for mês
+
+
+
+?>
+
+
+														</tbody>
+												</table>
+
+<?php } // for ano_base ?>
+<!--
+<h1>Tabela Atendimento Geral</h1>
+
+<h2>Evento</h2>
+<?php 
+/*
+echo "<pre>";
+var_dump(indicadores(2019,"evento"));
+echo "</pre>";
+?>
+
+<h2>Biblioteca</h2>
+<?php 
+echo "<pre>";
+var_dump(indicadores(2019,"biblioteca"));
+echo "</pre>";
+?>
+
+<h2>Incentivo</h2>
+<?php 
+echo "<pre>";
+var_dump(indicadores(2019,"incentivo"));
+echo "</pre>";
+*/
+?>
+-->
+
+
+                                                                                                <?php
+                                                                                                break;
+																								
+																								
                                                                                                 case "tabelaincentivolazer":
 
                                                                                                 ?>
