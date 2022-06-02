@@ -7261,12 +7261,12 @@ for($m = 1; $m < 13; $m++){
 												</table>
 
 <?php } // for ano_base ?>
-<!--
+
 <h1>Tabela Atendimento Geral</h1>
 
 <h2>Evento</h2>
 <?php 
-/*
+
 echo "<pre>";
 var_dump(indicadores(2019,"evento"));
 echo "</pre>";
@@ -7284,9 +7284,9 @@ echo "</pre>";
 echo "<pre>";
 var_dump(indicadores(2019,"incentivo"));
 echo "</pre>";
-*/
+
 ?>
--->
+
 
 
                                                                                                 <?php

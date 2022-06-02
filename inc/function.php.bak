@@ -44,6 +44,10 @@ function checar($id){
 	}
 }
 
+function fillZero($string,$caracteres){
+	str_pad($string,$caracteres , '0', STR_PAD_LEFT);
+}
+
 
 function exibeHoje(){
 	$dia = date('d');
@@ -3260,11 +3264,14 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$progr
 			
 		// bairros
 		$bairros = tipo(tipoId("Bibliotecas"));	
-		$id_bairros = json_decode($bairros['descricao']);
+		$id_bairros = json_decode($bairros['descricao'],TRUE);
 		//$locais = $ids['bairros'];
 		//var_dump($locais);
-		$loc = explode(",",$id_bairros->bairros);
-		
+		if(count($id_bairros) > 0){
+			$loc = explode(",",$id_bairros['bairros']);
+		}else{
+			$loc = array();
+		}
 		
 		$total_publico_central = 0;
 		$total_publico_descentral = 0;
@@ -3374,6 +3381,7 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$progr
 								$x['atividades_agentes_locais'] = 0;
 								$x['agentes_locais'] = 0;
 								$x['local'] = array();
+								
 			for($i = 0; $i < count($res_lista); $i++){
 				if(!isset($x['total'][$res_lista[$i]['equipamento']])){
 					$t = tipo($res_lista[$i]['equipamento']);
@@ -3471,12 +3479,12 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$progr
 			
 
 
-
+		$x['preenchimento_vagas'] = number_format((($x['atendidos']/$x['vagas'])*100),2,',','.')." %";
 
 		break;
 	}
 		
-		$x['preenchimento_vagas'] = number_format((($x['atendidos']/$x['vagas'])*100),2,',','.')." %";
+		
 
 	
 	
@@ -3806,12 +3814,16 @@ function retornaBairros($locais){ // $bairros = array
 	
 }
 
-function contaBairros($bairro){ //bairro array
+function contaBairros($bairro,$conta_bairro){ //bairro array
+	
+	
 	
 	foreach($bairro as $b){
-		
-		
+		if(!in_array($b,$conta_bairro)){
+			array_push($conta_bairro,$b);
+		}
 	}
 	
+	return $conta_bairro;	
 	
 }
