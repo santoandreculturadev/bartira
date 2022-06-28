@@ -1200,7 +1200,7 @@ if(isset($_POST['deletar'])){
 						
 						
 						<?php 
-					}
+					}{
 					
 					$total_orc[$orc['ano_base']] = $total_orc[$orc['ano_base']] + $orc['total'];
 					$total_con[$orc['ano_base']] = $total_con[$orc['ano_base']] + $orc['contigenciado'];
@@ -1260,7 +1260,9 @@ if(isset($_POST['deletar'])){
 </section>
 
 <?php 
-break;
+
+break; 
+
 case "visaogeralv2": 
 
 if(isset($_GET['unidade']) AND $_GET['unidade'] != 0 ){
