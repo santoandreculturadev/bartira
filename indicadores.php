@@ -4497,6 +4497,8 @@ ini_set(“display_errors”, 0);
             <?php
             break;
         case "tabelaevento":
+			
+			fixAnoBase("sc_indicadores","id","periodoInicio","ano_base");
 
         ?>
 

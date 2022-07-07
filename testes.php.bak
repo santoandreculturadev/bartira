@@ -11,16 +11,12 @@
 		 
 	//echo sanitizeString('março');	 
 		 
-	$x = indicadores('2019','incentivo');
-	$y = tipo(271);
+$sel_hist_data = "SELECT id, titulo,valor, descricao, tipo, idUsuario,data,idPedidoContratacao FROM sc_mov_orc WHERE dotacao = '12' AND publicado = '1' AND data BETWEEN '2018-07-01' AND '2018-07-31' AND tipo = '311' ORDER BY id ASC ";
+	$hist_data = $wpdb->get_results($sel_hist_data,ARRAY_A);
 	echo "<pre>";
-	var_dump($x);
+	var_dump($hist_data);	
 	echo "</pre>";
-	
-	echo "O total de atendimentos pela ELT em 2019 foi de ".$x[283]['valor'];
-	
-	
-		?>
+	?>
 	</main>
 
 	

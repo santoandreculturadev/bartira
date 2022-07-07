@@ -976,7 +976,7 @@ if(isset($_POST['deletar'])){
 		$anobase_option = $_GET['ano_base']; 	
 	}else{
 		$ano_base = "";
-		$anobase_option = 0; 	
+		$anobase_option = date('Y'); 	
 
 	}
 

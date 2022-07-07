@@ -1745,7 +1745,7 @@ $historico = orcamento($id_hist);
 		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
             VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase')";
 		$ins = $wpdb->query($sql_ins);
-		
+		atualizaMetaOrcamento();
 		if($ins == 1){
 			$mensagem = alerta("Planejamento atualizado.","success");	
 

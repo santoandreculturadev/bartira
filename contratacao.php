@@ -205,7 +205,7 @@ if(isset($_POST['apaga_pedido'])){
 
 	if($query_apaga == 1){
 		$mensagem = '<div class="alert alert-success"> Pedido apagado com sucesso. </div>';
-	
+		gravarLog($idUsuario,$sql_apaga);
 
 	}
 }
@@ -997,6 +997,7 @@ if(count($res) > 0){
  	$upd = $wpdb->query($sql_atualizar_pessoa);
  	if($upd == 1){
  		$mensagem = alerta("Pessoa Física atualizado com sucesso.","success");
+		gravarLog($idUsuario,$sql_atualizar_pessoa);
  	}else{
  		$mensagem = alerta("Não atualizado.","warning");
  		
@@ -1218,6 +1219,7 @@ if(count($res) > 0){
  	$upd = $wpdb->query($sql_atualizar_juridica);
  	if($upd == 1){
  		$mensagem =  alerta("Atualizado com sucesso.","success");
+		gravarLog($idUsuario,$upd);
  	}else{
  		$mensagem = alerta("Não atualizado.","warning");
  	}
@@ -1428,12 +1430,18 @@ if(count($res) > 0){
  	dataEnvio = '$dataEnvio'
  	WHERE idPedidoContratacao = '$id_pedido'";
  	$res = $wpdb->query($sql_atualiza);
+		if($res == 1){
+			gravarLog($idUsuario,$sql_atualiza);
+		}
 
  	$sql_atualiza_mov = "UPDATE sc_mov_orc SET
  	valor = '$valor',
  	dotacao = '$dotacao'
  	WHERE idPedidoContratacao = '$id_pedido'";
  	$res = $wpdb->query($sql_atualiza_mov);
+		if($res == 1){
+			gravarLog($idUsuario,$sql_atualiza_mov);
+		}
 
  }
  
@@ -1712,6 +1720,7 @@ if(count($res) > 0){
  		$upd = $wpdb->query($sql_upd);
  		if($upd != 1){
 			//echo $sql_upd."<br />";
+			gravarLog($idUsuario,$upd);
  		}
  	}
  	$parcela = parcela($id);

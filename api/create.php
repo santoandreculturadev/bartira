@@ -39,14 +39,14 @@ $wpdb->query("TRUNCATE TABLE `sc_api`");
 
 $ano = anoOrcamento(true);
 
+
 // atendimento
 
-var_dump($ano);
 
 for($i = 0; $i < count($ano); $i++){
 	$ano_base = $ano[$i]['ano_base'];
 
-
+/*
 
 
 	$json_ano = "[";
@@ -119,6 +119,11 @@ for($i = 0; $i < count($ano); $i++){
 	$json_ano = "[";
 
 	$ind = indicadores($ano_base,'biblioteca');
+	
+	echo "<pre>";
+	var_dump($ind);
+	echo "</pre>";
+	
 
 	$json_ano .=  '{
 			"periodo": "'.$ind['ano']['periodo'].'",
@@ -167,7 +172,7 @@ for($i = 0; $i < count($ano); $i++){
 		
 		$json_mes = substr($json_mes,0,-1);	
 	$json_mes .= "]";
-	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '".substr($ind['mes'][$n]['periodo'],-2)."', '$json_mes')";
+	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '$n', '$json_mes')";
 	$wpdb->query($sql_insert);		
 	
 
@@ -248,16 +253,6 @@ for($i = 0; $i < count($ano); $i++){
 		$wpdb->query($sql_insert);	
 		echo $sql_insert;
 		
-/*
-
-$indica['ano']['publico']; ?></td>
-				<td><?php echo $indica['ano']['n_atividades']; ?></td>
-				<td><?php echo $indica['ano']['n_atividades_locais']; ?></td>
-				<td><?php echo $indica['ano']['agentes_locais']; ?></td>
-				<td><?php echo $indica['ano']['n_bairros']; ?></td>
-				<td><?php echo $indica['ano']['bairros_atendidos']; ?></td>
-				<td><?php echo $indica['ano']['n_bairros_descentralizados'];
-*/
 
 	
 // incentivo
@@ -334,16 +329,42 @@ $indica['ano']['publico']; ?></td>
 		echo $sql_insert;
 	
 	
-	/*
-				<td><?php echo $ind['total']['all']; ?></td>
-			<td><?php echo $ind['sa']['all']; ?></td>
-			<td><?php echo $ind['atividades']; ?></td>
-			<td><?php echo $ind['atividades_agentes_locais']; ?></td>
-			<td><?php echo $ind['agentes_locais']; ?></td>
-			<td><?php echo $ind['bairros']['n_bairros']; ?></td>
-			<td><?php echo round(($ind['bairros']['n_bairros']/112)*100,2); ?></td>
-			<td><?php echo $ind['bairros']['n_bairros_descentralizados']; ?></td>
-	*/
+*/
+	
+	
+	// orcamento
+	
+	// Quais os projetos do ano base
+	
+	$sql_ano = "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' AND ano_base = '$ano_base'";
+	$res_orc = $wpdb->get_results($sql_ano,ARRAY_A);
+	
+	for($g = 0; $g < count($res_orc); $g++){
+	
+		$id = $res_orc[$g]['id'];
+		
+		for($m = 1; $m < 13; $m++){
+			$inicio = $ano_base."-".fillZero($m,2)."-01";
+			$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
+
+
+
+			$orc = orcamento($id,$fim,$inicio);
+			echo $inicio." / ".$fim."<br />";
+			echo "<pre>";
+			var_dump($orc);
+			echo "</pre>";
+			echo "---------------------------------------<br />";
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

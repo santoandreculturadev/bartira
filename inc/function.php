@@ -1215,8 +1215,8 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	$sel_hist_data = "SELECT id, titulo,valor, descricao, tipo, idUsuario,data,idPedidoContratacao FROM sc_mov_orc WHERE dotacao = '$id' AND publicado = '1' AND data BETWEEN '$inicio' AND '$fim' AND tipo = '311' ORDER BY id ASC ";
 	$hist_data = $wpdb->get_results($sel_hist_data,ARRAY_A);
 	$total_liberado_data = 0;
-	for($k = 0; $k < count($hist_data); $k++){
-		$total_liberado_data = $total_liberado_data + $hist_data[$k]['valor'];
+	for($t = 0; $t < count($hist_data); $t++){
+		$total_liberado_data = $total_liberado_data + $hist_data[$t]['valor'];
 	}
 	
 	
@@ -1284,6 +1284,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 		'historico' => $hist,
 		'historico_contratacao' => $hist_data,
 		'total_liberado_data' => $total_liberado_data,
+		'sql_data' => $sel_hist_data,
 	'visualizacao' => $val['projeto']."/".$val['ficha'], //colocar natureza (importar de novo)
 	'natureza' => $val['natureza']."/".$val['fonte'],	
 	'liberado' => $valor_lib,
@@ -3826,4 +3827,19 @@ function contaBairros($bairro,$conta_bairro){ //bairro array
 	
 	return $conta_bairro;	
 	
+}
+
+function fixAnoBase($tabela,$c_id,$c_data,$c_ano_base){ // nome da tabela, nome do campo id, nome do campo onde tem a data, nome do campo ano base
+	global $wpdb;
+	
+	$sql = "SELECT $c_data,$c_id FROM $tabela";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	
+	
+	for($i = 0; $i < count($res); $i++){
+		$ano_base = date_format(date_create($res[$i][$c_data]), 'Y');
+		$id = $res[$i][$c_id];
+		$upd = "UPDATE $tabela SET $c_ano_base = '$ano_base' WHERE $c_id = '$id'";
+		$wpdb->query($upd);
+	}
 }
