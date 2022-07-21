@@ -30,7 +30,7 @@ $_SESSION['entidade'] = 'atividade';
 					$sql_sel = "UPDATE sc_contratacao SET publicado = '0' WHERE idAtividade = '$id'";
 					$query_sel = $wpdb->query($sql_sel);
 				}
-				
+
 				
 			}
 			?>

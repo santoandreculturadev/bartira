@@ -1156,12 +1156,6 @@ function diasEfetivos($id){ //01
 
 function orcamento($id,$fim = NULL,$inicio = NULL){
 
-	if($fim == NULL AND $inicio == NULL){
-		$inicio = date('y')."-01-01";
-		$fim = date('y')."-12-".ultimoDiaMes(date('y'),12);
-	}
-	
-	
 	global $wpdb;
 	$sel = "SELECT valor,dotacao,descricao, projeto, ficha, natureza, fonte, ano_base FROM sc_orcamento WHERE id = '$id' AND publicado = '1'";
 	$val = $wpdb->get_row($sel,ARRAY_A);
@@ -1174,15 +1168,16 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 
 	
 	// Contigenciado (286)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '286' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'" ;
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '286' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_cont = 0;
 	for($i = 0; $i < count($cont); $i++){
 		$valor_cont = $valor_cont + $cont[$i]['valor'];	
 	}
+	echo $sel_cont;
 	
 	// Anulado (394)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '394' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'" ;
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '394' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_anul = 0;
 	for($i = 0; $i < count($cont); $i++){
@@ -1191,7 +1186,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	
 	
 	// Descontigenciado (287)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '287' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'";
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '287' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_desc = 0;
 	for($i = 0; $i < count($cont); $i++){
@@ -1200,7 +1195,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	
 
 	// Suplemento (288)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '288' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'";
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '288' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_supl = 0;
 	for($i = 0; $i < count($cont); $i++){
@@ -3842,4 +3837,70 @@ function fixAnoBase($tabela,$c_id,$c_data,$c_ano_base){ // nome da tabela, nome 
 		$upd = "UPDATE $tabela SET $c_ano_base = '$ano_base' WHERE $c_id = '$id'";
 		$wpdb->query($upd);
 	}
+}
+
+function orcamentoDataTotal($ano_base,$mes){
+/*
+                                                            <th>Orçado</th>
+                                                            <th>Contigenciado</th>
+                                                            <th>Supl/Liberado</th>
+                                                            <th>Disponibilizado</th>
+                                                            <th>Empenhado</th>
+                                                            <th>Reservado</th>
+                                                            <th>Comprometido</th>
+                                                            <th>Disponível</th>
+                                                            <th>% comprometido em relação ao disponível</th>
+*/
+
+
+
+	global $wpdb;
+	$inicio = $ano_base."-01-01";
+	$fim = $ano_base."-".fillZero($mes,2)."-".ultimoDiaMes($ano_base,$mes);
+
+	$orcamento = array();	
+
+	$tipos = array(
+		'contingenciado' => 286,
+		'descontingenciado' => 287,
+		'anulado' => 394,
+		'suplementado' => 288,
+		'liberado' => 311
+
+	);
+
+	// sc_orcamento - orçado
+	$sql = "SELECT SUM(valor) AS valor_total FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado = '1' AND idPai = '0' AND planejamento = '0'";
+
+	$res = $wpdb->get_row($sql,ARRAY_A);
+	
+	$orcamento['orcado'] = ($res['valor_total']);
+
+	//movimentações
+	foreach($tipos as $key =>$orca){
+		//echo $key." / ".$orca;
+		// contingenciado
+		$sql = "SELECT SUM(valor) AS valor_total FROM sc_mov_orc WHERE 
+		publicado = '1' 
+		AND tipo = '$orca'
+		AND data between '$inicio' AND '$fim' 
+		AND dotacao IN (SELECT id FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado ='1' AND idPai = '0' AND planejamento = '0')";
+
+		$res = $wpdb->get_row($sql,ARRAY_A);
+		$orcamento[$key] = ($res['valor_total']);
+	}
+
+	$orcamento['revisado'] = $orcamento['orcado'] - $orcamento['contingenciado'] + $orcamento['descontingenciado'] - $orcamento['anulado'] + $orcamento['suplementado'];
+
+	$orcamento['disponivel'] = $orcamento['revisado'] - $orcamento['liberado'];
+
+
+	echo "<pre>";	
+	var_dump($orcamento);
+	echo "</pre>";
+
+
+
+
+
 }

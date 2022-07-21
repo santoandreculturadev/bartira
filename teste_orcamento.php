@@ -7,10 +7,14 @@
 	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 		<h1>Ambiente teste</h1>
 		<?php 
-		$x = orcamento($_GET['id']);
-		echo "<pre>";
-		echo var_dump($x);
-		echo "</pre>";
+	
+
+	$x = orcamento(315);
+	orcamentoDataTotal(2020,12);
+
+	//echo "<pre>";
+	//var_dump($x);
+	//echo "</pre>";
 
 
 

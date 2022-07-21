@@ -834,19 +834,12 @@ if(isset($_POST['mov_editar'])){
 
 					<div class="form-group">
 						<div class="col-md-offset-2">
-<<<<<<< HEAD
-							<label>Data da movimentação *</label>
-							<input name="data_x" class="form-control calendario2" value="<?php echo exibirDataBr($mov['data']) ?>" />
-						</div>
-					</div>		
 
-			
-=======
 							<label>Data *</label>
 							<input type="text" name="dia" class="form-control calendario"   value="<?php echo exibirDataBr($mov['data']) ?>"/>
 						</div>                                                             
 					</div>					
->>>>>>> d2d08bc48c224f431cc2b62be7dd4e51b5c6eadb
+
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Descrição / Observação*</label>

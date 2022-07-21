@@ -836,20 +836,12 @@ if(isset($_POST['mov_editar'])){
 
 					<div class="form-group">
 						<div class="col-md-offset-2">
-<<<<<<< HEAD
+
 							<label>Data da movimentação *</label>
 							<input name="data_x" class="form-control calendario2" value="<?php echo exibirDataBr($mov['data']) ?>" />
 						</div>
 					</div>		
-
-			
-=======
-							<label>Data *</label>
-							<input type="text" name="dia" class="form-control calendario"   value="<?php echo exibirDataBr($mov['data']) ?>"/>
-						</div>                                                             
-					</div>					
->>>>>>> d2d08bc48c224f431cc2b62be7dd4e51b5c6eadb
-					<div class="form-group">
+							<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Descrição / Observação*</label>
 							<textarea name="descricao" class="form-control" rows="10" ><?php echo $mov['descricao'] ?></textarea>
@@ -975,7 +967,7 @@ if(isset($_POST['deletar'])){
 		$ano_base = " AND ano_base ='".$_GET['ano_base']."' ";
 		$anobase_option = $_GET['ano_base']; 	
 	}else{
-		$ano_base = "";
+		$ano_base = "AND ano_base = '".date('Y')."' ";
 		$anobase_option = date('Y'); 	
 
 	}
@@ -1099,13 +1091,14 @@ if(isset($_POST['deletar'])){
 				</tr>
 			</thead>
 			<tbody>
-				<form method="POST" action="?" />
+
 				<?php 
 				global $wpdb;
 				$sql_list =  "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' $ano_base $unidade $fonte $projeto $ficha 
                                 ORDER BY projeto ASC, ficha ASC";
 				$res = $wpdb->get_results($sql_list,ARRAY_A);
-				
+
+
 				$anos = anoOrcamento(); //puxa todos os anos-base existentes no banco
 
 				
@@ -1124,6 +1117,9 @@ if(isset($_POST['deletar'])){
 				}
 
 				for($i = 0; $i < count($res); $i++){
+					$inicio = $fonte_option."-01-01";	
+					$fim = $fonte_option."-12-31";	
+
 					$orc = orcamento($res[$i]['id']);
 					$total = $orc['total'] - $orc['contigenciado'] + $orc['descontigenciado'] + $orc['suplementado'] - $orc['liberado'] - $orc['anulado'];
 					
@@ -1200,7 +1196,7 @@ if(isset($_POST['deletar'])){
 						
 						
 						<?php 
-					}{
+					}
 					
 					$total_orc[$orc['ano_base']] = $total_orc[$orc['ano_base']] + $orc['total'];
 					$total_con[$orc['ano_base']] = $total_con[$orc['ano_base']] + $orc['contigenciado'];

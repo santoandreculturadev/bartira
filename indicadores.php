@@ -1,5 +1,3 @@
-<?php
-?>
 <?php include "header.php"; ?>
 <?php
 if (isset($_GET['p'])) {
@@ -11354,6 +11352,65 @@ echo "</pre>";
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+														<?php
+														$ano = anoOrcamento(true);
+														for($i = 0; $i < count($ano); $i++){ //ano base
+																$ano_base = $ano[$i]['ano_base'];
+																
+																$sql_ano = "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' AND ano_base = '$ano_base'";
+																$res_orc = $wpdb->get_results($sql_ano,ARRAY_A);
+																
+																$total = 0;
+																
+																for($g = 0; $g < count($res_orc); $g++){ //ids do orçamento
+																	$total_mes = 0;	
+																	$id = $res_orc[$g]['id'];
+																	
+																	for($m = 1; $m < 13; $m++){
+																		$inicio = $ano_base."-".fillZero($m,2)."-01";
+																		$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
+																		
+																		$orc = orcamento($id,$fim,$inicio);
+																		
+                                                                           // echo "<pre>" ;   
+                                                                           // var_dump($orc);
+                                                                           // echo"</pre>";
+
+																		$total += $orc['total'];
+																		$total_mes += $orc['total'];
+																
+
+																	}
+																	
+																}
+																for($m = 1; $m < 13; $m++){
+																		$inicio = $ano_base."-".fillZero($m,2)."-01";
+																		$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
+																		
+																		$orc = orcamento($id,$fim,$inicio);
+																		
+																		$total += $orc['total'];
+																		$total_mes += $orc['total'];
+																
+																	echo "<tr><td>01/".fillZero($m,2)."/".$ano_base." a ".ultimoDiaMes($ano_base,$m)."/".fillZero($m,2)."/".$ano_base."<td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																	echo "<td></td>";
+																
+																	echo "</tr>";
+																	}
+																
+																echo "Totalzão: ".$total;
+														}
+															?>
+
+														<!--
                                                         <?php
                                                         for ($i = 0; $i < count($ocor); $i++) {
                                                             ?>
@@ -11394,6 +11451,7 @@ echo "</pre>";
                                                             </tr>
                                                         <?php } ?>
 
+										-->
                                                         </tbody>
                                                     </table>
 

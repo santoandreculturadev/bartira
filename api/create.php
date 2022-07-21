@@ -339,6 +339,8 @@ for($i = 0; $i < count($ano); $i++){
 	$sql_ano = "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' AND ano_base = '$ano_base'";
 	$res_orc = $wpdb->get_results($sql_ano,ARRAY_A);
 	
+	$total = 0;
+	
 	for($g = 0; $g < count($res_orc); $g++){
 	
 		$id = $res_orc[$g]['id'];
@@ -346,19 +348,22 @@ for($i = 0; $i < count($ano); $i++){
 		for($m = 1; $m < 13; $m++){
 			$inicio = $ano_base."-".fillZero($m,2)."-01";
 			$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
-
-
-
+			
 			$orc = orcamento($id,$fim,$inicio);
+			
+			$total += $orc['total'];
+			
 			echo $inicio." / ".$fim."<br />";
 			echo "<pre>";
 			var_dump($orc);
 			echo "</pre>";
 			echo "---------------------------------------<br />";
-			
+
 		}
 		
 	}
+	
+	echo "Totalzão: ".$total;
 	
 	
 	
