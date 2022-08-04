@@ -1,0 +1,38 @@
+Orçamento
+
+=> contratação evento
+=> contratação atividade
+=> movimentação orçamentária (orçado, contigenciado, descontigenciado, anulado, suplementado)
+
++ Orçado = valor que vem da câmara
++ Contingenciado = valor que a prefeitura retém
++ Descontigenciado = valor que a prefeitura libera do retido
++ Anulado = valor que a prefeitura anula para sempre forever
++ Suplementado = valor que a prefeitura dá a mais sem estar no orçamento inicial
+
+
++ Revisado = valor disponível de fato ( Orçado - Contigenciado + Descontigenciado - Anulado + Suplementado ) sendo que o (Contigenciado >= Descontigenciado)
++ Liberado =  liberações/empenhado
++ Saldo Liberado = Revisado - Liberado (quanto sobrou depois da prefeitura revisar e depois que a secretaria gastou)
+
+
+--------------------------
+
+valor das movimentações de liberação <> valor das contratações
+
+
+comparação entre o giap e as contratações válidas (quais processos não contratação artística e atividade)
+comparação entre as contratações e o giap (anulado ou cancelado) 
+
+Giap -> contratações
+Processo, Histórico, Credor, Doc Credor,  Data, Projeto/Ficha, valor [indicador de erro]
+
+Contratações -> Giap 
+Processo, Título evento ou atividade, Razão Social, Doc, Data, valor, Projeto/Ficha, Responsável da secretaria, [indicador de erro, tipo de erro]
+
+
+
+
+
+// instalar as bibliotecas pelo composer (phpspreasheet, ?phplot?, mppdf)
+

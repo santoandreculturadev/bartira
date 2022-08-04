@@ -6,24 +6,34 @@
 	
 	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 		<h1>Ambiente teste / Importar Plano Municipal</h1>
-		<?php 
-		 //indicadores('2019','evento','769');
-		 
-	//echo sanitizeString('março');	 
-		 $total = 0;
-$sel_hist_data = "SELECT id, titulo,valor, descricao, tipo, idUsuario,data,idPedidoContratacao FROM sc_mov_orc WHERE dotacao = '12' AND publicado = '1' AND data BETWEEN '2018-07-01' AND '2018-07-31' AND tipo = '311' ORDER BY id ASC ";
-	$hist_data = $wpdb->get_results($sel_hist_data,ARRAY_A);
-	
-	for($i=0; $i < count($hist_data); $i++){
-		$total = $hist_data[$i]['valor'] + $total;
-	}
-	echo "<pre>";
-	var_dump($hist_data);	
-	echo "</pre>";
 
-	echo "Total: ".$total;
-	?>
+	<?php 
 	
+	
+
+
+// include the autoloader, so we can use PhpSpreadsheet
+require_once(__DIR__ . '/vendor/autoload.php');
+
+# Create a new Xls Reader
+$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+
+// Tell the reader to only read the data. Ignore formatting etc.
+$reader->setReadDataOnly(true);
+
+// Read the spreadsheet file.
+$spreadsheet = $reader->load(__DIR__ . '\uploads\poetas.xls');
+
+$sheet = $spreadsheet->getSheet($spreadsheet->getFirstSheetIndex());
+$data = $sheet->toArray();
+
+// output the data to the console, so you can see what there is.
+echo "<pre>";
+var_dump($data);
+echo "</pre>";
+
+?>
+
 	</main>
 
 	

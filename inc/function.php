@@ -1692,6 +1692,13 @@ function retornaPedido($id){
 		
 		if($res['dotacao'] != NULL){
 			$dotac = recuperaDados("sc_orcamento",$res['dotacao'],"id");
+			if($dotac == NULL){
+				$dotac['dotacao'] = "";
+				$dotac['ficha'] = "";
+				$dotac['projeto'] = "";
+				$dotac['fonte'] = "";
+			}	
+
 		}else{
 			$dotac['dotacao'] = "";
 			$dotac['ficha'] = "";
@@ -1810,23 +1817,34 @@ function retornaLocais($idEvento){
 
 function retornaCEP($cep){
 	global $wpdb;
+	$dados = array(
+		'sucesso' => 0,
+		'rua' => '',
+		'bairro' => '',
+		'cidade' => '',
+		'estado' => '' 
+	);
 	$cep_index = substr($cep, 0, 5);
 	$dados['sucesso'] = 0;
 	$sql01 = "SELECT * FROM igsis_cep_cep_log_index WHERE cep5 = '$cep_index' LIMIT 0,1";
 	$campo01 = $wpdb->get_row($sql01,ARRAY_A);
-	$uf = "igsis_cep_".$campo01['uf'];
-	$sql02 = "SELECT * FROM $uf WHERE cep = '$cep'";
-	$campo02 = $wpdb->get_row($sql02,ARRAY_A);
-	$n_inscritos = (is_array($campo02) ? count($campo02) : 0);
-	if($n_inscritos > 0){
-		$dados['sucesso'] = 1;
-	}else{
-		$dados['sucesso'] = 0;
+	if($campo01 != NULL){
+		$uf = "igsis_cep_".$campo01['uf'];
+		$sql02 = "SELECT * FROM $uf WHERE cep = '$cep'";
+		$campo02 = $wpdb->get_row($sql02,ARRAY_A);
+		if($campo02 != NULL){
+		$n_inscritos = (is_array($campo02) ? count($campo02) : 0);
+		if($n_inscritos > 0){
+			$dados['sucesso'] = 1;
+		}else{
+			$dados['sucesso'] = 0;
+		}
+		$dados['rua']     = $campo02['tp_logradouro']." ".$campo02['logradouro'];
+		$dados['bairro']  = $campo02['bairro'];
+		$dados['cidade']  = $campo02['cidade'];
+		$dados['estado']  = strtoupper($campo01['uf']);
 	}
-	$dados['rua']     = $campo02['tp_logradouro']." ".$campo02['logradouro'];
-	$dados['bairro']  = $campo02['bairro'];
-	$dados['cidade']  = $campo02['cidade'];
-	$dados['estado']  = strtoupper($campo01['uf']);
+	}
 	return $dados;
 }
 
@@ -3903,4 +3921,13 @@ function orcamentoDataTotal($ano_base,$mes){
 
 
 
+}
+
+function comparaProcesso($nProcesso){
+	global $wpdb;
+	$sql = "SELECT idPedidoContratacao FROM sc_contratacao WHERE nProcesso LIKE '%$nProcesso%'";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	//echo "<pre>";	
+	//var_dump($res);
+	//echo "</pre>";
 }

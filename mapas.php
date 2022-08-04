@@ -86,7 +86,7 @@ $_SESSION['entidade'] = 'mapas';
                 if($new_event['id'] > 0){
                     // Atualiza evento
                     $new_event['id'];
-                    $sql_upd = "UPDATE sc_evento SET mapas = '".$new_event['id']."' WHERE idEvento = '".$_SESSION['id']."'";
+                    $sql_upd = "UPDATE sc_evento SET mapas = '".$new_event['id']."', status = '4'  WHERE idEvento = '".$_SESSION['id']."'";
                     $wpdb->query($sql_upd);
 
                     // acontecendo uma única vez no dia 28 de Setembro de 2017 às 12:00 com duração de 120min e preço Gratuíto

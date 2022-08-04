@@ -1,18 +1,5 @@
 # scpsa
 
-Modelagem "Atividade" (não é evento);
-
-titulo VARCHAR(250)
-descricao LONGTEXT
-responsavel INT
-projeto INT
-programa INT
-periodo_inicio DATE
-periodo_fim DATE
-ano_base INT(4)
-
-
-
 Empenho fracionado
 
 

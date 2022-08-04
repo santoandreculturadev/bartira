@@ -2,7 +2,7 @@
 
 <body>
 	
-	<?php //include "menu/me_inicio.php"; ?>
+	<?php require __DIR__ . '/vendor/autoload.php'; ?>
 	
 	<?php 
 	if(isset($_GET['p'])){
@@ -23,29 +23,20 @@
 
 				<br />
 				<?php 
-				require_once dirname(__FILE__) . '/classes/PHPExcel.php';
-				
-				if(isset($_POST['enviar'])){
-					$pathToSave = 'upload/';
+				if(isset($_POST['enviar'])){ //01
+					$pathToSave = 'uploads/';
 					if( $_FILES['arquivo']['name'] != '' ){
 						$pre = date('Ymdhis')."_";
 						$data =  date('Y-m-d H:i:s');
 						$arquivoTmp = $_FILES['arquivo']['tmp_name'];
 						$arquivo = $pathToSave.$pre.$_FILES['arquivo']['name'];
 						$arquivo_base = $_FILES['arquivo']['name'];
-						if(file_exists($arquivo))
-						{
+						if(file_exists($arquivo)){
 							echo "O arquivo ".$arquivo_base." já existe! Renomeie e tente novamente<br />";
-						}
-						else
-						{
-							
-							if( !move_uploaded_file( $arquivoTmp, $arquivo ) )
-							{
+						}else{
+							if( !move_uploaded_file( $arquivoTmp, $arquivo ) ){
 								$msg = 'Erro no upload do arquivo ';
-							}
-							else
-							{
+							}else{
 								$msg = 'Upload do arquivo foi um sucesso!';
 							}
 						}
@@ -61,80 +52,52 @@
 					
 					$fileName = $arquivo;
 					
-			// detecta automaticamente o tipo de arruivo que será carregado 
-					$excelReader = PHPExcel_IOFactory::createReaderForFile($fileName);
+			# Create a new Xls Reader
+			$reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
 
-			//Se não precisarmos de formatação
-					$excelReader->setReadDataOnly();
+			// Tell the reader to only read the data. Ignore formatting etc.
+			$reader->setReadDataOnly(true);
 
-			//carregar apenas algumas abas
-			//$loadSheets = array('aba1', 'aba2');
-			//$excelReader->setLoadSheetsOnly($loadSheets);
+			// Read the spreadsheet file.
+			$spreadsheet = $reader->load(__DIR__ ."/".$arquivo);
 
-			//o comportamente padrão é carregar todas as abas
-					$excelReader->setLoadAllSheets();
-					
-					$excelObj = $excelReader->load($fileName);
-					
-			//$excelObj->getActiveSheet()->toArray(null, true,true,true);
+			$sheet = $spreadsheet->getSheet($spreadsheet->getFirstSheetIndex());
+			$matriz = $sheet->toArray();
 
+			
+			for($i = 1; $i < count($matriz); $i++){
 
-					$sheet = $excelObj->getSheet(0);
-					$highestRow = $sheet->getHighestRow(); 
-					$highestColumn = $sheet->getHighestColumn();
-					
-			//echo "Linhas:  ".$highestRow;
-					
-					$matriz = array();
-					
-			//  Loop through each row of the worksheet in turn
-					for ($row = 1; $row <= $highestRow; $row++){ 
-				//  Read a row of data into an array
-						$rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
-							NULL,
-							TRUE,
-							FALSE);
-						
-				// Gera os índices
-						
-						if($row == 1){
-							$indice = $rowData[0]; 		
-						}else{
-							for($k = 0; $k < count($rowData[0]); $k++){
-								$matriz[$indice[$k]] = $rowData[0][$k];
-								
-							}
-							
-
-					//echo "<pre>";
-					//var_dump($matriz);
-					//echo "</pre>";
-							
-							$empenho = $matriz["Empenho"];
-							$ano  = $matriz["Ano Empenho"];
-							$unixTimestamp = PHPExcel_Shared_Date::ExcelToPHP($matriz["Data"]);
-							$data  =  date('Y-m-d', $unixTimestamp);
-							$ficha  = $matriz["Ficha"];
-							$projeto  = $matriz["Projeto"];
-							$v_empenho  = $matriz["Empenho2"];
-							$v_estorno  = $matriz["Estorno"];
-							$v_anulado  = $matriz["Anulado"];
-							$v_n_processado  = $matriz["Não processado"];
-							$v_processado = $matriz["Processado"];
-							$v_op  = $matriz["Valor OP"];
-							$v_op_baixado = $matriz["OP Baixada"];
-							$v_saldo = $matriz["Saldo a pagar"];
-							$n_processo = $matriz["Processo"];
-							$historico = $matriz["Histórico"];
+			
+							$empenho = $matriz[$i][2];
+							$ano  = $matriz[$i][3];
+							$data= exibirDataMysql($matriz[$i][6]);
+							$ficha  = $matriz[$i][10];
+							$projeto  = $matriz[$i][31];
+							$v_empenho  = $matriz[$i][32];
+							$v_estorno  = $matriz[$i][33];
+							$v_anulado  = $matriz[$i][34];
+							$v_n_processado  = $matriz[$i][35];
+							$v_processado = $matriz[$i][36];
+							$v_op  = $matriz[$i][37];
+							$v_op_baixado = $matriz[$i][38];
+							$v_saldo = $matriz[$i][39];
+							$n_processo = $matriz[$i][40];
+							$historico = addslashes($matriz[$i][43]);
 							$hoje = date("Y-m-d H:i:s");		
 							
 							$sql_ins = "INSERT INTO `sc_contabil` (`id`, `empenho`, `ano`, `data`, `ficha`, `projeto`, `v_empenho`, `v_estorno`, `v_anulado`, `v_n_processado`, `v_processado`, `v_op`, `v_op_baixado`, `v_saldo`, `nProcesso`, `historico`, `atualizacao`) VALUES (NULL, '$empenho', '$ano', '$data', '$ficha', '$projeto', '$v_empenho', '$v_estorno', '$v_anulado', '$v_n_processado', '$v_processado', '$v_op', '$v_op_baixado', '$v_saldo', '$n_processo', '$historico','$hoje')";
 							
 							$x = $wpdb->query($sql_ins);
+							if($x){
+								echo "$empenho inserido com sucesso.<br />";
+							}else{
+								echo "$empenho erro ao inserir. $sql_ins<br />";
+							}
+			}		
+			
 							
-							
-						}
-					}
+		
+					
 					
 	}else{ // formulário para importação do arquivo 
 		?>
@@ -157,56 +120,147 @@
 </div>	
 <?php 
 break;
-case "lista":
+case "relatorio":
+?>
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+	<h1>Relatório de inconsistências</h1>
 
-$sql = "SELECT DISTINCT idPedidoContratacao, data, empenho, sc_contabil.nProcesso, v_empenho, nLiberacao  FROM sc_contratacao,sc_contabil WHERE sc_contabil.nProcesso = sc_contratacao.nProcesso AND publicado = 1 ORDER BY data DESC"; 
+	<h2>Bartira para GIAP</h2>
+	<p>Pedidos de contratação em Bartira que não possui correspondência no GIAP ou que possuem inconsistências</p>
+	<?php  // Processo, Título evento ou atividade, Razão Social, Doc, Data, valor, Projeto/Ficha, Responsável da secretaria, [indicador de erro, tipo de erro]
 
-$peds = $wpdb->get_results($sql,ARRAY_A);
+?>
+	<table border='1'>
+
+		<tr>
+		<th>Pedido</th>
+		<th>Processo</th>
+			<th>Título evento ou atividade</th>
+			<th>Razão Social</th>
+			<th>CNPJ/CPF</th>
+			<th>Data</th>
+			<th>Valor</th>
+			<th>Projeto/Ficha</th>
+			<th>Responsável</th>
+			<th>Erro</th>
+
+
+		</tr>
+<?php 
+ini_set('max_execution_time', 0); // para não parar a execução
+// contratacoes , publicados = 1, processos iguais, se for evento (com status válido 3 e 4)
+	$sql_contratacoes = "SELECT idPedidoContratacao,nProcesso FROM sc_contratacao WHERE publicado = '1' 
+	AND 
+	(idEvento IN (SELECT idEvento FROM sc_evento WHERE publicado = '1' AND (status = '3' OR status = '4')) 
+	OR idAtividade IN (SELECT idAtividade FROM sc_atividade WHERE publicado = '1'))  
+	AND nProcesso NOT IN (SELECT nProcesso FROM sc_contabil) AND nLiberacao <> ''";
+
+
+	$res = $wpdb->get_results($sql_contratacoes,ARRAY_A);
+	//var_dump($res);
+
+	for($i = 0; $i < count($res); $i++){
+			$pedido = retornaPedido($res[$i]['idPedidoContratacao']);
+
+
+
+		?>
+		<tr>
+		<td><?php echo $res[$i]['idPedidoContratacao']; ?></td>
+		<td><?php echo $res[$i]['nProcesso']; ?></td>
+		<td><?php echo $pedido['evento_atividade']."/".$pedido['objeto']; ?></td>
+		<td><?php echo $pedido['nome_razaosocial']; ?></td>
+		<td><?php echo $pedido['cpf_cnpj']; ?></td>
+		<td><?php echo $pedido['dataEnvio']; ?></td>
+		<td><?php echo $pedido['valor']; ?></td>
+		<td><?php echo $pedido['projeto']."/".$pedido['ficha']; ?></td>
+		<td><?php echo $pedido['usuario']; ?></td>
+		<td></td>
+	</tr >
+		
+		
+		<?php
+
+
+
+	}
+
 
 ?>
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Evento/Atividade</th>
-			<th>Data</th>
-			<th>Empenho</th>
-			<th>Processo</th>
-			<th>N de Liberação</th>
 
-			<th>Valor do Emepnho</th>
-			<th></th>
-
-		</tr>
-	</thead>
-	<tbody>
-		<?php 
-		for($i = 0; $i < count($peds); $i++){
-			$pedido = retornaPedido($peds[$i]['idPedidoContratacao']);
-			
-			?>
-			<tr>
-				<td><?php echo $pedido['objeto']; ?></td>
-				<td><?php echo exibirDataBr($peds[$i]['data']); ?></td>
-				<td><?php echo $peds[$i]['empenho']; ?></td>
-				<td><?php echo $peds[$i]['nProcesso']; ?></td>
-				<td><?php echo $peds[$i]['nLiberacao']; ?></td>					  <td><?php echo $peds[$i]['v_empenho']; ?></td>
-				<td>	
-
-					<?php 
-					
-					?></td>
-
-				</tr>
-			<?php } // fim do for?>	
-			
-		</tbody>
 	</table>
 
-	<?php 
-	break;
-	?>
 	
+	<h2>GIAP</h2>
+	<p>Registros do GIAP que não possui correspondência no Bartira ou que possuem inconsistências</p>
+	<?php  // Processo, Histórico, Credor, Doc Credor,  Data, Projeto/Ficha, valor
+
+?>
+	<table border='1'>
+
+		<tr>
+		<th>Processo</th>
+			<th>Histório</th>
+
+
+			<th>Data</th>
+			<th>Valor</th>
+			<th>Projeto/Ficha</th>
+
+
+
+		</tr>
+<?php 
+ini_set('max_execution_time', 0); // para não parar a execução
+// contratacoes , publicados = 1, processos iguais, se for evento (com status válido 3 e 4)
+
+
+
+
+	$sql_contratacoes = "SELECT * FROM sc_contabil";  
+
+
+	$res = $wpdb->get_results($sql_contratacoes,ARRAY_A);
+	//var_dump($res);
+
+	for($i = 0; $i < count($res); $i++){
+			
+		$x = comparaProcesso($res[$i]['nProcesso']);
+
+		if($x == 0){
+
+		?>
+		<tr>
+		<td><?php echo $res[$i]['nProcesso']; ?></td>
+		<td><?php echo $res[$i]['historico']; ?></td>
+		<td><?php echo $res[$i]['data']; ?></td>
+		<td><?php echo $res[$i]['v_empenho']; ?></td>
+
+		<td><?php echo $res[$i]['projeto']."/".$res[$i]['ficha']; ?></td>
+	
+	</tr >
+		
+		
+		<?php }
+
+
+
+	}
+
+
+?>
+
+
+	</table>
+
+
+
+	<div>
+
+
+	</div>	
+<?php break; ?>
 <?php } //fim da switch ?> 	
 <?php 
 include "footer.php";
