@@ -9,28 +9,36 @@
 
 	<?php 
 	
+	/* lê os pedidos contratação válidos
+		procura no giap o cnpj e o valor
+			se acha, ele insere no pedido contratação
+	*/
+
+	$sql_contratacoes = "SELECT idPedidoContratacao, valor, idEvento, idAtividade, tipoPessoa, idPessoa FROM sc_contratacao WHERE publicado = '1' 
+	AND 
+	(idEvento IN (SELECT idEvento FROM sc_evento WHERE publicado = '1' AND (status = '3' OR status = '4')) 
+	OR idAtividade IN (SELECT idAtividade FROM sc_atividade WHERE publicado = '1'))";
+	$res = $wpdb->get_results($sql_contratacoes,ARRAY_A);
 	
+	for($i = 0; $i < count($res); $i++){
+		$valor = $res[$i]['valor'];
+		$pessoa = retornaPessoa($res[$i]['idPessoa'],$res[$i]['tipoPessoa']);
+		$doc = $pessoa['cpf_cnpj'];
+	
+		$sql_giap = "SELECT nProcesso FROM sc_contabil WHERE doc_credor LIKE '$doc' AND v_empenho = '$valor'";
+		$res_giap = $wpdb->get_results($sql_giap,ARRAY_A);
+		if($res_giap){
+			echo "<pre>";
+			var_dump($res_giap);
+			echo "</pre>";
+		}	
 
+	}
+	
+	//echo "<pre>";
+	//var_dump($res);
+	//echo "</pre>";
 
-// include the autoloader, so we can use PhpSpreadsheet
-require_once(__DIR__ . '/vendor/autoload.php');
-
-# Create a new Xls Reader
-$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
-
-// Tell the reader to only read the data. Ignore formatting etc.
-$reader->setReadDataOnly(true);
-
-// Read the spreadsheet file.
-$spreadsheet = $reader->load(__DIR__ . '\uploads\poetas.xls');
-
-$sheet = $spreadsheet->getSheet($spreadsheet->getFirstSheetIndex());
-$data = $sheet->toArray();
-
-// output the data to the console, so you can see what there is.
-echo "<pre>";
-var_dump($data);
-echo "</pre>";
 
 ?>
 
@@ -40,3 +48,5 @@ echo "</pre>";
 	<?php 
 	include "footer.php";
 	?>
+
+
