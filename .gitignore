@@ -1,4 +1,5 @@
 upload/*
+uploads/*
 inc/globals.php
 indicador/uploads/*
 *.bak
