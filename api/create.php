@@ -46,7 +46,7 @@ $ano = anoOrcamento(true);
 for($i = 0; $i < count($ano); $i++){
 	$ano_base = $ano[$i]['ano_base'];
 
-/*
+
 
 
 	$json_ano = "[";

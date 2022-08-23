@@ -404,7 +404,8 @@ if(isset($_SESSION['id'])){
 					var options = '<option value="0"></option>';	
 					for (var i = 0; i < j.length; i++)
 					{
-						options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>';
+						options += '<option value="' + j[i].id + '">' + j[i].projeto + ' </option>';
+						/**options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>'; -> mostra todos os anos */ 
 					}	
 					$('#projeto').html(options).show();
 					$('.carregando').hide();
