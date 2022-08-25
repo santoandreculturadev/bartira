@@ -34,29 +34,11 @@
 
 	}
 	*/
-$ano_base = $_GET['ano'];
-	for($n = 1; $n < 13; $n++){
 
-		$json = "[";
-
-			$res = orcamentoDataTotal($ano_base,$n);
-			$json .= json_encode($res);
-
-
-		//$json = substr($json,0,-1);	
-		$json .= "]";
-
-		$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `total`, `mes`, `json`) VALUES (NULL, 'orcamento', '$ano_base', '1',' $n', '$json')";
-		$wpdb->query($sql_insert);	
-
-	
-	}
-	
+	$x = buscaCep("03404140");
 	echo "<pre>";
-	var_dump($json);
+	var_dump($x);
 	echo "</pre>";
-
-
 ?>
 
 	</main>

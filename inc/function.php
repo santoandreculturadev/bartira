@@ -542,6 +542,19 @@ function diasemanaint($data)
 
 	}
 
+
+	function buscaCep($cep){
+		$url = "https://viacep.com.br/ws/".$cep."/json/";
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$page = curl_exec($ch);
+		$evento = json_decode($page);
+		$ccsp = converterObjParaArray($evento);
+		return $ccsp;
+		
+	}
+
+
 	function retornaModulo($descricao){
 		global $wpdb;
 		$descricao = trim($descricao);	

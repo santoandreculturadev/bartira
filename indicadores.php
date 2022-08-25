@@ -11335,7 +11335,15 @@ echo "</pre>";
                                                 <div class="table-responsive">
                                                     <table class="table table-striped">
                                                         <thead>
-                                                        <tr>
+
+                                                        </thead>
+                                                        <tbody>
+														<?php
+														$ano = anoOrcamento(true);
+                                                           
+														for($i = 0; $i < count($ano); $i++){ //ano base
+                                                          ?>
+                                                                                                                   <tr>
                                                             <th width="18%">Período/Data</th>
                                                             <th>Orçado</th>
                                                             <th>Revisado</th>
@@ -11346,14 +11354,11 @@ echo "</pre>";
                                                             <th width="10%"></th>
 
                                                         </tr>
-                                                        </thead>
-                                                        <tbody>
-														<?php
-														$ano = anoOrcamento(true);
-                                                           
-														for($i = 0; $i < count($ano); $i++){ //ano base
-														$ano_base = $ano[$i]['ano_base'];
+                                                           <?php
+                                                            $ano_base = $ano[$i]['ano_base'];
                                                             for($m = 1; $m < 13; $m++){
+
+
                                                                    $orc = orcamentoDataTotal($ano_base,$m); 
                                                                      //var_dump($orc);   
 																
@@ -11367,7 +11372,7 @@ echo "</pre>";
 																	echo "</tr>";
 																	}
 																
-																echo "Totalzão: ".$total;
+																
 														}
 															?>
 
