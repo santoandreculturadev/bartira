@@ -11338,13 +11338,9 @@ echo "</pre>";
                                                         <tr>
                                                             <th width="18%">Período/Data</th>
                                                             <th>Orçado</th>
-                                                            <th>Contigenciado</th>
-                                                            <th>Supl/Liberado</th>
-                                                            <th>Disponibilizado</th>
-                                                            <th>Empenhado</th>
-                                                            <th>Reservado</th>
-                                                            <th>Comprometido</th>
-                                                            <th>Disponível</th>
+                                                            <th>Revisado</th>
+                                                            <th>Liberado</th>
+                                                            <th>Disponível/Saldo</th>
                                                             <th>% comprometido em relação ao disponível</th>
 
                                                             <th width="10%"></th>
@@ -11354,54 +11350,19 @@ echo "</pre>";
                                                         <tbody>
 														<?php
 														$ano = anoOrcamento(true);
+                                                           
 														for($i = 0; $i < count($ano); $i++){ //ano base
-																$ano_base = $ano[$i]['ano_base'];
+														$ano_base = $ano[$i]['ano_base'];
+                                                            for($m = 1; $m < 13; $m++){
+                                                                   $orc = orcamentoDataTotal($ano_base,$m); 
+                                                                     //var_dump($orc);   
 																
-																$sql_ano = "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' AND ano_base = '$ano_base'";
-																$res_orc = $wpdb->get_results($sql_ano,ARRAY_A);
-																
-																$total = 0;
-																
-																for($g = 0; $g < count($res_orc); $g++){ //ids do orçamento
-																	$total_mes = 0;	
-																	$id = $res_orc[$g]['id'];
-																	
-																	for($m = 1; $m < 13; $m++){
-																		$inicio = $ano_base."-".fillZero($m,2)."-01";
-																		$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
-																		
-																		$orc = orcamento($id,$fim,$inicio);
-																		
-                                                                           // echo "<pre>" ;   
-                                                                           // var_dump($orc);
-                                                                           // echo"</pre>";
-
-																		$total += $orc['total'];
-																		$total_mes += $orc['total'];
-																
-
-																	}
-																	
-																}
-																for($m = 1; $m < 13; $m++){
-																		$inicio = $ano_base."-".fillZero($m,2)."-01";
-																		$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
-																		
-																		$orc = orcamento($id,$fim,$inicio);
-																		
-																		$total += $orc['total'];
-																		$total_mes += $orc['total'];
-																
-																	echo "<tr><td>01/".fillZero($m,2)."/".$ano_base." a ".ultimoDiaMes($ano_base,$m)."/".fillZero($m,2)."/".$ano_base."<td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
-																	echo "<td></td>";
+																	echo "<tr><td>01/".fillZero($m,2)."/".$ano_base." a ".ultimoDiaMes($ano_base,$m)."/".fillZero($m,2)."/".$ano_base."</td>";
+																	echo "<td>".$orc['orcado']."</td>";
+																	echo "<td>".$orc['revisado']."</td>";
+																	echo "<td>".$orc['liberado']."</td>";
+																	echo "<td>".$orc['disponivel']."</td>";
+                                                                    echo "<td>".$orc['liberado_revisado']."</td>";
 																
 																	echo "</tr>";
 																	}

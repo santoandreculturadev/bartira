@@ -66,20 +66,3 @@ $ano_base = $_GET['ano'];
 	include "footer.php";
 	?>
 
-
-[{
-			"periodo": "2021-12",
-			"Público - Biblioteca Central" : "155",
-			"Público - Biblioteca Descentralizada" : "0",
-			"Empréstimos - Biblioteca Central" : "436",
-			"Empréstimos - Biblioteca Descentralizada" : "0",
-			"Sócios - Biblioteca Central" : "0",
-			"Sócios - Biblioteca Descentralizada" : "0",
-			"Itens Acervo - Biblioteca Central" : "0",
-			"Itens Acervo - Biblioteca Descentralizada" : "0",
-			"Itens Acervo - Biblioteca Digital" : "0",
-			"Novas Incorporações - Biblioteca Central" : "770",
-			"Novas Incorporações - Biblioteca Descentralizada" : "0",
-			"Novas Incorporações - Biblioteca Digital" : "13",
-			"Downloads - Digital" : "13"
-			}]

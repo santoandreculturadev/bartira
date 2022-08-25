@@ -3926,6 +3926,7 @@ function orcamentoDataTotal($ano_base,$mes){
 
 	$res = $wpdb->get_row($sql,ARRAY_A);
 	
+	$orcamento['periodo'] = $ano_base."/".fillZero($mes,2);
 	$orcamento['orcado'] = number_format($res['valor_total'],2,'.', '');
 
 	//movimentações
