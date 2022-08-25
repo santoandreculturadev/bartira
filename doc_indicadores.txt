@@ -4,35 +4,37 @@ Orçamento
 => contratação atividade
 => movimentação orçamentária (orçado, contigenciado, descontigenciado, anulado, suplementado)
 
-+ Orçado = valor que vem da câmara
-+ Contingenciado = valor que a prefeitura retém
-+ Descontigenciado = valor que a prefeitura libera do retido
-+ Anulado = valor que a prefeitura anula para sempre forever
-+ Suplementado = valor que a prefeitura dá a mais sem estar no orçamento inicial
++ Orçado = valor que vem da câmara (anual)
++ Contingenciado = valor que a prefeitura retém (mes/ano)
++ Descontigenciado = valor que a prefeitura libera do retido (mes/ano)
++ Anulado = valor que a prefeitura anula para sempre forever (mes/ano)
++ Suplementado = valor que a prefeitura dá a mais sem estar no orçamento inicial (mes/ano)
++ Planejado (ano)
++ Orçamento Municipal (ano)
++ Percentual do orçamento da SC / prefeitura (ano)
+
++ Revisado/Disponibilizado = valor disponível de fato para ações ( Orçado - Contigenciado + Descontigenciado - Anulado + Suplementado - Folha de Pagamento ) sendo que o (Contigenciado >= Descontigenciado) (mes/ano)
++ Liberado/Comprometido =  liberações/empenhado (mes/ano)
++ Saldo Liberado/Disponível = Revisado - Liberado (quanto sobrou depois da prefeitura revisar e depois que a secretaria gastou) (mes/ano)
++ Comprometido em relação ao disponibilizado = (Comprometido / Orçado) *100 (mes/ano)
++ Percentual de execução planejado = (Liberado/planejado)*100 (mes/ano)
 
 
-+ Revisado = valor disponível de fato ( Orçado - Contigenciado + Descontigenciado - Anulado + Suplementado ) sendo que o (Contigenciado >= Descontigenciado)
-+ Liberado =  liberações/empenhado
-+ Saldo Liberado = Revisado - Liberado (quanto sobrou depois da prefeitura revisar e depois que a secretaria gastou)
 
 
 --------------------------
 
-valor das movimentações de liberação <> valor das contratações
+// orçamento
+API 2017 vem sc_contabil
+API 2018 a 2021 vem bartira
 
-
-comparação entre o giap e as contratações válidas (quais processos não contratação artística e atividade)
-comparação entre as contratações e o giap (anulado ou cancelado) 
-
-Giap -> contratações
-Processo, Histórico, Credor, Doc Credor,  Data, Projeto/Ficha, valor [indicador de erro]
-
-Contratações -> Giap 
-Processo, Título evento ou atividade, Razão Social, Doc, Data, valor, Projeto/Ficha, Responsável da secretaria, [indicador de erro, tipo de erro]
+contratacoes / bartira
+folha de pagamento / giap
 
 
 
+INSERT INTO `sc_tipo` (`id_tipo`, `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`) VALUES (NULL, '2017', '2268899000.00', 'orcamento_municipal', '1', '2017'), (NULL, '2018', ' 2483167000.00', 'orcamento_municipal', '1', '2018'), (NULL, '2019', '2350821000.00', 'orcamento_municipal', '1', '2019');
 
 
-// instalar as bibliotecas pelo composer (phpspreasheet, ?phplot?, mppdf)
+
 

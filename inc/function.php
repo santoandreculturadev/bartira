@@ -49,6 +49,14 @@ function fillZero($string,$caracteres){
 }
 
 
+function float2($number){
+	if($number == NULL){
+		return number_format(0, 2, '.', '');
+	}else{	
+		return number_format($number, 2, '.', '');
+	}	
+}
+
 function exibeHoje(){
 	$dia = date('d');
 	$ano = date('Y');
@@ -1174,7 +1182,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	for($i = 0; $i < count($cont); $i++){
 		$valor_cont = $valor_cont + $cont[$i]['valor'];	
 	}
-	echo $sel_cont;
+	//echo $sel_cont;
 	
 	// Anulado (394)
 	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '394' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
@@ -1268,6 +1276,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 		}
 	}
 	
+
 	
 	$dotacao = array(
 		'descricao' => $val['descricao'],
@@ -2608,9 +2617,9 @@ function orcamentoTotal($ano){
 			
 			$sal_pla = $total_tot - $total_pla;
 			
-			$total_lib = $total_lib + projeto600($ano);
+			$total_rev = $total_rev - projeto600($ano);
 
-			
+			$total_pla = $total_pla - projeto600planejamento($ano);		
 			
 			
 			$x = array(
@@ -2953,14 +2962,32 @@ function giap($projeto,$ficha,$ano,$folha = FALSE){
 }
 
 function projeto600($ano){
-	$_600_1116 = giap(600,1116,$ano); 
+	/*$_600_1116 = giap(600,1116,$ano); 
 	$_600_1117 = giap(600,1117,$ano); 
 	$_600_1118 = giap(600,1118,$ano); 
 	$_600_1119 = giap(600,1119,$ano); 
-	$pessoal = $_600_1116['v_op_baixado'] + $_600_1117['v_op_baixado'] + $_600_1118['v_op_baixado'] + $_600_1119['v_op_baixado'];
-	return $pessoal;
+	$pessoal = $_600_1116['v_op_baixado'] + $_600_1117['v_op_baixado'] + $_600_1118['v_op_baixado'] + $_600_1119['v_op_baixado'];*/
+	global $wpdb;
+	$sql = "SELECT SUM(valor) AS valor_total FROM sc_orcamento WHERE projeto = '600' AND publicado = '1' AND ano_base = '$ano'";
+	$res = $wpdb->get_row($sql,ARRAY_A);
+	
+
+	return $res['valor_total'];
 }
 
+
+function projeto600planejamento($ano){
+	global $wpdb;
+	$sql = "SELECT valor FROM sc_orcamento WHERE  publicado = '1' AND idPai IN (SELECT id FROM sc_orcamento WHERE ano_base = '$ano' AND publicado = '1' AND projeto = '600') ";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$total = 0;
+	for($i = 0; $i < count($res) ; $i++){
+		$total = $total + $res[$i]['valor'];
+	}
+
+	return $total;
+
+}
 
 //indicadores
 
@@ -3859,16 +3886,23 @@ function fixAnoBase($tabela,$c_id,$c_data,$c_ano_base){ // nome da tabela, nome 
 
 function orcamentoDataTotal($ano_base,$mes){
 /*
-                                                            <th>Orçado</th>
-                                                            <th>Contigenciado</th>
-                                                            <th>Supl/Liberado</th>
-                                                            <th>Disponibilizado</th>
-                                                            <th>Empenhado</th>
-                                                            <th>Reservado</th>
-                                                            <th>Comprometido</th>
-                                                            <th>Disponível</th>
-                                                            <th>% comprometido em relação ao disponível</th>
-*/
+
++ Orçado = valor que vem da câmara (anual) ok
++ Contingenciado = valor que a prefeitura retém (mes/ano) ok
++ Descontigenciado = valor que a prefeitura libera do retido (mes/ano) ok
++ Anulado = valor que a prefeitura anula para sempre forever (mes/ano) ok 
++ Suplementado = valor que a prefeitura dá a mais sem estar no orçamento inicial (mes/ano) ok
++ Planejado (ano) ok 
++ Orçamento Municipal (ano) ok 
++ Percentual do orçamento da SC / prefeitura (ano) ok
+
++ Revisado/Disponibilizado = valor disponível de fato para ações ( Orçado - Contigenciado + Descontigenciado - Anulado + Suplementado - Folha de Pagamento ) sendo que o (Contigenciado >= Descontigenciado) (mes/ano) ok
++ Liberado/Comprometido =  liberações/empenhado (mes/ano) ok
++ Saldo Liberado/Disponível = Revisado - Liberado (quanto sobrou depois da prefeitura revisar e depois que a secretaria gastou) (mes/ano) ok
++ Comprometido em relação ao disponibilizado = (Comprometido / Orçado) *100 (mes/ano) ok
++ Percentual de execução planejado = (Liberado/planejado)*100 (mes/ano)
+
+	*/
 
 
 
@@ -3892,7 +3926,7 @@ function orcamentoDataTotal($ano_base,$mes){
 
 	$res = $wpdb->get_row($sql,ARRAY_A);
 	
-	$orcamento['orcado'] = ($res['valor_total']);
+	$orcamento['orcado'] = number_format($res['valor_total'],2,'.', '');
 
 	//movimentações
 	foreach($tipos as $key =>$orca){
@@ -3905,17 +3939,71 @@ function orcamentoDataTotal($ano_base,$mes){
 		AND dotacao IN (SELECT id FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado ='1' AND idPai = '0' AND planejamento = '0')";
 
 		$res = $wpdb->get_row($sql,ARRAY_A);
-		$orcamento[$key] = ($res['valor_total']);
+		$orcamento[$key] = float2($res['valor_total']);
 	}
 
-	$orcamento['revisado'] = $orcamento['orcado'] - $orcamento['contingenciado'] + $orcamento['descontingenciado'] - $orcamento['anulado'] + $orcamento['suplementado'];
+
+	$orcamento['revisado'] = $orcamento['orcado'] - $orcamento['contingenciado'] + $orcamento['descontingenciado'] - $orcamento['anulado'] + $orcamento['suplementado'] - projeto600($ano_base);
+
+	$orcamento['revisado'] = float2($orcamento['revisado']);
+
 
 	$orcamento['disponivel'] = $orcamento['revisado'] - $orcamento['liberado'];
 
 
-	echo "<pre>";	
-	var_dump($orcamento);
-	echo "</pre>";
+	// planejado
+
+	$sql_plan = "SELECT SUM(valor) AS valor_total FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado ='1' AND idPai <> '0' AND planejamento <> '0'";
+	$res = $wpdb->get_row($sql_plan,ARRAY_A);
+	$orcamento['planejado'] = $res['valor_total'] - projeto600planejamento($ano_base);
+
+	// orcamento municipal
+	
+	$sql_orc_mun = "SELECT descricao FROM sc_tipo WHERE abreviatura = 'orcamento_municipal' AND tipo LIKE '$ano_base'";
+	$res = $wpdb->get_row($sql_orc_mun,ARRAY_A);
+	$orcamento['municipal'] = $res['descricao'];
+
+	// secretaria_prefeitura
+
+	$orcamento['secretaria_prefeitura'] = round(($orcamento['orcado']/$orcamento['municipal'])*100,2);
+
+	// liberado_revisado
+
+	$orcamento['liberado_revisado'] = round(($orcamento['liberado']/$orcamento['revisado'])*100,2);
+
+	// liberado_planejado
+
+	$orcamento['liberado_planejado'] = round(($orcamento['liberado']/$orcamento['planejado'])*100,2);
+
+	// orcado_s_folhadepagamento
+
+	$orcamento['orcado_s_folhadepagamento'] = $orcamento['orcado'] - projeto600($ano_base);
+
+	$orc_base = array(
+		"periodo"=>$orcamento['periodo'],
+		"orcado" =>dinheiroParaBr($orcamento['orcado']),
+		"contingenciado"=>dinheiroParaBr($orcamento['contingenciado']),
+		"descontingenciado"=>dinheiroParaBr($orcamento['descontingenciado']),
+		"anulado"=>dinheiroParaBr($orcamento['anulado']),
+		"suplementado"=>dinheiroParaBr($orcamento['suplementado']),
+		"liberado"=>dinheiroParaBr($orcamento['liberado']),
+		"revisado"=>dinheiroParaBr($orcamento['revisado']),
+		"disponivel"=>dinheiroParaBr($orcamento['disponivel']),
+		"planejado"=>dinheiroParaBr($orcamento['planejado']),
+		"municipal"=>dinheiroParaBr($orcamento['municipal']),
+		"secretaria_prefeitura"=>$orcamento['secretaria_prefeitura']."%",
+		"liberado_revisado"=>$orcamento['liberado_revisado']."%",
+		"liberado_planejado"=>$orcamento['liberado_planejado']."%",
+		"orcado_s_folhadepagamento"=>dinheiroParaBr($orcamento['orcado_s_folhadepagamento']),
+	
+
+
+
+	);
+	return $orc_base;
+
+
+	//return $orcamento;
 
 
 

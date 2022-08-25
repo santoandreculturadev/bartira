@@ -22,6 +22,13 @@
 	  
 	  
          <ul class="nav nav-pills flex-column">
+         <?php
+      $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
+      if(in_array($user->ID,$peruser)){ ?>  
+        <li class="nav-item">
+          <a class="nav-link" href="api/create.php" target="_blank"><strong>Atualizar API</strong></a>
+        </li>
+      <?php } ?> 
         <?php
       $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
       if(in_array($user->ID,$peruser)){ ?>  
@@ -29,6 +36,7 @@
           <a class="nav-link" href="indicadores_filtro_acervos.php"><strong>Acervos</strong></a>
         </li>
       <?php } ?>
+
       <?php ?>
 
       <?php

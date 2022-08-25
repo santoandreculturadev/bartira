@@ -908,7 +908,7 @@ if(isset($_POST['deletar'])){
 
 					<?php 
 					global $wpdb;
-					$sql_list =  "SELECT * FROM sc_mov_orc WHERE publicado = '1'  AND data NOT LIKE '%2018%' AND data NOT LIKE '%2019%'ORDER BY data DESC";
+					$sql_list =  "SELECT * FROM sc_mov_orc WHERE publicado = '1'  ORDER BY data DESC";
 					$res = $wpdb->get_results($sql_list,ARRAY_A);
 					for($i = 0; $i < count($res); $i++){
 						$dot = recuperaDados("sc_orcamento",$res[$i]['dotacao'],"id");

@@ -15,11 +15,6 @@
 */
 
 
-
-
-
-
-
 // carrega as funções do wordpress
 
 require_once("../../wp-load.php");
@@ -40,24 +35,35 @@ $wpdb->query("TRUNCATE TABLE `sc_api`");
 $ano = anoOrcamento(true);
 
 
-// atendimento
+
 
 
 for($i = 0; $i < count($ano); $i++){
 	$ano_base = $ano[$i]['ano_base'];
 
-/*
+
 
 
 	$json_ano = "[";
+	$json_total = array();
+
+	// atendimento
 
 	$ind_evento = indicadores($ano_base,"evento");
 	$ind_biblioteca = indicadores($ano_base,"biblioteca");
 	$ind_incentivo = indicadores($ano_base,"incentivo");
 
+	$json_ano .=  '{
+		"Período": "'.$ano_base.'",
+		"Público Geral" : "0",
+		"Nº Atividades" : "0",
+		"Nº Agentes Culturais Locais Envolvidos" : "0",
+		"Nº Bairros da Cidade Atendidos" : "0",
+		"% Bairros da Cidade Atendidos (Ref. 112 bairros)" : "0",
+		"Nº Bairros Descentralizados" : "0"
+		},';	
 		
-		
-
+	$conta_bairro_total = array();	
 
 	for($m = 1; $m < 13; $m++){	
 		$json_mes = "[";
@@ -91,6 +97,16 @@ for($i = 0; $i < count($ano); $i++){
 			"% Bairros da Cidade Atendidos (Ref. 112 bairros)" : "'. round((count($conta_bairro)/112)*100,2).'",
 			"Nº Bairros Descentralizados" : "'.(count($conta_bairro) - 1).'"
 			},';
+
+			// total
+			$json_total['Público Geral'] = $json_total['Público Geral'] + ($ind_evento['mes'][$m]['publico'] + $ind_biblioteca['mes'][$m]['Público - Biblioteca Central'] + $ind_biblioteca['mes'][$m]['Público - Biblioteca Descentralizada'] + $ind_incentivo[$m]['total']['all']);
+			$json_total['Nº Atividades'] = $json_total['Nº Atividades'] + ($ind_evento['mes'][$m]['n_atividades'] +  $ind_incentivo[$m]['atividades']);
+			$json_total['Nº Atividades com Agentes Locais'] = $json_total['Nº Atividades com Agentes Locais'] + ($ind_evento['mes'][$m]['n_atividades_locais'] +  $ind_incentivo[$m]['atividades_agentes_locais']);
+			$json_total['Nº Agentes Culturais Locais Envolvidos'] = $json_total['Nº Agentes Culturais Locais Envolvidos'] + ($ind_evento['mes'][$m]['agentes_locais'] +  $ind_incentivo[$m]['agentes_locais']);
+			$conta_bairro_total = contaBairros($conta_bairro,$conta_bairro_total);
+			echo "contaBairroTotal:";
+			var_dump($conta_bairro_total);
+
 		//echo $json_mes."<br />";
 		$json_mes = substr($json_mes,0,-1);	
 		$json_mes .= "]";
@@ -104,25 +120,28 @@ for($i = 0; $i < count($ano); $i++){
 	$json_ano = substr($json_ano,0,-1);	
 	$json_ano .= "]";
 	
-	
+	$json_total['Nº Bairros da Cidade Atendidos'] = count($conta_bairro_total);
+	$json_total['% Bairros da Cidade Atendidos (Ref. 112 bairros)'] =  round((count($conta_bairro_total)/112)*100,2);
+	$json_total['Nº Bairros Descentralizados'] = count($conta_bairro_total)-1;
 
+	$json_total_json = json_encode($json_total,JSON_UNESCAPED_UNICODE);
+	$json_total_retorno = "[".$json_total_json."]";
 
 
 	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'atendimentos', '$ano_base', '0', '$json_ano')";
 	$wpdb->query($sql_insert);
 
+	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `total`,`json`) VALUES (NULL, 'atendimentos', '$ano_base', '0', '1','$json_total_retorno')";
+	$wpdb->query($sql_insert);
 
 
-// biblioteca
+	// biblioteca
 
 
 	$json_ano = "[";
 
 	$ind = indicadores($ano_base,'biblioteca');
 	
-	echo "<pre>";
-	var_dump($ind);
-	echo "</pre>";
 	
 
 	$json_ano .=  '{
@@ -145,10 +164,11 @@ for($i = 0; $i < count($ano); $i++){
 	$json_ano = substr($json_ano,0,-1);	
 	$json_ano .= "]";		
 
-	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '0', '$json_ano')";
+	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `total`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '0','1', '$json_ano')";
 	$x = $wpdb->query($sql_insert);
 	var_dump($x);		
 	
+	$json_total = "[";
 
 		for($n = 1; $n < 13; $n++){
 		$json_mes = "[";	
@@ -169,7 +189,25 @@ for($i = 0; $i < count($ano); $i++){
 			"Downloads - Digital" : "'.$ind['mes'][$n]['Novas Incorporações - Biblioteca Digital'].'"
 			},';
 
-		
+			$json_total .=  '{
+				"periodo": "'.$ind['mes'][$n]['periodo'].'",
+				"Público - Biblioteca Central" : "'.$ind['mes'][$n]['Público - Biblioteca Central'].'",
+				"Público - Biblioteca Descentralizada" : "'.$ind['mes'][$n]['Público - Biblioteca Descentralizada'].'",
+				"Empréstimos - Biblioteca Central" : "'. $ind['mes'][$n]['Empréstimos - Biblioteca Central'].'",
+				"Empréstimos - Biblioteca Descentralizada" : "'.$ind['mes'][$n]['Empréstimos - Biblioteca Descentralizada'].'",
+				"Sócios - Biblioteca Central" : "'. $ind['mes'][$n]['Sócios - Biblioteca Central'].'",
+				"Sócios - Biblioteca Descentralizada" : "'. $ind['mes'][$n]['Sócios - Biblioteca Descentralizada'].'",
+				"Itens Acervo - Biblioteca Central" : "'.$ind['mes'][$n]['Itens Acervo - Biblioteca Central'].'",
+				"Itens Acervo - Biblioteca Descentralizada" : "'.$ind['mes'][$n]['Itens Acervo - Biblioteca Descentralizada'].'",
+				"Itens Acervo - Biblioteca Digital" : "'.$ind['mes'][$n]['Itens Acervo - Biblioteca Digital'].'",
+				"Novas Incorporações - Biblioteca Central" : "'.$ind['mes'][$n]['Novas Incorporações - Biblioteca Central'].'",
+				"Novas Incorporações - Biblioteca Descentralizada" : "'.$ind['mes'][$n]['Novas Incorporações - Biblioteca Descentralizada'].'",
+				"Novas Incorporações - Biblioteca Digital" : "'.$ind['mes'][$n]['Novas Incorporações - Biblioteca Digital'].'",
+				"Downloads - Digital" : "'.$ind['mes'][$n]['Novas Incorporações - Biblioteca Digital'].'"
+				},';
+	
+	
+			
 		$json_mes = substr($json_mes,0,-1);	
 	$json_mes .= "]";
 	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '$n', '$json_mes')";
@@ -179,6 +217,10 @@ for($i = 0; $i < count($ano); $i++){
 
 	}
 
+	$json_total = substr($json_total,0,-1);	
+	$json_total .= "]";
+	$sql_insert_total = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `total`,`mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base','0', '0', '$json_total')";
+	$wpdb->query($sql_insert_total);	
 
 	
 // evento
@@ -256,6 +298,9 @@ for($i = 0; $i < count($ano); $i++){
 
 	
 // incentivo
+
+
+
 	$json_ano = "[";
 	for($m = 1; $m < 13; $m++){	
 		$json_mes = "[";
@@ -329,57 +374,46 @@ for($i = 0; $i < count($ano); $i++){
 		echo $sql_insert;
 	
 	
-*/
+
 	
 	
-	// orcamento
+	// orcamento (id, src, ano, total, mes, json)
 	
+
 	// Quais os projetos do ano base
 	
-	$sql_ano = "SELECT id FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' AND ano_base = '$ano_base'";
-	$res_orc = $wpdb->get_results($sql_ano,ARRAY_A);
-	
-	$total = 0;
-	
-	for($g = 0; $g < count($res_orc); $g++){
-	
-		$id = $res_orc[$g]['id'];
-		
-		for($m = 1; $m < 13; $m++){
-			$inicio = $ano_base."-".fillZero($m,2)."-01";
-			$fim = $ano_base."-".fillZero($m,2)."-".ultimoDiaMes($ano_base,$m);
-			
-			$orc = orcamento($id,$fim,$inicio);
-			
-			$total += $orc['total'];
-			
-			echo $inicio." / ".$fim."<br />";
-			echo "<pre>";
-			var_dump($orc);
-			echo "</pre>";
-			echo "---------------------------------------<br />";
+	// anos que não sejam o atual buscar no contabil
 
-		}
+	// total no ano
+
+		$json_total = "[";	
+	
+		for($n = 1; $n < 13; $n++){
+
+			$json = "[";
+	
+				$res = orcamentoDataTotal($ano_base,$n);
+				$res['periodo'] = fillZero($n,2);
+				$json .= json_encode($res);
+
+
+			$json_total .= json_encode($res).",";
+				//$json = substr($json,0,-1);	
+			$json .= "]";
+
+
+			$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `total`, `mes`, `json`) VALUES (NULL, 'orcamento', '$ano_base', '0', $n, '$json')";
+			$wpdb->query($sql_insert);	
+			
 		
-	}
-	
-	echo "Totalzão: ".$total;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	}
+		}
+		$json_total = substr($json_total,0,-1);	
+		$json_total .= "]";
+		$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `total`, `mes`, `json`) VALUES (NULL, 'orcamento', '$ano_base', '1', '0', '$json_total')";
+		$wpdb->query($sql_insert);	
+
+
+	} // fim do loop do ano
 	
 
 

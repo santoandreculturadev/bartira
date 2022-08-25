@@ -50,10 +50,15 @@
 			ini_set('max_execution_time', 0); // para não parar a execução
 			$ano_atual = date('Y');
 			 
-					$sql_truncate = "DELETE FROM sc_contabil WHERE ano =  '$ano_atual'";
-					$wpdb->query($sql_truncate);
-					
-					$fileName = $arquivo;
+
+
+			$sql_truncate = "DELETE FROM sc_contabil WHERE ano =  '$ano_atual'";
+			$wpdb->query($sql_truncate);
+		
+			
+			
+
+			$fileName = $arquivo;
 					
 			# Create a new Xls Reader
 			$reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
