@@ -2008,6 +2008,20 @@ if(isset($_POST['apagar'])){
 	//gatilho
 	}
 
+	if(isset($_POST['duplicar'])){
+		global $wpdb;
+		$id = $_POST['duplicar'];
+		$sql_insert = "INSERT INTO `sc_tipo` (`tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`)
+		SELECT  `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base` FROM sc_tipo WHERE `id_tipo` = '$id'";
+		$duplica = $wpdb->query($sql_insert);
+		if($duplica == 1){
+			$mensagem = alerta("Duplicado com sucesso.","success");
+		}else{
+			$mensagem = alerta("Não duplicado Tente novamente. $sql_insert","info");
+		}	
+
+	}
+
 	?>
 	<link href="css/jquery-ui.css" rel="stylesheet">
 	<script src="js/jquery-ui.js"></script>
@@ -2113,6 +2127,12 @@ if(isset($_POST['apagar'])){
 										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Editar">
 									</form>					  
 								</td>
+								<td>
+											<form method="POST" action="?p=listaprojeto" class="form-horizontal" role="form">
+												<input type="hidden" name="duplicar" value="<?php echo $res[$i]['id_tipo']; ?>" />
+												<input type="submit" class="btn btn-theme btn-sm btn-block" value="Duplicar">
+											</form>
+										</td>
 								<td>	
 									<form method="POST" action="?p=listaprojeto" class="form-horizontal" role="form">
 										<input type="hidden" name="deleta" value="<?php echo $res[$i]['id_tipo']; ?>" />
