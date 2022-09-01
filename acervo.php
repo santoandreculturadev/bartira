@@ -40,8 +40,8 @@ if(isset($_GET['pag'])){
         
         // atualiza os dados vindos do oracle     
 
-        include ".\acervo\gera_casa.php";
-        include ".\acervo\gera_museu.php";    
+        include "acervo/gera_casa.php";
+        include "acervo/gera_museu.php";    
 
         break;
 
