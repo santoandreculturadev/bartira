@@ -7240,6 +7240,15 @@ for($m = 1; $m < 13; $m++){
 															$tipo = json_decode($t['descricao'],TRUE);
 															$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
 															echo count($conta_bairro);
+                                                            /* $string_bairro = "";
+                                                                foreach($conta_bairro as $id_bairro){
+                                                                   $x = tipo($id_bairro);     
+                                                                   $bairro = $x['tipo']; 
+                                                                   $string_bairro = $string_bairro.",".$bairro;
+                                                                }                                                                    
+                                                                echo $string_bairro;
+                                                            */
+
 															?>
 															
 															

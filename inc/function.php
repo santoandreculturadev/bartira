@@ -3957,7 +3957,7 @@ function orcamentoDataTotal($ano_base,$mes){
 	}
 
 
-	$orcamento['revisado'] = $orcamento['orcado'] - $orcamento['contingenciado'] + $orcamento['descontingenciado'] - $orcamento['anulado'] + $orcamento['suplementado'] - projeto600($ano_base);
+	$orcamento['revisado'] = $orcamento['orcado'] - $orcamento['contingenciado'] + $orcamento['descontingenciado'] - $orcamento['anulado'] + $orcamento['suplementado'];
 
 	$orcamento['revisado'] = float2($orcamento['revisado']);
 
