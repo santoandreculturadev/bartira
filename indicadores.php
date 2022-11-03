@@ -45,7 +45,7 @@ ini_set(“display_errors”, 0);
             </section>
             <?php
             break;
-        case "inserirevento":
+        /*case "inserirevento":
             ?>
 
             <link href="css/jquery-ui.css" rel="stylesheet">
@@ -83,6 +83,9 @@ ini_set(“display_errors”, 0);
                     });
                 });
             </script>
+            
+
+            
 
             <section id="contact" class="home-section bg-white">
                 <div class="container">
@@ -333,7 +336,7 @@ ini_set(“display_errors”, 0);
             </section>
 
             <?php
-            break;
+            break;*/
         case "inserirevento_longaduracao":
             ?>
 
@@ -4741,7 +4744,7 @@ for($i = 0; $i < count($ano_orcamento); $i++){
 
 
                                                 <?php
-                                                break;
+                                               break;
                                                 case "tabelacontinuadas":
 
                                                 ?>
@@ -5579,7 +5582,7 @@ for($i = 0; $i < count($ano_orcamento); $i++){
 
                                                 <?php
                                                 break;
-                                                case "tabelaincentivo":
+                                                /*case "tabelaincentivo":
 
                                                 ?>
 
@@ -6926,7 +6929,7 @@ for($i = 0; $i < count($ano); $i++){
 
 
                                                                                                 <?php
-                                                                                                break;
+                                                                                                break;*/
 																								
                                                 case "tabelaincentivo_novo":
 
@@ -7021,22 +7024,20 @@ for($i = 0; $i < count($ano); $i++){
                                                                 <label><h2><?php echo $ano_base; ?> - Por Espaço</h2></label>
                                                                 <tr>
                                                                     <th  width="10%">Período</th>
-                                                                    <th>CEU Ana Maria</th>
-                                                                    <th>CEU Marek</th>
                                                                     <th>EMIA - Escola Municipal de Iniciação Artística
                                                                         Jaçatuba
                                                                     </th>
                                                                     <th>ELCV - Escola livre de Cinema e Vídeo</th>
                                                                     <th>ELD - Escola Livre de Dança</th>
                                                                     <th>ELT - Escola Livre de Teatro</th>
+                                                                    <th>Territórios</th>
                                                                     
                                                                     <th width="10%"></th>
                                                                     <th width="10%"></th>
                                                                 </tr>
 																
 								<?php 
-								$t_711 = 0;
-								$t_271 = 0;
+								
 								$t_205 = 0;
 								$t_206 = 0;
 								$t_204 = 0;
@@ -7047,6 +7048,8 @@ for($i = 0; $i < count($ano); $i++){
 								$sa_206 = 0;
 								$sa_204 = 0;
 								$sa_283 = 0;
+                                //territorios
+                                $ter = 0;
 								
 								for($m = 1; $m < 13; $m++){ // rodar os meses
 								
@@ -7058,12 +7061,11 @@ for($i = 0; $i < count($ano); $i++){
 			<tr>
 
 			<td><?php echo campoMes($m)." - Geral"; ?></td>
-			<td><?php echo nuloZero($ind[$m]["total"][711]["valor"]); $t_711 += $ind[$m]["total"][711]["valor"];  //Ceu Ana Maria 711 ?></td>
-			<td><?php echo nuloZero($ind[$m]["total"][271]["valor"]); $t_271 += $ind[$m]["total"][271]["valor"];// CEU Marek 271 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][205]["valor"]); $t_205 += $ind[$m]["total"][205]["valor"];// EMIA 205 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][206]["valor"]); $t_206 += $ind[$m]["total"][206]["valor"]; // ELCV 206 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][204]["valor"]); $t_204 += $ind[$m]["total"][204]["valor"];// ELD 204 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][283]["valor"]); $t_283 += $ind[$m]["total"][283]["valor"];//ELT 283 ?></td>
+            <td><?php echo nuloZero($ind[$m]["total"][735][335][336][338][819][852][792][80]["valor"]); $ter += $ind[$m]["total"][735][335][336][338][819][852][792][80]["valor"];//territorios 735- 335-336-338-819-852-797-792-80 ?></td>
 
 			<td></td>
 			<td></td>
@@ -7073,8 +7075,6 @@ for($i = 0; $i < count($ano); $i++){
 			<tr>
 
 			<td><?php echo campoMes($m)." - SA"; ?></td>
-			<td><?php echo nuloZero($ind[$m]["sa"][711]["valor"]); $sa_711 += $ind[$m]["sa"][711]["valor"];  //Ceu Ana Maria 711 ?></td>
-			<td><?php echo nuloZero($ind[$m]["sa"][271]["valor"]); $sa_271 += $ind[$m]["sa"][271]["valor"];// CEU Marek 271 ?></td>
 			<td><?php echo nuloZero($ind[$m]["sa"][205]["valor"]); $sa_205 += $ind[$m]["sa"][205]["valor"];// EMIA 205 ?></td>
 			<td><?php echo nuloZero($ind[$m]["sa"][206]["valor"]); $sa_206 += $ind[$m]["sa"][206]["valor"]; // ELCV 206 ?></td>
 			<td><?php echo nuloZero($ind[$m]["sa"][204]["valor"]); $sa_204 += $ind[$m]["sa"][204]["valor"];// ELD 204 ?></td>
@@ -7090,20 +7090,19 @@ for($i = 0; $i < count($ano); $i++){
 								
 								?>								
 			<td>TOTAL -Atendimentos ao longo da ação</td>
-			<td><?php echo $t_711; //Ceu Ana Maria 711 ?></td>
-			<td><?php echo $t_271; // CEU Marek 271 ?></td>
+		
 			<td><?php echo $t_205; // EMIA 205 ?></td>
 			<td><?php echo $t_206; // ELCV 206 ?></td>
 			<td><?php echo $t_204; // ELD 204 ?></td>
 			<td><?php echo $t_283; //ELT 283 ?></td>
+            <td><?php echo $ter; //territorios ?></td>
 
 			<td></td>
 			<td></td>
 
 			</tr>	
 			<td>TOTAL - Atendimentos que são moradores de Santo André</td>
-			<td><?php echo $sa_711; //Ceu Ana Maria 711 ?></td>
-			<td><?php echo $sa_271; // CEU Marek 271 ?></td>
+		
 			<td><?php echo $sa_205; // EMIA 205 ?></td>
 			<td><?php echo $sa_206; // ELCV 206 ?></td>
 			<td><?php echo $sa_204; // ELD 204 ?></td>
@@ -7143,6 +7142,7 @@ $tipo = json_decode($t['descricao'],TRUE);
 															echo "<th>".$key."<th />";
 															
 																  } ?>
+                                                                      <th>Territorios</th>
                                                                       <th width="10%"></th>
                                                                     <th width="10%"></th>
 																			
@@ -7161,8 +7161,12 @@ for($m = 1; $m < 13; $m++){
 		echo "<td>".nuloZero($indicador[$key][$m]['total']['all'])."<td>";
 		?>
 	<?php } // fim do foreach?>
-<td></td>
-<td></td>
+
+
+<td>  <?php $t = tipo(tipoId("indicadores por projeto"));
+	    	$tipo = json_decode($t['descricao'],TRUE);
+			$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
+			echo count($conta_bairro); ?>  </td>
 </tr>					
 <?php } ?>
 <tr>
@@ -7215,6 +7219,7 @@ $ind_incentivo = indicadores($ano_base,"incentivo");
                                                             <th>Nº Bairros</th>
                                                             <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
                                                             <th>Nº Bairros Descentralizados</th>
+                                                            <th>Nome dos Bairros </th>
                                                             <th width="10%"></th>
                                                             <th width="10%"></th>
                                                         </tr>
@@ -7251,17 +7256,61 @@ for($m = 1; $m < 13; $m++){
 
 															?>
 															
-															
 															</th>
                                                             <th><?php echo  round((count($conta_bairro)/112)*100,2) ?></th>
                                                             <th><?php echo count($conta_bairro) - 1;?></th>
+                                                            <th><?php $string_bairro = "";
+                                                                foreach($conta_bairro as $id_bairro){
+                                                                   $x = tipo($id_bairro);     
+                                                                   $bairro = $x['tipo']; 
+                                                                   $string_bairro = $string_bairro.",".$bairro;
+                                                                }                                                                    
+                                                                echo $string_bairro?></th>
                                                             <th width="10%"></th>
                                                             <th width="10%"></th>	
 															</tr>
 	<?php 
 } // for mês
+/*
+<td>Total</td>
+<th><?php echo ($ind_evento['all']['publico'] + $ind_biblioteca['all']['Público - Biblioteca Central'] + $ind_biblioteca['all']['Público - Biblioteca Descentralizada'] + $ind_incentivo['total']['all']);   ?></th>
+                                                            
+<th><?php echo ($ind_evento['mes'][$m]['n_atividades'] +  $ind_incentivo['atividades']);   ?></th>
+<th><?php echo ($ind_evento['mes'][$m]['n_atividades_locais'] +  $ind_incentivo['atividades_agentes_locais']);   ?></th>
+<th><?php echo ($ind_evento['mes'][$m]['agentes_locais'] +  $ind_incentivo['agentes_locais']);   ?></th>
+<th>
+<?php 
+$conta_bairro = array();
+$conta_bairro = contaBairros($ind_evento['all']['id_bairros'],$conta_bairro);
+$conta_bairro = contaBairros($ind_incentivo['bairros']['id_bairro'],$conta_bairro);
+
+$t = tipo(tipoId("Bibliotecas"));
+$tipo = json_decode($t['descricao'],TRUE);
+$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
+echo count($conta_bairro);
+/* $string_bairro = "";
+    foreach($conta_bairro as $id_bairro){
+       $x = tipo($id_bairro);     
+       $bairro = $x['tipo']; 
+       $string_bairro = $string_bairro.",".$bairro;
+    }                                                                    
+    echo $string_bairro;
 
 
+?>
+
+</th>
+<th><?php echo  round((count($conta_bairro)/112)*100,2) ?></th>
+<th><?php echo count($conta_bairro) - 1;?></th>
+<th><?php $string_bairro = "";
+    foreach($conta_bairro as $id_bairro){
+       $x = tipo($id_bairro);     
+       $bairro = $x['tipo']; 
+       $string_bairro = $string_bairro.",".$bairro;
+    }                                                                    
+    echo $string_bairro?></th>
+
+</tr>*/
 
 ?>
 
@@ -7270,6 +7319,7 @@ for($m = 1; $m < 13; $m++){
 												</table>
 
 <?php } // for ano_base ?>
+
 
 <h1>Tabela Atendimento Geral</h1>
 
