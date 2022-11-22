@@ -191,7 +191,7 @@ switch($_GET['src']){
 			"Novas Incorporações - Biblioteca Descentralizada" : "'.$ind['ano']['Novas Incorporações - Biblioteca Descentralizada'].'",
 			"Novas Incorporações - Biblioteca Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'",
 			"Downloads - Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'"
-			},';
+			}';
 			
 			
 			

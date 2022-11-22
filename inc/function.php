@@ -3607,6 +3607,56 @@ function geraOpcaoMeta($meta = NULL){
 	
 }
 
+function geraOpcaoPg($planodegoverno = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT metapg FROM sc_plano_de_governo ORDER BY metapg ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($planodegoverno == $res[$i]['meta']){
+			echo "<option value='".$res[$i]['metapg']."' selected>metapg ".$res[$i]['metapg']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['metapg']."'>metapg ".$res[$i]['metapg']."</option>";				
+		}
+	}
+	
+}
+
+function geraOpcaoPM($planodemetas = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT codigo FROM sc_plano_de_metas ORDER BY codigo ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($planodemetas == $res[$i]['codigo']){
+			echo "<option value='".$res[$i]['codigo']."' selected>codigo ".$res[$i]['codigo']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['codigo']."'>codigo ".$res[$i]['codigo']."</option>";				
+		}
+	}
+	
+}
+
+function geraOpcaoSA500($sa500anos = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT sa500anos FROM sc_sa_500_anos ORDER BY sa500anos ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($sa500anos == $res[$i]['sa500anos']){
+			echo "<option value='".$res[$i]['sa500anos']."' selected>sa500anos ".$res[$i]['sa500anos']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['sa500anos']."'>sa500anos ".$res[$i]['sa500anos']."</option>";				
+		}
+	}
+	
+}
+
+
+
 function opcaoAnoBase($ano_base = NULL){
 	global $wpdb;
 	$sql = "SELECT DISTINCT ano_base FROM sc_tipo ORDER BY ano_base DESC";
