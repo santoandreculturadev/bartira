@@ -1778,9 +1778,9 @@ $historico = orcamento($id_hist);
 
 if(isset($_POST['duplicar'])){
 	global $wpdb;
-	$idPlan = $_POST['duplicar'];
+	$idPai = $_POST['duplicar'];
 	$sql_insert = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'inicio','fim')
-	SELECT  `valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'inicio','fim' FROM sc_orcamento WHERE `id` = '$idPlan'";
+	SELECT  `valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'inicio','fim' FROM sc_orcamento WHERE `id` = '$idPai'";
 	$duplica = $wpdb->query($sql_insert);
 	if($duplica == 1){
 		$mensagem = alerta("Duplicado com sucesso.","success");
@@ -1867,7 +1867,7 @@ if(isset($_POST['apagar'])){
 
 							<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
 
-							<td ><input type="text" name="inicio" class="form-control calendario"   value="<?php echo  exibirDataMysql($plan['inicio']) ?>"/></td>
+							<td ><input type="" name="inicio" class="form-control calendario"   value="<?php echo exibirDataMysql($plan['inicio']) ?>"/><?php var_dump($plan); ?></td>
 
 							<td ><input type="text" name="fim" class="form-control calendario"   value="<?php echo  exibirDataMysql($plan['fim']) ?>"/></td>
 
@@ -1883,8 +1883,10 @@ if(isset($_POST['apagar'])){
 									<td><textarea class="form-control" name="obs" cols="180"><?php echo $plan['obs']; ?></textarea></td>
 
 									<td>
+									<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
 										<input type="hidden" name="atualiza" value="<?php echo $res[$i]['id_tipo']; ?>" />
 										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Atualiza">
+										</form>
 										
 														  
 								</td>
