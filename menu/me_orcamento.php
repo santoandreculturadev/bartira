@@ -19,7 +19,7 @@
        <li class="nav-item button">
         <a class="nav-link" href="orcamento.php?p=visaogeral">Visão Geral</a>
       </li>
-      <?php $autorizados = array(1,193,5,62,146,171);
+      <?php $autorizados = array(1,193,5,62,93,146,171);
       if(in_array($user->ID,$autorizados)){ ?>		
        <li class="nav-item">
         <a class="nav-link" href="orcamento.php?p=mov_inserir">Inserir Movimentação</a>

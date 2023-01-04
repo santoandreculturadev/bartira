@@ -1558,7 +1558,7 @@ $historico = orcamento($id_hist);
 							
 						</tr>
 						<tr><td colspan="6">		
-							<?php $autorizados = array(1,5,62);
+							<?php $autorizados = array(1,5,62,93);
 							if(in_array($user->ID,$autorizados)){ ?>
 								<form method="POST" action="?p=mov_inserir" class="form-horizontal" role="form" name="form1">
 									<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" >
@@ -1736,15 +1736,15 @@ $historico = orcamento($id_hist);
 				
 	if(isset($_POST['atualiza'])){
 		$idPlan = $_POST['atualiza'];
-		$inicio = exibirDataMysql($_POST["inicio"]);
-		$fim = exibirDataMysql($_POST["fim"]);
+		$dataInicio = exibirDataMysql($_POST["data-inicio"]);
+		$dataFim = exibirDataMysql($_POST["data-fim"]);
 		$valor = dinheiroDeBr($_POST['valor']);
 		$dotacao = $_POST['dotacao'];
 		$obs = addslashes($_POST['obs']);					
 		$ver = retornaPlanejamento($idPlan,$anobase);
 	if($ver['bool'] == FALSE){ // insere
-		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'inicio','fim') 
-            VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase','$inicio','$fim')";
+		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'data-inicio','data-fim') 
+            VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase','$dataInicio','$dataFim')";
 		$ins = $wpdb->query($sql_ins);
 		atualizaMetaOrcamento();
 		if($ins == 1){
@@ -1763,8 +1763,8 @@ $historico = orcamento($id_hist);
 		$sql_ins = "UPDATE `sc_orcamento` SET `valor` = '$valor',
 		`idPai` = '$dotacao' ,
 		`obs` = '$obs',
-		'inicio' ='$inicio',
-		'fim' = '$fim'
+		'data-inico' ='$dataInicio',
+		'data-fim' = '$dataFim'
 		WHERE planejamento = '$idPlan' AND ano_base = '$anobase'";
 		$ins = $wpdb->query($sql_ins);
 		if($ins == 1){
