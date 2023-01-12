@@ -399,14 +399,16 @@ if(isset($_SESSION['id'])){
 			{
 				$('#projeto').hide();
 				$('.carregando').show();
-				$.getJSON('inc/projeto.ajax.php?ano_base=all&',{programa: $(this).val(), ajax: 'true'}, function(j)
+				$.getJSON('inc/projeto.ajax.php?programa=',{programa: $(this).val(), ajax: 'true'}, function(j)
+				//$.getJSON('inc/projeto.ajax.php?ano_base=all&',{programa: $(this).val(), ajax: 'true'}, function(j)
 				{
 					var options = '<option value="0"></option>';	
 					for (var i = 0; i < j.length; i++)
 					{
 						options += '<option value="' + j[i].id + '">' + j[i].projeto + ' </option>';
-						/**options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>'; -> mostra todos os anos */ 
-					}	
+					}
+					// options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>'; -> mostra todos os anos 
+					
 					$('#projeto').html(options).show();
 					$('.carregando').hide();
 				});
@@ -455,7 +457,7 @@ if(isset($_SESSION['id'])){
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Projeto *</label>
-							<select class="form-control" name="projeto" id="projeto" >
+							<select class="form-control" name="projeto" id="projeto" ano="2023" >
 							</select>
 						</div>
 					</div>
