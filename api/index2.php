@@ -123,8 +123,8 @@ switch($_GET['src']){
 	
 
 	 ob_end_clean(); 	
-
-	$sql_insert = "SELECT
+	 echo $json;
+	
 
 
 

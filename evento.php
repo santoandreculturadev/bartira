@@ -706,7 +706,7 @@ $idUser = $user->ID;
 	// Inserir evento
 if(isset($_POST['inserir'])){
 	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `convocatoria_edital` ,`pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url`, `artista_local`, `cidade`, `n_agentes`,  `n_agentes_abc` ) 
-	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','$ano_base','$online','$urlonline','$artista_local','$cidade','$n_agentes','$n_agentes_abc')";
+	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2023','$online','$urlonline','$artista_local','$cidade','$n_agentes','$n_agentes_abc')";
 	$ins = $wpdb->query($sql);
 	if($ins){
 		$mensagem = "Inserido com sucesso";
@@ -1088,7 +1088,9 @@ $event = evento($_SESSION['id']);
 		</div>
 	</section>
 	<?php 
+
 	break;
+	
 	case "pedido":
 	if(isset($_GET['order'])){
 		$order = ' ORDER BY nomeEvento ASC ';
