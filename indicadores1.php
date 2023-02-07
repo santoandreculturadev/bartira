@@ -103,9 +103,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = 'ano_base') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = 'ano_base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -194,7 +194,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -381,9 +381,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = 'ano_base') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (ano_base = 'ano-base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -479,7 +479,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -736,7 +736,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1187,9 +1187,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = 'ano_base') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = 'ano_base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -1586,9 +1586,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = 'ano_base') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = 'ano_base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -2175,7 +2175,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -3445,7 +3445,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano-base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -3698,7 +3698,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -11371,7 +11371,7 @@ ini_set(“display_errors”, 0);
                                                                                                                    name="ano_base"
                                                                                                                    class="form-control"
                                                                                                                    id="inputSubject"
-                                                                                                                   value="2020"/>
+                                                                                                                   value="ano_base"/>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     <div class="form-group">
@@ -12046,7 +12046,7 @@ ini_set(“display_errors”, 0);
                                                                                                            name="ano_base"
                                                                                                            class="form-control"
                                                                                                            id="inputSubject"
-                                                                                                           value="2020"/>
+                                                                                                           value="ano_base"/>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
@@ -13036,7 +13036,7 @@ ini_set(“display_errors”, 0);
                                                                                 <label>Ano Base</label>
                                                                                 <input type="text" name="ano_base"
                                                                                        class="form-control"
-                                                                                       id="inputSubject" value="2020"/>
+                                                                                       id="inputSubject" value="ano_base"/>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
@@ -13768,7 +13768,7 @@ ini_set(“display_errors”, 0);
                                                     break;
                                                     case "listar_evento_sem_indicador":
 
-                                                    $sql = "SELECT idEvento,nomeEvento,idUsuario,idResponsavel,idSuplente FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND idEvento NOT IN (SELECT DISTINCT idEvento FROM sc_ind_continuadas) AND idEvento NOT IN (664,667,676,692,693,695,844) AND publicado = '1' AND ano_base BETWEEN '2018' AND '2020'  AND dataEnvio IS NOT NULL";
+                                                    $sql = "SELECT idEvento,nomeEvento,idUsuario,idResponsavel,idSuplente FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND idEvento NOT IN (SELECT DISTINCT idEvento FROM sc_ind_continuadas) AND idEvento NOT IN (664,667,676,692,693,695,844) AND publicado = '1' AND ano_base BETWEEN '2018' AND '2023'  AND dataEnvio IS NOT NULL";
                                                     $evento = $wpdb->get_results($sql,ARRAY_A);
                                                     echo "<h1>".count($evento)." eventos sem informação de público.</h1><br />";
 
