@@ -1,4 +1,6 @@
 <?php
+
+use Mpdf\Tag\A;
 //header ('Content-type: text/html; charset=utf-8');
 /*
 + Acervo
@@ -33,7 +35,7 @@ if(!isset($_GET['ano'])){
 	echo "
 	<h1>API Bartira - Indicadores</h1>
 	<p> ano = obrigatório</p>
-	<p>src = 'bibliotecas','atendimentos','eventos','incentivo','orcamento'</p>
+	<p>src = 'biblioteca','atendimentos','eventos','incentivo','orcamento'</p>
 	<p>mes = 01,02,03,04,05,06,07,08,09,10,11,12</p>
 	<p>total = 1 > soma de todos os meses </p>
 	<p>total = 0 > retorna mês a mês </p>
@@ -63,4 +65,3 @@ if(!isset($_GET['ano'])){
 		echo $res['json'];
 
 }
-

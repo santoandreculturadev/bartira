@@ -3317,7 +3317,7 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$progr
 		$x = array();
 			
 		// bairros
-		$bairros = tipo(tipoId("Bibliotecas"));	
+		$bairros = tipo(tipoId("Biblioteca"));	
 		$id_bairros = json_decode($bairros['descricao'],TRUE);
 		//$locais = $ids['bairros'];
 		//var_dump($locais);

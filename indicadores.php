@@ -22,8 +22,7 @@ ini_set(“display_errors”, 0);
     <body>
 
 <?php include "menu/me_indicadores.php"; ?>
-
-    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+  <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 
 
         <?php
