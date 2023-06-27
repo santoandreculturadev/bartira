@@ -30,7 +30,7 @@
 
 					<?php
                      
-					}
+					
 
 					if(isset($_GET['ano_base'])){
 						$ano_base = $_GET['ano_base'];
@@ -200,7 +200,7 @@ if(count($ocor) > 0){
 
 					<?php 
 break;
-		} // fim da switch p
+ } // fim da switch p
 
 		?>
 

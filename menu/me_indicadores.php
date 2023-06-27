@@ -187,7 +187,7 @@
 
       <?php ?>
            <?php
-          $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
+          $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156,139);
           if(in_array($user->ID,$peruser)){ ?>      
             <li class="nav-item">
               <a class="nav-link" href="indicadores_filtro_evento.php"><strong>Eventos</strong></a>
@@ -195,7 +195,7 @@
           <?php } ?>
  
       <?php
-         $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
+         $peruser = array(1,5,6,7,16,18,29,39,45,49,53,56,59,63,68,77,87,156);
           if(in_array($user->ID,$peruser)){ ?>
          <ul class="nav nav-pills flex-column">
           <li class="nav-item">
@@ -210,7 +210,7 @@
           
 
           <?php
-          $peruser = array(1,5,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,160,198);
+          $peruser = array(1,5,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,63,145,151,152,153,154,156,158,159,160,198);
           if(in_array($user->ID,$peruser)){ ?>      
             <li class="nav-item">
               <a class="nav-link" href="indicadores.php?p=listarevento">+ Listar Relatório Eventos</a>
@@ -219,14 +219,14 @@
           <?php ?>
 
           <?php
-          $peruser = array(1,5,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,160,198);
+          $peruser = array(1,5,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,63,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,202,160,198,139);
           if(in_array($user->ID,$peruser)){ ?>       
             <li class="nav-item">
               <a class="nav-link" href="indicadores.php?p=inserirevento_dataunica">+ Inserir Relatório Eventos Data Única</a>
             </li>
           <?php } ?>
 		            <?php
-          $peruser = array(1,5,13,16,17,39,142,42,49,52,34,33,28,18,53,77,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,160,198);
+          $peruser = array(1,5,13,16,17,39,142,42,49,52,34,33,28,18,53,77,63,38,70,71,72,75,76,79,88,90,35,47,26,46,48,79,12,45,56,144,41,145,68,69,66,145,151,152,153,154,156,158,159,202,160,198,139);
           if(in_array($user->ID,$peruser)){ ?>       
             <li class="nav-item">
               <a class="nav-link" href="indicadores.php?p=inserirevento_longaduracao">+ Inserir Relatório Eventos Longa Duração</a>
@@ -235,7 +235,7 @@
           <?php ?>
 
           <?php
-          $peruser = array(1,5,16,17,68,158 );
+          $peruser = array(1,5,16,17,68,158,139);
           if(in_array($user->ID,$peruser)){ ?>             
             <li class="nav-item">
               <a class="nav-link" href="indicadores.php?p=listar_evento_sem_indicador">+ Eventos Sem Indicador</a>
@@ -247,7 +247,7 @@
 
 
           <?php
-          $peruser = array(1,5,6,13,7,16,18,29,39,45,49,53,56,59,68,77,87,156);
+          $peruser = array(1,5,6,13,7,16,18,29,39,45,49,53,56,59,68,77,87,156,160);
           if(in_array($user->ID,$peruser)){ ?>
             <li class="nav-item">
               <a class="nav-link" href="indicadores_filtro_incentivo.php"><strong>Incentivo à Criação</strong></a>
@@ -256,7 +256,7 @@
           <?php ?>
 
            <?php
-         $peruser = array(1,5,6,7,13,16,18,29,39,45,49,53,56,59,68,77,87,106,156,198,26);
+         $peruser = array(1,5,6,7,13,16,18,29,39,45,49,53,56,59,68,77,87,106,156,198,26,160);
           if(in_array($user->ID,$peruser)){ ?>
          <ul class="nav nav-pills flex-column">
           <li class="nav-item">
@@ -266,7 +266,7 @@
         <?php ?>
 
           <?php
-          $peruser = array(1,5,13,17,45,35,47,26,48,46,56,79,41,145,68,198);
+          $peruser = array(1,5,13,17,45,35,47,26,48,46,56,79,41,145,68,198,160);
           if(in_array($user->ID,$peruser)){ ?>
             <li class="nav-item">
               <a class="nav-link" href="indicadores.php?p=listarincentivo">+ Listar Incentivo à Criação</a>
@@ -275,7 +275,7 @@
           <?php ?>
 
           <?php
-          $peruser = array(1,13,17,45,35,47,26,48,46,56,79,41,145,68,198);
+          $peruser = array(1,13,17,45,35,47,26,48,46,56,79,41,145,68,198,160);
           if(in_array($user->ID,$peruser)){ ?>     
             <li class="nav-item">
               <a class="nav-link" href="indicadores.php?p=inseririncentivo">+ Inserir Incentivo à Criação</a>

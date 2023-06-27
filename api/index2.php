@@ -76,7 +76,7 @@ switch($_GET['src']){
 			$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
 			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairro'],$conta_bairro);
 			
-			$t = tipo(tipoId("Bibliotecas"));
+			$t = tipo(tipoId("Biblioteca"));
 			$tipo = json_decode($t['descricao'],TRUE);
 			$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
 			
@@ -99,7 +99,7 @@ switch($_GET['src']){
 			$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
 			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairro'],$conta_bairro);
 			
-			$t = tipo(tipoId("Bibliotecas"));
+			$t = tipo(tipoId("Biblioteca"));
 			$tipo = json_decode($t['descricao'],TRUE);
 			$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
 			
@@ -123,8 +123,8 @@ switch($_GET['src']){
 	
 
 	 ob_end_clean(); 	
-
-	$sql_insert = "SELECT
+	 echo $json;
+	
 
 
 
@@ -191,7 +191,7 @@ switch($_GET['src']){
 			"Novas Incorporações - Biblioteca Descentralizada" : "'.$ind['ano']['Novas Incorporações - Biblioteca Descentralizada'].'",
 			"Novas Incorporações - Biblioteca Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'",
 			"Downloads - Digital" : "'.$ind['ano']['Novas Incorporações - Biblioteca Digital'].'"
-			},';
+			}';
 			
 			
 			

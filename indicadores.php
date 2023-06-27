@@ -22,8 +22,7 @@ ini_set(“display_errors”, 0);
     <body>
 
 <?php include "menu/me_indicadores.php"; ?>
-
-    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+  <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 
 
         <?php
@@ -45,295 +44,8 @@ ini_set(“display_errors”, 0);
             </section>
             <?php
             break;
-        case "inserirevento":
-            ?>
-
-            <link href="css/jquery-ui.css" rel="stylesheet">
-            <script src="js/jquery-ui.js"></script>
-            <script src="js/mask.js"></script>
-            <script src="js/maskMoney.js"></script>
-            <script>
-                $(function () {
-                    $(".calendario").datepicker();
-                    $(".hora").mask("99:99");
-                    $(".min").mask("999");
-                    $(".valor").maskMoney({prefix: '', thousands: '.', decimal: ',', affixesStay: true});
-                });
-
-
-            </script>
-
-            <script type="application/javascript">
-                $(function () {
-                    $('#idEvento').change(function () {
-                        if ($(this).val()) {
-                            $('#idOcorrencia').hide();
-                            $('.carregando').show();
-                            $.getJSON('inc/ind.ocor.ajax.php?', {idEvento: $(this).val(), ajax: 'true'}, function (j) {
-                                var options = '<option value="0"></option>';
-                                for (var i = 0; i < j.length; i++) {
-                                    options += '<option value="' + j[i].idOcorrencia + '">' + j[i].data + '</option>';
-                                }
-                                $('#idOcorrencia').html(options).show();
-                                $('.carregando').hide();
-                            });
-                        } else {
-                            $('#idOcorrencia').html('<option value="">-- Escolha um projeto --</option>');
-                        }
-                    });
-                });
-            </script>
-
-            <section id="contact" class="home-section bg-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-8">
-                            <h2>Relatórios de Público - Inserir</h2>
-                            <?php
-                            // listar o evento;
-                            ?>
-                            <br/><Br/>
-                        </div>
-                    </div>
-
-                </div>
-
-                <?php
-                $idUsuario = $user->ID;
-                if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario')  AND (dataEnvio IS NOT NULL) AND status IN (3,4) ORDER BY nomeEvento ASC";
-                } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL ORDER BY nomeEvento ASC";
-
-                }
-                $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
-                ?>
-                <div class="row">
-                    <form class="formocor" action="?p=listarevento" method="POST" role="form">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Nome do Evento *</label>
-                                <select class="form-control" name="idEvento" id="idEvento" required>
-                                    <option value=''>Escolha uma opção</option>
-                                    <?php for ($i = 0; $i < count($eventos); $i++) { ?>
-                                        <option value='<?php echo $eventos[$i]['idEvento'];?>.' 
-										<?php 
-										if(isset($_GET['evento']) AND $_GET['evento'] == $eventos[$i]['idEvento']){
-											echo " selected";
-													
-										}
-										
-										?>
-										>
-										
-										
-										<?php echo $eventos[$i]['nomeEvento']." (".$eventos[$i]['idEvento'].")"; ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Nome da Atração Principal</label>
-                                <input type="text" name="atracao_principal" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Local</label>
-                                <select class="form-control" name="idOcorrencia" id="idOcorrencia">
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Outros Locais</label>
-                                <input type="text" name="outros_locais" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Bairro</label>
-                                <select class="form-control" name="bairro" id="bairro">
-                                    <option>Escolha uma opção</option>
-                                    <?php geraTipoOpcao("bairro") ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Projeto</label>
-                                <select class="form-control" name="projeto" id="projeto">
-                                    <option>Escolha uma opção</option>
-                                    <?php geraTipoOpcaoAno("projeto") ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Linguagem</label>
-                                <select class="form-control" name="linguagem" id="linguagem">
-                                    <option>Escolha uma opção</option>
-                                    <?php geraTipoOpcao("linguagens") ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Segmento/Tipo</label>
-                                <select class="form-control" name="tipo_evento" id="tipo_evento">
-                                    <option>Escolha uma opção</option>
-                                    <?php geraTipoOpcao("tipo_evento") ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Data de Início:</label>
-                                <input type='text' class="form-control calendario" name="periodoInicio"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Data de Encerramento (se for data única, não preencher):</label>
-                                <input type='text' class="form-control calendario" name="periodoFim"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Hora:</label>
-                                <input type='text' class="form-control hora" name="hora"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Dias úteis do período (se for data única, não preencher)</label>
-                                <input type="text" name="ndias" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Tipo de Contagem</label>
-                                <select class="form-control" name="contagem" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="1" selected>Número total (absoluto)</option>
-                                    <option value="2">Média Geral (por dia)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Público (Número de Espectadores)</label>
-                                <input type="text" name="valor" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Tipo de Público</label>
-                                <select class="form-control" name="tipo" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="1" selected>Geral</option>
-                                    <option value="2">Específico</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Nº de Grupos/Agentes Culturais e de Lazer</label>
-                                <input type="text" name="numero_agentes" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Selecionados por Convocatória/Edital?</label>
-                                <select class="form-control" name="convocatoria_edital" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="0" selected>Não</option>
-                                    <option value="1">Sim</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Se sim, qual?</label>
-                                <select class="form-control" name="nome_convocatoria" id="nome_convocatoria">
-                                    <option>Escolha uma opção</option>
-                                    <?php geraTipoOpcao("convocatoria") ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Ação contou com artistas/profissionais da cidade?</label>
-                                <select class="form-control" name="prof_sa" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="0" selected>Não</option>
-                                    <option value="1">Sim</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Se sim, quantos indivíduos?</label>
-                                <input type="text" name="quantidade_prof_sa" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Ação realizada em parceria?</label>
-                                <select class="form-control" name="acao_parceria" id="inputSubject">
-                                    <option>Selecione</option>
-                                    <option value="0" selected>Não</option>
-                                    <option value="1">Sim</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Nome do parceiro</label>
-                                <input type="text" name="nome_parceiro" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Gastos com contratação de pessoal para esta ação específica</label>
-                                <input type="text" name="gastos_pessoal" class="form-control valor" value=""/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Gastos com estrutura para esta ação específica</label>
-                                <input type="text" name="gastos_estrutura" class="form-control valor" value=""/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <label>Relato</label>
-                                <textarea name="relato" class="form-control" rows="10"
-                                          placeholder="Relato de incidentes, impressões, avaliações e críticas."><?php //echo $campo["sinopse"]
-                                    ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-8">
-                                <input type="hidden" name="inserir" value="1"/>
-                                <button type="submit" class="btn btn-theme btn-lg btn-block">Enviar Relatório</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </section>
-
-            <?php
-            break;
+        
+    
         case "inserirevento_longaduracao":
             ?>
 
@@ -827,9 +539,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = 'ano_base') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE dataEnvio IS NOT NULL AND (ano_base = 'ano_base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -925,7 +637,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1619,9 +1331,9 @@ ini_set(“display_errors”, 0);
                 <?php
                 $idUsuario = $user->ID;
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = 'ano_base') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = 'ano_base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -2020,7 +1732,7 @@ ini_set(“display_errors”, 0);
                 if ($idUsuario != '1' AND $idUsuario != '17' AND $idUsuario != '68') {
                     $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND (idUsuario = '$idUsuario' OR idResponsavel = '$idUsuario' OR idSuplente = '$idUsuario') AND (ano_base = '2020') AND (dataEnvio IS NOT NULL) ORDER BY nomeEvento ASC";
                 } else {
-                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = '2020') ORDER BY nomeEvento ASC";
+                    $sql_lista_evento = "SELECT nomeEvento,idEvento FROM sc_evento WHERE (dataEnvio IS NOT NULL) AND (ano_base = 'ano_base') ORDER BY nomeEvento ASC";
 
                 }
                 $eventos = $wpdb->get_results($sql_lista_evento, ARRAY_A);
@@ -2626,7 +2338,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -3896,7 +3608,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -4149,7 +3861,7 @@ ini_set(“display_errors”, 0);
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <label>Ano Base</label>
-                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="2020"/>
+                                <input type="text" name="ano_base" class="form-control" id="inputSubject" value="ano_base"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -4741,8 +4453,8 @@ for($i = 0; $i < count($ano_orcamento); $i++){
 
 
                                                 <?php
-                                                break;
-                                                case "tabelacontinuadas":
+                                               break;
+                                               /* case "tabelacontinuadas":
 
                                                 ?>
 
@@ -4756,8 +4468,10 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                 </form>
                                                 <br/><br/>
 
+                                                
 
-                                                <div class="table-responsive">
+
+                                             <!--   <div class="table-responsive"> 
                                                     <table class="table table-striped">
                                                         <thead>
                                                         <label><h2>2019</h2></label>
@@ -5160,7 +4874,7 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                             echo "</tr>";
 
                                                             echo "<tr>";
-                                                            ?>
+                                                             ?>
 
                                                         </tr>
                                                         </tbody>
@@ -5578,8 +5292,8 @@ for($i = 0; $i < count($ano_orcamento); $i++){
                                                 </div>
 
                                                 <?php
-                                                break;
-                                                case "tabelaincentivo":
+                                                break; */
+                                                /*case "tabelaincentivo":
 
                                                 ?>
 
@@ -6926,7 +6640,7 @@ for($i = 0; $i < count($ano); $i++){
 
 
                                                                                                 <?php
-                                                                                                break;
+                                                                                                break;*/
 																								
                                                 case "tabelaincentivo_novo":
 
@@ -7021,22 +6735,20 @@ for($i = 0; $i < count($ano); $i++){
                                                                 <label><h2><?php echo $ano_base; ?> - Por Espaço</h2></label>
                                                                 <tr>
                                                                     <th  width="10%">Período</th>
-                                                                    <th>CEU Ana Maria</th>
-                                                                    <th>CEU Marek</th>
                                                                     <th>EMIA - Escola Municipal de Iniciação Artística
                                                                         Jaçatuba
                                                                     </th>
                                                                     <th>ELCV - Escola livre de Cinema e Vídeo</th>
                                                                     <th>ELD - Escola Livre de Dança</th>
                                                                     <th>ELT - Escola Livre de Teatro</th>
+                                                                    <th>Territórios</th>
                                                                     
                                                                     <th width="10%"></th>
                                                                     <th width="10%"></th>
                                                                 </tr>
 																
 								<?php 
-								$t_711 = 0;
-								$t_271 = 0;
+								
 								$t_205 = 0;
 								$t_206 = 0;
 								$t_204 = 0;
@@ -7047,6 +6759,8 @@ for($i = 0; $i < count($ano); $i++){
 								$sa_206 = 0;
 								$sa_204 = 0;
 								$sa_283 = 0;
+                                //territorios
+                                $ter = 0;
 								
 								for($m = 1; $m < 13; $m++){ // rodar os meses
 								
@@ -7058,12 +6772,11 @@ for($i = 0; $i < count($ano); $i++){
 			<tr>
 
 			<td><?php echo campoMes($m)." - Geral"; ?></td>
-			<td><?php echo nuloZero($ind[$m]["total"][711]["valor"]); $t_711 += $ind[$m]["total"][711]["valor"];  //Ceu Ana Maria 711 ?></td>
-			<td><?php echo nuloZero($ind[$m]["total"][271]["valor"]); $t_271 += $ind[$m]["total"][271]["valor"];// CEU Marek 271 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][205]["valor"]); $t_205 += $ind[$m]["total"][205]["valor"];// EMIA 205 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][206]["valor"]); $t_206 += $ind[$m]["total"][206]["valor"]; // ELCV 206 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][204]["valor"]); $t_204 += $ind[$m]["total"][204]["valor"];// ELD 204 ?></td>
 			<td><?php echo nuloZero($ind[$m]["total"][283]["valor"]); $t_283 += $ind[$m]["total"][283]["valor"];//ELT 283 ?></td>
+            <td><?php echo nuloZero($ind[$m]["total"][735][335][336][338][819][852][792][80]["valor"]); $ter += $ind[$m]["total"][735][335][336][338][819][852][792][80]["valor"];//territorios 735- 335-336-338-819-852-797-792-80 ?></td>
 
 			<td></td>
 			<td></td>
@@ -7073,8 +6786,6 @@ for($i = 0; $i < count($ano); $i++){
 			<tr>
 
 			<td><?php echo campoMes($m)." - SA"; ?></td>
-			<td><?php echo nuloZero($ind[$m]["sa"][711]["valor"]); $sa_711 += $ind[$m]["sa"][711]["valor"];  //Ceu Ana Maria 711 ?></td>
-			<td><?php echo nuloZero($ind[$m]["sa"][271]["valor"]); $sa_271 += $ind[$m]["sa"][271]["valor"];// CEU Marek 271 ?></td>
 			<td><?php echo nuloZero($ind[$m]["sa"][205]["valor"]); $sa_205 += $ind[$m]["sa"][205]["valor"];// EMIA 205 ?></td>
 			<td><?php echo nuloZero($ind[$m]["sa"][206]["valor"]); $sa_206 += $ind[$m]["sa"][206]["valor"]; // ELCV 206 ?></td>
 			<td><?php echo nuloZero($ind[$m]["sa"][204]["valor"]); $sa_204 += $ind[$m]["sa"][204]["valor"];// ELD 204 ?></td>
@@ -7090,20 +6801,19 @@ for($i = 0; $i < count($ano); $i++){
 								
 								?>								
 			<td>TOTAL -Atendimentos ao longo da ação</td>
-			<td><?php echo $t_711; //Ceu Ana Maria 711 ?></td>
-			<td><?php echo $t_271; // CEU Marek 271 ?></td>
+		
 			<td><?php echo $t_205; // EMIA 205 ?></td>
 			<td><?php echo $t_206; // ELCV 206 ?></td>
 			<td><?php echo $t_204; // ELD 204 ?></td>
 			<td><?php echo $t_283; //ELT 283 ?></td>
+            <td><?php echo $ter; //territorios ?></td>
 
 			<td></td>
 			<td></td>
 
 			</tr>	
 			<td>TOTAL - Atendimentos que são moradores de Santo André</td>
-			<td><?php echo $sa_711; //Ceu Ana Maria 711 ?></td>
-			<td><?php echo $sa_271; // CEU Marek 271 ?></td>
+		
 			<td><?php echo $sa_205; // EMIA 205 ?></td>
 			<td><?php echo $sa_206; // ELCV 206 ?></td>
 			<td><?php echo $sa_204; // ELD 204 ?></td>
@@ -7143,6 +6853,7 @@ $tipo = json_decode($t['descricao'],TRUE);
 															echo "<th>".$key."<th />";
 															
 																  } ?>
+                                                                      <th>Territorios</th>
                                                                       <th width="10%"></th>
                                                                     <th width="10%"></th>
 																			
@@ -7161,8 +6872,12 @@ for($m = 1; $m < 13; $m++){
 		echo "<td>".nuloZero($indicador[$key][$m]['total']['all'])."<td>";
 		?>
 	<?php } // fim do foreach?>
-<td></td>
-<td></td>
+
+
+<td>  <?php $t = tipo(tipoId("indicadores por projeto"));
+	    	$tipo = json_decode($t['descricao'],TRUE);
+			$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
+			echo count($conta_bairro); ?>  </td>
 </tr>					
 <?php } ?>
 <tr>
@@ -7215,6 +6930,7 @@ $ind_incentivo = indicadores($ano_base,"incentivo");
                                                             <th>Nº Bairros</th>
                                                             <th>% Bairros da Cidade Atendidos (Ref. 112 bairros)</th>
                                                             <th>Nº Bairros Descentralizados</th>
+                                                            <th>Nome dos Bairros </th>
                                                             <th width="10%"></th>
                                                             <th width="10%"></th>
                                                         </tr>
@@ -7251,17 +6967,61 @@ for($m = 1; $m < 13; $m++){
 
 															?>
 															
-															
 															</th>
                                                             <th><?php echo  round((count($conta_bairro)/112)*100,2) ?></th>
                                                             <th><?php echo count($conta_bairro) - 1;?></th>
+                                                            <th><?php $string_bairro = "";
+                                                                foreach($conta_bairro as $id_bairro){
+                                                                   $x = tipo($id_bairro);     
+                                                                   $bairro = $x['tipo']; 
+                                                                   $string_bairro = $string_bairro.",".$bairro;
+                                                                }                                                                    
+                                                                echo $string_bairro?></th>
                                                             <th width="10%"></th>
                                                             <th width="10%"></th>	
 															</tr>
 	<?php 
 } // for mês
+/*
+<td>Total</td>
+<th><?php echo ($ind_evento['all']['publico'] + $ind_biblioteca['all']['Público - Biblioteca Central'] + $ind_biblioteca['all']['Público - Biblioteca Descentralizada'] + $ind_incentivo['total']['all']);   ?></th>
+                                                            
+<th><?php echo ($ind_evento['mes'][$m]['n_atividades'] +  $ind_incentivo['atividades']);   ?></th>
+<th><?php echo ($ind_evento['mes'][$m]['n_atividades_locais'] +  $ind_incentivo['atividades_agentes_locais']);   ?></th>
+<th><?php echo ($ind_evento['mes'][$m]['agentes_locais'] +  $ind_incentivo['agentes_locais']);   ?></th>
+<th>
+<?php 
+$conta_bairro = array();
+$conta_bairro = contaBairros($ind_evento['all']['id_bairros'],$conta_bairro);
+$conta_bairro = contaBairros($ind_incentivo['bairros']['id_bairro'],$conta_bairro);
+
+$t = tipo(tipoId("Bibliotecas"));
+$tipo = json_decode($t['descricao'],TRUE);
+$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
+echo count($conta_bairro);
+/* $string_bairro = "";
+    foreach($conta_bairro as $id_bairro){
+       $x = tipo($id_bairro);     
+       $bairro = $x['tipo']; 
+       $string_bairro = $string_bairro.",".$bairro;
+    }                                                                    
+    echo $string_bairro;
 
 
+?>
+
+</th>
+<th><?php echo  round((count($conta_bairro)/112)*100,2) ?></th>
+<th><?php echo count($conta_bairro) - 1;?></th>
+<th><?php $string_bairro = "";
+    foreach($conta_bairro as $id_bairro){
+       $x = tipo($id_bairro);     
+       $bairro = $x['tipo']; 
+       $string_bairro = $string_bairro.",".$bairro;
+    }                                                                    
+    echo $string_bairro?></th>
+
+</tr>*/
 
 ?>
 
@@ -7270,6 +7030,7 @@ for($m = 1; $m < 13; $m++){
 												</table>
 
 <?php } // for ano_base ?>
+
 
 <h1>Tabela Atendimento Geral</h1>
 
@@ -7970,7 +7731,7 @@ echo "</pre>";
 
                                                                                                                 <?php }
 
-                                                                                                                $sql = "SELECT idEvento,nomeEvento FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND (ano_base = '2019') AND dataEnvio IS NOT NULL";
+                                                                                                                $sql = "SELECT idEvento,nomeEvento FROM sc_evento WHERE idEvento NOT IN(SELECT DISTINCT idEvento FROM sc_indicadores) AND (ano_base = 'ano_base') AND dataEnvio IS NOT NULL";
                                                                                                                 $evento = $wpdb->get_results($sql, ARRAY_A);
 
 
@@ -8323,7 +8084,7 @@ echo "</pre>";
                                                                                                                    name="ano_base"
                                                                                                                    class="form-control"
                                                                                                                    id="inputSubject"
-                                                                                                                   value="2020"/>
+                                                                                                                   value="ano_base"/>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     <div class="form-group">
@@ -8998,7 +8759,7 @@ echo "</pre>";
                                                                                                            name="ano_base"
                                                                                                            class="form-control"
                                                                                                            id="inputSubject"
-                                                                                                           value="2020"/>
+                                                                                                           value="ano_base"/>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
@@ -9988,7 +9749,7 @@ echo "</pre>";
                                                                                 <label>Ano Base</label>
                                                                                 <input type="text" name="ano_base"
                                                                                        class="form-control"
-                                                                                       id="inputSubject" value="2020"/>
+                                                                                       id="inputSubject" value="ano_base"/>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
@@ -10502,7 +10263,7 @@ echo "</pre>";
                                                                 for ($i = 0; $i < count($res); $i++) {
                                                                     $json = json_decode($res[$i]['descricao'], true);
                                                                     $programa = tipo($json['programa']);
-                                                                    $plan = retornaPlanejamento($res[$i]['id_tipo']);
+                                                                    $plan = retornaPlanejamento($res[$i],['id_tipo']);
                                                                     ?>
                                                                     <tr>
 

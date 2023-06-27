@@ -1558,7 +1558,7 @@ $historico = orcamento($id_hist);
 							
 						</tr>
 						<tr><td colspan="6">		
-							<?php $autorizados = array(1,5,62);
+							<?php $autorizados = array(1,5,62,93);
 							if(in_array($user->ID,$autorizados)){ ?>
 								<form method="POST" action="?p=mov_inserir" class="form-horizontal" role="form" name="form1">
 									<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" >
@@ -1724,6 +1724,7 @@ $historico = orcamento($id_hist);
 				</section>
 				<?php 
 				break;
+
 				case "planejamento":
 				if(isset($_GET['ano'])){
 					$anobase = $_GET['ano'];
@@ -1735,13 +1736,15 @@ $historico = orcamento($id_hist);
 				
 	if(isset($_POST['atualiza'])){
 		$idPlan = $_POST['atualiza'];
+		$dataInicio = exibirDataMysql($_POST["data-inicio"]);
+		$dataFim = exibirDataMysql($_POST["data-fim"]);
 		$valor = dinheiroDeBr($_POST['valor']);
 		$dotacao = $_POST['dotacao'];
 		$obs = addslashes($_POST['obs']);					
 		$ver = retornaPlanejamento($idPlan,$anobase);
 	if($ver['bool'] == FALSE){ // insere
-		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`) 
-            VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase')";
+		$sql_ins = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'data-inicio','data-fim') 
+            VALUES ('$valor','$idPlan','$dotacao','1','$obs','$anobase','$dataInicio','$dataFim')";
 		$ins = $wpdb->query($sql_ins);
 		atualizaMetaOrcamento();
 		if($ins == 1){
@@ -1749,12 +1752,19 @@ $historico = orcamento($id_hist);
 
 		}else{
 			$mensagem = alerta("Erro. Tente novamente","warning");	
+
+		$projeto = tipo($id);
+	
+		$pro_json = json_decode($projeto['descricao'],true);
+
 		}
 		
 	}else{ // atualiza
 		$sql_ins = "UPDATE `sc_orcamento` SET `valor` = '$valor',
 		`idPai` = '$dotacao' ,
-		`obs` = '$obs' 
+		`obs` = '$obs',
+		'data-inico' ='$dataInicio',
+		'data-fim' = '$dataFim'
 		WHERE planejamento = '$idPlan' AND ano_base = '$anobase'";
 		$ins = $wpdb->query($sql_ins);
 		if($ins == 1){
@@ -1766,6 +1776,22 @@ $historico = orcamento($id_hist);
 	}
 }
 
+if(isset($_POST['duplicar'])){
+	global $wpdb;
+	$idPai = $_POST['duplicar'];
+	$sql_insert = "INSERT INTO `sc_orcamento` (`valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'inicio','fim')
+	SELECT  `valor`,`planejamento`, `idPai`, `publicado`, `obs`,`ano_base`,'inicio','fim' FROM sc_orcamento WHERE `id` = '$idPai'";
+	$duplica = $wpdb->query($sql_insert);
+	if($duplica == 1){
+		$mensagem = alerta("Duplicado com sucesso.","success");
+	}else{
+		$mensagem = alerta("Não duplicado Tente novamente. $sql_insert","info");
+	}	
+
+}
+
+
+
 if(isset($_POST['apagar'])){
 	$id = $_POST['apagar'];
 	$sql_upd = "UPDATE sc_tipo SET publicado = '0' WHERE id_tipo = '$id' ";
@@ -1776,6 +1802,7 @@ if(isset($_POST['apagar'])){
 		$mensagem = alerta("Erro. Tente novamente","warning");	
 	}
 }
+
 
 
 ?>
@@ -1810,14 +1837,13 @@ if(isset($_POST['apagar'])){
 			<table class="table table-striped">
 				<thead>
 					<tr>
-							<th>Programa</th>					
+						<th>Programa</th>					
 						<th>Projeto</th>
-						<th>Meta</th>
-						<th width="15%">Valor</th>
+						<th width="9%">Data Inicio</th>
+						<th width="9%">Data Fim</th>
+						<th width="10%">Valor</th>
 						<th>Dotação</th>
-						<th></th>
-						<th></th>
-						<th></th>
+						<th>Descrição</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -1836,27 +1862,45 @@ if(isset($_POST['apagar'])){
 							
 							
 							<td><?php echo $programa['tipo'];  ?></td>
+
 							<td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
-							<td><?php if(isset($json['meta'])){echo $json['meta'];}; ?><?php //var_dump($orc); ?></td>
+
 							<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
-								<td><?php //var_dump($plan); ?><input type="text" name="valor" class="form-control valor"
-                                              value="<?php echo dinheiroParaBr($plan['valor']); ?>"/>
-                                </td>
+
+							<td ><input type="" name="inicio" class="form-control calendario"   value="<?php echo exibirDataMysql($plan['inicio']) ?>"/><?php var_dump($plan); ?></td>
+
+							<td ><input type="text" name="fim" class="form-control calendario"   value="<?php echo  exibirDataMysql($plan['fim']) ?>"/></td>
+
+							<td><input type="text" name="valor" class="form-control valor"value="<?php echo dinheiroParaBr($plan['valor']); ?>" /></td>
+
 								<td>					
-									
 									<select class="form-control" name="dotacao" id="inputSubject" >
 										<option value="NULL">Escolha uma opção</option>
-										<?php //echo geraOpcaoDotacao('$anobase'); ?>
 										<?php echo geraOpcaoDotacao($anobase,$plan['dotacao']); ?>
 									</select>			
 								</td>		
 								<td>	
-									<td><textarea class="form-control" name="obs" cols="120"><?php echo $plan['obs']; ?></textarea></td>
+									<td><textarea class="form-control" name="obs" cols="180"><?php echo $plan['obs']; ?></textarea></td>
+
 									<td>
+									<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
 										<input type="hidden" name="atualiza" value="<?php echo $res[$i]['id_tipo']; ?>" />
 										<input type="submit" class="btn btn-theme btn-sm btn-block" value="Atualiza">
-									</form>					  
+										</form>
+										
+														  
 								</td>
+
+								<td>
+								<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
+												<input type="hidden" name="duplicar" value="<?php echo $res[$i]['id_tipo']; ?>" />
+												<input type="submit" class="btn btn-theme btn-sm btn-block" value="Duplicar">
+												</form>
+									
+								</td>
+
+
+
 								<td>
 									<form method="POST" action="?p=planejamento&ano=<?php echo $anobase; ?>" class="form-horizontal" role="form">
 										<input type="hidden" name="apagar" value="<?php echo $res[$i]['id_tipo']; ?>" />
@@ -1928,7 +1972,7 @@ if(isset($_POST['apagar'])){
 						for($i = 0; $i < count($res); $i++){
 							$json = json_decode($res[$i]['descricao'],true);
 							$programa = tipo($json['programa']);
-							$plan = retornaPlanejamento2020($res[$i]['id_tipo']);
+							$plan = retornaPlanejamento($res[$i]['id_tipo'],$anobase);
 							?>
 							<tr>
 								
@@ -1974,14 +2018,20 @@ if(isset($_POST['apagar'])){
 		$responsavel = "";
 		$descricao = "";
 		$meta = $_POST['meta'];
-		$ano_base = $_POST['ano-base'];
+		$sa500anos = $_POST['sa500anos'];
+		$planodemetas = $_POST['codigo'];
+		$planodegoverno = $_POST['metapg'];
+        $ano_base = $_POST['ano_base'];
 		$json = array(
 			"programa" => "$programa",
 			"inicio" => "$inicio",
 			"responsavel" => "$responsavel",
 			"fim" => "$fim",
 			"descricao" => "$descricao",
-			"meta" => "$meta"
+			"meta" => "$meta",
+			"sa500anos" => "$sa500anos",
+			"codigo" =>  "$planodemetas",
+			"metapg" => "$planodegoverno",
 		);
 		$des = json_encode($json);
 		$sql_upd = "INSERT INTO `sc_tipo` (`id_tipo`, `tipo`, `descricao`, `abreviatura`, `publicado`, `ano_base`) 
@@ -2065,9 +2115,12 @@ if(isset($_POST['apagar'])){
 							
 							<th>Projeto</th>
 							<th>Programa</th>
-							<th>Meta</th>
-							<th>Ano-base</th>
-							<th></th>
+							<th>Ano</th>
+							<th>Meta PMC</th>
+							<th>SA 500 anos</th>
+							<th>Plano de Metas</th>
+							<th>Plano de Governo</th>
+							<th>Responsável</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -2083,6 +2136,11 @@ if(isset($_POST['apagar'])){
 										<?php echo geraTipoOpcao("programa") ?>
 									</select>			
 								</td>
+
+                                <td>
+									<input type="text" name="ano_base" class="form-control" id="inputSubject" />
+								</td>
+
 								<td>
 									<select class="form-control" name="meta" id="inputSubject" >
 										<option value='0'>Escolha uma opção</option>
@@ -2091,15 +2149,41 @@ if(isset($_POST['apagar'])){
 								</td>
 
 								<td>
-									<input type="text" name="ano-base" class="form-control" id="inputSubject" />
+									<select class="form-control" name="sa500anos" id="inputSubject" >
+										<option value='0'>Escolha uma opção</option>
+										<?php echo geraOpcaoSA500("sa500anos") ?>
+									</select>			
 								</td>
+
+								<td>
+									<select class="form-control" name="codigo" id="inputSubject" >
+										<option value='0'>Escolha uma opção</option>
+										<?php echo geraOpcaoPM("codigo") ?>
+									</select>			
+								</td>
+
+								<td>
+									<select class="form-control" name="metapg" id="inputSubject" >
+										<option value='0'>Escolha uma opção</option>
+										<?php echo geraOpcaoPg("metapg") ?>
+									</select>			
+								</td>
+
+
+								<td>
+								<select class="form-control" name="responsavel" id="inputSubject" >
+								<option value="0"></option>
+								<?php geraOpcaoUsuario($pro_json['responsavel']);	?>							
+							</select>
+								</td>
+
 								<td>
 									
 									<input type="hidden" name="inserir" value="1" />
 									<input type="submit" class="btn btn-theme btn-sm btn-block" value="Inserir">
 								</form>
 							</td>
-							<td></td>
+						
 
 						</tr>
 
@@ -2119,6 +2203,7 @@ if(isset($_POST['apagar'])){
 								
 								<td><?php echo $res[$i]['tipo']; ?><?php //var_dump($orc); ?></td>
 								<td><?php echo $programa['tipo']; //var_dump($json); ?></td>
+								<td><?php echo $res[$i]['ano_base']; //var_dump($json); ?></td>
 								
 
 								<td>	
@@ -2159,31 +2244,38 @@ if(isset($_POST['apagar'])){
 	if(isset($_POST['carregar'])){
 		$projeto = tipo($_POST['carregar']);
 		$pro_json = json_decode($projeto['descricao'],true);
-	//var_dump($pro_json);
 	}
 
 	if(isset($_POST['editaprojeto'])){
 		$id = $_POST['editaprojeto'];
 		$titulo = $_POST['titulo'];
 		$programa = $_POST['programa'];
-		$inicio = exibirDataMysql($_POST['inicio']);
-		$fim = exibirDataMysql($_POST['fim']);
+		$inicio = (date("Y-m-d"));
+		$fim = (date("Y-m-d"));
+		$meta = $_POST["meta"];
+		$sa500anos = $_POST['sa500anos'];
+		$planodemetas = $_POST["codigo"];
+		$planodegoverno = $_POST["metapg"];
+		$ano_base = $_POST['ano_base'];
 		$responsavel = $_POST['responsavel'];
 		$descricao = $_POST['descricao'];
-		$meta = $_POST["meta"];
-		$ano_base = $_POST['ano_base'];
 		$json = array(
 			"programa" => "$programa",
 			"inicio" => "$inicio",
 			"responsavel" => "$responsavel",
 			"fim" => "$fim",
 			"descricao" => "$descricao",
-			"meta" =>  "$meta"
+			"meta" =>  "$meta",
+			"sa500anos" =>  "$sa500anos",
+			"codigo" =>  "$planodemetas",
+			"metapg" => "$planodegoverno",
+
 		);
 		$des = json_encode($json,JSON_UNESCAPED_UNICODE );
 		$sql_upd = "UPDATE sc_tipo SET
 		tipo = '$titulo',
 		descricao = '$des'
+		ano_base = '$ano_base',
 		WHERE id_tipo = '$id';	
 		";
 		$upd = $wpdb->query($sql_upd);
@@ -2250,6 +2342,7 @@ if(isset($_POST['apagar'])){
 							</select>
 						</div>
 					</div>	
+
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Meta</label>
@@ -2258,8 +2351,46 @@ if(isset($_POST['apagar'])){
 								<?php echo geraOpcaoMeta($pro_json['meta']); ?>
 							</select>
 						</div>
-					</div>						
+					</div>	
+
 					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>SA 500 Anos</label>
+							<select class="form-control" name="sa500anos" id="inputSubject" >
+								<option value='0'>Escolha uma opção</option>
+								<?php echo geraOpcaoSA500($pro_json['sa500anos']); ?>
+							</select>
+						</div>
+					</div>	
+
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Plano de Metas</label>
+							<select class="form-control" name="codigo" id="inputSubject" >
+								<option value='0'>Escolha uma opção</option>
+								<?php echo geraOpcaoPM($pro_json['codigo']); ?>
+							</select>
+						</div>
+					</div>	
+
+					<div class="form-group">
+						<div class="col-md-offset-2">
+							<label>Plano de Governo</label>
+							<select class="form-control" name="metapg" id="inputSubject" >
+								<option value='0'>Escolha uma opção</option>
+								<?php echo geraOpcaoPg($pro_json['metapg']); ?>
+							</select>
+						</div>
+					</div>		
+                     
+					<div class="form-group">
+                    <div class="col-md-offset-2">
+							<label>Ano Base</label>
+							<input type="text" name="ano_base" class="form-control" id="inputSubject" />
+						</div>
+					</div>
+
+					<div class="form-group"> 
 						<div class="col-md-offset-2">
 							<label>Início *</label>
 							<input type="text" name="inicio" class="form-control calendario"   value="<?php echo exibirDataBr($pro_json['inicio']) ?>"/>
@@ -2273,12 +2404,7 @@ if(isset($_POST['apagar'])){
 							
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="col-md-offset-2">
-							<label>Ano Base </label>
-							<input type="text" name="ano_base" class="form-control" id="inputSubject" value="<?php echo $projeto['ano_base'] ?>" />
-						</div>
-					</div>					
+										
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Responsável</label>
@@ -2288,6 +2414,7 @@ if(isset($_POST['apagar'])){
 							</select>	                
 						</div>
 					</div>
+						
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Descrição *</label>

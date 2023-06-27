@@ -69,9 +69,9 @@ for($i = 0; $i < count($ano); $i++){
 		$json_mes = "[";
 			$conta_bairro = array();
 			$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
-			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairro'],$conta_bairro);
+			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairros'],$conta_bairro);
 			
-			$t = tipo(tipoId("Bibliotecas"));
+			$t = tipo(tipoId("Biblioteca"));
 			$tipo = json_decode($t['descricao'],TRUE);
 			$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
 			
@@ -164,7 +164,7 @@ for($i = 0; $i < count($ano); $i++){
 	$json_ano = substr($json_ano,0,-1);	
 	$json_ano .= "]";		
 
-	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `total`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '0','1', '$json_ano')";
+	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `total`, `json`) VALUES (NULL, 'biblioteca', '$ano_base', '0','1', '$json_ano')";
 	$x = $wpdb->query($sql_insert);
 	var_dump($x);		
 	
@@ -210,7 +210,7 @@ for($i = 0; $i < count($ano); $i++){
 			
 		$json_mes = substr($json_mes,0,-1);	
 	$json_mes .= "]";
-	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base', '$n', '$json_mes')";
+	$sql_insert = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `mes`, `json`) VALUES (NULL, 'biblioteca', '$ano_base', '$n', '$json_mes')";
 	$wpdb->query($sql_insert);		
 	
 
@@ -219,7 +219,7 @@ for($i = 0; $i < count($ano); $i++){
 
 	$json_total = substr($json_total,0,-1);	
 	$json_total .= "]";
-	$sql_insert_total = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `total`,`mes`, `json`) VALUES (NULL, 'bibliotecas', '$ano_base','0', '0', '$json_total')";
+	$sql_insert_total = "INSERT INTO `sc_api` (`id`, `src`, `ano`, `total`,`mes`, `json`) VALUES (NULL, 'biblioteca', '$ano_base','0', '0', '$json_total')";
 	$wpdb->query($sql_insert_total);	
 
 	
@@ -234,7 +234,7 @@ for($i = 0; $i < count($ano); $i++){
 			$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
 			//$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairro'],$conta_bairro);
 			
-			//$t = tipo(tipoId("Bibliotecas"));
+			//$t = tipo(tipoId("Biblioteca"));
 			//$tipo = json_decode($t['descricao'],TRUE);
 			//$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
 			
@@ -306,7 +306,7 @@ for($i = 0; $i < count($ano); $i++){
 		$json_mes = "[";
 			$conta_bairro = array();
 			//$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
-			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairro'],$conta_bairro);
+			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairros'],$conta_bairro);
 			
 			//$t = tipo(tipoId("Bibliotecas"));
 			//$tipo = json_decode($t['descricao'],TRUE);

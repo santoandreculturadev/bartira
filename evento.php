@@ -399,14 +399,16 @@ if(isset($_SESSION['id'])){
 			{
 				$('#projeto').hide();
 				$('.carregando').show();
-				$.getJSON('inc/projeto.ajax.php?ano_base=all&',{programa: $(this).val(), ajax: 'true'}, function(j)
+				$.getJSON('inc/projeto.ajax.php?programa=',{programa: $(this).val(), ajax: 'true'}, function(j)
+				//$.getJSON('inc/projeto.ajax.php?ano_base=all&',{programa: $(this).val(), ajax: 'true'}, function(j)
 				{
 					var options = '<option value="0"></option>';	
 					for (var i = 0; i < j.length; i++)
 					{
 						options += '<option value="' + j[i].id + '">' + j[i].projeto + ' </option>';
-						/**options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>'; -> mostra todos os anos */ 
-					}	
+					}
+					// options += '<option value="' + j[i].id + '">' + j[i].projeto + ' ('+ j[i].ano_base +')</option>'; -> mostra todos os anos 
+					
 					$('#projeto').html(options).show();
 					$('.carregando').hide();
 				});
@@ -455,7 +457,7 @@ if(isset($_SESSION['id'])){
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<label>Projeto *</label>
-							<select class="form-control" name="projeto" id="projeto" >
+							<select class="form-control" name="projeto" id="projeto" ano="2023" >
 							</select>
 						</div>
 					</div>
@@ -704,7 +706,7 @@ $idUser = $user->ID;
 	// Inserir evento
 if(isset($_POST['inserir'])){
 	$sql = "INSERT INTO `sc_evento` (`idEvento`, `idTipo`, `idPrograma`, `idProjeto`, `idLinguagem`, `nomeEvento`, `idResponsavel`, `idSuplente`, `nomeGrupo`, `fichaTecnica`, `faixaEtaria`, `sinopse`, `releaseCom`, `publicado`, `idUsuario`, `linksCom`, `subEvento`, `dataEnvio`, `planejamento`, `inscricao`, `convocatoria_edital` ,`pInterno` , `idRespAprovacao`, `status` , `previsto`, `descricao`,`ano_base`,`online`, `url`, `artista_local`, `cidade`, `n_agentes`,  `n_agentes_abc` ) 
-	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2021','$online','$urlonline','$artista_local','$cidade','$n_agentes','$n_agentes_abc')";
+	VALUES (NULL, '$tipo_evento', '$programa', '$projeto', '$linguagem', '$nomeEvento', '$nomeResponsavel', '$suplente', '$nomeGrupo', '$fichaTecnica', '$faixaEtaria', '$sinopse', '$releaseCom', '1', '$idUser', '$linksCom', 'subEvento', NULL, '$planejamento','$inscricao', '$edital','$p_interno', '$id_aprovacao','1','$previsto','$descricao','2023','$online','$urlonline','$artista_local','$cidade','$n_agentes','$n_agentes_abc')";
 	$ins = $wpdb->query($sql);
 	if($ins){
 		$mensagem = "Inserido com sucesso";
@@ -1086,7 +1088,9 @@ $event = evento($_SESSION['id']);
 		</div>
 	</section>
 	<?php 
+
 	break;
+	
 	case "pedido":
 	if(isset($_GET['order'])){
 		$order = ' ORDER BY nomeEvento ASC ';
@@ -1108,7 +1112,7 @@ $event = evento($_SESSION['id']);
 		<div class="row">    
 			<div class="col-md-offset-2 col-md-8">
 				<h1>Pedidos de Contratação</h1>
-				<p>Para que as informações de Empenho e Pagamento sejam visualizadas, é preciso que seja inserido o número do processo (XXXXX/2020). </p>
+				<p>Para que as informações de Empenho e Pagamento sejam visualizadas, é preciso que seja inserido o número do processo (XXXXX/2023). </p>
 				<p><?php if(isset($mensagem)){ echo $mensagem; }?></p>
 			</div>
 		</div>
