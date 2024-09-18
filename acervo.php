@@ -4,6 +4,9 @@
 
 include "acervo/db.php";
 
+
+
+
 function url_exists($url) {
     return curl_init($url) !== false;
 }
@@ -131,6 +134,15 @@ function exportMysqlToCsv($sql_query,$filename = 'export_csv.csv')
     rewind($f);
 }
 
+function tomboExiste($tombo,$tabela){
+    global $wpdb;
+    $query = "SELECT * FROM `$tabela` WHERE `Número de Tombo` LIKE '$tombo'";
+    echo $query;
+    $x = $wpdb->get_row($query,ARRAY_A);
+    return $x;
+
+}
+
 function tainacanApi($id,$action = "rec",$data = array()){ // não se esqueça de definir as contantes TAINACAN_API_URL, TAINACAN_API_USER, TAINACAN_API_TOKEN em wp-config
 //https://www3.santoandre.sp.gov.br/cultura/acervosculturais/wp-json/tainacan/v2/item/
 /*
@@ -221,6 +233,7 @@ action = rec (recupera item via api);
 
 */
 
+
 if(isset($_GET['pag'])){
     $pag = $_GET['pag'];
 }else{
@@ -230,8 +243,16 @@ if(isset($_GET['pag'])){
 
 ?>
 
-<?php include "header.php"; ?>
 
+
+<?php
+ include "header.php"; 
+$data_atualizacao = get_option('tainacan_update_date');
+
+    if($data_atualizacao == ""){
+        add_option('tainacan_update_date','2010-01-01');
+    }
+?>
 <body>
 	
 	<?php //include "menu/me_inicio.php"; ?>
@@ -242,26 +263,26 @@ if(isset($_GET['pag'])){
     <?php 
     switch($pag){   
     
-        case "atualiza":
+        case "atualiza_museu":
         
         global $wpdb;
 
         set_time_limit(0);
         $antes = strtotime(date('Y-m-d H:i:s')); // note que usei hífen
-        echo "<h2>Recriando os registros do Museu...</h2><br />";
+        echo "<h2>Atualizando os registros do Museu para a Bartira...</h2><br />";
         $hoje = date('Y-m-d H:i:s'); 
 
-/*
+
 
         // atualiza os dados vindos do oracle Museu
         
-        $url = "https://www3.santoandre.sp.gov.br/bartira/appacervo/casadoolhar/Museu/";
+        $url = "http://www.santoandre.sp.gov.br/ImagensMuseu/";
         $url_server = $url;
         $conn = conexao_museu();
 
-
-  
-        $stid = oci_parse($conn, 'SELECT * FROM TAB_FICHA_CATALOGRAFICA ORDER BY DS_NUMERO_TOMBO');
+        $oracle_query = 'SELECT * FROM TAB_FICHA_CATALOGRAFICA ORDER BY DS_NUMERO_TOMBO';    
+        $oracle_query_test = 'SELECT * FROM  ( SELECT * FROM TAB_FICHA_CATALOGRAFICA ORDER BY DS_NUMERO_TOMBO DESC) WHERE ROWNUM <= 10';
+        $stid = oci_parse($conn, $oracle_query);
         oci_execute($stid);
 
         //$row = oci_fetch_all($stid, $dados);
@@ -269,16 +290,42 @@ if(isset($_GET['pag'])){
         //var_dump($dados);
 
         //$wpdb->query("TRUNCATE TABLE `app_migracao_santoandre` "); 
-        $wpdb->query("TRUNCATE TABLE `app_tainacan` ");       
+        //$wpdb->query("TRUNCATE TABLE `app_tainacan` ");       
         //mysqli_query($con,"TRUNCATE TABLE `app_migracao_santoandre` ");
         //mysqli_query($con,"TRUNCATE TABLE `app_tainacan` ");
+
+         /*
+         $data_hoje 
+         $data_ultima_atualizacao (2022-03-17);
+         $data_insercao_registro
+         $data_atualizacao_registro
+         
+         if($data_insercao_registro > $data_ultima_atualizacao){
+            tainacan
+
+
+         }else if($data_atualizacao_registro > $data_ultima_atualizacao){
+            tainacan
+         }
+
+
+
+         if()
+
+
+
+         */   
 
         $i = 0;
         $j = 0;
 
         while (($row = oci_fetch_assoc($stid)) != false) {
 	
-	
+	           // update
+
+
+
+
 
             $x = retornaDadoAcervo("TAB_FICHA_CATALOGRAFICA_FOTO","ID_FICHA_CATALOGRAFICA",$row['ID_FICHA_CATALOGRAFICA'],'DS_NOME_ORIGINAL');
             $y = retornaDadoAcervo("TAB_FICHA_CATALOGRAFICA_FOTO","ID_FICHA_CATALOGRAFICA",$row['ID_FICHA_CATALOGRAFICA'],'DS_NOME_ARQUIVO');
@@ -353,8 +400,144 @@ if(isset($_GET['pag'])){
             echo "DT_DATA: ".dataOrableParaMysql($row['DT_DATA'])." <br />" ;
             echo "DT_DESINCORPORADO: ".dataOrableParaMysql($row['DT_DESINCORPORADO'])." <br />" ;
             echo "DT_CADASTRO: ".dataOrableParaMysql($row['DT_CADASTRO'])." <br /> <br />" ;
-            
 
+            // condição de data
+            /*    
+            if(strtotime(dataOrableParaMysql($row['DT_CADASTRO'])) > strtotime($data_atualizacao)){
+                //verifica se o tombo existe no tainacan
+                    // se existe -> atualiza
+                    // se não existe -> insere 
+
+                    (imagem)
+    
+    
+             }else if(strtotime(dataOrableParaMysql($row['DTA_ULT_ALTERACAO'])) > strtotime($data_atualizacao)){
+                 //verifica se o tombo existe no tainacan
+                    // se existe -> atualiza
+                    // se não existe -> insere
+                    (imagem)
+            }
+    
+            */
+
+            $existe = tomboExiste($row['DS_NUMERO_TOMBO'],'app_tainacan');
+
+            if($existe == true){ //atualizo
+                  
+                $sql_upd = "UPDATE `app_tainacan` SET 
+                `Nome` = ".$row['DS_NOME'].",
+                `Classificação` = $classificacao,
+                 `Tipologia` = $tipologia,
+                 `Modo de Aquisição` = $modo_aquisicao,
+                 `Título` = ".$row['DS_TITULO'].",
+                 `Descrição` = ".$row['DS_LEGENDA'].",
+                 `Partes` =  $partes,
+                 `Dimensão` = $dimensao,
+                 `Coleção` = $colecao,
+                 `Autor / Fabricante` = ".$row['DS_AUTOR_FABRICANTE'].",
+                 `Data` = ".$row['DT_CADASTRO'].",
+                 `ATUALIZACAO` = ".$row['DTA_ULT_ALTERACAO'].",
+                 `Origem` = $origem,
+                 `Técnica` = $tecnica,
+                 `Material` = $material,
+                 `Cor` = $cor,
+                 `Inscrições e Marcas` = ".$row['DS_INSCRICAO_MARCA'].",
+                 `Transcrições das Inscrições` = ".$row['DS_TRANSCRICAO_INSCRICAO'].",
+                 `Histórico` = ".$row['DS_HISTORICO'].",
+                 `Bibliografia` = ".$row['DS_BIBLIOGRAFIA'].",
+                 `special_document` = $foto,
+                 `special_attachments` = $fotourl
+                 WHERE `Número de Tombo` = ".$row['DS_NUMERO_TOMBO']."";
+                    
+                
+        
+                    if($wpdb->query($sql_upd)){
+                        echo $row['DS_NUMERO_TOMBO'] . " " . $row['DS_LEGENDA'] . " inserido com sucesso<br>\n";
+                        echo $foto." / ".$fotourl."<br />";
+                        $i++;
+                    }else{
+                        echo $row['DS_NUMERO_TOMBO'] . " " . $row['DS_LEGENDA'] . " não inserido<br>\n";
+                        echo $sql_upd. "<br />";
+                        $j++;	
+                    };
+                
+
+            }else{ //insere
+                $sql_ins = "INSERT INTO `app_tainacan` (
+                    `id`,
+                    `Número de Tombo`,
+                    `Nome`,
+                    `Classificação`,
+                    `Tipologia`,
+                    `Modo de Aquisição`,
+                    `Título`,
+                    `Descrição`,
+                    `Partes`,
+                    `Dimensão`,
+                    `Coleção`,
+                    `Autor / Fabricante`,
+                    `Data`,
+                    `ATUALIZACAO`,
+                    `Origem`,
+                    `Técnica`,
+                    `Material`,
+                    `Cor`, 
+                    `Inscrições e Marcas`,
+                    `Transcrições das Inscrições`,
+                    `Histórico`,
+                    `Bibliografia`,
+                    `special_document`,
+                    `special_attachments`,
+                    `tainacan_id`)
+                    VALUES (
+                    NULL,
+                    '".$row['DS_NUMERO_TOMBO']."',
+                    '".$row['DS_NOME']."',
+                    '$classificacao',
+                    '$tipologia',
+                    '$modo_aquisicao',
+                    '".$row['DS_TITULO']."',
+                    '".$row['DS_LEGENDA']."',
+                    '$partes',
+                    '$dimensao',
+                    '$colecao',
+                    '".$row['DS_AUTOR_FABRICANTE']."',
+                    '".$row['DT_CADASTRO']."',
+                    '".$row['DTA_ULT_ALTERACAO']."',
+        
+                    '$origem',
+                    '$tecnica',
+                    '$material',
+                    '$cor',
+                    '".$row['DS_INSCRICAO_MARCA']."',
+                    '".$row['DS_TRANSCRICAO_INSCRICAO']."',
+                    '".$row['DS_HISTORICO']."',
+                    '".$row['DS_BIBLIOGRAFIA']."',
+                    '".$foto."',
+                    '".$fotourl."',
+                    '$tainacan_id'
+                    )";
+                    
+        
+        
+                    if($wpdb->query($sql_ins)){
+                        echo $row['DS_NUMERO_TOMBO'] . " " . $row['DS_LEGENDA'] . " inserido com sucesso<br>\n";
+                        echo $foto." / ".$fotourl."<br />";
+                        $i++;
+                    }else{
+                        echo $row['DS_NUMERO_TOMBO'] . " " . $row['DS_LEGENDA'] . " não inserido<br>\n";
+                        echo $sql_ins. "<br />";
+                        $j++;	
+                    };
+
+
+            }
+
+
+        }// fim do while
+
+                
+            /*
             $sql_ins = "INSERT INTO `app_tainacan` (
             `id`,
             `Número de Tombo`,
@@ -423,6 +606,7 @@ if(isset($_GET['pag'])){
             };
 
         }
+ 
 
         echo "<h2>Recriando os registros do Casa do Olhar...</h2><br />";
         
@@ -604,7 +788,7 @@ if(isset($_GET['pag'])){
         $wpdb->query($sql_update);
        }
 
-*/
+
        // Atualiza as datas em sc_tainacan_oracle
        echo "<h2>Atualizando datas em sc_tainacan_oracle</h2>";
        $sql_data = "SELECT `Número de Tombo`,`Data`,`ATUALIZACAO`  FROM `app_tainacan` ORDER BY `Número de Tombo`";
@@ -691,6 +875,8 @@ if(isset($_GET['pag'])){
                 add_option( 'tainacan_update_date', date('Y-m-d H:i:s'), '', 'yes' );
              }  
              */
+
+             
         $depois = strtotime(date('Y-m-d H:i:s'));
         $tempo = $depois - $antes;
         echo "<br /><br /> Importação executada em $tempo segundos";
@@ -698,12 +884,26 @@ if(isset($_GET['pag'])){
         break;
 
         default:
+             
+
+
+
            ?>
            <h2></h2>
            <p>Este módulo atualiza as informações do Programa Gestor de Acervos da Secretaria de Cultura 
             na plataforma Tainacan em <strong>https://www3.santoandre.sp.gov.br/cultura/acervosculturais/</strong></p>
-           <?php 
-        
+            <p>Última atualização em:</p>
+            
+               <li><a href="acervo?pag=atualizar_museu">Atualizar o acervo <strong>Museu de Santo André</a></strong></li>
+               <li><a href="acervo?pag=atualizar_casa">Atualizar o acervo <strong>Casa do Olhar</a></strong></li>
+
+                
+
+
+            <?php 
+            echo "<pre>";
+            var_dump($data_atualizacao);
+            echo "</pre>";
 
         break;
 

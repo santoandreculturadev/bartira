@@ -49,6 +49,14 @@ function fillZero($string,$caracteres){
 }
 
 
+function float2($number){
+	if($number == NULL){
+		return number_format(0, 2, '.', '');
+	}else{	
+		return number_format($number, 2, '.', '');
+	}	
+}
+
 function exibeHoje(){
 	$dia = date('d');
 	$ano = date('Y');
@@ -533,6 +541,19 @@ function diasemanaint($data)
 		echo "</pre>";
 
 	}
+
+
+	function buscaCep($cep){
+		$url = "https://viacep.com.br/ws/".$cep."/json/";
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$page = curl_exec($ch);
+		$evento = json_decode($page);
+		$ccsp = converterObjParaArray($evento);
+		return $ccsp;
+		
+	}
+
 
 	function retornaModulo($descricao){
 		global $wpdb;
@@ -1156,12 +1177,6 @@ function diasEfetivos($id){ //01
 
 function orcamento($id,$fim = NULL,$inicio = NULL){
 
-	if($fim == NULL AND $inicio == NULL){
-		$inicio = date('y')."-01-01";
-		$fim = date('y')."-12-".ultimoDiaMes(date('y'),12);
-	}
-	
-	
 	global $wpdb;
 	$sel = "SELECT valor,dotacao,descricao, projeto, ficha, natureza, fonte, ano_base FROM sc_orcamento WHERE id = '$id' AND publicado = '1'";
 	$val = $wpdb->get_row($sel,ARRAY_A);
@@ -1174,15 +1189,16 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 
 	
 	// Contigenciado (286)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '286' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'" ;
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '286' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_cont = 0;
 	for($i = 0; $i < count($cont); $i++){
 		$valor_cont = $valor_cont + $cont[$i]['valor'];	
 	}
+	//echo $sel_cont;
 	
 	// Anulado (394)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '394' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'" ;
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '394' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_anul = 0;
 	for($i = 0; $i < count($cont); $i++){
@@ -1191,7 +1207,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	
 	
 	// Descontigenciado (287)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '287' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'";
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '287' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_desc = 0;
 	for($i = 0; $i < count($cont); $i++){
@@ -1200,7 +1216,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 	
 
 	// Suplemento (288)
-	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '288' AND dotacao = '$id' AND '$inicio' <= data AND '$fim' >= data AND publicado = '1'";
+	$sel_cont	= "SELECT valor FROM sc_mov_orc WHERE tipo = '288' AND dotacao = '$id' AND data between '$inicio'  AND '$fim' AND publicado = '1'" ;
 	$cont = $wpdb->get_results($sel_cont,ARRAY_A);
 	$valor_supl = 0;
 	for($i = 0; $i < count($cont); $i++){
@@ -1273,6 +1289,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 		}
 	}
 	
+
 	
 	$dotacao = array(
 		'descricao' => $val['descricao'],
@@ -1565,6 +1582,13 @@ function opcaoDados($tipo,$id){
 	
 }
 
+function Ordena_Array($array, $campo) {
+    usort($array, function ($a, $b) use ($campo) {
+        return $a[$campo] > $b[$campo];
+    });
+    return $array;
+}
+
 
 function retornaPedido($id){
 	global $wpdb;
@@ -1697,6 +1721,13 @@ function retornaPedido($id){
 		
 		if($res['dotacao'] != NULL){
 			$dotac = recuperaDados("sc_orcamento",$res['dotacao'],"id");
+			if($dotac == NULL){
+				$dotac['dotacao'] = "";
+				$dotac['ficha'] = "";
+				$dotac['projeto'] = "";
+				$dotac['fonte'] = "";
+			}	
+
 		}else{
 			$dotac['dotacao'] = "";
 			$dotac['ficha'] = "";
@@ -1815,23 +1846,34 @@ function retornaLocais($idEvento){
 
 function retornaCEP($cep){
 	global $wpdb;
+	$dados = array(
+		'sucesso' => 0,
+		'rua' => '',
+		'bairro' => '',
+		'cidade' => '',
+		'estado' => '' 
+	);
 	$cep_index = substr($cep, 0, 5);
 	$dados['sucesso'] = 0;
 	$sql01 = "SELECT * FROM igsis_cep_cep_log_index WHERE cep5 = '$cep_index' LIMIT 0,1";
 	$campo01 = $wpdb->get_row($sql01,ARRAY_A);
-	$uf = "igsis_cep_".$campo01['uf'];
-	$sql02 = "SELECT * FROM $uf WHERE cep = '$cep'";
-	$campo02 = $wpdb->get_row($sql02,ARRAY_A);
-	$n_inscritos = (is_array($campo02) ? count($campo02) : 0);
-	if($n_inscritos > 0){
-		$dados['sucesso'] = 1;
-	}else{
-		$dados['sucesso'] = 0;
+	if($campo01 != NULL){
+		$uf = "igsis_cep_".$campo01['uf'];
+		$sql02 = "SELECT * FROM $uf WHERE cep = '$cep'";
+		$campo02 = $wpdb->get_row($sql02,ARRAY_A);
+		if($campo02 != NULL){
+		$n_inscritos = (is_array($campo02) ? count($campo02) : 0);
+		if($n_inscritos > 0){
+			$dados['sucesso'] = 1;
+		}else{
+			$dados['sucesso'] = 0;
+		}
+		$dados['rua']     = $campo02['tp_logradouro']." ".$campo02['logradouro'];
+		$dados['bairro']  = $campo02['bairro'];
+		$dados['cidade']  = $campo02['cidade'];
+		$dados['estado']  = strtoupper($campo01['uf']);
 	}
-	$dados['rua']     = $campo02['tp_logradouro']." ".$campo02['logradouro'];
-	$dados['bairro']  = $campo02['bairro'];
-	$dados['cidade']  = $campo02['cidade'];
-	$dados['estado']  = strtoupper($campo01['uf']);
+	}
 	return $dados;
 }
 
@@ -2595,9 +2637,9 @@ function orcamentoTotal($ano){
 			
 			$sal_pla = $total_tot - $total_pla;
 			
-			$total_lib = $total_lib + projeto600($ano);
+			$total_rev = $total_rev - projeto600($ano);
 
-			
+			$total_pla = $total_pla - projeto600planejamento($ano);		
 			
 			
 			$x = array(
@@ -2940,14 +2982,32 @@ function giap($projeto,$ficha,$ano,$folha = FALSE){
 }
 
 function projeto600($ano){
-	$_600_1116 = giap(600,1116,$ano); 
+	/*$_600_1116 = giap(600,1116,$ano); 
 	$_600_1117 = giap(600,1117,$ano); 
 	$_600_1118 = giap(600,1118,$ano); 
 	$_600_1119 = giap(600,1119,$ano); 
-	$pessoal = $_600_1116['v_op_baixado'] + $_600_1117['v_op_baixado'] + $_600_1118['v_op_baixado'] + $_600_1119['v_op_baixado'];
-	return $pessoal;
+	$pessoal = $_600_1116['v_op_baixado'] + $_600_1117['v_op_baixado'] + $_600_1118['v_op_baixado'] + $_600_1119['v_op_baixado'];*/
+	global $wpdb;
+	$sql = "SELECT SUM(valor) AS valor_total FROM sc_orcamento WHERE projeto = '600' AND publicado = '1' AND ano_base = '$ano'";
+	$res = $wpdb->get_row($sql,ARRAY_A);
+	
+
+	return $res['valor_total'];
 }
 
+
+function projeto600planejamento($ano){
+	global $wpdb;
+	$sql = "SELECT valor FROM sc_orcamento WHERE  publicado = '1' AND idPai IN (SELECT id FROM sc_orcamento WHERE ano_base = '$ano' AND publicado = '1' AND projeto = '600') ";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$total = 0;
+	for($i = 0; $i < count($res) ; $i++){
+		$total = $total + $res[$i]['valor'];
+	}
+
+	return $total;
+
+}
 
 //indicadores
 
@@ -3264,7 +3324,7 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$progr
 		$x = array();
 			
 		// bairros
-		$bairros = tipo(tipoId("Bibliotecas"));	
+		$bairros = tipo(tipoId("Biblioteca"));	
 		$id_bairros = json_decode($bairros['descricao'],TRUE);
 		//$locais = $ids['bairros'];
 		//var_dump($locais);
@@ -3554,6 +3614,56 @@ function geraOpcaoMeta($meta = NULL){
 	
 }
 
+function geraOpcaoPg($planodegoverno = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT metapg FROM sc_plano_de_governo ORDER BY metapg ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($planodegoverno == $res[$i]['meta']){
+			echo "<option value='".$res[$i]['metapg']."' selected>metapg ".$res[$i]['metapg']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['metapg']."'>metapg ".$res[$i]['metapg']."</option>";				
+		}
+	}
+	
+}
+
+function geraOpcaoPM($planodemetas = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT codigo FROM sc_plano_de_metas ORDER BY codigo ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($planodemetas == $res[$i]['codigo']){
+			echo "<option value='".$res[$i]['codigo']."' selected>codigo ".$res[$i]['codigo']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['codigo']."'>codigo ".$res[$i]['codigo']."</option>";				
+		}
+	}
+	
+}
+
+function geraOpcaoSA500($sa500anos = NULL){
+	global $wpdb;
+	$sql = "SELECT DISTINCT sa500anos FROM sc_sa_500_anos ORDER BY sa500anos ASC";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	$metas_validas = array();	
+	
+	for($i = 0;$i < count($res); $i++){
+		if($sa500anos == $res[$i]['sa500anos']){
+			echo "<option value='".$res[$i]['sa500anos']."' selected>sa500anos ".$res[$i]['sa500anos']."</option>";		
+		}else{
+			echo "<option value='".$res[$i]['sa500anos']."'>sa500anos ".$res[$i]['sa500anos']."</option>";				
+		}
+	}
+	
+}
+
+
+
 function opcaoAnoBase($ano_base = NULL){
 	global $wpdb;
 	$sql = "SELECT DISTINCT ano_base FROM sc_tipo ORDER BY ano_base DESC";
@@ -3840,7 +3950,143 @@ function fixAnoBase($tabela,$c_id,$c_data,$c_ano_base){ // nome da tabela, nome 
 		$ano_base = date_format(date_create($res[$i][$c_data]), 'Y');
 		$id = $res[$i][$c_id];
 		$upd = "UPDATE $tabela SET $c_ano_base = '$ano_base' WHERE $c_id = '$id'";
-		echo $upd;
 		$wpdb->query($upd);
 	}
+}
+
+function orcamentoDataTotal($ano_base,$mes){
+/*
+
++ Orçado = valor que vem da câmara (anual) ok
++ Contingenciado = valor que a prefeitura retém (mes/ano) ok
++ Descontigenciado = valor que a prefeitura libera do retido (mes/ano) ok
++ Anulado = valor que a prefeitura anula para sempre forever (mes/ano) ok 
++ Suplementado = valor que a prefeitura dá a mais sem estar no orçamento inicial (mes/ano) ok
++ Planejado (ano) ok 
++ Orçamento Municipal (ano) ok 
++ Percentual do orçamento da SC / prefeitura (ano) ok
+
++ Revisado/Disponibilizado = valor disponível de fato para ações ( Orçado - Contigenciado + Descontigenciado - Anulado + Suplementado - Folha de Pagamento ) sendo que o (Contigenciado >= Descontigenciado) (mes/ano) ok
++ Liberado/Comprometido =  liberações/empenhado (mes/ano) ok
++ Saldo Liberado/Disponível = Revisado - Liberado (quanto sobrou depois da prefeitura revisar e depois que a secretaria gastou) (mes/ano) ok
++ Comprometido em relação ao disponibilizado = (Comprometido / Orçado) *100 (mes/ano) ok
++ Percentual de execução planejado = (Liberado/planejado)*100 (mes/ano)
+
+	*/
+
+
+
+	global $wpdb;
+	$inicio = $ano_base."-01-01";
+	$fim = $ano_base."-".fillZero($mes,2)."-".ultimoDiaMes($ano_base,$mes);
+
+	$orcamento = array();	
+
+	$tipos = array(
+		'contingenciado' => 286,
+		'descontingenciado' => 287,
+		'anulado' => 394,
+		'suplementado' => 288,
+		'liberado' => 311
+
+	);
+
+	// sc_orcamento - orçado
+	$sql = "SELECT SUM(valor) AS valor_total FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado = '1' AND idPai = '0' AND planejamento = '0'";
+
+	$res = $wpdb->get_row($sql,ARRAY_A);
+	
+	$orcamento['periodo'] = $ano_base."/".fillZero($mes,2);
+	$orcamento['orcado'] = number_format($res['valor_total'],2,'.', '');
+
+	//movimentações
+	foreach($tipos as $key =>$orca){
+		//echo $key." / ".$orca;
+		// contingenciado
+		$sql = "SELECT SUM(valor) AS valor_total FROM sc_mov_orc WHERE 
+		publicado = '1' 
+		AND tipo = '$orca'
+		AND data between '$inicio' AND '$fim' 
+		AND dotacao IN (SELECT id FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado ='1' AND idPai = '0' AND planejamento = '0')";
+
+		$res = $wpdb->get_row($sql,ARRAY_A);
+		$orcamento[$key] = float2($res['valor_total']);
+	}
+
+
+	$orcamento['revisado'] = $orcamento['orcado'] - $orcamento['contingenciado'] + $orcamento['descontingenciado'] - $orcamento['anulado'] + $orcamento['suplementado'];
+
+	$orcamento['revisado'] = float2($orcamento['revisado']);
+
+
+	$orcamento['disponivel'] = $orcamento['revisado'] - $orcamento['liberado'];
+
+
+	// planejado
+
+	$sql_plan = "SELECT SUM(valor) AS valor_total FROM sc_orcamento WHERE ano_base = '$ano_base' AND publicado ='1' AND idPai <> '0' AND planejamento <> '0'";
+	$res = $wpdb->get_row($sql_plan,ARRAY_A);
+	$orcamento['planejado'] = $res['valor_total'] - projeto600planejamento($ano_base);
+
+	// orcamento municipal
+	
+	$sql_orc_mun = "SELECT descricao FROM sc_tipo WHERE abreviatura = 'orcamento_municipal' AND tipo LIKE '$ano_base'";
+	$res = $wpdb->get_row($sql_orc_mun,ARRAY_A);
+	$orcamento['municipal'] = $res['descricao'];
+
+	// secretaria_prefeitura
+
+	$orcamento['secretaria_prefeitura'] = round(($orcamento['orcado']/$orcamento['municipal'])*100,2);
+
+	// liberado_revisado
+
+	$orcamento['liberado_revisado'] = round(($orcamento['liberado']/$orcamento['revisado'])*100,2);
+
+	// liberado_planejado
+
+	$orcamento['liberado_planejado'] = round(($orcamento['liberado']/$orcamento['planejado'])*100,2);
+
+	// orcado_s_folhadepagamento
+
+	$orcamento['orcado_s_folhadepagamento'] = $orcamento['orcado'] - projeto600($ano_base);
+
+	$orc_base = array(
+		"periodo"=>$orcamento['periodo'],
+		"orcado" =>dinheiroParaBr($orcamento['orcado']),
+		"contingenciado"=>dinheiroParaBr($orcamento['contingenciado']),
+		"descontingenciado"=>dinheiroParaBr($orcamento['descontingenciado']),
+		"anulado"=>dinheiroParaBr($orcamento['anulado']),
+		"suplementado"=>dinheiroParaBr($orcamento['suplementado']),
+		"liberado"=>dinheiroParaBr($orcamento['liberado']),
+		"revisado"=>dinheiroParaBr($orcamento['revisado']),
+		"disponivel"=>dinheiroParaBr($orcamento['disponivel']),
+		"planejado"=>dinheiroParaBr($orcamento['planejado']),
+		"municipal"=>dinheiroParaBr($orcamento['municipal']),
+		"secretaria_prefeitura"=>$orcamento['secretaria_prefeitura']."%",
+		"liberado_revisado"=>$orcamento['liberado_revisado']."%",
+		"liberado_planejado"=>$orcamento['liberado_planejado']."%",
+		"orcado_s_folhadepagamento"=>dinheiroParaBr($orcamento['orcado_s_folhadepagamento']),
+	
+
+
+
+	);
+	return $orc_base;
+
+
+	//return $orcamento;
+
+
+
+
+
+}
+
+function comparaProcesso($nProcesso){
+	global $wpdb;
+	$sql = "SELECT idPedidoContratacao FROM sc_contratacao WHERE nProcesso LIKE '%$nProcesso%'";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	//echo "<pre>";	
+	//var_dump($res);
+	//echo "</pre>";
 }

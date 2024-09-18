@@ -8,7 +8,14 @@
 		<h1>Ambiente teste </h1>
 
 		<?php 
-     global $wpdb;   
+		
+		$array = ['usuario','planejamento','mapas','atividades','eventos'];
+		$array_ordena = asort($array);
+		var_dump($array_ordena);
+		
+   
+/*
+   global $wpdb;   
 	$data = array();
 	//$data = array("search" => "MSA-D0000181");
 	//$data = array("search" => "arte");

@@ -1582,6 +1582,13 @@ function opcaoDados($tipo,$id){
 	
 }
 
+function ordenaArray($array, $campo) {
+    usort($array, function ($a, $b) use ($campo) {
+        return $a[$campo] > $b[$campo];
+    });
+    return $array;
+}
+
 
 function retornaPedido($id){
 	global $wpdb;

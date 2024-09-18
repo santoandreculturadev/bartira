@@ -1,4 +1,16 @@
-<?php
+<?php 
+//Carrega WP como FW
+require_once("../../wp-load.php");
+$user = wp_get_current_user();
+if(!is_user_logged_in()): // Impede acesso de pessoas não autorizadas
+/*** REMEMBER THE PAGE TO RETURN TO ONCE LOGGED IN ***/
+$_SESSION["return_to"] = $_SERVER['REQUEST_URI'];
+/*** REDIRECT TO LOGIN PAGE ***/
+header("location: /");
+endif;
+//Carrega os arquivos de funções
+require "../inc/function.php";
+
 // author: Vinicius Nune Medeiros
 
 //https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/
@@ -7,20 +19,23 @@
 
 
 //definição do cabeçalho das requisições utilizando o application passwords WP.
-$user = 'tainacan';
-$token = 'quPY 0QSE vEht L7LS WHdv krec';
+	$user = $GLOBALS['tainacan_user'];
+	$token = $GLOBALS['tainacan_token'];
 $headers = array(
+
     'Content-Type:application/json',
     'Authorization: Basic '. base64_encode("$user:$token")
 );
 
-$collection_id = 6; // ID da coleção para criação do item
+$collection_id = 3444; // ID da coleção para criação do item
+
+
 
 
 //
 // ----------- Criando um Item auto-draft para receber os valores dos metadados:
 //
-$item_api_path = "https://localhost/wp-json/tainacan/v2/collection/$collection_id/items";
+$item_api_path = $GLOBALS['tainacan_url']."/wp-json/tainacan/v2/collection/$collection_id/items";
 $body = array(
     "collection_id" => $collection_id,
     "status" => "auto-draft"
@@ -45,7 +60,9 @@ if(curl_errno($ch)){
 curl_close ($ch);
 $item = json_decode($response_data);
 echo "\n \n ITEM auto-draft ID:" . $item->id . "\n\n";
-
+echo "<pre>";
+var_dump($item);
+echo "</pre>";
 
 
 //
@@ -54,13 +71,13 @@ echo "\n \n ITEM auto-draft ID:" . $item->id . "\n\n";
 
 // --- array com o ID do metadado e o valor que o metadado vai ter para o item:
 $metadatas = array(
-    9 => "Valor do titulo", // Title
-    11 => "Descrição", // Description
-    28 => 12 // Numeric
+    3447 => "Valor do titulo que precisa mapear", // Title
+    3449 => "Descrição que precisa mapear", // Description
+    3454 => 12 // Numeric
 );
 
 foreach($metadatas as $id => $value) {
-    $item_metadata_api_path = "https://localhost/wp-json/tainacan/v2/item/$item->id/metadata/$id"; // API para atualizar o valor de um metadado especifico em um item especifico.
+    $item_metadata_api_path = $GLOBALS['tainacan_url']."/wp-json/tainacan/v2/item/$item->id/metadata/$id"; // API para atualizar o valor de um metadado especifico em um item especifico.
     echo "\nitem_metadata_api_path: $item_metadata_api_path\n";
     $body = array(
         "values" => [$value]
@@ -89,7 +106,7 @@ foreach($metadatas as $id => $value) {
 // ----------- Atualizando o status do item criado anteriormente como auto-rascunho
 // ----------- isso é feito somente apos atulizar os metadados para que as validações dos valores dos metadados sejam executadas.
 //
-$item_api_path = "https://localhost/wp-json/tainacan/v2/items/$item->id";
+$item_api_path = $GLOBALS['tainacan_url']."/wp-json/tainacan/v2/items/$item->id";
 $body = array(
     "status" => "publish"
 );

@@ -61,7 +61,10 @@ if(!isset($_GET['ano'])){
 
 	$sql = "SELECT * FROM sc_api WHERE ano = '$ano' AND src = '$src' $mes $total";
 			$res = $wpdb->get_row($sql,ARRAY_A);
-		ob_end_clean(); 	
-		echo $res['json'];
+
+		header('Content-Type: application/json');
+		 	ob_end_clean(); 
+		echo $res['json'];		
+
 
 }
