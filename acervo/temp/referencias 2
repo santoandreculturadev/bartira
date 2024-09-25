@@ -1,0 +1,55 @@
+
+/* dados
+
+Número de registro 309007 NUMERO_TOMBO (special_item_id) > é único?
+ 
+Denominação Taça de sobremesa DS_NOME, DS_TITULO
+
+Resumo descritivo Taça de sobremesa em prata, lisa, com borda decorada com friso estriado intercalado por "X". Em faces opostas da parte externa, gravações do logotipo "PANAIR DO BRASIL" e "A FROTA BANDEIRANTE". No fundo, logotipo gravado "FRACALANZA". DS_LEGENDA DS_DESCRICAO DS_DESCRICAO_DISTINTA
+
+Autor Fracalanza DS_AUTOR_FABRICANTE
+
+Técnica fundição ID_TECNICA . TAB_TECNICA ID_TECNICA
+
+Material prata ID_MATERIAL . TAB_MATERIAL ID_MATERIAL
+
+Forma de aquisição Doação ID_MODO_AQUISICA TAB_MODOAQUISICAO ID_MODOAQUISICAO
+
+Fonte de aquisição Panair do Brasil S.A. DS_ORIGEM
+
+Referência de aquisição Processo 01438.000004/2017-77 (?)
+
+Local de produção Brasil (?)
+
+Data de Produção 19--  (?) DS_CRONOLOGIA (?)
+
+Classe 05 Interiores > 05.6 Utensílio de Cozinha/Mesa ID_CLASSIFICACAO TAB_CLASSIFICACAO_ACERVO ID_CLASSIFICACAO_ACERVO
+
+Estado de conservação Bom TAB_FICHA_CATALOGRAFICA_ESTADO.ID_FICHA_CATALOGRAFICA = TAB_FICHA_CATALOGRAFICA.ID_FICHA_CATALOGRAFICA / TAB_ESTADOCONSERV.DS_NOME = TAB_FICHA_CATALOGRAFICA_ESTADO.ID_ESTADO_CONSERVACAO
+
+Termos de Indexação AVIAÇÃO | DITADURA MILITAR | FROTA BANDEIRANTE | PANAIR DO BRASIL | SERVIÇO DE BORDO
+TECNICA, LOCAL DE PRODUCAO, MATERIAL, CLASSIFICACAO, COLECAO
+TAB_ASSUNTO_DESCRICAO DS_NOME
+
+
+
+Altura (cm) 5,8
+Largura (cm) 9,60 diametro
+Diâmetro (cm) 9,6
+
+Condições de reprodução Direitos reservados, ver http://mhn.acervos.museus.gov.br/uso-de-imagem/
+
+Exposição Panair do Brasil
+
+Referências expográficas Exposição "Nas asas da Panair", de 11 de julho a 29 de setembro de 2019, no Museu Histórico Nacional/Ibram
+
+
+
+
+$dado = retornaDado("TAB_FICHA_CATALOGRAFICA","ID_FICHA_CATALOGRAFICA",10);
+
+var_dump($dado);
+
+"Número de registro", "Denominação", "Resumo descritivo", "Autor", "Técnica", "Material", "Forma de aquisição", "Fonte de aquisição", "Referência de aquisição", "Local de produção", "Data de Produção", "Classificacão", "Estado de conservação", "Termos de Indexação", "Altura", "Largura", "Profundidade"     
+
+*/

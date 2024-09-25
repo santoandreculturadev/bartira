@@ -1,0 +1,113 @@
+// setup de um tipo que é da última atualização
+
+
+
+
+
+// preencher/atualizar uma tabela com os dados do oracle
+
+
+
+
+
+
+// faz busca dos registros > que é da última atualização
+
+//		se na tabela existir um tainacan_id -> atualiza
+			busca através da api os dados do registro no tainacan
+			mapeia os campos
+			atualiza
+			
+			
+
+
+		se não, ele cria
+			grava na tabela do bartira o tainacan_id
+			mapeia os campos
+			atualiza
+			
+	
+criar função traduz o metadado para código do metadado
+
+	
+{'Número de Tombo':'Número de tombo'},
+{'Artista':'Autor / Fabricante'},
+
+
+
+Casa	
+
+
+id Primária	int(11)			Não	Nenhum		AUTO_INCREMENT	Muda Muda	Elimina Elimina	
+Mais Mais
+	2	Número de Tombo	varchar(30)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	3	Nome	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	4	Classificação	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	5	Tipologia	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	6	Modo de Aquisição	varchar(30)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	7	Título	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	8	Descrição	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	9	Partes	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	10	Dimensão	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	11	Coleção	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	12	Autor / Fabricante	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	13	Data	varchar(60)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	14	Origem	varchar(120)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	15	Técnica	varchar(120)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	16	Material	varchar(120)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	17	Cor	varchar(30)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	18	Inscrições e Marcas	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	19	Transcrições das Inscrições	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	20	Histórico	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	21	Bibliografia	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	22	special_document	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	23	special_attachments	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	24	tainacan_id
+	
+	
+	Museu
+	
+	
+	1	id Primária	int(11)			Não	Nenhum		AUTO_INCREMENT	Muda Muda	Elimina Elimina	
+Mais Mais
+	2	Número de Tombo	varchar(30)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	3	Nome	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	4	Classificação	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	5	Tipologia	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	6	Modo de Aquisição	varchar(30)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	7	Título	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	8	Descrição	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	9	Partes	text	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	10	Dimensão	varchar(160)	utf8mb4_general_ci		Não	Nenhum			Muda Muda	Elimina Elimina	
+Mais Mais
+	11	Coleção
