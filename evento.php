@@ -79,6 +79,7 @@ if(isset($_POST['apagar'])){
 						<th><a href="?<?php if(isset($_GET['order'])){ echo "";}else{ echo "order"; } ?>">Título</a></th>
 						<th>Data</th>
 						<th>Status</th>
+						<th>CulturaZ</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -112,9 +113,13 @@ if(isset($_POST['apagar'])){
 								<?php } ?>
 							</td>
 
-							
+							<?php ?>
 							<td><?php echo $evento['periodo']['legivel']; ?></td>
+							<?php ?>				
+							
 							<td><?php echo $evento['status']; ?></td>
+							
+							
 							<td>	<?php if($evento['dataEnvio'] == NULL){ ?>
 								<form method="POST" action="?p=editar" class="form-horizontal" role="form">
 									<input type="hidden" name="carregar" value="<?php echo $res[$i]['idEvento']; ?>" />
@@ -168,15 +173,18 @@ case "dotacoes":
 									<th>Ficha</th>
 									<th>Dotação</th>
 									<th>Descricao</th>
-									<th>Ano Base</th>
+									<th>Saldo</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php 
 								global $wpdb;
-								$sql_list =  "SELECT * FROM sc_orcamento WHERE planejamento = '0' AND publicado = '1' AND ano_base = '$ano_base' AND dotacao IS NOT NULL ORDER BY projeto ASC, ficha ASC";
+								$sql_list =  "SELECT * FROM sc_orcamento WHERE publicado = '1' AND planejamento = '0' AND ano_base = '".date('Y')."' ORDER BY projeto ASC, ficha ASC";
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
+									$orc = orcamento($res[$i]['id']);
+									$total = $orc['total'] - $orc['contigenciado'] + $orc['descontigenciado'] + $orc['suplementado'] - $orc['liberado'] - $orc['anulado'];
+
 									
 									?>
 									<tr>
@@ -185,7 +193,7 @@ case "dotacoes":
 
 										<td><?php echo $res[$i]['dotacao']; ?></td>
 										<td><?php echo $res[$i]['descricao']; ?></td>
-										<td><?php echo $res[$i]['ano_base']; ?></td>	
+										<td><?php echo dinheiroParaBr($total); ?></td>	
 									</tr>
 										<?php } // fim do for?>	
 									</tbody>

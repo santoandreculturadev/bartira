@@ -784,7 +784,8 @@ function evento($id){
 		'url' => $res['url'],
 		'online' => $res['online'],
 		'convocatoria_edital' => $res['convocatoria_edital'],
-		'ano_base' => $res['ano_base']
+		'ano_base' => $res['ano_base'],
+		'n_status' => $res['status']
 
 	);
 
@@ -1289,6 +1290,7 @@ function orcamento($id,$fim = NULL,$inicio = NULL){
 		}
 	}
 	
+	//$total = $val['valor'] - $val['contigenciado'] + $val['descontigenciado'] + $val['suplementado'] - $val['liberado'] - $val['anulado'];
 
 	
 	$dotacao = array(

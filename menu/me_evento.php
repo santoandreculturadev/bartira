@@ -24,9 +24,9 @@
           <li class="nav-item">
             <a class="nav-link" href="evento.php?p=editar">Informações</a>
           </li>
-          <!--<li class="nav-item">
-            <a class="nav-link" href="ocorrencias.php?p=listar">Listar Ocorrências</a>
-          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="ocorrencias.php?p=listar">Editar Ocorrências</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="ocorrencias.php?p=inserir">Inserir Ocorrências</a>
           </li>
