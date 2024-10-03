@@ -24,21 +24,21 @@
           <li class="nav-item">
             <a class="nav-link" href="evento.php?p=editar">Informações</a>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="ocorrencias.php?p=listar">Listar Ocorrências</a>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="ocorrencias.php?p=inserir">Inserir Ocorrências</a>
           </li>
 
           
-          <li class="nav-item">
+         <!-- <li class="nav-item">
             <a class="nav-link" href="arquivo.php">Listar Arquivos</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="arquivo.php?p=inserir">Inserir Arquivos</a>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="contratacao.php">Pedidos de Contratação</a>
           </li>
@@ -46,7 +46,7 @@
             <a class="nav-link" href="producao.php">Produção / Comunicação</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="enviar.php">Status</a>
+            <a class="nav-link" href="enviar.php">Enviar Evento</a>
           </li>
         </ul>
 
@@ -63,7 +63,8 @@
         <li class="nav-item">
           <a class="nav-link" href="evento.php?p=inserir">Inserir Novo Evento</a>
         </li>
-        <li class="nav-item">
+        <!--
+		<li class="nav-item">
           <a class="nav-link" href="documentos_artista.doc">Documentos do Artista</a>
         </li>
         <li class="nav-item">
@@ -74,7 +75,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="montar_os.doc">Como montar uma OS</a>
-        </li>
+        </li> -->
       </ul>
 
       <ul class="nav nav-pills flex-column">

@@ -1114,12 +1114,13 @@ if(count($res) > 0){
  					</div>	
  
  					<br />					
- 					<div class="row">
+ 					<!--<div class="row">
  						<div class="col-12">
  							<label>Observações </label>
  							<textarea name="observacoes" class="form-control" rows="10" ><?php echo $pessoa['Observacao']; ?></textarea>					
  						</div>
- 					</div>
+ 					</div>-->
+					
  					<br />
  					<div class="row">
  						<div class="col-6">
@@ -1534,24 +1535,24 @@ if(count($res) > 0){
  						</div>
  					</div>
  					<br />
- 					<div class="row">
+ 					<!--<div class="row">
  						<div class="col-12">
  							<label>Observação:</label>
  							<textarea name="observacao" class="form-control" rows="10" ><?php echo $pedido['observacao']; ?></textarea>					
  						</div>
  					</div>
- 					<br />
-
+ 					<br /> -->
+					<input type="hidden" name="observacao" value="" />
  					<div class="form-group">
  						<div class="col-md-offset-2">
  							<input type="hidden" name="atualizar_pedido" value="<?php echo $id_pedido; ?>" />
  							<?php 
  							?>
- 							<input type="submit" class="btn btn-theme btn-lg btn-block" value="Atualizar Pedido">
+ 							<input type="submit" class="btn btn-theme btn-lg btn-block" value="Salvar Pedido">
  						</div>
  					</div>
  				</form>
- 				<form action="arquivo.php?p=inserir&tipo=302&id=<?php echo $id_pedido; ?>" method="post">
+ 				<!--<form action="arquivo.php?p=inserir&tipo=302&id=<?php echo $id_pedido; ?>" method="post">
  					<div class="form-group">
  						<div class="col-md-offset-2">
  							<input type="hidden" name="atualizar_pedido" value="<?php echo $id_pedido; ?>" />
@@ -1560,7 +1561,7 @@ if(count($res) > 0){
  							<input type="submit" class="btn btn-theme btn-lg btn-block" value="Anexar arquivos ao Pedido">
  						</div>
  					</div>
-
+					</form>-->
  					<br>
 
  					<p><strong>ATENÇÃO!</strong>
@@ -1650,7 +1651,7 @@ if(count($res) > 0){
  					</div>	
 					
  					
- 				</form>
+ 				
 
  			</div>
  		</div>

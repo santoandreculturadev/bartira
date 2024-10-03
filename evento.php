@@ -635,7 +635,7 @@ if(isset($_SESSION['id'])){
 					<div class="form-group">
 						<div class="col-md-offset-2">
 							<input type="hidden" name="inserir" value="1" />
-							<input type="submit" class="btn btn-theme btn-lg btn-block" value="Gravar">
+							<input type="submit" class="btn btn-theme btn-lg btn-block" value="SALVAR">
 						</div>
 					</div>
 				</form>
@@ -1022,7 +1022,7 @@ if(isset($_POST['atualizar'])){
 							<input type="hidden" name="atualizar" value="<?php echo $evento['idEvento']; ?>" />
 							<?php 
 							?>
-							<input type="submit" class="btn btn-theme btn-lg btn-block" value="Atualizar">
+							<input type="submit" class="btn btn-theme btn-lg btn-block" value="SALVAR">
 						</div>
 					</div>
 				</form>
