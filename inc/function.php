@@ -4092,3 +4092,40 @@ function comparaProcesso($nProcesso){
 	//var_dump($res);
 	//echo "</pre>";
 }
+
+
+function dashboard($painel,$idUser,$opcoes){
+	global $wpdb;
+
+	switch($painel){
+
+	case "ultimosPedidos":
+		$sql_seleciona = "SELECT DISTINCT idPedidoContratacao,sc_evento.idEvento, valor FROM sc_contratacao,sc_evento WHERE sc_contratacao.publicado = 1 AND sc_evento.dataEnvio IS NOT NULL AND (idUsuario = '$idUser' OR idResponsavel = '$idUser' OR idSuplente = '$idUser') AND sc_contratacao.idEvento = sc_evento.idEvento ORDER BY idPedidoContratacao DESC LIMIT 0,100";	
+		
+		$peds = $wpdb->get_results($sql_seleciona,ARRAY_A);
+
+		$x = array();
+
+		for($i = 0; $i < count($peds); $i++){
+
+
+
+			if($peds[$i]['idEvento'] != 0 AND $peds[$i]['idEvento'] != NULL){
+				$x[$i]['pedido'] = retornaPedido($peds[$i]['idPedidoContratacao']);
+				$x[$i]['contabil'] = retornaContabil($x[$i]['pedido']['nProcesso']);
+			}else{
+			//$pedido = atividade($peds[$i]['idAtividade']);
+				$x[$i]['pedido'] = retornaPedido($peds[$i]['idPedidoContratacao']);
+			}
+
+			
+		}	
+
+		return $x;
+
+	break;	
+
+	}
+
+
+}

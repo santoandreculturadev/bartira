@@ -9,9 +9,9 @@
 
 		<?php 
 		
-		$array = ['usuario','planejamento','mapas','atividades','eventos'];
-		$array_ordena = asort($array);
-		var_dump($array_ordena);
+		//$array = ['usuario','planejamento','mapas','atividades','eventos'];
+	//	$array_ordena = asort($array);
+		//var_dump($array_ordena);
 		
    
 /*
@@ -240,6 +240,15 @@ echo "\n \n ITEM publicado com ID:" . $item->id . "\n\n";
 //	   echo 'The post ' . $body->title->rendered . ' has been created successfully';
  //  }
  	*/
+
+	 $x = dashboard("ultimosPedidos","1","");
+
+	echo "<pre>";
+	var_dump($x);
+	echo "</pre>";
+
+
+
 ?>
 
 	</main>

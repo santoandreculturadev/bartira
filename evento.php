@@ -18,7 +18,7 @@ $_SESSION['entidade'] = 'evento';
 		<?php 
 		switch($p){
 			case "inicio": 
-if(isset($_POST['enviar'])){  // envia
+	if(isset($_POST['enviar'])){  // envia
 	// muda status de dataEnvio para hoje
 	// atualiza a agenda
 	$idEvento = $_SESSION['id'];
@@ -79,7 +79,8 @@ if(isset($_POST['apagar'])){
 						<th><a href="?<?php if(isset($_GET['order'])){ echo "";}else{ echo "order"; } ?>">Título</a></th>
 						<th>Data</th>
 						<th>Status</th>
-						<th>CulturaZ</th>
+						<th></th>
+						<th></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -98,7 +99,7 @@ if(isset($_POST['apagar'])){
 						
 						?>
 						<tr>
-							<td><?php echo $res[$i]['idEvento']; ?></td>
+							<td><?php echo $res[$i]['idEvento'];  ?></td>
 							<td>
 								<?php
 								if($idUser == 63 OR $idUser == 1 OR $idUser == 5 OR $idUser == 77){
@@ -118,7 +119,7 @@ if(isset($_POST['apagar'])){
 							<?php ?>				
 							
 							<td><?php echo $evento['status']; ?></td>
-							
+<td></td>
 							
 							<td>	<?php if($evento['dataEnvio'] == NULL){ ?>
 								<form method="POST" action="?p=editar" class="form-horizontal" role="form">
@@ -133,10 +134,29 @@ if(isset($_POST['apagar'])){
 									<input type="hidden" name="apagar" value="<?php echo $res[$i]['idEvento']; ?>" />
 									<input type="submit" class="btn btn-theme btn-sm btn-block" value="Apagar">
 								</form>
-							<?php }
+								</td>
+							<?php }else{
+								?>
+								<td></td>
+								
+								<?php
+							}
 
 							} ?>	
-								</td>
+							
+						<td>
+							<?php
+							if($evento['status'] != '1' AND $evento['status'] != 'NULL' ){
+							?>
+						<form method="POST" action="mapas.php?p=editar" class="form-horizontal" role="form">
+						<input type="hidden" name="carregar" value="<?php echo $res[$i]['idEvento']; ?>" />
+						<input type="submit" class="btn btn-theme btn-sm btn-block" value="CulturAZ">
+								</form>
+						<?php } ?>
+						</td><!-- mapas culturais -->
+						
+
+							
 						</tr>
 					<?php } // fim do for?>	
 					
