@@ -54,112 +54,48 @@ require "inc/function.php";
 			eventLimit: false, // allow "more" link when too many events
 			events: [
 			<?php 
-			global $wpdb;
-			$local = "";
-			$locala = "";
-			$localb = "";	
-			$linguagem = "";
-			$projeto = "";
-
-			if(isset($_GET['p'])){
-				switch($_GET['p']){
-					case "aniversario":
-					$aniversario = " AND sc_evento.categoria <> '' ";
-					break;
-				}
-			}else{
-				$aniversario = "";
-				
-			}
-
-            	if(isset($_GET['filtro'])){
-				if($_GET['local'] == 0){
-					$local = "";
-				}else{
-					$local = " AND idLocal = '".$_GET['local']."' ";
-				}
-				
-				if($_GET['local'] == 0){
-					$locala = "";
-				}else{
-					$locala = " AND idLocal = '".$_GET['local']."' ";
-				}
-
-				if($_GET['local'] == 212){
-					$localb = "";
-				}else{
-					$localb = " AND idLocal = '".$_GET['local']."' ";
-				}
-
-				if($_GET['linguagem'] == 0){
-					$linguagem = "";
-				}else{
-					$linguagem = " AND idLinguagem = '".$_GET['linguagem']."' ";
-				}
-				
-				if($_GET['projeto'] == 0){
-					$projeto = "";
-				}else{
-					$projeto = " AND idProjeto = '".$_GET['projeto']."' ";
-				}
-				
-			}
-			
-			if(isset($_GET['status'])){
-				switch($_GET['status']){
-					case 1:
-					$sql_status = " AND status = '2' ";
-					break;
-					
-					case 2:
-					$sql_status = " AND status = '3' ";
-
-					break;
-					
-					case 4:
-					$sql_status = " AND status = '4' ";
-					
-					break;
-					
-					default:
-					$sql_status = "";
-					break;
-				}
-				
-				
-			}else{
-				$sql_status = "";
-			}
 			
 			
-			
-			$sql_busca = "SELECT sc_evento.idEvento,nomeEvento,data,hora,mapas,dataEnvio,idLocal,status FROM sc_agenda, sc_evento 
-                    WHERE sc_evento.idEvento = sc_agenda.idEvento AND dataEnvio IS NOT NULL $aniversario $linguagem $local $locala $localb $projeto $sql_status" ;
+			$sql_busca = "SELECT * FROM sc_agenda_teatros" ;
 			$res = $wpdb->get_results($sql_busca, ARRAY_A);
+			//echo "<pre>";
+			//var_dump($res);
+			//echo "</pre>";
+			
+			
 			for($i = 0; $i < count($res); $i++){
-				$local = tipo($res[$i]['idLocal']);
-				$locala = tipo($res[$i]['idLocal']);
-				$localb = tipo($res[$i]['idLocal']);
-				$title = addslashes($res[$i]['nomeEvento']);
+				$agenda = recuperaDados("sc_ocorrencia_teatro",$res[$i]['idOcorrencia'],'idOcorrencia');
+				$title = addslashes($agenda['titulo']);
+				
 				$data = $res[$i]['data'];
 				$hora = $res[$i]['hora'];
-				$loc = addslashes($local['tipo']);
-				$loca = addslashes($locala['tipo']);
-				$locb = addslashes($localb['tipo']);
 				echo "{title: '".$title."',";
 				echo "start: '".$data."T".$hora."',";
-				echo " url:'busca.php?p=view&tipo=evento&id=".$res[$i]['idEvento']."'";	
-				if($res[$i]['status'] == 2){
-					echo " , backgroundColor: 'orange'";
+				echo " url:'agendateatros.php?p=editar&id=".$res[$i]['idOcorrencia'];	
+				
+				if($res[$i]['idLocal'] == 273){
+					echo " ', backgroundColor: 'orange'";
 				}
-				if($res[$i]['status'] == 3){
-					echo " , backgroundColor: 'blue'";
+				if($res[$i]['idLocal'] == 211){
+					echo " ', backgroundColor: 'blue'";
 				}
 				
 				
-				if($res[$i]['status'] == 4){
-					echo " , backgroundColor: 'green'";	
+				if($res[$i]['idLocal'] == 207){
+					echo "' , backgroundColor: 'green'";	
 				}
+				if($res[$i]['idLocal'] == 210){
+					echo " ', backgroundColor: 'red'";	
+				}
+				if($res[$i]['idLocal'] == 235){
+					echo " , backgroundColor: 'purple'";	
+				}
+				if($res[$i]['idLocal'] == 212){
+					echo " ', backgroundColor: 'gray'";	
+				}
+
+
+				
 				echo "},";
 			}
 			?>

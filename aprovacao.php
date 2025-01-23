@@ -65,7 +65,7 @@ if(isset($_POST['idEventoCancelado'])){  // envia
 	}
 	
 }
-
+/*
 if(isset($_POST['aprovar'])){
 	$mensagem = "";
 	foreach($_POST as $x=>$y){
@@ -84,6 +84,7 @@ if(isset($_POST['aprovar'])){
 		
 	}
 }
+*/
 
 if(isset($_POST['aprovar'])){
 	$mensagem = "";

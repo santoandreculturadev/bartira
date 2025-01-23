@@ -9,6 +9,36 @@ session_unset();
   
   <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
       <h1>Início</h1>
+	  <section id="inserir" class="home-section bg-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-offset-2 col-md-8">
+
+							<p>A busca compreende eventos, contratos, pessoas físicas e jurídicas e espaços</p>
+							
+						</div>
+					</div> 
+					<div class="row">
+						<div class="col-md-offset-1 col-md-10">
+							<form method="POST" action="?p=busca" class="form-horizontal" role="form">
+								<div class="row">
+									<div class="col-12">
+										<label>Digite pelo menos 3 caracteres</label>
+										<input type="text" name="busca" class="form-control" id="inputSubject" />
+									</div>
+								</div><br />
+								<div class="form-group">
+									<div class="col-md-offset-2">
+										<input type="hidden" name="inserir_pf" value="1" />
+										<?php 
+										?>
+										<input type="submit" class="btn btn-theme btn-lg btn-block" value="Busca">
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>	
+
       <section id="inserir" class="home-section bg-white">
         <div class="container">
             <div class="row">

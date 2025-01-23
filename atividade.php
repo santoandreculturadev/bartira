@@ -49,6 +49,8 @@ $_SESSION['entidade'] = 'atividade';
 									<th>Atividade</th>
 									<th>Programa</th>
 									<th>Projeto</th>
+									<th>Status</th>
+
 									<th></th>
 									<th></th>
 								</tr>
@@ -72,6 +74,7 @@ $_SESSION['entidade'] = 'atividade';
 										<td><?php echo $res[$i]['titulo']; ?></td>
 										<td><?php echo $evento['programa']; ?></td>
 										<td><?php echo $evento['projeto']; ?></td>
+										<td><?php echo "status"; ?></td>
 										<td>	
 											<form method="POST" action="?p=editar" class="form-horizontal" role="form">
 												<input type="hidden" name="carregar" value="<?php echo $res[$i]['id']; ?>" />

@@ -575,6 +575,7 @@ function diasemanaint($data)
 		global $wpdb;
 		$sql = "SELECT * FROM sc_tipo WHERE abreviatura = '$abreviatura' AND publicado = 1 ORDER BY tipo ASC";
 		$query = $wpdb->get_results($sql,ARRAY_A);
+		$ano_base = "";
 		for($i = 0; $i < count($query); $i++){
 			if($select == $query[$i]['id_tipo']){
 				if($query[$i]['ano_base'] != NULL){
@@ -4127,5 +4128,80 @@ function dashboard($painel,$idUser,$opcoes){
 
 	}
 
+
+}
+
+////////// funcoes 2024
+
+function atualizarAgendaTeatros($id,$log = false){ //01
+	global $wpdb;
+	$sql_limpa =  "DELETE FROM `sc_agenda_teatros` WHERE idOcorrencia = '$id'";
+	$limpa = $wpdb->query($sql_limpa);
+	$sql = "SELECT * FROM sc_ocorrencia_teatro WHERE idOcorrencia = '$id' AND publicado = '1'";
+	$res = $wpdb->get_results($sql,ARRAY_A);
+	//var_dump($res);
+	if(count($res) > 0){ //02
+		for($i = 0; $i < count($res); $i++){ //03
+			if($res[$i]['dataFinal'] != '0000-00-00'){ // temporada //04
+				$di = $res[$i]['dataInicio'];
+				while(strtotime($di) < strtotime($res[$i]['dataFinal'])){
+					if($log == true){ echo strtotime($di)." / ".strtotime($res[$i]['dataFinal'])."<br />"; }
+					$n = nSemana($di);
+					//echo $di."<br />";
+					if($n == 0 AND $res[$i]['domingo'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+					}
+					
+					if($n == 1 AND $res[$i]['segunda'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+						
+					}					
+					if($n == 2 AND $res[$i]['terca'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+						
+					}					
+					if($n == 3 AND $res[$i]['quarta'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+						
+					}					
+					if($n == 4 AND $res[$i]['quinta'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+						
+					}					
+					if($n == 5 AND $res[$i]['sexta'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+						
+					}					
+					if($n == 6 AND $res[$i]['sabado'] == 1){
+						$x = insereAgendaTeatros($di,$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+						if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$di." <br />";}
+					}					
+					$di = somarDatas($di,"+1");
+				}	
+			}else{ // data única //04
+				$x = insereAgendaTeatros($res[$i]['dataInicio'],$res[$i]['idOcorrencia'],$res[$i]['horaInicio'],$res[$i]['local'],$log);
+				if($log == true){var_dump($x); echo " - idEvento: ".$id." / ".$res[$i]['dataInicio']." <br />";}
+
+			}
+			
+		}//03
+	}	
+} //01 
+
+function insereAgendaTeatros($data,$id,$hora,$local,$log = false){
+	global $wpdb;
+	
+		// limpa a ocorrencia na agenda
+	$sql_ins = "INSERT INTO `sc_agenda_teatros` (`idOcorrencia`, `data`, `hora`, `idLocal`) 
+	VALUES ('$id', '$data', '$hora', '$local')"; 			
+	$insere = $wpdb->query($sql_ins);
+	if($log == true){var_dump($sql_ins)."<br />";};
+	return $wpdb->insert_id;
 
 }

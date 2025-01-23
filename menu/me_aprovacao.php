@@ -14,17 +14,17 @@
       
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a class="nav-link" href="aprovacao.php">Listar Meus Eventos para Aprovação</a>
+          <a class="nav-link" href="aprovacao.php">Eventos para Aprovação</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="aprovacao.php?p=aprovados">Listar Meus Eventos Aprovados</a>
+          <a class="nav-link" href="aprovacao.php?p=aprovados">Eventos Aprovados</a>
         </li>
         <li>
-          <a class="nav-link" href="aprovacao.php">Listar Meus Eventos</a>
+          <a class="nav-link" href="aprovacao.php">Meus Eventos</a>
         </li>
         <li>
 		        <li>
-          <a class="nav-link" href="aprovacao.php?p=cancelados">Listar Eventos Cancelados</a>
+          <a class="nav-link" href="aprovacao.php?p=cancelados">Eventos Cancelados</a>
         </li>
         <li>
           <a class="nav-link" href="aprovacao.php?p=serie">Aprovação em Série</a>
