@@ -223,7 +223,7 @@
 							<td><?php //echo $i; ?></td>
 							<td><?php echo $edit[$i]['mapas']; ?></td>
 							<td><?php echo $edit[$i]['titulo']; ?></td>
-							<td><?php echo $edit[$i]['periodo']; ?></td>
+							<td><a class="btn btn-primary" href="?p=edita_usuario&p=<?phpecho  ?>" role="button">Link</a></td>
 						</tr>
 						<?php 
 					} ?>	
@@ -249,6 +249,8 @@
 					<tr>
 						<th>#</th>
 						<th>Nome Completo</th>
+						<th>Módulos</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -258,11 +260,21 @@
 					foreach($users as $user_id){
 						$user_meta = get_user_meta ( $user_id->ID);
 						$user_data = get_userdata( $user_id->ID );
+						$json = retornaUsuarioBartira($user_id->ID);
 						?>	
 						<tr>
 							<td><?php echo $user_id->ID; ?></td>
 							<td><?php echo $user_data->display_name; ?></td>
-
+							<td><?php //var_dump($json); 
+							$mod = "";
+							if($json != NULL){
+								for($k = 0; $k < count($json['modulos']);$k++){
+									$mod .= $json['modulos'][$k]." / ";
+								}
+								echo substr($mod,-0,-2);
+								
+							}; ?></td>
+							<td><td><a class="btn btn-primary" href="?p=edita_usuario&id=<?php echo $user_id->ID  ?>" role="button">Editar </a></td></td>
 						</tr>
 						<?php 
 					} 
@@ -270,6 +282,86 @@
 
 
 				</tbody>
+			</table>
+		</div>
+	</main>	
+
+<?php 
+break;
+case "edita_usuario":
+
+	$user_meta = get_user_meta ( $_GET['id']);
+	$user_data = get_userdata( $_GET['id'] );
+	$json = retornaUsuarioBartira($_GET['id']);
+
+?>
+<?php 
+
+if(($_POST)){
+	$t = array();
+	for($i = 0; $i < count($_POST['modulo']); $i++){
+		array_push($t,$_POST['modulo'][$i]);
+	}
+	$json['modulos'] = $t;
+	$opcao = json_encode($json);
+	$update = "UPDATE sc_opcoes SET
+	opcao = '$opcao'
+	WHERE entidade = 'usuario' AND id_entidade = '".$_GET['id']."'";
+	$wpdb->query($update);
+
+}
+
+
+?>
+	<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+		<h1><?php echo $user_data->display_name; ?></h1>
+		<h2></h2>
+
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Módulo</th>
+						<th>Módulos</th>
+					</tr>
+				</thead>
+				<form method="POST" action="?p=edita_usuario&id=<?php echo $_GET['id']; ?>" class="form-horizontal" role="form">
+				<tbody>
+				<?php 
+				$sql_lista = "SELECT * FROM sc_tipo WHERE abreviatura = 'modulo' AND publicado = '1' ORDER BY tipo ASC";
+				$res = $wpdb->get_results($sql_lista,ARRAY_A);
+				for($i = 0; $i < count($res); $i++){
+					$check = "";
+					$value = 0;
+					for($k = 0; $k < count($json['modulos']); $k++){
+						if($res[$i]['descricao'] == $json['modulos'][$k]){
+							$check = "checked";
+							$value = 1;
+						}
+						
+					}
+					
+					
+					
+				?>			
+					
+						<tr>
+						<td></td>
+							<td><?php echo $res[$i]['tipo']; ?></td>
+							<td> <input class="form-check-input" type="checkbox"  name="modulo[]" value="<?php echo $res[$i]['descricao'] ?>" <?php echo $check; ?>></td>
+						</tr>
+						<?php 
+					} 
+					?>	
+					<tr>
+					<td></td>
+					<td>	<input type="submit" class="btn btn-theme btn-lg btn-block" value="Gravar"></td>
+					<td></td>
+						<tr>
+				</tbody>
+				
+				</form>
 			</table>
 		</div>
 	</main>	

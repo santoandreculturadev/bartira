@@ -16,7 +16,11 @@
 					<a class="nav-link" href="contrato.php">Listar Contratações</a>
 				</li>
 			</ul>
-			
+			<ul class="nav nav-pills flex-column">	
+				<li class="nav-item">
+					<a class="nav-link" href="contrato.php?p=lista_reserva">Listar Reservas</a>
+				</li>
+			</ul>			
 			
 			<?php 
 

@@ -71,7 +71,7 @@ for($i = 0; $i < count($ano); $i++){
 			$conta_bairro = contaBairros($ind_evento['mes'][$m]['id_bairros'],$conta_bairro);
 			$conta_bairro = contaBairros($ind_incentivo[$m]['bairros']['id_bairros'],$conta_bairro);
 			
-			$t = tipo(tipoId("Biblioteca"));
+			$t = tipo(tipoId("Bibliotecas"));
 			$tipo = json_decode($t['descricao'],TRUE);
 			$conta_bairro = contaBairros($tipo['bairros'],$conta_bairro);
 			

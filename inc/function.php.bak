@@ -3324,14 +3324,17 @@ function indicadores($ano_base,$tipo,$projeto = NULL, $in_projeto = NULL ,$progr
 	
 		case "biblioteca": //$ano_base,$tipo,$projeto = NULL, $programa = NULL
 
+
+
+
 		$x = array();
 			
 		// bairros
-		$bairros = tipo(tipoId("Biblioteca"));	
+		$bairros = tipo(tipoId("Bibliotecas"));	
 		$id_bairros = json_decode($bairros['descricao'],TRUE);
 		//$locais = $ids['bairros'];
 		//var_dump($locais);
-		if(count($id_bairros) > 0){
+		if(sizeof($id_bairros) > 0){
 			$loc = explode(",",$id_bairros['bairros']);
 		}else{
 			$loc = array();
@@ -4205,3 +4208,62 @@ function insereAgendaTeatros($data,$id,$hora,$local,$log = false){
 	return $wpdb->insert_id;
 
 }
+
+function reserva($id){
+
+	global $wpdb;
+
+	$sql =  "SELECT * FROM sc_reserva WHERE id = '$id'";
+	$res = $wpdb->get_row($sql,ARRAY_A);
+	/*
+	echo "<pre>";
+	var_dump($programa);
+	echo "</pre>";
+
+	*/
+	$programa = tipo($res['programa']);
+	$projeto = tipo($res['projeto']);
+	$usuario = get_userdata($res['responsavel01']);
+	if($usuario){
+		$u = $usuario->first_name." ".$usuario->last_name;
+	}else{
+		$u = "";
+	}
+	//$status = retornaStatus($res['idEvento']);
+	$sql_orc = "SELECT * FROM sc_orcamento WHERE id = '".$res['dotacao']."'";
+	//echo $sql_orc;
+	$orcamento = $wpdb->get_row($sql_orc,ARRAY_A);
+	//echo "<pre>";
+	//var_dump($orcamento);
+	//echo "</pre>";
+	
+	$evento = array(
+		'nomeEvento' => $res['titulo'],
+		'nome' => $res['titulo'],
+		'n_processo' => $res['titulo'],
+		//'periodo' => exibirDataBr($res['periodo_inicio'])." a ".exibirDataBr($res['periodo_fim']), 
+		'valor' => DinheiroParaBr($res['valor']),
+		'programa' => $programa['tipo'],
+		'projeto' => $projeto['tipo'],
+		'responsavel' => $u,
+		'status' => $res['status'],
+		'dotacao' => $orcamento['projeto']."/".$orcamento['ficha'],
+
+		'usuario' => ''
+		
+	);
+
+	return $evento;
+}
+
+function retornaUsuarioBartira($idUser){
+	global $wpdb;
+	$sel = "SELECT opcao FROM sc_opcoes WHERE id_entidade = '$idUser' AND entidade = 'usuario'";
+	$res = $wpdb->get_row($sel,ARRAY_A);
+	
+	
+	return json_decode($res['opcao'],true);
+	
+	
+}
+

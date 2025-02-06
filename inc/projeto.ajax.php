@@ -47,6 +47,9 @@ for($i = 0; $i < count($res); $i++){
 		'ano_base' => (($res[$i]->ano_base)),
 	);
 }
+
+
+
 echo( json_encode( $k ) );
 
 

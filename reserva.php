@@ -66,9 +66,11 @@ session_start();
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Atividade</th>
+									<th>Reserva</th>
 									<th>Programa</th>
 									<th>Projeto</th>
+									<th>Dotação</th>
+									<th>Valor</th>
 									<th>Status</th>
 
 									<th></th>
@@ -80,21 +82,22 @@ session_start();
 								global $wpdb;
 								$id_user = $user->ID;
 								if($user->ID == 1 OR $user->ID == 5 ){
-									$sql_list =  "SELECT * FROM sc_atividade WHERE publicado = '1' ORDER BY id DESC";
+									$sql_list =  "SELECT * FROM sc_reserva WHERE publicado = '1' ORDER BY id DESC";
 								}else{
-									$sql_list =  "SELECT * FROM sc_atividade WHERE publicado = '1' AND (idRes = '$id_user' OR idSuplente = '$id_user' OR id_usuario = '$id_user' ) ORDER BY id DESC";
+									$sql_list =  "SELECT * FROM sc_reserva WHERE publicado = '1' AND (idRes = '$id_user' OR idSuplente = '$id_user' OR id_usuario = '$id_user' ) ORDER BY id DESC";
 								}
 								$res = $wpdb->get_results($sql_list,ARRAY_A);
 								for($i = 0; $i < count($res); $i++){
-									$evento = atividade($res[$i]['id']);
+									$reserva = reserva($res[$i]['id']);
 									
 									?>
 									<tr>
 										<td><?php echo $res[$i]['id']; ?></td>
-										<td><?php echo $res[$i]['titulo']; ?></td>
-										<td><?php echo $evento['programa']; ?></td>
-										<td><?php echo $evento['projeto']; ?></td>
-										<td><?php echo "status"; ?></td>
+										<td><?php echo $reserva['nomeEvento']; ?></td>
+										<td><?php echo $reserva['programa']; ?></td>
+										<td><?php echo $reserva['projeto']; ?></td>
+										<td><?php echo $reserva['dotacao']; ?></td>		<td><?php echo $reserva['valor']; ?></td>
+										<td><?php echo $reserva['status']; ?></td>
 										<td>	
 											<form method="POST" action="?p=editar" class="form-horizontal" role="form">
 												<input type="hidden" name="carregar" value="<?php echo $res[$i]['id']; ?>" />
@@ -246,7 +249,7 @@ session_start();
 										<div class="form-group">
 											<div class="col-md-offset-2">
 												<label>Descrição curta *</label>
-												<input type="text" name="titulo" class="form-control" id="inputSubject" value=""/>
+												<input type="text" name="nomeEvento" class="form-control" id="inputSubject" value=""/>
 											</div> 
 										</div>
 
@@ -318,7 +321,7 @@ session_start();
 										<div class="form-group">
 											<div class="col-md-offset-2">
 												<label>Ano Base *</label>
-												<input type="text" name="ano" class="form-control" id="inputSubject" value="<?php echo date('Y'); ?>"/>
+												<input type="text" name="ano_base" class="form-control" id="inputSubject" value="<?php echo date('Y'); ?>"/>
 											</div> 
 										</div>
 
@@ -360,21 +363,6 @@ session_start();
 						$evento = $wpdb->get_row($sql_select,ARRAY_A);
 					}
 
-					if(isset($_POST['atualizar']) OR isset($_POST['inserir'])){
-						$nomeEvento = addslashes($_POST["nomeEvento"]);
-						$programa    = $_POST["programa"];
-						$projeto = $_POST["projeto"];
-						$nomeResponsavel    = $_POST["nomeResponsavel"];
-						$suplente    = $_POST["suplente"];
-						$ano    = $_POST["ano"];
-						$descricao    = addslashes($_POST["descricao"]);
-						$data_inicio = exibirDataMysql($_POST["data_inicio"]);
-						if($_POST["data_final"] != ''){
-							$data_final   = exibirDataMysql($_POST["data_final"]);
-						}else{
-							$data_final = '0000-00-00';
-						}
-					}
 					
 					if(isset($_POST['carregar'])){
 						$id = $_POST['carregar'];
@@ -387,9 +375,9 @@ session_start();
 					
 
 	// Inserir evento
+if(isset($_POST['atualizar']) OR isset($_POST['inserir'])){	
 	
-	
-	$titulo = $_POST["titulo"];
+	$nomeEvento = $_POST["nomeEvento"];
 	$programa = $_POST["programa"];
 	$projeto = $_POST["projeto"];
 	$dotacao = $_POST["dotacao"];
@@ -397,15 +385,16 @@ session_start();
 	$suplente = $_POST["suplente"];
 	$valor = dinheiroDeBr($_POST["valor"]);
 	$ano = $_POST["ano"];
-	$descricao = $_POST["descricao"];
+	$descricao = addslashes($_POST["descricao"]);
+	$ano_base = $_POST["ano_base"];
 	$status = 2;
 	$publicado = 1;
 	$idUser = $user->ID;
 	
-	
+}
 	
 					if(isset($_POST['inserir'])){
-						$sql = "INSERT INTO `sc_reserva` (`id`, `titulo`, `n_processo`, `tipo_reserva`, `valor`, `programa`, `projeto`, `dotacao`, `n_reserva_cco`, `responsavel01`, `responsavel02`, `validade`, `status`, `usuario`, `publicado`, `ano_base`) VALUES (NULL, '$titulo', '', '', '$valor', '$programa', '$projeto', '$dotacao', '', '$nomeResponsavel', '$suplente', '', '$status', '$idUser', '$publicado', '$ano_base');";
+						$sql = "INSERT INTO `sc_reserva` (`id`, `titulo`, `n_processo`, `tipo_reserva`, `valor`, `programa`, `projeto`, `dotacao`, `n_reserva_cco`, `responsavel01`, `responsavel02`, `validade`, `status`, `usuario`, `publicado`, `ano_base`, `descricao`) VALUES (NULL, '$nomeEvento', '', '', '$valor', '$programa', '$projeto', '$dotacao', '', '$nomeResponsavel', '$suplente', '', '$status', '$idUser', '$publicado', '$ano_base', '$descricao');";
 						$ins = $wpdb->query($sql);
 						if($ins){
 							$mensagem = "Inserido com sucesso";
@@ -423,22 +412,22 @@ session_start();
 
 					if(isset($_POST['atualizar'])){
 						$atualizar    = $_POST["atualizar"];	
-						$sql_atualizar = "UPDATE sc_atividade SET
-						`idPrograma` = '$programa' ,
-						`idProjeto` =  '$projeto',
-						`titulo` = '$nomeEvento',
-						`idRes` = '$nomeResponsavel',
-						`idSuplente` = '$suplente',
-						`ano_base` = '$ano',
-						`periodo_inicio` = '$data_inicio',
-						`periodo_fim` = '$data_final',
-						`descricao` = '$descricao'
-						WHERE `id` = '$atualizar';
-						";
+						$sql_atualizar = "UPDATE `sc_reserva` SET 
+						`titulo`='$nomeEvento',
+						`valor`='$valor',
+						`programa`='$programa',
+						`projeto`='$projeto',
+						`dotacao`='$dotacao',
+						`responsavel01`='$nomeResponsavel',
+						`responsavel02`='$suplente',
+						`ano_base`='$ano_base',
+						`publicado`='1',
+						`descricao`='$descricao' 
+						WHERE id = '$atualizar';";
 						$atual = $wpdb->query($sql_atualizar);
-						$sql_select = "SELECT * FROM sc_atividade WHERE id = '$atualizar'";
-						$evento = $wpdb->get_row($sql_select,ARRAY_A);
-						$_SESSION['id'] = $evento['id'];
+						$sql_select = "SELECT * FROM sc_reserva WHERE id = '$atualizar'";
+						$reserva = $wpdb->get_row($sql_select,ARRAY_A);
+						
 						
 						if($atual == 1){
 							$mensagem = "Evento atualizado com sucesso.";
@@ -452,6 +441,7 @@ session_start();
 					<script src="js/jquery-ui.js"></script>
 					<script src="js/mask.js"></script>
 					<script src="js/maskMoney.js"></script> 
+
 
 					<script type="application/javascript">
 						$(function()
@@ -569,7 +559,7 @@ session_start();
 										<div class="form-group">
 											<div class="col-md-offset-2">
 											<label>Valor *</label>
-											<input type="text" name="valor" class="form-control valor" id="inputSubject" value="" />
+											<input type="text" name="valor" class="form-control valor" id="inputSubject" value="<?php echo dinheiroParaBr($reserva['valor']); ?>" />
 											</div>
 										</div>
 
@@ -578,7 +568,7 @@ session_start();
 											<div class="col-md-offset-2">
 												<div class="col-md-offset-2">
 													<label>Ano Base *</label>
-													<input type="text" name="ano" class="form-control" id="inputSubject" value="<?php echo $reserva['ano_base']; ?>"/>
+													<input type="text" name="ano_base" class="form-control" id="inputSubject" value="<?php echo $reserva['ano_base']; ?>"/>
 												</div> 
 											</div>
 
@@ -590,7 +580,7 @@ session_start();
 											</div>
 											<div class="form-group">
 												<div class="col-md-offset-2">
-													<input type="hidden" name="atualizar" value="<?php echo $evento['id']; ?>" />
+													<input type="hidden" name="atualizar" value="<?php echo $reserva['id']; ?>" />
 													<input type="submit" class="btn btn-theme btn-lg btn-block" value="Gravar">
 												</div>
 											</div>

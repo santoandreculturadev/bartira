@@ -1402,6 +1402,11 @@ if(count($res) > 0){
  </div>
 </section>	
 
+<?php 
+break;
+case "lista_reserva":
+?>
+
 
 
 <?php 
